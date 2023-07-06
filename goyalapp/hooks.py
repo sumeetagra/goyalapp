@@ -1,8 +1,8 @@
 from . import __version__ as app_version
 
 app_name = "goyalapp"
-app_title = "Goyal Business App"
-app_publisher = "Midocean Technologies Pvt Ltd"
+app_title = "Goyal App"
+app_publisher = "Go4all Technologies Pvt Ltd"
 app_description = "Personalised App for Goyal Group"
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
