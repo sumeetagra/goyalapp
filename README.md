@@ -1,19 +1,17 @@
-## Business Theme V14
-
-Business Theme for ERPNext / Frappe
+## Goyal Group Personalised App
 
 ### To install this theme,
 
-bench get-app https://github.com/Midocean-Technologies/business_theme_v14.git
+bench get-app https://github.com/sumeetagra/goyalapp.git
 
-bench --site (sitename) install-app business_theme_v14
+bench --site (sitename) install-app goyalapp
 
 bench clear-cache
 
 
 ### To uninstall this theme
 
-bench --site (sitename) uninstall-app business_theme_v14
+bench --site (sitename) uninstall-app goyalapp
 
 <img width="1431" alt="Screenshot 2022-06-26 at 2 02 45 PM" src="https://user-images.githubusercontent.com/31538550/175806337-ba832d87-c947-4904-8d4f-7343fa516069.png">
 <img width="1431" alt="Screenshot 2022-06-26 at 2 02 28 PM" src="https://user-images.githubusercontent.com/31538550/175806341-9603719f-3cb1-42f0-b138-b9b15376d1d4.png">
@@ -24,5 +22,5 @@ bench --site (sitename) uninstall-app business_theme_v14
 MIT
 
 
-#### Contact now! for end to end Frappe/ERPNext, Odoo & Flutter Development
-[sagar@midocean.tech]
+#### Contact now! for end to end Frappe/ERPNext Development
+admin@goyalironsteel.com
