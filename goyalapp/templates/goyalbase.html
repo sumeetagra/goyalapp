@@ -1,1 +1,38 @@
+<!DOCTYPE html>
 
+<html>
+<head>
+  	<meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  	<meta name="generator" content="frappe">
+
+  	{% block meta_block %}
+	  	{% include "templates/includes/meta_block.html" %}
+	  {% endblock %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?=settings()->company_name?> <?=(!empty($title)?'| '.$title : '')?></title>
+    <link rel="shortcut icon" href="<?=base_url('uploads/images/'.settings()->logo)?>"/>
+    <link rel="stylesheet" href="<?=base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/bower_components/font-awesome/css/font-awesome.min.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/bower_components/Ionicons/css/ionicons.min.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/dist/css/AdminLTE.min.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/dist/css/skins/_all-skins.min.css')?>">
+    <link rel="stylesheet" href="<?=base_url();?>assets/sweetalert/sweetalert2.min.css" >
+    <link rel="stylesheet" href="<?=base_url();?>assets/icofont/icofont.css" type="text/css">
+    <?php date_default_timezone_set(settings()->time_zone); ?>
+    <?php if(isset($headerassets['css']) && count($headerassets['css'])) { ?>
+    <?php foreach ($headerassets['css'] as $css) { ?>
+    <link rel="stylesheet" href="<?=base_url($css)?>">
+    <?php } ?>
+    <?php } ?>
+    <script src="<?=base_url('assets/bower_components/jquery/dist/jquery.min.js')?>"></script>
+    <script type="text/javascript"><?php jsStack($jsmanager); ?></script>
+    <?php if(isset($headerassets['js']) && count($headerassets['js'])) { ?>
+    <?php foreach ($headerassets['js'] as $js) { ?>
+    <script src="<?=base_url($js)?>"></script>
+    <?php } ?>
+    <?php } ?>
+    <link rel="stylesheet" href="<?=base_url('assets/custom/css/style.css')?>">
+    <link rel="stylesheet" href="<?=base_url('assets/plugins/toastr/toastr.min.css')?>">
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700&subset=cyrillic,cyrillic-ext,greek,latin-ext" rel="stylesheet">
+</head>
