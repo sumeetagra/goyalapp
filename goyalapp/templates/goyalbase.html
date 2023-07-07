@@ -20,7 +20,6 @@
 		type="image/x-icon"
 	>
 	{% endblock %}
-
 	
 	<link rel="shortcut icon" href="<?=base_url('uploads/images/'.settings()->logo)?>"/>
     <link rel="stylesheet" href="<?=base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css')?>">
@@ -47,3 +46,45 @@
     <link rel="stylesheet" href="<?=base_url('assets/plugins/toastr/toastr.min.css')?>">
     <link href="https://fonts.googleapis.com/css?family=Play:400,700&subset=cyrillic,cyrillic-ext,greek,latin-ext" rel="stylesheet">
 </head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+	    
+<header class="main-header">
+    <a href="<?=base_url('/')?>" class="logo">
+        <span class="logo-mini"><img class="img-responsive" src="<?=base_url('uploads/images/'.settings()->logo)?>"></span>
+        <span class="logo-lg"><b><?=settings()->company_name;?></b></span>
+    </a>
+    <nav class="navbar navbar-static-top">
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="<?=profile_img($this->session->userdata('photo'))?>" class="user-image" alt="Image">
+                        <span class="hidden-xs">Hi, <?=$this->session->userdata('name')?></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="<?=profile_img($this->session->userdata('photo'))?>" class="img-circle" alt="Image">
+                            <p>
+                                <?=$this->session->userdata('name')?> - <?=inicompute($loginrole) ? $loginrole->usertype : ''?>
+                                <small> Member since <?=date('M. Y', strtotime($this->session->userdata('jod')))?></small>
+                            </p>
+                        </li>
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="<?=base_url('profile/index')?>" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="<?=base_url('login/logout')?>" class="btn btn-default btn-flat">Sign out</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>	
