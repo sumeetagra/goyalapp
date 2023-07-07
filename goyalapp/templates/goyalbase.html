@@ -20,6 +20,21 @@
 		type="image/x-icon"
 	>
 	{% endblock %}
+	<link rel="canonical" href="{{ canonical }}">
+
+	{%- block head -%}
+		{% include "templates/includes/head.html" %}
+	{%- endblock -%}
+
+	{%- block head_include %}
+		{{ head_include or "" }}
+	{% endblock -%}
+
+	{%- block style %}
+		{% if colocated_css -%}
+			<style>{{ colocated_css }}</style>
+		{%- endif %}
+	{%- endblock -%}
 	
 	<link rel="shortcut icon" href="<?=base_url('uploads/images/'.settings()->logo)?>"/>
     <link rel="stylesheet" href="<?=base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css')?>">
@@ -29,12 +44,6 @@
     <link rel="stylesheet" href="<?=base_url('assets/dist/css/skins/_all-skins.min.css')?>">
     <link rel="stylesheet" href="<?=base_url();?>assets/sweetalert/sweetalert2.min.css" >
     <link rel="stylesheet" href="<?=base_url();?>assets/icofont/icofont.css" type="text/css">
-    <?php date_default_timezone_set(settings()->time_zone); ?>
-    <?php if(isset($headerassets['css']) && count($headerassets['css'])) { ?>
-    <?php foreach ($headerassets['css'] as $css) { ?>
-    <link rel="stylesheet" href="<?=base_url($css)?>">
-    <?php } ?>
-    <?php } ?>
     <script src="<?=base_url('assets/bower_components/jquery/dist/jquery.min.js')?>"></script>
     <script type="text/javascript"><?php jsStack($jsmanager); ?></script>
     <?php if(isset($headerassets['js']) && count($headerassets['js'])) { ?>
