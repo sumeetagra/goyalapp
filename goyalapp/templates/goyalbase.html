@@ -36,23 +36,17 @@
 		{%- endif %}
 	{%- endblock -%}
 	
-	<link rel="shortcut icon" href="<?=base_url('uploads/images/'.settings()->logo)?>"/>
-    <link rel="stylesheet" href="<?=base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url('assets/bower_components/font-awesome/css/font-awesome.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url('assets/bower_components/Ionicons/css/ionicons.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url('assets/dist/css/AdminLTE.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url('assets/dist/css/skins/_all-skins.min.css')?>">
-    <link rel="stylesheet" href="<?=base_url();?>assets/sweetalert/sweetalert2.min.css" >
-    <link rel="stylesheet" href="<?=base_url();?>assets/icofont/icofont.css" type="text/css">
-    <script src="<?=base_url('assets/bower_components/jquery/dist/jquery.min.js')?>"></script>
-    <script type="text/javascript"><?php jsStack($jsmanager); ?></script>
-    <?php if(isset($headerassets['js']) && count($headerassets['js'])) { ?>
-    <?php foreach ($headerassets['js'] as $js) { ?>
-    <script src="<?=base_url($js)?>"></script>
-    <?php } ?>
-    <?php } ?>
-    <link rel="stylesheet" href="<?=base_url('assets/custom/css/style.css')?>">
-    <link rel="stylesheet" href="<?=base_url('assets/plugins/toastr/toastr.min.css')?>">
+	<link rel="shortcut icon" href="templates<?=base_url('uploads/images/'.settings()->logo)?>"/>
+    <link rel="stylesheet" href="templates/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="templates/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="templates/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="templates/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="templates/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="templates/sweetalert/sweetalert2.min.css" >
+    <link rel="stylesheet" href="templates/icofont/icofont.css" type="text/css">
+    <script src="templates/bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="templates/custom/css/style.css">
+    <link rel="stylesheet" href="templates/plugins/toastr/toastr.min.css">
     <link href="https://fonts.googleapis.com/css?family=Play:400,700&subset=cyrillic,cyrillic-ext,greek,latin-ext" rel="stylesheet">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -60,7 +54,7 @@
 	    
 <header class="main-header">
     <a href="<?=base_url('/')?>" class="logo">
-        <span class="logo-mini"><img class="img-responsive" src="<?=base_url('uploads/images/'.settings()->logo)?>"></span>
+        <span class="logo-mini"><img class="img-responsive" src="{{ logo_section() }}"></span>
         <span class="logo-lg"><b><?=settings()->company_name;?></b></span>
     </a>
     <nav class="navbar navbar-static-top">
