@@ -60,13 +60,13 @@
     <p class="login-box-msg"><h4>{{ _('Login to {0}').format(app_name or _("Frappe")) }}</h4></p><br>
       <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>" />
       <div class="form-group has-feedback <?=form_error('username') ? 'has-error' : ''?>">
-        <label><?=$this->lang->line('login_username')?></label> <span class="text-red">*</span>
+        <label>{{ _("UserName") }}</label> <span class="text-red">*</span>
         <input type="text" id="login_email" class="form-control" name="username" placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('jane@example.com') }}{% endif %}" required autofocus autocomplete="username"/>
         <i class="icofont-ui-user form-control-feedback"></i>
         <?=form_error('username','<div class="text-red">', '</div>')?>
       </div>
       <div class="form-group has-feedback <?=form_error('password') ? 'has-error' : ''?>">
-        <label><?=$this->lang->line('login_password')?></label> <span class="text-red">*</span>
+        <label>{{ _("Password") }}</label> <span class="text-red">*</span>
         <input type="password" class="form-control" name="password" value="<?=set_value('password')?>">
         <i class="icofont-ui-password form-control-feedback"></i>
         <?=form_error('password','<div class="text-red">', '</div>')?>
