@@ -78,7 +78,9 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat"><?=$this->lang->line('login_sign_in')?></button>
+	{% if not disable_user_pass_login %}
+          <button type="submit" class="btn btn-primary btn-block btn-flat">{{ _("Login") }}</button>
+	{% endif %}
         </div>
         <!-- /.col -->
       </div>
