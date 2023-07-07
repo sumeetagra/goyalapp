@@ -58,7 +58,6 @@
   <div class="login-box-body">
     <p class="login-box-msg xl"><img class="app-logo" src="{{ logo }}"></p>
     <p class="login-box-msg"><h4>{{ _('Login to {0}').format(app_name or _("Frappe")) }}</h4></p><br>
-    <form action="<?=base_url('login/index')?>" method="post">
       <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>" />
       <div class="form-group has-feedback <?=form_error('username') ? 'has-error' : ''?>">
         <label><?=$this->lang->line('login_username')?></label> <span class="text-red">*</span>
@@ -84,7 +83,6 @@
         </div>
         <!-- /.col -->
       </div>
-    </form>
   </div><br>
     <?php if($this->session->flashdata('success')){?>
     <div class="alert alert-info" role="alert">
