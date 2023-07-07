@@ -2,17 +2,6 @@
 # License: MIT. See LICENSE
 
 import frappe
-import frappe.utils
-from frappe import _
-from frappe.auth import LoginManager
-from frappe.rate_limiter import rate_limit
-from frappe.utils import cint, get_url
-from frappe.utils.data import escape_html
-from frappe.utils.html_utils import get_icon_html
-from frappe.utils.jinja import guess_is_path
-from frappe.utils.oauth import get_oauth2_authorize_url, get_oauth_keys, redirect_post_login
-from frappe.utils.password import get_decrypted_password
-from frappe.website.utils import get_home_page
 
 no_cache = True
 
@@ -32,7 +21,7 @@ def get_context(context):
 			raise frappe.Redirect
 
 	context.no_header = True
-	context.for_test = "login.html"
+	context.for_test = "goyallogin.html"
 	context["title"] = "Login"
 	context["hide_login"] = True  # dont show login link on login page again.
 	context["provider_logins"] = []
