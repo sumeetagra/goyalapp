@@ -62,7 +62,7 @@
       <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>" />
       <div class="form-group has-feedback <?=form_error('username') ? 'has-error' : ''?>">
         <label><?=$this->lang->line('login_username')?></label> <span class="text-red">*</span>
-        <input type="text" class="form-control" name="username" value="<?=set_value('username')?>"/>
+        <input type="text" id="login_email" class="form-control" name="username" placeholder="{% if login_name_placeholder %}{{ login_name_placeholder  }}{% else %}{{ _('jane@example.com') }}{% endif %}" required autofocus autocomplete="username"/>
         <i class="icofont-ui-user form-control-feedback"></i>
         <?=form_error('username','<div class="text-red">', '</div>')?>
       </div>
