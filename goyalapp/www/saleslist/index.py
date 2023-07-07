@@ -5,11 +5,7 @@ from frappe import _
 def get_context(context):
 	context.no_cache = 1
 	context.show_sidebar = True
-	context.doc = frappe.get_doc("Sales Invoice")
-	if hasattr(context.doc, "set_indicator"):
-		context.doc.set_indicator()
-
-
+	context.doc = frappe.get_doc('Sales Invoice')
 
 	context.enabled_checkout = frappe.get_doc("E Commerce Settings").enable_checkout
 
