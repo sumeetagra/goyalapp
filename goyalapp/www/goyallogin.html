@@ -1,5 +1,54 @@
-{% extends "templates/goyalbase.html" %}
+<!DOCTYPE html>
 
+<html>
+<head>
+  	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  	<meta name="generator" content="frappe">
+
+  	{% block meta_block %}
+	  	{% include "templates/includes/meta_block.html" %}
+	  {% endblock %}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>{% block title %}{{ title | striptags }}{% endblock %}</title>
+	
+	{% block favicon %}
+	<link
+		rel="shortcut icon"
+		href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
+		type="image/x-icon"
+	>
+	{% endblock %}
+	<link rel="canonical" href="{{ canonical }}">
+
+	{%- block head -%}
+		{% include "templates/includes/head.html" %}
+	{%- endblock -%}
+
+	{%- block head_include %}
+		{{ head_include or "" }}
+	{% endblock -%}
+
+	{%- block style %}
+		{% if colocated_css -%}
+			<style>{{ colocated_css }}</style>
+		{%- endif %}
+	{%- endblock -%}
+	
+	<link rel="shortcut icon" href="templates<?=base_url('uploads/images/'.settings()->logo)?>"/>
+    <link rel="stylesheet" href="templates/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="templates/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="templates/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="templates/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="templates/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="templates/sweetalert/sweetalert2.min.css" >
+    <link rel="stylesheet" href="templates/icofont/icofont.css" type="text/css">
+    <script src="templates/bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="templates/custom/css/style.css">
+    <link rel="stylesheet" href="templates/plugins/toastr/toastr.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Play:400,700&subset=cyrillic,cyrillic-ext,greek,latin-ext" rel="stylesheet">
+</head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
@@ -7,8 +56,8 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg xl"><span class="icofont-ui-user xl"></span></p>
-    <p class="login-box-msg">Sign in to start your session</p><br>
+    <p class="login-box-msg xl"><img class="app-logo" src="{{ logo }}"><span class="icofont-ui-user xl" ></span></p>
+    <p class="login-box-msg"><h4>{{ _('Login to {0}').format(app_name or _("Frappe")) }}</h4></p><br>
     <form action="<?=base_url('login/index')?>" method="post">
       <input type="hidden" name="<?=$this->security->get_csrf_token_name()?>" value="<?=$this->security->get_csrf_hash()?>" />
       <div class="form-group has-feedback <?=form_error('username') ? 'has-error' : ''?>">
