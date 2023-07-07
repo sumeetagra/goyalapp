@@ -9,8 +9,6 @@ def get_context(context):
 
 	context.enabled_checkout = frappe.get_doc("E Commerce Settings").enable_checkout
 
-	if not frappe.has_website_permission(context.doc):
-		frappe.throw(_("Not Permitted"), frappe.PermissionError)
 
 	context.available_loyalty_points = 0.0
 	if context.doc.get("customer"):
