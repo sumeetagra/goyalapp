@@ -1,5 +1,6 @@
 {% macro render_sidebar_item(item) %}
-<li class="{{ 'sidebar-group' if item.group_title else 'sidebar-item' }}">
+<li class="{{ 'active' if pathname == item_route else '' }}"
+		{% if item.target %}target="{{ item.target }}" {% endif %}">
 	{%- if item.group_title -%}
 
 	<h6>{{ item.group_title }}</h6>
@@ -27,7 +28,7 @@
 {% macro render_sidebar_items(items) %}
 {%- if items | len > 0 -%}
 <section class="sidebar" style="height: auto;">
-<ul class="sidebar-menu" data-widget="tree">
+<ul class="sidebar-menu tree" data-widget="tree">
 	{% for item in items -%}
 	{{ render_sidebar_item(item) }}
 	{%- endfor %}
