@@ -8,3 +8,4 @@ def get_context(context):
 		fields=["name", "customer"],
 		filters={},
 	)
+	context.body_class="hold-transition skin-blue sidebar-mini"
