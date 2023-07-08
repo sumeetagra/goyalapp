@@ -1,57 +1,70 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-  	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  	<meta name="generator" content="frappe">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="frappe">
 
-  	{% block meta_block %}
-	  	{% include "templates/includes/meta_block.html" %}
-	  {% endblock %}
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
-	<title>{% block title %}{{ title | striptags }}{% endblock %}</title>
-	
-	{% block favicon %}
-	<link
-		rel="shortcut icon"
-		href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
-		type="image/x-icon"
-	>
-	{% endblock %}
-	<link rel="canonical" href="{{ canonical }}">
+    {% block meta_block %}
+        {% include "templates/includes/meta_block.html" %}
+    {% endblock %}
 
-	{%- block head -%}
-		{% include "templates/includes/head.html" %}
-	{%- endblock -%}
+    <title>{% block title %}{{ title | striptags }}{% endblock %}</title>
 
-	{%- block head_include %}
-		{{ head_include or "" }}
-	{% endblock -%}
+    {% block favicon %}
+    <link
+        rel="shortcut icon"
+        href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
+        type="image/x-icon"
+    >
+    {% endblock %}
 
-	{%- block style %}
-		{% if colocated_css -%}
-			<style>{{ colocated_css }}</style>
-		{%- endif %}
-	{%- endblock -%}	
-	<link rel="shortcut icon" href="templates<?=base_url('uploads/images/'.settings()->logo)?>"/>
-    <link rel="stylesheet" href="/assets/goyalapp/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/goyalapp/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/goyalapp/bower_components/Ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="/assets/goyalapp/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="/assets/goyalapp/dist/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="/assets/goyalapp/sweetalert/sweetalert2.min.css" >
-    <link rel="stylesheet" href="/assets/goyalapp/icofont/icofont.css" type="text/css">
-    <script src="/assets/goyalapp/bower_components/jquery/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="/assets/goyalapp/custom/css/style.css">
-    <link rel="stylesheet" href="/assets/goyalapp/plugins/toastr/toastr.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Play:400,700&subset=cyrillic,cyrillic-ext,greek,latin-ext" rel="stylesheet">
+    {%- block head -%}
+        {% include "templates/includes/head.html" %}
+    {%- endblock -%}
+
+    {%- block head_include %}
+        {{ head_include or "" }}
+    {% endblock -%}
+
+    {%- block style %}
+        {% if colocated_css -%}
+            <style>{{ colocated_css }}</style>
+        {%- endif %}
+    {%- endblock -%}
+
+    <script>
+        window.frappe = {};
+        frappe.ready_events = [];
+        frappe.ready = function(fn) {
+            frappe.ready_events.push(fn);
+        }
+        window.dev_server = {{ dev_server }};
+        window.socketio_port = {{ (frappe.socketio_port or 'null') }};
+        window.show_language_picker = {{ show_language_picker or 'false' }};
+    </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}">
+    {% include "public/icons/timeless/icons.svg" %}
+    {%- block banner -%}
+        {% include "templates/includes/banner_extension.html" ignore missing %}
 
-            {% block content %}
+        {% if banner_html -%}
+        {{ banner_html or "" }}
+        {%- endif %}
+    {%- endblock -%}
+
+    {%- block navbar -%}
+        {{ web_block(
+            navbar_template or 'Standard Navbar',
+            values=_context_dict,
+            add_container=0,
+            add_top_padding=0,
+            add_bottom_padding=0,
+        ) }}
+    {%- endblock -%}
+
+    {% block content %}
         {{ content }}
     {% endblock %}
 
@@ -86,6 +99,5 @@
     {%- endblock %}
     <!-- csrf_token -->
     {%- block body_include %}{{ body_include or "" }}{% endblock -%}
-</div>
 </body>
 </html>
