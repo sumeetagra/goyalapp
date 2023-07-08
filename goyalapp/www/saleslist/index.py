@@ -10,4 +10,10 @@ def get_context(context):
 		fields=["name", "customer"],
 		filters={},
 	)
+	if hasattr(context.doc, "set_indicator"):
+		context.doc.set_indicator()
+
 	context.body_class="hold-transition skin-blue sidebar-mini"
+
+	if not frappe.has_website_permission(context.doc):
+		frappe.throw(_("Not Permitted"), frappe.PermissionError)
