@@ -5,7 +5,7 @@ from frappe import _
 def get_context(context):
 	context.no_cache = 1
 	context.show_sidebar = True
-	context.doc = frappe.get_doc("Sales Invoice", frappe.form_dict.name)
+	context.doc = frappe.get_all("Sales Invoice")
 
 	context.enabled_checkout = frappe.get_doc("E Commerce Settings").enable_checkout
 
