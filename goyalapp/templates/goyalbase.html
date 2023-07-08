@@ -10,7 +10,7 @@
     {% endblock %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>SG{% block title %}{{ title | striptags }}{% endblock %}</title>
+    <title>{% block title %}{{ title | striptags }}{% endblock %}</title>
 
     {% block favicon %}
     <link
