@@ -48,10 +48,12 @@ SG TEST {{ doc }}
               </tr>
             </thead>
             <tbody >
-              <?php if(count($supplierss)) { $i=0; foreach($supplierss as $suppliers) { $i++; ?>
+				{% for d in doc.items %}
+
+
               <tr>
                 <td data-title="#"><?=$i?></td>
-                <td data-title="<?=$this->lang->line('suppliers_code')?>"><?=$suppliers->suppliers_code?></td>
+                <td data-title="<?=$this->lang->line('suppliers_code')?>">{{ d.customer }}</td>
                 <td data-title="<?=$this->lang->line('suppliers_name')?>" class="text-capitalize"><?=$suppliers->suppliers_name?></td>
                 <td data-title="<?=$this->lang->line('suppliers_mobile')?>"><?=$suppliers->suppliers_mobile?></td>
                 <td data-title="<?=$this->lang->line('suppliers_email')?>"><?=$suppliers->suppliers_email?></td>
@@ -71,7 +73,7 @@ SG TEST {{ doc }}
                   <?=delete_btn('suppliers_delete',$suppliers->suppliersID);?>
                 </td>
               </tr>
-              <?php } } ?>
+				{% endfor %}
             </tbody>
           </table>
         </div>
