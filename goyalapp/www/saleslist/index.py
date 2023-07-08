@@ -7,6 +7,7 @@ def get_context(context):
 	context.show_sidebar = True
 	context.doc = frappe.get_all(
 		"Sales Invoice",
+		start=0, page_length=20,
 		fields=["name", "customer"],
 		filters={},
 	)
