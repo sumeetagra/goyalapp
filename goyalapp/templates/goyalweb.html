@@ -46,11 +46,11 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {%- endmacro %}
 
 {% macro sidebar() %}
-<div class="sidebar-column col-sm-{{ columns }}">
+<aside class="main-sidebar">
 	{% block page_sidebar %}
 	{% include "templates/includes/web_sidebar.html" %}
 	{% endblock %}
-</div>
+</aside>
 {% endmacro %}
 
 {% if show_sidebar %}
