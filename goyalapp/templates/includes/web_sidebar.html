@@ -27,13 +27,9 @@
 
 {% macro render_sidebar_items(items) %}
 {%- if items | len > 0 -%}
-<section class="sidebar" style="height: auto;">
-<ul class="sidebar-menu tree" data-widget="tree">
 	{% for item in items -%}
 	{{ render_sidebar_item(item) }}
 	{%- endfor %}
-</ul>
-</section>
 {%- endif -%}
 {% endmacro %}
 
@@ -52,17 +48,17 @@
 {% endif %}
 {% endmacro %}
 
-<div class="web-sidebar">
+<section class="sidebar" style="height: auto;">
 	{% if sidebar_title %}
 	<li class="title">
 		{{ sidebar_title }}
 	</li>
 	{% endif %}
-	<div class="sidebar-items">
+<ul class="sidebar-menu tree" data-widget="tree">
 		{{ render_sidebar_items(sidebar_items) }}
 		{{ my_account() }}
-	</div>
-</div>
+</ul>
+</section>
 
 <script>
 	frappe.ready(function () {
