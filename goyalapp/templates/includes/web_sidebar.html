@@ -33,6 +33,17 @@
 {%- endif -%}
 {% endmacro %}
 
+
+<section class="sidebar" style="height: auto;">
+	{% if sidebar_title %}
+	<li class="title">
+		{{ sidebar_title }}
+	</li>
+	{% endif %}
+<ul class="sidebar-menu tree" data-widget="tree">
+		{{ render_sidebar_items(sidebar_items) }}
+		{{ my_account() }}
+</ul>
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
 <ul class="list-unstyled">
@@ -48,16 +59,7 @@
 {% endif %}
 {% endmacro %}
 
-<section class="sidebar" style="height: auto;">
-	{% if sidebar_title %}
-	<li class="title">
-		{{ sidebar_title }}
-	</li>
-	{% endif %}
-<ul class="sidebar-menu tree" data-widget="tree">
-		{{ render_sidebar_items(sidebar_items) }}
-		{{ my_account() }}
-</ul>
+
 </section>
 
 <script>
