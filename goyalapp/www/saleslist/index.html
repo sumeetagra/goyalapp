@@ -1,12 +1,21 @@
 {% extends "templates/goyalweb.html" %}
 
+{% block header %}
+	<h1>{{ doc.name }}</h1>
+{% endblock %}
+
 {% block page_content %}
 
 SG TEST {{ doc }}
 <style type="text/css">textarea{resize: none}</style>
 <div class="content-wrapper">
   <section class="content-header">
-    <h1><?=$this->lang->line('suppliers_suppliers')?></h1>
+
+		{% if doc._header %}
+    		{{ doc._header }}
+		{% endif %}
+
+
     <ol class="breadcrumb">
       <li><a href="<?=base_url('/')?>"><i class="fa fa-laptop"></i></a></li>
       <li class="active"><?=$this->lang->line('suppliers_suppliers')?></li>
