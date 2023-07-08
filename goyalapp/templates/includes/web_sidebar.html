@@ -35,10 +35,10 @@
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
-	<li class="sidebar-item">
+	<li class="{{ 'active' if pathname == item_route else '' }}">
 		<a href="/me">{{ _("My Account") }}</a>
 	</li>
-	<li class="sidebar-item">
+	<li class="{{ 'active' if pathname == item_route else '' }}">
 		<a href="/saleslist">{{ _("SG Test Account") }}</a>
 	</li>
 {% endif %}
