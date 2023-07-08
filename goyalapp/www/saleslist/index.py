@@ -14,6 +14,3 @@ def get_context(context):
 		context.doc.set_indicator()
 
 	context.body_class="hold-transition skin-blue sidebar-mini"
-
-	if not frappe.has_website_permission(context.doc):
-		frappe.throw(_("Not Permitted"), frappe.PermissionError)
