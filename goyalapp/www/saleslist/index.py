@@ -8,6 +8,3 @@ def get_context(context):
 		fields=["name"],
 		filters={},
 	)
-
-	console.log(doc.name)
-	
