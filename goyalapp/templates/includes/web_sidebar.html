@@ -23,7 +23,8 @@
                 
             </ul>
      </div>
-</div>{% macro render_sidebar_item(item) %}
+</div>
+{% macro render_sidebar_item(item) %}
 <li class="{{ 'sidebar-group' if item.group_title else 'sidebar-item' }}">
 	{%- if item.group_title -%}
 
@@ -51,7 +52,7 @@
 
 {% macro render_sidebar_items(items) %}
 {%- if items | len > 0 -%}
-<ul class="list-unstyled">
+<ul id="menu-content" class="menu-content collapse out">
 	{% for item in items -%}
 	{{ render_sidebar_item(item) }}
 	{%- endfor %}
