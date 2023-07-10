@@ -1,0 +1,353 @@
+<link rel="stylesheet" href="./static/css/refactorHeaderWithMenu.css" />
+
+
+    <div
+      class="siteNavbar"
+      ng-controller="LoginController as ctrl"
+      id="styleHome"
+    >
+      <div
+        class="navbar navbar-expand-md header-bg hide-mobile-view"
+        role="navigation"
+        style="min-height: unset; padding: 5px 0"
+      >
+        <div class="container">
+          <!-- <img ng-src="{{myCroppedImage}}" />
+          <a href="#/welcome" class="navbar-brand is-img"
+            ><img
+              ng-if="!loggedInUser"
+              ng-src="static/images/agency-logo/{{domainUser.website}}.png" />
+            <img
+              ng-if="loggedInUser"
+              src="./static/images/agency-logo/color.myticketmyhotel.in.png"
+          /></a> -->
+          <!-- ng-src="{{loggedInUser.companyModel.companyLogo==null||loggedInUser.companyModel.companyLogo==''?'static/images/agency-logo/'+domainUser.website+'.png':'data:image/jpeg;base64,'+loggedInUser.companyModel.companyLogo}}" -->
+          <div class="top-header-item">
+            <div class="balance-details" ng-if="loggedInUser && prefs">
+              <div class="balance due">
+                <span>CASH BALANCE</span>
+                <span
+                  ><i class="fa fa-inr icons"></i>
+                  {{Math.round(loggedInUser.customerFundsModel.cashBalance)|INR}}</span
+                >
+              </div>
+              <div class="balance limit" title="CREDIT BALANCE {{loggedInUser.customerFundsModel.creditBalance}} ">
+                <span>BALANCE</span>
+                <span
+                  ><i class="fa fa-inr icons"></i>
+                  {{Math.round(loggedInUser.customerFundsModel.creditBalance+loggedInUser.customerFundsModel.cashBalance)|INR}}</span
+                >
+                <span>{{loggedInUser.customerFundsModel.expiryOn}}</span>
+              </div>
+              <div class="balance limit" ng-if="domainUser.b2cPanelFlag=='Y'">
+                <span>BONUS POINTS</span>
+                <span class="icons">
+                  <img
+                    src="static/images/bonus_point.png"
+                    style="max-width: 26%; height: 16px"
+                  />
+                  {{loggedInUser.customerFundsModel.bonusPoint}}</span
+                >
+              </div>
+            </div>
+
+            <div class="Utility">
+              <!-- <div class="print item-list">
+								<span class="fa-printer icon-image"><img
+									src="static/images/printing.svg"></span> <span>Ticket</span>
+							</div> -->
+              <div class="remain-time item-list">
+                <span id="countTime"></span>
+              </div>
+              <div class="print item-list" ng-if="loggedInUser">
+                <span class="fa-printer icon-image"
+                  ><a href="" class="hidePrefs" ng-click="ctrl.hidePrefs()"
+                    ><i class="fa fa-inr icons" style="color: #fff"></i
+                    >&nbsp;</a
+                  ></span
+                >
+              </div>
+
+              <div class="wallet item-list" ng-if="loggedInUser">
+                <a href="#/walletRecharge" style="display: flex">
+                  <span class="fa-wallet icon-image"
+                    ><img src="static/images/wallet-filled-money-tool.svg"
+                  /></span>
+                  <span style="margin-left: 5px">Recharge</span></a
+                >
+              </div>
+            </div>
+
+            <div class="Customer-support">
+              <div class="fa-Customersupport icon-image">
+                <img src="static/images/customer-service.svg" />
+              </div>
+              <div class="support-no">
+                <!-- <span class="title">Customer Support</span> -->
+                <span class="title"
+                  ><a href="tel:+91{{domainUser.mobile}}">
+                    +91 {{domainUser.mobile}}</a
+                  ></span
+                >
+              </div>
+
+              <div class="support-info">
+                <div class="divinfo">
+                  <div>
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i> Mobile
+                  </div>
+                  <div>+91 {{domainUser.mobile}}</div>
+                </div>
+                <div class="divinfo">
+                  <div>
+                    <i class="fa fa-phone" aria-hidden="true"></i> Helpline no
+                  </div>
+                  <div>+91 {{domainUser.companyModel.phone}}</div>
+                </div>
+                <hr />
+                <div class="divinfo">
+                  <div>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us
+                  </div>
+                  <div>{{domainUser.email}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-navbar customNavbar displayNone">
+        <div class="container">
+          <img ng-src="{{myCroppedImage}}" />
+          <a href="#/welcome" class="navbar-brand is-img"
+            ><img
+              ng-if="!loggedInUser"
+              ng-src="static/images/agency-logo/{{domainUser.website}}.png" />
+            <img
+              ng-if="loggedInUser"
+              ng-src="{{loggedInUser.companyModel.companyLogo==null||loggedInUser.companyModel.companyLogo==''?'static/images/agency-logo/'+domainUser.website+'.png':'data:image/jpeg;base64,'+loggedInUser.companyModel.companyLogo}}"
+          /></a>
+
+          <div
+            class="navbar navbar-default navbar-fixed-top hide-mobile-view"
+            role="navigation"
+          >
+            <div class="container">
+              <div class="navbar-header">
+                <button
+                  type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse"
+                >
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span> <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right" ng-if="loggedInUser">
+                  <li class="nav-item">
+                    <span
+                      ><i class="fa fa-tachometer" aria-hidden="true"></i>
+                    </span>
+                    <span>
+                      <a href="#/dashboard">Dashboard</a>
+                    </span>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link user-login-details dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="user-icon">
+                        <span class="lnr lnr-user"></span>
+                      </div>
+                      <div class="user-login-details">
+                        <span class="username"
+                          >{{loggedInUser.companyName==null?
+                          loggedInUser.firstName:loggedInUser.companyName}}
+                          <span class="lnr lnr-chevron-down"> </span>
+                        </span>
+                       <span class="companyid">{{loggedInUser.firstName}} {{loggedInUser.lastName}} ({{loggedInUser.staffId}})</span>
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown4">
+                      <li class="">
+                        <a href="" ng-click="getselectcust(loggedInUser.userID)"
+                          ><span class="lnr lnr-user"></span> Profile</a
+                        >
+                      </li>
+                      <li class="">
+                        <a ng-click="ctrl.signOut()">
+                          <span class="lnr lnr-power-switch"> </span> Logout
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" ng-if="!loggedInUser">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link user-login-details dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <div class="user-icon">
+                        <span class="lnr lnr-user"></span>
+                      </div>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown4">
+                      <li class="">
+                        <a
+                          href=""
+                          class="dropdown-toggle"
+                          data-toggle="modal"
+                          ng-click="ctrl.openLoginPopup()"
+                          role="button"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <!-- <i
+								class="fa fa-user-circle-o" aria-hidden="true"></i> -->Sign-in / Sign-up
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <ul class="nav navbar-nav">
+                  <li
+                    ng-repeat="menuCategory in loggedInUser.roleMasterModel.menus"
+                  >
+                    <a
+                      ng-if="menuCategory.sideMenuType=='U' && menuCategory.selected==true"
+                      href="#/{{menuCategory.menuJspPath}}"
+                      class="dropdown-toggle"
+                      data-toggle="dropdown"
+                      >{{menuCategory.menuDesc}}
+                      <span class="lnr lnr-chevron-down"> </span
+                    ></a>
+                    <ul class="dropdown-menu multi-level">
+                      <li
+                        class="{{menu.subMenus.length == 0 ? '' : 'dropdown-submenu'}}"
+                        ng-repeat="menu in menuCategory.subMenus"
+                        ng-if="menu.selected==true"
+                      >
+                        <a
+                          href="#/{{menu.menuJspPath}}"
+                          class="dropdown-toggle"
+                          data-toggle="dropdown"
+                          >{{menu.menuDesc}}
+                        </a>
+                        <ul
+                          class="dropdown-menu"
+                          ng-if="menu.subMenus.length!=0"
+                        >
+                          <li>
+                            <a
+                              href="#/{{menu2.menuJspPath}}"
+                              ng-repeat="menu2 in menu.subMenus"
+                              ng-if="menu2.selected==true && menu2.menuLvl=='2'"
+                              >{{menu2.menuDesc}}</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="device-view-header">
+        <div class="top-navbar">
+          <div class="device-menu-icon" onclick="openNav()">
+            <span class="lnr lnr-menu"></span>
+          </div>
+          <!-- <div class="device-menu-icon" ng-if="!loggedInUser">
+						<span class="lnr lnr-menu"></span>
+					</div> -->
+          <div class="device-logo">
+            <a href="#/welcome" class="navbar-brand is-img"
+              ><img src="static/images/agency-logo/{{domainUser.website}}.png"
+            /></a>
+          </div>
+          <div class="device-customer-support" style="display: none">
+            <div class="Customer-support">
+              <div class="fa-Customersupport icon-image">
+                <img src="static/images/customer-service.svg" />
+              </div>
+              <div class="support-no">
+                <span class="title">Customer Support</span>
+                <span class="title"
+                  ><a href="tel:+91{{domainUser.mobile}}">
+                    +91 {{domainUser.mobile}}</a
+                  ></span
+                >
+              </div>
+
+              <div class="support-info">
+                <!-- <div class="divinfo">
+									<div>
+										<i class="fa fa-phone" aria-hidden="true"></i> 24x7:
+									</div>
+									<div>+91 {{domainUser.mobile}}</div>
+								</div> -->
+                <div class="divinfo">
+                  <div>
+                    <i class="fa fa-phone" aria-hidden="true"></i> Helpline no
+                  </div>
+                  <div>+91 {{domainUser.companyModel.phone}}</div>
+                </div>
+                <div class="divinfo">
+                  <div>
+                    <i class="fa fa-whatsapp" aria-hidden="true"></i> Mobile
+                  </div>
+                  <div>+91 {{domainUser.mobile}}</div>
+                </div>
+                <hr />
+                <div class="divinfo">
+                  <div>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us
+                  </div>
+                  <div>{{domainUser.email}}</div>
+                </div>
+                <!-- <div class="divinfo">
+									<div>
+										<i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us
+									</div>
+									<div>{{domainUser.email}}</div>
+								</div> -->
+              </div>
+            </div>
+          </div>
+          <div class="device-customer-info">
+            <div
+              class="show-balance-icon header-icon"
+              data-toggle="modal"
+              data-target="#showMybalance"
+              ng-if="loggedInUser"
+            >
+              <i class="fa fa-inr icons"></i>
+            </div>
+            <div
+              class="device-user-login header-icon"
+              ng-if="!loggedInUser && domainUser.b2cPanelFlag == 'Y'"
+            >
+              <span class="lnr lnr-user" ng-click="ctrl.openLoginPopup()">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
