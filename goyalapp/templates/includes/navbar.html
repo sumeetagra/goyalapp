@@ -14,14 +14,14 @@
                 <span>CASH BALANCE</span>
                 <span
                   ><i class="fa fa-inr icons"></i>
-                  {{Math.round(loggedInUser.customerFundsModel.cashBalance)|INR}}</span
+                  {{ loggedInUser.customerFundsModel.cashBalance }}</span
                 >
               </div>
               <div class="balance limit" title="CREDIT BALANCE {{loggedInUser.customerFundsModel.creditBalance}} ">
                 <span>BALANCE</span>
                 <span
                   ><i class="fa fa-inr icons"></i>
-                  {{Math.round(loggedInUser.customerFundsModel.creditBalance+loggedInUser.customerFundsModel.cashBalance)|INR}}</span
+                  {{ loggedInUser.customerFundsModel.cashBalance }}</span
                 >
                 <span>{{loggedInUser.customerFundsModel.expiryOn}}</span>
               </div>
