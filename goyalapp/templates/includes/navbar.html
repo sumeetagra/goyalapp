@@ -1,29 +1,15 @@
 <link rel="stylesheet" href="./static/css/refactorHeaderWithMenu.css" />
 
 
-    <div
-      class="siteNavbar"
-      ng-controller="LoginController as ctrl"
-      id="styleHome"
-    >
+    <div class="siteNavbar" id="styleHome">
       <div
         class="navbar navbar-expand-md header-bg hide-mobile-view"
         role="navigation"
         style="min-height: unset; padding: 5px 0"
       >
         <div class="container">
-          <!-- <img ng-src="{{myCroppedImage}}" />
-          <a href="#/welcome" class="navbar-brand is-img"
-            ><img
-              ng-if="!loggedInUser"
-              ng-src="static/images/agency-logo/{{domainUser.website}}.png" />
-            <img
-              ng-if="loggedInUser"
-              src="./static/images/agency-logo/color.myticketmyhotel.in.png"
-          /></a> -->
-          <!-- ng-src="{{loggedInUser.companyModel.companyLogo==null||loggedInUser.companyModel.companyLogo==''?'static/images/agency-logo/'+domainUser.website+'.png':'data:image/jpeg;base64,'+loggedInUser.companyModel.companyLogo}}" -->
           <div class="top-header-item">
-            <div class="balance-details" ng-if="loggedInUser && prefs">
+            <div class="balance-details">
               <div class="balance due">
                 <span>CASH BALANCE</span>
                 <span
@@ -39,16 +25,7 @@
                 >
                 <span>{{loggedInUser.customerFundsModel.expiryOn}}</span>
               </div>
-              <div class="balance limit" ng-if="domainUser.b2cPanelFlag=='Y'">
-                <span>BONUS POINTS</span>
-                <span class="icons">
-                  <img
-                    src="static/images/bonus_point.png"
-                    style="max-width: 26%; height: 16px"
-                  />
-                  {{loggedInUser.customerFundsModel.bonusPoint}}</span
-                >
-              </div>
+
             </div>
 
             <div class="Utility">
@@ -59,7 +36,7 @@
               <div class="remain-time item-list">
                 <span id="countTime"></span>
               </div>
-              <div class="print item-list" ng-if="loggedInUser">
+              <div class="print item-list">
                 <span class="fa-printer icon-image"
                   ><a href="" class="hidePrefs" ng-click="ctrl.hidePrefs()"
                     ><i class="fa fa-inr icons" style="color: #fff"></i
@@ -68,7 +45,7 @@
                 >
               </div>
 
-              <div class="wallet item-list" ng-if="loggedInUser">
+              <div class="wallet item-list">
                 <a href="#/walletRecharge" style="display: flex">
                   <span class="fa-wallet icon-image"
                     ><img src="static/images/wallet-filled-money-tool.svg"
