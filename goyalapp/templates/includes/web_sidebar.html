@@ -1,4 +1,31 @@
 {% macro render_sidebar_item(item) %}
+
+<div class="nav-side-menu ng-scope">
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  Portal Menu<span class="arrow"></span>
+                </li>  
+                <ul class="sub-menu collapse in" id="service">
+                  <li><a href="#/CustomerInvoice">Customer Invoices</a></li>
+                </ul>
+                <ul class="sub-menu collapse in" id="service">
+                  <li><a href="#/SupplierInvoice">Supplier Invoices</a></li>
+                </ul>
+                <ul class="sub-menu collapse in" id="service">
+                  <li><a href="#/">Customer Shipments</a></li>
+                </ul>
+                <ul class="sub-menu collapse in" id="service">
+                  <li><a href="#/">Vendor GRN</a></li>
+                </ul>
+                
+            </ul>
+     </div>
+</div>
+
 <li class="sides {{ 'active' if pathname == item_route else '' }}"
 		{% if item.target %}target="{{ item.target }}" {% endif %}">
 	{%- if item.group_title -%}
