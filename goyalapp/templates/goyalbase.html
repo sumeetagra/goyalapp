@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<!-- Built on Frappe. https://frappeframework.com/ -->
 <html lang="en">
+
+<style>
+     /* scrollbar */
+  
+     ::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+ /* scrollbar end */
+</style>
+
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="frappe">
-
+    <meta name="description"
+    content="Fullscreen Background Image Slideshow with CSS3 - A Css-only fullscreen background image slideshow" />
+    <meta name="keywords"
+    content="css3, css-only, fullscreen, background, slideshow, images, content" />
+    <meta name="author" content="Codrops" />
+    <meta charset='utf-8'><meta content='width=device-width, initial-scale=1.0' name='viewport'>
     {% block meta_block %}
         {% include "templates/includes/meta_block.html" %}
     {% endblock %}
@@ -13,6 +43,23 @@
     <title>{% block title %}{{ title | striptags }}{% endblock %}</title>
 
     {% block favicon %}
+
+    <link id='pageTitleLink' rel='icon' href='static/images/site-icons/dikotravels.com.png'></link>
+    <link href='static/img/favicon.png' rel='icon'>
+    <link href='static/img/apple-touch-icon.png' rel='apple-touch-icon'>
+    <link href='static/lib/font-awesome/css/font-awesome.min.css' rel='stylesheet'>
+    <link href='static/lib/font-awesome/css/font-awesome.css' rel='stylesheet'>
+    <link href='static/lib/bootstrap/css/bootstrap.min.css' rel='stylesheet'></link>
+    <link href='static/css/style.css' rel='stylesheet'></link>
+    <link href='static/css/media-style.css' rel='stylesheet'></link>
+    <link href='static/css/jquery-ui-112.css' rel='stylesheet'></link>
+    
+    <link href='static/css/responsive.css' rel='stylesheet'></link>
+    <link href='static/css/common-font-icon.css' rel='stylesheet'></link>
+    <link href='static/css/client-admin-common-style.css?ver=1.1' rel='stylesheet'></link>
+    <link href='static/css/GAPI-ColorTheme.css' rel='stylesheet'></link>
+    <link href='static/css/GAPI-ThemeSite.css' rel='stylesheet'></link>
+
     <link
         rel="shortcut icon"
         href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
@@ -101,4 +148,6 @@
     <!-- csrf_token -->
     {%- block body_include %}{{ body_include or "" }}{% endblock -%}
 </body>
+
+
 </html>
