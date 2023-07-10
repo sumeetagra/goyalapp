@@ -1,5 +1,4 @@
-{% extends "templates/goyalbase.html" %}
-
+{% extends base_template_path %}
 {% block hero %}{% endblock %}
 
 {% block content %}
@@ -46,11 +45,11 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {%- endmacro %}
 
 {% macro sidebar() %}
-<aside class="main-sidebar">
+<div class="sidebar-column col-sm-{{ columns }}">
 	{% block page_sidebar %}
 	{% include "templates/includes/web_sidebar.html" %}
 	{% endblock %}
-</aside>
+</div>
 {% endmacro %}
 
 {% if show_sidebar %}
