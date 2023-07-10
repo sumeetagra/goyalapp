@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Pushster&display=swap");
+
+.calendar__day {
+  padding: 10px;
+  border-right: 1px solid #36b5ca;
+  border-top: 1px solid #36b5ca;
+  border-bottom: 1px solid #36b5ca;
+  border-left: 1px solid #36b5ca;
+  border: none;
+  text-align: center;
+}
+.calendar__header {
+  background-color: #3646d6;
+  color: #fff;
+  /* border-radius: 10px; */
+  border-top-right-radius: 10px;
+  border: none;
+  font-family: "Pushster", cursive;
+}
+.calendar__header div {
+  font-size: 25px;
+  letter-spacing: 5px;
+}
+.calendar {
+  width: 70vw;
+  margin: 0 auto;
+  border-top-right-radius: 10px;
+  border: 1px solid #36b5ca;
+}
+.calendar__day:last-child {
+  border-right: 2px solid #36b5ca;
+  border: none;
+}
+.calendar__week,
+.calendar__header {
+  align-items: center;
+}

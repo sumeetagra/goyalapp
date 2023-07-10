@@ -1,0 +1,83 @@
+.box-body {
+  height: 57vh;
+  overflow: scroll;
+}
+/* .content {
+  height: auto;
+} */
+.content-wrapper {
+  min-height: fit-content;
+}
+.responsive-table.table-container {
+  overflow: inherit !important;
+}
+
+.nav-side-menu {
+  height: fit-content;
+  width: fit-content;
+  top: 150px;
+}
+/* .dropdown-content {
+  position: absolute;
+} */
+.sidebarMenuParent {
+  display: none;
+  width: auto;
+  z-index: 1;
+  left: 12px;
+}
+
+.mainContentParent {
+  width: 100vw;
+}
+.customHamburger {
+  position: absolute;
+  z-index: 1;
+  width: max-content;
+  padding: 5px;
+  margin-top: 150px;
+  margin-bottom: 10px;
+  border: 2px solid rgb(48 66 106);
+  border-radius: 5px;
+  background: rgb(48 66 106);
+  cursor: pointer;
+}
+
+.customHamburger div {
+  width: 20px;
+  margin: 4px;
+  border: 2px solid #fff;
+}
+
+@media (min-width: 1024px) {
+  .raiseimage {
+    height: 500px !important;
+  }
+  .qrCodeScan {
+    text-align: center;
+  }
+  .admin-coustom-row {
+    display: inline-flex !important;
+    width: auto !important;
+    margin-bottom: 30px !important;
+    max-width: 100% !important;
+  }
+  .select-row {
+    width: 215px !important;
+  }
+  .raisePaymentGrid {
+    display: grid !important;
+  }
+}
+
+@media screen and (min-width: 772px) and (max-width: 990px) {
+  .content-wrapper {
+    margin-top: 150px;
+  }
+}
+
+@media (min-width: 1592px) {
+  .qrCodeScan {
+    text-align: left !important;
+  }
+}

@@ -1,0 +1,244 @@
+@media (max-width:767px) {
+  div#searchresponsepage .client-interactive {
+    display: block;
+}
+.hide-mobile-view.flight-net-inc{
+	display: block;
+}
+#searchresponsepage .netPrice {
+    position: absolute;
+    width: max-content;
+    right: 55%;
+    color: #444;
+}
+
+}
+@media (min-width: 1024px) {
+  .mobile-oneway-multicity-filter {
+    display: none !important;
+  }
+}
+
+@media (min-width: 950px) and (max-width: 1024px) {
+  .mtmh_row-white15m {
+    max-width: 90vw !important;
+  }
+  .topbarfilter {
+    width: 65vw;
+  }
+  .datepriview {
+    width: 90px;
+  }
+
+  .mtmh_filteroneway .filterdepart {
+    margin-left: 15% !important;
+  }
+}
+
+@media (max-width: 770px) {
+  .onewaypage-result .divflightRow .flighttime-info {
+    margin-top: 21px;
+  }
+
+  .flighttime-info {
+    width: 100%;
+    position: relative;
+    right: 40px;
+    font-size: 12px;
+  }
+  .divflightRow .travel-duration {
+    border-bottom: 1px solid #919191;
+  }
+  .flightarival-info {
+    position: relative;
+    left: 70px;
+  }
+
+  /* Align Flight number */
+  .divflightsubinfo {
+    width: max-content;
+    margin-left: 105px;
+  }
+  .onewaypage-result .divflightsubinfo {
+    margin-top: 25px;
+  }
+ /*  .airlineRemark {
+    display: none;
+  } */
+
+  /* .flightdetailsAttr {
+    display: none;
+  } */
+  /* .flight-inclusion {
+    margin-top: -25px;
+  } */
+
+  .media-roundtrip-fare .media-level span,
+  .media-roundtrip-fare .media-fare span {
+    display: contents;
+  }
+
+  .panelstrip {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+
+  /* Hide Checkbox */
+  .flightmeal-icon {
+    display: none;
+  }
+
+  .flightrefundableAttr {
+    /* margin-left: 150px !important; */
+    margin-left: 27px;
+  }
+  .greenText {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .mtmh_right {
+    overflow: hidden;
+  }
+
+  .onewaypage-result .flight-book .btn-book {
+    position: relative;
+    left: 33px;
+    top: -9px;
+    width: 60px;
+  }
+  .mobile-oneway-multicity-filter {
+    padding: 5px 15px;
+    z-index: 9;
+  }
+  #loggingTable {
+    margin-top: 30px;
+  }
+  .onewaypage-result .divflightfilter .mtmh_left.scroll {
+    top: 75px !important;
+  }
+  .onewaypage-result .divflightfilter .mtmh_left.scroll {
+    position: absolute !important;
+  }
+
+  .flightmeal-txt {
+    display: none;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 768px) {
+  #searchresponsepage .flightname-info {
+    width: 25% !important;
+  }
+  .onewaypage-result .divflightRow {
+    height: 57px !important;
+  }
+  .onewaypage-result .flight-book {
+    top: 30 !important;
+  }
+  .flightarival-info {
+    left: 140px !important;
+  }
+  .mobile-oneway-multicity-filter {
+    padding: 5px 50px !important;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 588px) {
+  .flightarival-info {
+    left: 70px !important;
+  }
+  .onewaypage-result .flightfare-info {
+    margin-left: -35px !important;
+  }
+  .onewaypage-result .flight-book {
+    right: 40px;
+  }
+}
+@media (max-width: 900px) {
+  .scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 990px) {
+  /* .sticky .mtmh_row-white15m{
+    display: none;
+  } */
+
+  .topbarfilter {
+    margin-top: -40px;
+  }
+}
+
+@media (min-width: 902px) {
+  .top-header-strip {
+    display: none;
+  }
+  .inner-flight-filter {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1198px) {
+  .onewaypage-result .topbarfilter {
+    width: 60%;
+    margin-left: 25%;
+    padding-right: 0px;
+  }
+
+  .scroll {
+    margin-left: -6%;
+    margin-top: 14px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .onewaypage-result .topbarfilter {
+    width: 80% !important;
+    margin-left: 4% !important;
+    margin-top: -33px;
+    padding-right: 0px;
+  }
+
+  .scroll {
+    margin-top: 43px !important;
+  }
+
+  .leftmob-filter {
+    display: block;
+    margin-left: 185px;
+  }
+}
+
+@media (min-width: 902px) and (max-width: 990px) {
+  .scroll {
+    margin-left: -100px !important;
+  }
+  .mtmh_right {
+    left: 90px;
+    margin-left: 103px;
+  }
+
+  .onewaypage-result .topbarfilter {
+    margin-left: 24% !important;
+    margin-top: -33px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1020px) {
+  .mtmh_right {
+    left: 0px !important;
+    margin-left: 55px !important;
+  }
+
+  .onewaypage-result .topbarfilter {
+    margin-left: 32% !important;
+    padding-right: 0px !important;
+  }
+
+  .scroll {
+    margin-left: 1px !important;
+  }
+}

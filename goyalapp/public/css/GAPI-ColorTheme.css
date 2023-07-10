@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+:root {
+  --fontSize-9: 0.7em;
+  --fontSize-10: 0.8em;
+  --fontSize-12: 0.94em;
+  --fontSize-16: 1.1em;
+  --fontSize-17: 1.15em;
+  --fontSize-18: 1.2em;
+  --fontSize-26: 1.4em;
+  --fontSize-30: 1.7em;
+  --fontSize-36: 2.1em;
+
+  --heading-dark-color: #0a0a0a; /* Heading theme color  */
+  --heading-mediumlight-color: #495057; /* Sub Heading theme color  */
+  --subtitle-color: #8f8f8f;
+
+  --heading-default-color: #333;
+  --heading-light-color: #5f5f5f;
+  --heading-extralight-color: #404040;
+  --mediumlight-color: #495057;
+
+  --default-color: #444; /* Default body text color  */
+  --default-white-color: #fff; /* Default white text color  */
+  --default-theme-color: #d83838; /* Highlight text theme color  */
+
+  --default-seconderytheme-color: #b1dafd;
+  --default-highlight-color: #556ee6;
+  --text-muted: #74788d; /*    */
+  --lightgray: #e2e1e1;
+
+  --default-translucent-color: #ffffff80;
+
+  --default-border-color: #fff;
+  --default-bordertheme-color: #d83838;
+
+  --default-active-color: #d83838; /* Div active color theme  */
+
+  --default-btn-color: #e14b4b; /* button theme color  */
+  --default-btnHover-color: #d83838; /* button hover theme color  */
+
+  --default-link-color: #d83838; /* a link  color  */
+  --default-linkHover-color: #e14b4b; /* a link hover  color  */
+
+  --th-bg-theme-color: #d83838; /* Table header theme color */
+  --table-border-theme-color: #d83838; /* Table border theme color */
+  --table-border-darktheme-color: #c11e1e;
+
+  --default-error-color: #d83838; /* error MSG */
+
+  --default-available-color: #16b316; /* available  */
+
+  --default-strip-bg: #30426a; /* Theme color for header, search banner footer  */
+  --default-page-bg: #e7e7e7; /* Theme Color for Page body  */
+
+  --default-theme-bg: #d83838;
+  --default-white-bg: #fff;
+  --default-header-bg: #fff;
+  --default-seconderyborder-color: #dcdcdc; /* passengerDetails borderbox*/
+}

@@ -1,0 +1,16 @@
+.Utility  span#countTime {
+    margin-left: 5px;
+}
+.Utility  .remain-time.item-list {
+    width: 70px;
+    display: flex;
+    color: #fff;
+}
+
+.support-no a, .support-no a:hover,.Utility a, .Utility a:hover {
+color: var(--default-white-color);
+}
+
+.ui-datepicker {
+    z-index: 1030 !important;
+}

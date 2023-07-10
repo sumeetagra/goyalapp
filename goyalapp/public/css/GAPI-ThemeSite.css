@@ -1,0 +1,438 @@
+html,
+body {
+  font-family: "Lato", sans-serif;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.form-control,
+.custom-input,
+.form-control:focus,
+.custom-input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.nextdate,
+.prevdate,
+.nav.nav-tabs li:hover {
+  cursor: pointer !important;
+}
+
+body h1,
+.device-menu-icon .lnr-menu {
+  font-size: var(--fontSize-36);
+}
+.login-box div.title,
+.flt-timeinfo h1,
+.flt-timeinfo .flt-fare,
+.multycityresult .flt-timeinfo .flt-fare,
+.text-mid,
+.origin-flight span.origin-time,
+.destination-flight span.origin-time,
+.dasboard-page .page-title,
+.roundtrip-farebox .col-md-4.price-bottom h1,
+.top-header-strip .btn-back span {
+  font-size: var(--fontSize-26);
+}
+.navbar-nav a,
+.navbar .navbar-nav li > a,
+.nav.navbar-nav li.nav-item span {
+  font-size: var(--fontSize-16);
+}
+
+body a,
+.login-box div.sub-title,
+.btn.btn-primary,
+input[type="text"],
+#styleHome .traveller h3,
+.loaderarea h3,
+.mtmh_row-white15m h4,
+.mtmh_row-white15m .datepriview h5,
+.depart-stop p,
+.text-md-color,
+.text-md,
+.mtmh_row h1,
+.travler-info-labl,
+.mtmh_row.price_col h1 span,
+.origin-flight .airport-Code,
+label.onoffswitch-fare-label,
+.tinenarydetailsbox .tkt-issue h1,
+.client-interactive label.Airlines span,
+#passengerdetailspage .mtmh_row .divnetshow-fare h1,
+#passengerdetailspage .mtmh_row .price_footer h1,
+.roundtrip-farebox .flt-timeinfo h1,
+#bookingDetailsPreview .row.selectedssr h1,
+.forgot-box h1,
+#passengerdetailspage .flight-tkt span:first-child {
+  font-size: var(--fontSize-16);
+}
+.top-header-strip .seach-info {
+  width: calc(100% - 80px);
+}
+
+.form-group label,
+.login-box .footer-section,
+.trip-type,
+.trip-category .select-catecgory li,
+.Airlines,
+.incv-net,
+.printpassenger,
+#styleHome .traveller p,
+.mtmh_row-white15m p,
+.flightmeal-txt,
+.flightdetailsAttr,
+#searchresponsepage .flightname-info span:nth-child(2),
+#searchresponsepage .flightname-info span.airline-name,
+#domesticroundtrip-page .flightname-info span:nth-child(2),
+#domesticroundtrip-page .airlineName,
+.flt-timeinfo p,
+.flightsfound h4,
+.rs-tooltip,
+.pay-throught,
+.mtmh_row h1 span,
+.nav.navbar-nav li a .tkt-issue p,
+.modal-footer .text,
+footer a,
+footer p a,
+.trip__trip-type .select-trip li,
+.flt-name,
+.bookingoption,
+#searchresponse-Multicitypage .selectedflight-col h1,
+#topbar,
+.trending li,
+.watermark p,
+.dep-info p,
+.text-sm,
+.ssr p,
+.price_row h1,
+.incentivebox h1,
+.price_row h2,
+label.Airlines span,
+.onoffswitch-fare .onoffswitch-fare-inner::before,
+.origin-flight .airport-name,
+.destination-flight .airport-name,
+.onoffswitch-fare-inner:after,
+.balance.limit span:last-child,
+.balance.due span:last-child,
+.balance.balance span:last-child,
+.balance.credit:last-child,
+a.user-login-details .companyid,
+.wallet.item-list span:last-child,
+.print.item-list span:last-child,
+.nav.navbar-nav li.nav-item span.username,
+#flightitinenarydetails .flightbooktktinfo h1,
+#searchAgain,
+.roundtrip-farebox .flt-no span,
+.divFlightInclusions .content-tkt,
+.forgot-footer,
+.forgot-box h4.sub-title,
+.top-header-strip .seach-info .subtitle,
+#passengerdetailspage .fixed-cell .mtmh_row h1,
+#passengerdetailspage .origin-flight span.origin-time,
+#passengerdetailspage .flight-tkt span:nth-child(3),
+#passengerdetailspage .flight-tkt span {
+  font-size: var(--fontSize-12);
+}
+
+.review-title,
+.depart-time-boxclose span,
+.balance.limit span:first-child,
+.balance.due span:first-child,
+.balance.balance span:first-child,
+.balance.credit:first-child,
+.nav.navbar-nav .lnr.lnr-chevron-down,
+.roundtrip-farebox .flt-timeinfo-bottom .flt-time,
+.depart-time-box span {
+  font-size: var(--fontSize-10);
+}
+
+.powered-by,
+.depart-stop p,
+.depart-time-boxclose p,
+.mtmh_right .sme_one_way,
+.mtmh_right .coupon_one_way,
+.mtmh_right .corporate_one_way {
+  font-size: var(--fontSize-9);
+}
+
+#styleHome .btnbig,
+.citytrip .btnbig,
+.multicitybox .btnbig,
+.tkt-issue h1,
+#styleHome .search-area .traveller h3,
+#styleHome .search-area input[type="text"],
+#passengerdetailspage .mtmh_row h1,
+.roundtrip-farebox .price-bottom h2,
+.domesticroundtrip-page .flt-timeinfo h1,
+#passengerdetailspage .meal-select h3.title,
+.registration-box h1 {
+  font-size: var(--fontSize-18);
+}
+
+.login-box div.title .sub-title {
+  padding: 3px 0px 0px 0px;
+}
+
+.loginpage-footer-section p,
+.powered-by,
+.prevdate,
+.nextdate,
+.roundtrip-farebox .col-md-4.price-bottom h1 {
+  color: var(--default-white-color) !important;
+}
+.home-page-search .Airlines .checkmark {
+  background-color: var(--default-white-color);
+}
+
+.divflightfilter .Airlines .checkmark,
+.airline-preference .checkmark,
+.passengerdetailspage .Airlines {
+  background-color: var(--lightgray);
+}
+
+.btn.btn-primary,
+.btn-theme-color,
+.btn.btnModify,
+.trip-active,
+.btn-danger,
+.login-box .btn-primary {
+  background-color: var(--default-btn-color);
+  border-color: var(--default-btn-color);
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
+  background-color: var(--default-btnHover-color) !important;
+  border-color: var(--default-btnHover-color) !important;
+}
+
+.powered-by {
+  font-weight: 200 !important;
+}
+
+.trip-category .select-catecgory li {
+  font-weight: 300 !important;
+}
+
+.nonstop label,
+#passengerdetailspage .flight-tkt span:nth-child(3) {
+  font-weight: 400 !important;
+}
+
+body h1,
+.seach-info .title,
+#passengerdetailspage .flight-tkt span:first-child,
+#passengerdetailspage .flight-tkt span,
+.mobile-flight-timing div {
+  font-weight: 500;
+}
+
+body h1,
+.mtmh_row-white15m .divflightfilter h4 {
+  color: var(--heading-default-color);
+}
+.text-md-color,
+.text-md {
+  color: var(--mediumlight-color);
+}
+
+.theme-bg-color,
+footer,
+.sticky,
+.roundtrip-farebox,
+.mtmh_row-white15m {
+  background-color: var(--default-strip-bg);
+}
+.trip-category .trip-active {
+  background-color: var(--default-available-color);
+}
+
+#incvshow label {
+  color: transparent !important;
+}
+
+.flt-timeinfo .flt-fare,
+.multycityresult .flightsfound h4 span,
+
+.red,
+.dep-filter-airlines,
+.return-filter-airlines,
+.rs-tooltip,
+.modal-header h4 span,
+#searchresponsepage .mainDivleft .depart-flightselect,
+#searchresponsepage .mainDivright .depart-flightselect,
+.preloader p a:hover,
+#passengerdetailspage h1 .changeFlight a,
+.modal-header h4 span,
+.icon-color,
+
+
+.mtmh_flt-tkt h5,
+.passport,
+.icon-colorRed,
+.return-flightselect,
+.multycityresult .depart-flightselect,
+.flight-nostop .stoppointbox i,
+#domesticroundtrip-page .gross-price span,
+.incentive-txt,
+.dayfilterleft span:hover,
+.dayfilterright span:hover,
+.flightdetailsAttr,
+.onoffswitch-inner::before,
+.banner-with-login .fas,
+#passengerdetailspage h1 .changeFlight a:hover,
+#searchresponse-Multicitypage span.flightfare,
+#topbar .contact-info a:hover,
+#topbar .contact-info i,
+#topbar .top-links a:hover,
+.Due,
+.headr-log2 ul li a:hover,
+.headr-log2 ul li a span:hover,
+.Utility .lnr-printer .theme-color-alert,
+.divflightfilter .nav-tabs > li.active > a,
+.main-tiles-area .tiles:hover .dashboard-icon {
+  color: var(--default-theme-color) !important;
+}
+.stopactive{
+  background-color: #caff8b !important;
+}
+.departactive{
+  background-color: #caff8b !important;
+}
+.redText{
+  color: black !important;
+}
+.btn.reviewbtn,
+.btn-theme,
+.siteNavbar .navbar .profile-card .avatar .notifications,
+.landing-siteNavbar .navbar .navbar-nav > li > a .notifications,
+.landing-siteNavbar .navbar .profile-card .avatar .notifications,
+.siteNavbar .navbar .navbar-nav > li > a .notifications,
+.airline-list::-webkit-scrollbar-thumb,
+.paxseat .active,
+.tableTheme > thead > tr > th {
+  background-color: var(--default-theme-color);
+}
+.rs-container .rs-selected {
+  border-color: var(--default-theme-color) !important;
+  background-color: var(--default-theme-color) !important;
+}
+.siteNavbar .navbar .profile-card .avatar .notifications .text,
+.landing-siteNavbar .navbar .navbar-nav.basic-bal .text,
+.landing-siteNavbar .navbar .navbar-nav > li > a .notifications .text,
+.btn:hover,
+.btn-round:hover,
+.graybg,
+.nonstop label,
+.trip-active1,
+.flightsearch-bg,
+.top-header-item .Customer-support,
+.wallet.item-list span:last-child,
+.print.item-list span:last-child,
+.modifybox .select-trip1 li.trip-active1 {
+  color: var(--default-white-color);
+}
+#styleHome .search-area,
+#styleHome .traveller,
+#styleHome .list-group,
+#styleHome .list-group-item,
+.list-group-item,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover,
+.loaderarea,
+.airline-preference,
+.ui-menu .ui-menu-item,
+.headr-main-b {
+  background-color: var(--default-white-color);
+}
+
+.header-bg {
+  /*background-color: #54cc99;*/
+  background-color: var(--default-strip-bg);
+}
+.main-navbar,
+.navbar-default,
+.topbarfilter {
+  background-color: var(--default-white-color);
+}
+
+input[type="text"],
+.depart-stop p,
+.depart-time-boxclose p,
+label,
+.navbar-nav a,
+.dep-info p {
+  color: var(--default-color);
+}
+
+
+.lightgreen,
+.green:hover,
+.green,
+#domesticroundtrip-page .flightmeal,
+.ui-menu-item .ui-menu-item-wrapper:active,
+.theme-color-succces {
+  color: var(--default-available-color);
+}
+.greenText{
+  color: black !important;
+}
+.flightsfound h4 span:hover {
+  cursor: pointer;
+}
+.origin-flight .airport-Code,
+.activity-box .title,
+.nav.navbar-nav .lnr.lnr-chevron-down {
+  font-weight: 500 !important;
+}
+.th-theme-color {
+  background-color: #efefef;
+}
+
+.recent-activity .discription span,
+.recent-activity .recent-list .timestamp {
+  color: var(--subtitle-color) !important;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border-color: var(--table-border-darktheme-color);
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+  border-top: 1px solid #000;
+}
+
+.table-container .table-bordered > thead > tr > th,
+.table-container .table-bordered > tbody > tr > th,
+.table-container .table-bordered > tfoot > tr > th,
+.table-container .table-bordered > thead > tr > td,
+.table-container .table-bordered > tbody > tr > td,
+.table-container .table-bordered > tfoot > tr > td {
+  border-color: #000;
+}
+.table-container .table > thead:first-child > tr:first-child > th {
+  border-top: 1px solid #30426a;
+}
+.show-balance-icon.header-icon {
+  margin-right: 15px;
+}
+
+@media (max-width: 480px) {
+  .loaderarea h3,
+  #searchMsg,
+  #searchAgain {
+    font-size: var(--fontSize-12);
+  }
+}

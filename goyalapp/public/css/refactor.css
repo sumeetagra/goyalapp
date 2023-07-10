@@ -1,0 +1,57 @@
+.watermark {
+  display: none;
+}
+.hiddenOnPhone {
+  display: block;
+}
+@media (max-width: 767px) {
+  .airlineRemark {
+    display: none;
+  }
+  .checkmark4 {
+    display: none;
+  }
+  .depart-flightselect {
+    width: fit-content;
+    top: -70px;
+    left: 120px;
+  }
+  .depart-flightselect-left {
+    left: 130px;
+  }
+  .depart-flightselect span {
+    font-size: 12px !important;
+    width: fit-content;
+  }
+
+  .depart-flightselect .flt-seat,
+  .depart-flightselect .flightrefundable,
+  .depart-flightselect span > span {
+    font-size: 10px !important;
+    font-weight: 400;
+  }
+  #domesticroundtrip-page .flight-inclusion {
+    width: max-content;
+    margin-left: -142px;
+    top: 30px;
+  }
+  .hiddenOnPhone {
+    display: none;
+  }
+}
+@media (max-width: 376px) {
+  .domesticroundtrip-page .mediaroundfare .depart-flightselect {
+    margin-left: -36px;
+  }
+  #domesticroundtrip-page .flight-inclusion {
+    width: max-content;
+    margin-left: -114px;
+    top: 32px;
+  }
+  .domesticroundtrip-page .flighttime-info {
+    margin-right: -2px;
+  }
+  .depart-flightselect-left {
+    left: 123px;
+  }
+}
