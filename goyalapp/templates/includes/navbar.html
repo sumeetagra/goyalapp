@@ -98,13 +98,7 @@
         <div class="container">
           <img ng-src="{{myCroppedImage}}" />
           <a href="#/welcome" class="navbar-brand is-img"
-            ><img
-              ng-if="!loggedInUser"
-              ng-src="static/images/agency-logo/{{domainUser.website}}.png" />
-            <img
-              ng-if="loggedInUser"
-              ng-src="{{loggedInUser.companyModel.companyLogo==null||loggedInUser.companyModel.companyLogo==''?'static/images/agency-logo/'+domainUser.website+'.png':'data:image/jpeg;base64,'+loggedInUser.companyModel.companyLogo}}"
-          /></a>
+            ><img src="static/images/logo.png" /></a>
 
           <div
             class="navbar navbar-default navbar-fixed-top hide-mobile-view"
