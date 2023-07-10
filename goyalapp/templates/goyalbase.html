@@ -47,6 +47,14 @@
     <link id='pageTitleLink' rel='icon' href='static/images/site-icons/dikotravels.com.png'></link>
     <link href='static/img/favicon.png' rel='icon'>
     <link href='static/img/apple-touch-icon.png' rel='apple-touch-icon'>
+
+    <link
+        rel="shortcut icon"
+        href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
+        type="image/x-icon"
+    >
+    {% endblock %}
+
     <link href='static/lib/font-awesome/css/font-awesome.min.css' rel='stylesheet'>
     <link href='static/lib/font-awesome/css/font-awesome.css' rel='stylesheet'>
     <link href='static/lib/bootstrap/css/bootstrap.min.css' rel='stylesheet'></link>
@@ -59,17 +67,6 @@
     <link href='static/css/client-admin-common-style.css?ver=1.1' rel='stylesheet'></link>
     <link href='static/css/GAPI-ColorTheme.css' rel='stylesheet'></link>
     <link href='static/css/GAPI-ThemeSite.css' rel='stylesheet'></link>
-
-    <link
-        rel="shortcut icon"
-        href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
-        type="image/x-icon"
-    >
-    {% endblock %}
-
-    {%- block head -%}
-        {% include "templates/includes/head.html" %}
-    {%- endblock -%}
 
     {%- block head_include %}
         {{ head_include or "" }}
