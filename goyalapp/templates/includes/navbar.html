@@ -139,8 +139,7 @@
                       </div>
                       <div class="user-login-details">
                         <span class="username"
-                          >{{loggedInUser.companyName==null?
-                          loggedInUser.firstName:loggedInUser.companyName}}
+                          >{{current_user.full_name }}
                           <span class="lnr lnr-chevron-down"> </span>
                         </span>
                        <span class="companyid">{{loggedInUser.firstName}} {{loggedInUser.lastName}} ({{loggedInUser.staffId}})</span>
@@ -311,13 +310,7 @@
             >
               <i class="fa fa-inr icons"></i>
             </div>
-            <div
-              class="device-user-login header-icon"
-              ng-if="!loggedInUser && domainUser.b2cPanelFlag == 'Y'"
-            >
-              <span class="lnr lnr-user" ng-click="ctrl.openLoginPopup()">
-              </span>
-            </div>
+
           </div>
         </div>
       </div>
