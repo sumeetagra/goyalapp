@@ -14,31 +14,27 @@
                 <span>CASH BALANCE</span>
                 <span
                   ><i class="fa fa-inr icons"></i>
-                  {{ loggedInUser.customerFundsModel.cashBalance }}</span
+                  87687.9</span
                 >
               </div>
-              <div class="balance limit" title="CREDIT BALANCE {{loggedInUser.customerFundsModel.creditBalance}} ">
+              <div class="balance limit" title="CREDIT BALANCE 8979.99 ">
                 <span>BALANCE</span>
                 <span
                   ><i class="fa fa-inr icons"></i>
-                  {{ loggedInUser.customerFundsModel.cashBalance }}</span
+                  454.00</span
                 >
-                <span>{{loggedInUser.customerFundsModel.expiryOn}}</span>
+                <span>12/05/2022</span>
               </div>
 
             </div>
 
             <div class="Utility">
-              <!-- <div class="print item-list">
-								<span class="fa-printer icon-image"><img
-									src="static/images/printing.svg"></span> <span>Ticket</span>
-							</div> -->
               <div class="remain-time item-list">
                 <span id="countTime"></span>
               </div>
               <div class="print item-list">
                 <span class="fa-printer icon-image"
-                  ><a href="" class="hidePrefs" ng-click="ctrl.hidePrefs()"
+                  ><a href="" class="hidePrefs"
                     ><i class="fa fa-inr icons" style="color: #fff"></i
                     >&nbsp;</a
                   ></span
@@ -62,8 +58,8 @@
               <div class="support-no">
                 <!-- <span class="title">Customer Support</span> -->
                 <span class="title"
-                  ><a href="tel:+91{{domainUser.mobile}}">
-                    +91 {{domainUser.mobile}}</a
+                  ><a href="tel:+91 9764999444">
+                    +91 9764999444</a
                   ></span
                 >
               </div>
@@ -73,20 +69,20 @@
                   <div>
                     <i class="fa fa-whatsapp" aria-hidden="true"></i> Mobile
                   </div>
-                  <div>+91 {{domainUser.mobile}}</div>
+                  <div>+91 9764999444</div>
                 </div>
                 <div class="divinfo">
                   <div>
                     <i class="fa fa-phone" aria-hidden="true"></i> Helpline no
                   </div>
-                  <div>+91 {{domainUser.companyModel.phone}}</div>
+                  <div>+91 9764999444</div>
                 </div>
                 <hr />
                 <div class="divinfo">
                   <div>
                     <i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us
                   </div>
-                  <div>{{domainUser.email}}</div>
+                  <div>admin@goyalironsteel.com</div>
                 </div>
               </div>
             </div>
@@ -118,7 +114,7 @@
                 </button>
               </div>
               <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right" ng-if="loggedInUser">
+                <ul class="nav navbar-nav navbar-right">
                   <li class="nav-item">
                     <span
                       ><i class="fa fa-tachometer" aria-hidden="true"></i>
@@ -142,49 +138,18 @@
                           >{{current_user.full_name }}
                           <span class="lnr lnr-chevron-down"> </span>
                         </span>
-                       <span class="companyid">{{loggedInUser.firstName}} {{loggedInUser.lastName}} ({{loggedInUser.staffId}})</span>
+                       <span class="companyid">{{current_user.full_name }} ({{current_user}})</span>
                       </div>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown4">
                       <li class="">
-                        <a href="" ng-click="getselectcust(loggedInUser.userID)"
+                        <a href="/update-profile/{{ user }}"
                           ><span class="lnr lnr-user"></span> Profile</a
                         >
                       </li>
                       <li class="">
-                        <a ng-click="ctrl.signOut()">
+                        <a href="/update-password">
                           <span class="lnr lnr-power-switch"> </span> Logout
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right" ng-if="!loggedInUser">
-                  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link user-login-details dropdown-toggle"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                    >
-                      <div class="user-icon">
-                        <span class="lnr lnr-user"></span>
-                      </div>
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown4">
-                      <li class="">
-                        <a
-                          href=""
-                          class="dropdown-toggle"
-                          data-toggle="modal"
-                          ng-click="ctrl.openLoginPopup()"
-                          role="button"
-                          aria-haspopup="true"
-                          aria-expanded="false"
-                        >
-                          <!-- <i
-								class="fa fa-user-circle-o" aria-hidden="true"></i> -->Sign-in / Sign-up
                         </a>
                       </li>
                     </ul>
@@ -193,23 +158,23 @@
 
                 <ul class="nav navbar-nav">
                   <li>
-                    <a href="#/{{menuCategory.menuJspPath}}"
+                    <a href="#/MenuA"
                       class="dropdown-toggle"
                       data-toggle="dropdown"
-                      >{{menuCategory.menuDesc}}
+                      >Menu1
                       <span class="lnr lnr-chevron-down"> </span
                     ></a>
                     <ul class="dropdown-menu multi-level">
                       <li class="">
                         <a
-                          href="#/{{menu.menuJspPath}}"
+                          href="#/Menu2"
                           class="dropdown-toggle"
                           data-toggle="dropdown"
-                          >{{menu.menuDesc}}
+                          >MenuB
                         </a>
                         <ul class="dropdown-menu">
                           <li>
-                            <a href="#/{{menu2.menuJspPath}}">{{menu2.menuDesc}}</a
+                            <a href="#/Menu3">Menu C</a
                             >
                           </li>
                         </ul>
@@ -229,12 +194,9 @@
           <div class="device-menu-icon" onclick="openNav()">
             <span class="lnr lnr-menu"></span>
           </div>
-          <!-- <div class="device-menu-icon" ng-if="!loggedInUser">
-						<span class="lnr lnr-menu"></span>
-					</div> -->
           <div class="device-logo">
             <a href="#/welcome" class="navbar-brand is-img"
-              ><img src="static/images/agency-logo/{{domainUser.website}}.png"
+              ><img src="static/images/logo.png"
             /></a>
           </div>
           <div class="device-customer-support" style="display: none">
@@ -245,8 +207,8 @@
               <div class="support-no">
                 <span class="title">Customer Support</span>
                 <span class="title"
-                  ><a href="tel:+91{{domainUser.mobile}}">
-                    +91 {{domainUser.mobile}}</a
+                  ><a href="tel:+91 9764999444">
+                    +91 9764999444</a
                   ></span
                 >
               </div>
@@ -277,12 +239,6 @@
                   </div>
                   <div>{{domainUser.email}}</div>
                 </div>
-                <!-- <div class="divinfo">
-									<div>
-										<i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us
-									</div>
-									<div>{{domainUser.email}}</div>
-								</div> -->
               </div>
             </div>
           </div>
@@ -291,7 +247,6 @@
               class="show-balance-icon header-icon"
               data-toggle="modal"
               data-target="#showMybalance"
-              ng-if="loggedInUser"
             >
               <i class="fa fa-inr icons"></i>
             </div>
