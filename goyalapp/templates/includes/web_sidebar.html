@@ -1,6 +1,6 @@
 {% macro render_sidebar_item(item) %}
 <ul class="sub-menu collapse in" id="service">
-<li class="{{ 'sidebar-group' if item.group_title else '' }}">
+<li class="{{ 'sidebar-group' if item.group_title else 'side-item' }}">
 	{%- if item.group_title -%}
 
 	<h6>{{ item.group_title }}</h6>
@@ -28,7 +28,7 @@
 
 {% macro render_sidebar_items(items) %}
 {%- if items | len > 0 -%}
-<ul id="menu-content" class="menu-content collapse out">
+<ul id="menu-content" class="menu-content collapse in">
 	{% for item in items -%}
 	{{ render_sidebar_item(item) }}
 	{%- endfor %}
@@ -60,7 +60,7 @@
 
 <script>
 	frappe.ready(function () {
-		$('.sidebar-item a').each(function (index) {
+		$('.side-item a').each(function (index) {
 			const active_class = 'active'
 			const non_active_class = ''
 			let page_href = window.location.href;
@@ -75,7 +75,7 @@
 		});
 
 		// scroll the active sidebar item into view
-		let active_sidebar_item = $('.sidebar-item a.active');
+		let active_sidebar_item = $('.side-item a.active');
 		if (active_sidebar_item.length > 0) {
 			active_sidebar_item.get(0)
 				.scrollIntoView({behavior: "auto", block: "center", inline: "nearest"});
