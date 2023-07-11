@@ -1,0 +1,41 @@
+
+
+	@media (min-width:1024px) {
+		.box-header {
+    justify-content: space-around;
+  }
+  .col1{right: 10;}
+  .col2{left: 5;}
+  #owner{left: 10;}
+  .col3{left: 30;}
+
+}
+
+@media (min-width:768px) and (max-width:1020px){  
+#set_to{
+	   left: 70;
+    bottom: 20;
+	}
+	.col2{left: 5;}
+	.col4{
+	   left: 280;
+    bottom: 45;
+	}
+	.col5{
+		left: 560;
+    bottom: 100;
+	}
+
+}
+@media (max-width:768px){  
+#set_to{
+left: 70;
+    bottom: 18;
+}
+.col2{left: 5;}
+.col4{
+	bottom: 10;
+}
+.col5{top: 10;}
+.col3{top: 15;}
+}
