@@ -7,6 +7,209 @@
 {{ _("My Account") }}
 {% endblock %}
 {% block page_content %}
+
+<div class="row">
+<div class="modal fade" id="seriesDeleteConfirmation-MSGbox"
+	role="dialog">
+	<div class="modal-dialog common-MSGbox">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span class="lnr lnr-cross"></span>
+				</button>
+
+			</div>
+			<div class="modal-body">
+
+
+				<div class="imgicon">
+					<img src="static/images/exclamation-icon.png" />
+				</div>
+				<h1>Please note that selected records will be deleted
+					permanently!</h1>
+
+
+				<div class="modal-footer text-center">
+					<a type="button" class="btn btn-primary waves-effect waves-light"
+						data-dismiss="modal">Cancel</a>
+					<button type="button" ng-click="deleteCommissionPlan()"
+						class="waves-effect waves-light btn red" data-dismiss="modal">Continue</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="col-md-12">
+		<div class="col-sm-2">
+			<div ng-include="'custInfoSideMenu.html'"></div>
+		</div>
+		<div class="col-sm-10">
+			<div class="wrapper">
+				<div class="content-wrapper">
+					<section class="content-header">
+						<h1>View Markup</h1>
+						<!-- <ol class="breadcrumb">
+							<li><a href="" ng-click="navigateHome()"><i
+									class="fa fa-dashboard"></i> Home</a></li>
+							<li><a href="#">User</a></li>
+							<li><a href="#">View All Users</a></li>
+							<li class="active">View Markup</li>
+						</ol> -->
+					</section>
+					<!-- Main content -->
+					<section class="content">
+						<div id="divLoading"></div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="box">
+									
+									<div class="box-header with-border">
+									<div class="col-md-5"><h3 class="box-title">{{ctrl.selectcust.firstName}} -
+											{{ctrl.selectcust.staffId}}</h3></div>
+									<div class="col-md-7">
+
+										<div class="col-md-12">
+
+											<div id="divLoading"></div>
+											<div class="col-md-4"></div>
+											<div class="col-md-2">Category</div>
+										<div class="admin-mb-3 col-md-2">
+											
+											<select class="form-control" name="type"
+														ng-change="fetchSupplierByCategory()" ng-model="category">
+														<option value="">--ALL--</option>
+														<option value="FLIGHT" ng-selected="selected">FLIGHT</option>
+														<option value="HOTEL">HOTEL</option>
+													</select>
+										</div>
+											<div class="col-md-2">
+												<button class="btn btn-danger" ng-click="addNewMarkup()">ADD NEW</button>
+												</div>
+												
+												<div class="col-md-2">
+												<button class="btn btn-danger btn-block"
+													ng-click="getConfirmationToDelete()"
+													name="action">Delete</button>
+											</div>
+												
+										</div>
+									</div>
+								</div>
+									
+									<div class="box-body">
+										<form class="form-horizontal">
+											<div class="form-group">
+
+												<div class="clearfix"></div>
+												<div class="col-md-12">
+													<div class="responsive-table table-container">
+													<table id="example2"
+														class="table table-bordered table-hover dataTable"
+														role="grid" aria-describedby="example2_info">
+														<thead>
+															<tr role="row">
+															<th colspan="1" rowspan="1" class="sorting"
+														aria-controls="example2" aria-label="" tabindex="0">
+														<label class="Airlines"><input
+															id="checkAll" type="checkbox" ng-model="checkAll"
+															ng-change="selectAll()"> <span
+															class="checkmark"></span>
+													</label>
+													</th>
+																<th width="8%" colspan="1" rowspan="1"
+																	class="sorting_desc" aria-controls="example2"
+																	aria-label="" aria-sort="descending" tabindex="0">Carrier</th>
+																	<th width="8%" colspan="1" rowspan="1"
+																	class="sorting_desc" aria-controls="example2"
+																	aria-label="" aria-sort="descending" tabindex="0">Category</th>
+																<th width="8%" colspan="1" rowspan="1"
+																	class="sorting_desc" aria-controls="example2"
+																	aria-label="" aria-sort="descending" tabindex="0">Service
+																	Type</th>
+																<th width="8%" colspan="1" rowspan="1"
+																	class="sorting_desc" aria-controls="example2"
+																	aria-label="" aria-sort="descending" tabindex="0">Base
+																	Fare %</th>
+																<th width="13%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">YQ
+																	%</th>
+																<th width="10%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">Flat Markup</th>
+																	<th width="10%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">% Markup</th>
+																	<th width="10%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">Created On</th>
+																	<th width="10%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">Company</th>
+																	<th width="10%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">Status</th>
+																	
+																	<th width="10%" colspan="1" rowspan="1" class="sorting"
+																	aria-controls="example2" aria-label="" tabindex="0">Select</th>
+
+															</tr>
+														<tbody>
+															<tr role="row" class="even table-row"
+																ng-repeat="markup in ctrl.markupList">
+																<td data-label="Ticket No">
+														<div class="input-group">
+															<label class=" Airlines"> <input type="checkbox"
+																ng-model="markup.selected"> <span
+																class="checkmark"></span>
+															</label>
+														</div>
+													</td>
+																<td>{{markup.cplanedAirline}}</td>
+																<td>{{markup.planCategory}}</td>
+																<td>{{markup.domIntFlag=='I'?'International':'Domestic'}}</td>
+																<td>{{markup.basefare}}</td>
+																<td>{{markup.yq}}</td>
+																<td>{{markup.flatMarkup}}</td>
+																<td>{{markup.percentMarkup}}</td>
+																<td>{{markup.createdOn| date : "dd MMM, yyyy"}}</td>
+																<td>{{markup.companyName}}</td>
+																<td>{{markup.status}}</td>
+																<td><div class="dropdown">
+													<button class="dropbtn">Select</button>
+													<div class="dropdown-content">
+														<a ng-click="editMarkup(markup)" style="color: blue;"> Edit</a> 
+													</div>
+												</div> 
+												</td>
+
+															</tr>
+															<!-- </c:forEach>    -->
+														</tbody>
+														<tfoot>
+
+														</tfoot>
+													</table>
+													</div>
+												</div>
+
+											</div>
+
+										</form>
+									</div>
+									<!-- /.box-body -->
+									<div class="box-footer"></div>
+									<!-- /.box-footer-->
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="control-sidebar-bg"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
 <link rel='stylesheet' href='/assets/goyalapp/admin/style/style.css'></link>
 <link rel='stylesheet' href='/assets/goyalapp/admin/style/MTMH.css'></link>
 <link href='/assets/goyalapp/css/GAPI-ColorTheme.css' rel='stylesheet'></link>
