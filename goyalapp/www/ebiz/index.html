@@ -8,43 +8,6 @@
 {% endblock %}
 {% block page_content %}
 
-<div class="row">
-<div class="modal fade" id="seriesDeleteConfirmation-MSGbox"
-	role="dialog">
-	<div class="modal-dialog common-MSGbox">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">
-					<span class="lnr lnr-cross"></span>
-				</button>
-
-			</div>
-			<div class="modal-body">
-
-
-				<div class="imgicon">
-					<img src="static/images/exclamation-icon.png" />
-				</div>
-				<h1>Please note that selected records will be deleted
-					permanently!</h1>
-
-
-				<div class="modal-footer text-center">
-					<a type="button" class="btn btn-primary waves-effect waves-light"
-						data-dismiss="modal">Cancel</a>
-					<button type="button" ng-click="deleteCommissionPlan()"
-						class="waves-effect waves-light btn red" data-dismiss="modal">Continue</button>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-	<div class="col-md-12">
-		<div class="col-sm-2">
-			<div ng-include="'custInfoSideMenu.html'"></div>
-		</div>
-		<div class="col-sm-10">
 			<div class="wrapper">
 				<div class="content-wrapper">
 					<section class="content-header">
@@ -202,10 +165,6 @@
 				</div>
 				<div class="control-sidebar-bg"></div>
 			</div>
-		</div>
-	</div>
-</div>
-
 
 
 
