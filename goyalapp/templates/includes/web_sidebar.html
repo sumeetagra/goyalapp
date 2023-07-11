@@ -38,8 +38,8 @@
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
-<ul class="list-unstyled">
-	<li class="sidebar-item">
+<ul class="sub-menu collapse in" id="service">
+	<li class="side-item">
 		<a href="/me">{{ _("My Account") }}</a>
 	</li>
 </ul>
