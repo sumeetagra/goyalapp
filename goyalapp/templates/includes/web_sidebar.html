@@ -32,18 +32,15 @@
 	{% for item in items -%}
 	{{ render_sidebar_item(item) }}
 	{%- endfor %}
-		{{ my_account() }}
 </ul>
 {%- endif -%}
 {% endmacro %}
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
-<ul class="sub-menu collapse in" id="service">
 	<li class="side-item">
 		<a href="/me">{{ _("My Account") }}</a>
 	</li>
-</ul>
 {% endif %}
 {% endmacro %}
 
