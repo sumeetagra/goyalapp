@@ -44,7 +44,11 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 	meta = frappe.get_meta(doctype)
 
 	filters = prepare_filters(doctype, controller, kwargs)
-
+	return {
+		"raw_result": filters,
+		"SG": kwargs,
+		"SG1": doctype,
+	}
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 	list_context.title_field = getattr(controller, "website", {}).get(
 		"page_title_field", meta.title_field or "name"
@@ -98,6 +102,8 @@ def prepare_filters(doctype, controller, kwargs):
 		except ValueError:
 			pass
 	filters = frappe._dict(kwargs)
+	return filters
+	
 	meta = frappe.get_meta(doctype)
 
 	if hasattr(controller, "website") and controller.website.get("condition_field"):
