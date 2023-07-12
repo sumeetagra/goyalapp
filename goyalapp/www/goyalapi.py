@@ -42,14 +42,6 @@ def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, 
 	meta = frappe.get_meta(doctype)
 
 	filters = prepare_filters(doctype, controller, kwargs)
-	return {
-		"SG2": doctype,
-		"raw_result": controller,
-		"SG": kwargs,
-		"SG1": filters,
-		"SG3": meta,
-		"SG4": fields,
-	}
 
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 	list_context.title_field = getattr(controller, "website", {}).get(
@@ -60,6 +52,14 @@ def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, 
 		filters.update(list_context.filters)
 
 	_get_list = list_context.get_list or get_list
+	return {
+		"SG2": list_context,
+		"raw_result": controller,
+		"SG": kwargs,
+		"SG1": filters,
+		"SG3": meta,
+		"SG4": fields,
+	}
 
 	kwargs = dict(
 		doctype=doctype,
