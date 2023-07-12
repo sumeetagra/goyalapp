@@ -33,6 +33,9 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 	if frappe.is_table(doctype):
 		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
 
+	if fields:
+		fields = json.loads(fields)
+
 	if not txt and frappe.form_dict.search:
 		txt = frappe.form_dict.search
 		del frappe.form_dict["search"]
