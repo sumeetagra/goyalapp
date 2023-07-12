@@ -72,7 +72,7 @@ def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, 
 		"SG2": fields,
 		"SG3": frappe.flags,
 		"result": result,
-		"show_more": show_more,
+		"show_more": kwargs,
 		"next_start": limit_start + limit,
 	}
 
