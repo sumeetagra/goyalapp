@@ -67,7 +67,7 @@ def get(doctype, txt=None, limit_start=0, limit=20, pathname=None, **kwargs):
 
 	return {
 		"raw_result": json.dumps(raw_result, default=json_handler),
-		"SG": kwargs,
+		"SG": raw_result,
 		"result": result,
 		"show_more": show_more,
 		"next_start": limit_start + limit,
