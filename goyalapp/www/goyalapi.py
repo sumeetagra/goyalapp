@@ -26,7 +26,7 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
-def get(doctype, txt=None, limit_start=0, limit=20, pathname=None, **kwargs):
+def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, **kwargs):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
 	raw_result = get_list_data(doctype, txt, limit_start, limit=limit + 1, **kwargs)
@@ -66,8 +66,11 @@ def get(doctype, txt=None, limit_start=0, limit=20, pathname=None, **kwargs):
 	from frappe.utils.response import json_handler
 
 	return {
-		"raw_result": json.dumps(raw_result, default=json_handler),
-		"SG": raw_result,
+		"raw_result": raw_result,
+		"SG": doctype,
+		"SG1": txt,
+		"SG2": fields,
+		"SG3": kwargs,
 		"result": result,
 		"show_more": show_more,
 		"next_start": limit_start + limit,
