@@ -95,6 +95,12 @@ def get_list_data(
 	meta = frappe.get_meta(doctype)
 
 	filters = prepare_filters(doctype, controller, kwargs)
+	return {
+		"raw_result": raw_result,
+		"SG": kwargs,
+		"SG1": filters,
+	}
+
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 	list_context.title_field = getattr(controller, "website", {}).get(
 		"page_title_field", meta.title_field or "name"
