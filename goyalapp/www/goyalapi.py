@@ -53,7 +53,7 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 	if list_context.filters:
 		filters.update(list_context.filters)
 
-	_get_list = get_list
+	_get_list = list_context.get_list or get_list
 
 	kwargs = dict(
 		doctype=doctype,
@@ -69,7 +69,7 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 	if not list_context.get_list and (list_context.allow_guest or meta.allow_guest_to_view):
 		kwargs["ignore_permissions"] = True
 
-	raw_result = _get_list(doctype,**kwargs)
+	raw_result = _get_list(**kwargs)
 
 	# list context to be used if called as rendered list
 	frappe.flags.list_context = list_context
