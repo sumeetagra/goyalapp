@@ -64,13 +64,6 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 		limit_page_length=limit,
 		order_by=list_context.order_by or "modified desc",
 	)
-	return {
-		"SG2": list_context,
-		"raw_result": controller,
-		"SG": kwargs,
-		"SG1": filters,
-		"SG3": frappe.form_dict,
-	}
 
 	# allow guest if flag is set
 	if not list_context.get_list and (list_context.allow_guest or meta.allow_guest_to_view):
