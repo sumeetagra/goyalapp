@@ -74,20 +74,8 @@ def get(doctype, txt=None, fields=None, filters=None, limit_start=0, limit=20, p
 	return {
 		"raw_result": raw_result,
 		"SG": kwargs,
-		"SG1": list_context,
+		"SG1": filters,
 	}
-
-def set_route(context):
-	"""Set link for the list item"""
-	if context.web_form_name:
-		context.route = f"{context.pathname}?name={quoted(context.doc.name)}"
-	elif context.doc and getattr(context.doc, "route", None):
-		context.route = context.doc.route
-	else:
-		context.route = "{}/{}".format(
-			context.pathname or quoted(context.doc.doctype), quoted(context.doc.name)
-		)
-
 
 def prepare_filters(doctype, controller, kwargs):
 	for key in kwargs.keys():
