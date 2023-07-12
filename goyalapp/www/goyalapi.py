@@ -26,7 +26,7 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
-def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, **kwargs):
+def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, web_form_name=None, **kwargs):
 	"""Returns processed HTML page for a standard listing."""
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
