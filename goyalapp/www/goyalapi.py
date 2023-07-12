@@ -96,7 +96,8 @@ def get_list_data(
 
 	filters = prepare_filters(doctype, controller, kwargs)
 	return {
-		"raw_result": raw_result,
+		"SG2": doctype,
+		"raw_result": controller,
 		"SG": kwargs,
 		"SG1": filters,
 	}
