@@ -29,8 +29,6 @@ def get_context(context, **dict_params):
 def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, **kwargs):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
-		if frappe.local.form_dict.get("fields"):
-			frappe.local.form_dict["fields"] = json.loads(frappe.local.form_dict["fields"])
 	raw_result = get_list_data(doctype, txt, limit_start, limit=limit + 1, **kwargs)
 	show_more = len(raw_result) > limit
 	if show_more:
