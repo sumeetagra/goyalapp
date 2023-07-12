@@ -77,6 +77,7 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 	return {
 		"raw_result": raw_result,
 		"SG": kwargs,
+		"SG1": list_context,
 	}
 
 def set_route(context):
