@@ -123,8 +123,10 @@ def get_list_data(
 	# list context to be used if called as rendered list
 	frappe.flags.list_context = list_context
 
-	return raw_result
-
+	return {
+		"raw_result": raw_result,
+		"SG": kwargs,
+	}
 
 def set_route(context):
 	"""Set link for the list item"""
