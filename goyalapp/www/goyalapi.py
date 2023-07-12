@@ -102,8 +102,8 @@ def prepare_filters(doctype, controller, kwargs):
 		except ValueError:
 			pass
 	filters = frappe._dict(kwargs)
-	return filters
-	
+	return filters.items()
+
 	meta = frappe.get_meta(doctype)
 
 	if hasattr(controller, "website") and controller.website.get("condition_field"):
