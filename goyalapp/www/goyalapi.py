@@ -26,54 +26,63 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
-def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, **kwargs):
+def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, pathname=None, **kwargs):
+	"""Returns processed HTML page for a standard listing."""
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
-	raw_result = get_list_data(doctype, txt, limit_start, limit=limit + 1, **kwargs)
-	show_more = len(raw_result) > limit
-	if show_more:
-		raw_result = raw_result[:-1]
 
+	if frappe.is_table(doctype):
+		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
+
+	if not txt and frappe.form_dict.search:
+		txt = frappe.form_dict.search
+		del frappe.form_dict["search"]
+
+	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
-	list_context = frappe.flags.list_context
 
-	if not raw_result:
-		return {"result": []}
+	filters = prepare_filters(doctype, controller, kwargs)
+	return {
+		"SG2": doctype,
+		"raw_result": controller,
+		"SG": kwargs,
+		"SG1": filters,
+		"SG3": meta,
+		"SG4": fields,
+	}
 
-	if txt:
-		list_context.default_subtitle = _('Filtered by "{0}"').format(txt)
+	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
+	list_context.title_field = getattr(controller, "website", {}).get(
+		"page_title_field", meta.title_field or "name"
+	)
 
-	result = []
-	row_template = list_context.row_template or "templates/includes/list/row_template.html"
-	list_view_fields = [df for df in meta.fields if df.in_list_view][:4]
+	if list_context.filters:
+		filters.update(list_context.filters)
 
-	for doc in raw_result:
-		doc.doctype = doctype
-		new_context = frappe._dict(doc=doc, meta=meta, list_view_fields=list_view_fields)
+	_get_list = list_context.get_list or get_list
 
-		if not list_context.get_list and not isinstance(new_context.doc, Document):
-			new_context.doc = frappe.get_doc(doc.doctype, doc.name)
-			new_context.update(new_context.doc.as_dict())
+	kwargs = dict(
+		doctype=doctype,
+		txt=txt,
+		filters=filters,
+		limit_start=limit_start,
+		limit_page_length=limit,
+		order_by=list_context.order_by or "modified desc",
+	)
 
-		if not frappe.flags.in_test:
-			pathname = pathname or frappe.local.request.path
-			new_context["pathname"] = pathname.strip("/ ")
-		new_context.update(list_context)
-		set_route(new_context)
-		rendered_row = frappe.render_template(row_template, new_context, is_path=True)
-		result.append(rendered_row)
+	# allow guest if flag is set
+	if not list_context.get_list and (list_context.allow_guest or meta.allow_guest_to_view):
+		kwargs["ignore_permissions"] = True
 
-	from frappe.utils.response import json_handler
+	raw_result = _get_list(**kwargs)
+
+	# list context to be used if called as rendered list
+	frappe.flags.list_context = list_context
 
 	return {
 		"raw_result": raw_result,
-		"SG": frappe.local.form_dict,
-		"SG1": new_context,
-		"SG2": fields,
-		"SG3": frappe.flags,
-		"result": result,
-		"show_more": kwargs,
-		"next_start": limit_start + limit,
+		"SG": kwargs,
+		"SG1": list_context,
 	}
 
 
@@ -83,9 +92,6 @@ def get_list_data(
 ):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
-	return {
-		"SG": kwargs,
-	}
 
 	if frappe.is_table(doctype):
 		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
