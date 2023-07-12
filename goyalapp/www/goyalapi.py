@@ -83,6 +83,9 @@ def get_list_data(
 ):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
+	return {
+		"SG": kwargs,
+	}
 
 	if frappe.is_table(doctype):
 		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
@@ -100,6 +103,8 @@ def get_list_data(
 		"raw_result": controller,
 		"SG": kwargs,
 		"SG1": filters,
+		"SG3": meta,
+		"SG4": fields,
 	}
 
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
