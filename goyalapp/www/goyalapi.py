@@ -126,6 +126,7 @@ def get_list_data(
 	return {
 		"raw_result": raw_result,
 		"SG": kwargs,
+		"SG1": filters,
 	}
 
 def set_route(context):
