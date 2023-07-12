@@ -68,7 +68,7 @@ def get(doctype, txt=None, limit_start=0, fields=None, limit=20, pathname=None, 
 	return {
 		"raw_result": raw_result,
 		"SG": doctype,
-		"SG1": txt,
+		"SG1": new_context,
 		"SG2": fields,
 		"SG3": kwargs,
 		"result": result,
