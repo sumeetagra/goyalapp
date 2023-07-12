@@ -58,7 +58,6 @@ def get(doctype, txt=None, fields=None, limit_start=0, limit=20, pathname=None, 
 	kwargs = dict(
 		doctype=doctype,
 		txt=txt,
-		fields=fields,
 		filters=filters,
 		limit_start=limit_start,
 		limit_page_length=limit,
