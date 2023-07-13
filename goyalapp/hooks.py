@@ -46,7 +46,18 @@ web_include_css = "/assets/goyalapp/css/goyalapp.css"
 # role_home_page = {
 #	"Role": "home_page"
 # }
-
+has_website_permission = {
+	"Sales Order": "goyalapp.controllers.goyalwebsite.has_website_permission",
+	"Quotation": "goyalapp.controllers.goyalwebsite.has_website_permission",
+	"Sales Invoice": "goyalapp.controllers.goyalwebsite.has_website_permission",
+	"Supplier Quotation": "goyalapp.controllers.goyalwebsite.has_website_permission",
+	"Purchase Order": "goyalapp.controllers.goyalwebsite.has_website_permission",
+	"Purchase Invoice": "goyalapp.controllers.goyalwebsite.has_website_permission",
+	"Material Request": "erpnext.controllers.website_list_for_contact.has_website_permission",
+	"Delivery Note": "erpnext.controllers.website_list_for_contact.has_website_permission",
+	"Issue": "erpnext.support.doctype.issue.issue.has_website_permission",
+	"Timesheet": "erpnext.controllers.website_list_for_contact.has_website_permission",
+}
 # Generators
 # ----------
 
