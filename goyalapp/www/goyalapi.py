@@ -43,7 +43,6 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
-	filters = prepare_filters(doctype, controller, kwargs)
 	return {
 		"SG2": doctype,
 		"raw_result": controller,
