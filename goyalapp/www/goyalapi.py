@@ -104,3 +104,48 @@ def prepare_filters(doctype, controller, kwargs):
 			del filters[fieldname]
 
 	return filters
+
+	def get_list_context(context, doctype, web_form_name=None):
+	from frappe.modules import load_doctype_module
+	from frappe.website.doctype.web_form.web_form import get_web_form_module
+
+	list_context = context or frappe._dict()
+	meta = frappe.get_meta(doctype)
+
+	def update_context_from_module(module, list_context):
+		# call the user defined method `get_list_context`
+		# from the python module
+		if hasattr(module, "get_list_context"):
+			out = frappe._dict(module.get_list_context(list_context) or {})
+			if out:
+				list_context = out
+		return list_context
+
+	# get context from the doctype module
+	if not meta.custom:
+		# custom doctypes don't have modules
+		module = load_doctype_module(doctype)
+		list_context = update_context_from_module(module, list_context)
+
+	# get context for custom webform
+	if meta.custom and web_form_name:
+		webform_list_contexts = frappe.get_hooks("webform_list_context")
+		if webform_list_contexts:
+			out = frappe._dict(frappe.get_attr(webform_list_contexts[0])(meta.module) or {})
+			if out:
+				list_context = out
+
+	# get context from web form module
+	if web_form_name:
+		web_form = frappe.get_doc("Web Form", web_form_name)
+		list_context = update_context_from_module(get_web_form_module(web_form), list_context)
+
+	# get path from '/templates/' folder of the doctype
+	if not meta.custom and not list_context.row_template:
+		list_context.row_template = meta.get_row_template()
+
+	if not meta.custom and not list_context.list_template:
+		list_context.template = meta.get_list_template() or "www/list.html"
+
+	return list_context
+
