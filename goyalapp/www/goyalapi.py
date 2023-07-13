@@ -7,6 +7,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document, get_controller
 from frappe.utils import cint, quoted
+from frappe.utils.user import is_website_user
 from frappe.website.path_resolver import resolve_path
 
 no_cache = 1
