@@ -221,6 +221,78 @@ def prepare_filters(doctype, controller, kwargs):
 	return filters
 
 
+def post_process(doctype, data):
+	result = []
+	for d in data:
+		doc = frappe.get_doc(doctype, d.name)
+
+		doc.status_percent = 0
+		doc.status_display = []
+
+		if doc.get("per_billed"):
+			doc.status_percent += flt(doc.per_billed)
+			doc.status_display.append(
+				_("Billed") if doc.per_billed == 100 else _("{0}% Billed").format(doc.per_billed)
+			)
+
+		if doc.get("per_delivered"):
+			doc.status_percent += flt(doc.per_delivered)
+			doc.status_display.append(
+				_("Delivered") if doc.per_delivered == 100 else _("{0}% Delivered").format(doc.per_delivered)
+			)
+
+		if hasattr(doc, "set_indicator"):
+			doc.set_indicator()
+
+		doc.status_display = ", ".join(doc.status_display)
+		doc.items_preview = ", ".join(d.item_name for d in doc.items if d.item_name)
+		result.append(doc)
+
+	return result
+
+
+def get_customers_suppliers(doctype, user):
+	customers = []
+	suppliers = []
+	meta = frappe.get_meta(doctype)
+
+	customer_field_name = get_customer_field_name(doctype)
+
+	has_customer_field = meta.has_field(customer_field_name)
+	has_supplier_field = meta.has_field("supplier")
+
+	if has_common(["Supplier", "Customer"], frappe.get_roles(user)):
+		suppliers = get_parents_for_user("Supplier")
+		customers = get_parents_for_user("Customer")
+	elif frappe.has_permission(doctype, "read", user=user):
+		customer_list = frappe.get_list("Customer")
+		customers = suppliers = [customer.name for customer in customer_list]
+
+	return customers if has_customer_field else None, suppliers if has_supplier_field else None
+
+
+def get_parents_for_user(parenttype: str) -> list[str]:
+	portal_user = frappe.qb.DocType("Portal User")
+
+	return (
+		frappe.qb.from_(portal_user)
+		.select(portal_user.parent)
+		.where(portal_user.user == frappe.session.user)
+		.where(portal_user.parenttype == parenttype)
+	).run(pluck="name")
+
+
+def has_website_permission(doc, ptype, user, verbose=False):
+	doctype = doc.doctype
+	customers, suppliers = get_customers_suppliers(doctype, user)
+	if customers:
+		return frappe.db.exists(doctype, get_customer_filter(doc, customers))
+	elif suppliers:
+		fieldname = "suppliers" if doctype == "Request for Quotation" else "supplier"
+		return frappe.db.exists(doctype, {"name": doc.name, fieldname: ["in", suppliers]})
+	else:
+		return False
+		
 def get_list_context(context, doctype, web_form_name=None):
 	from frappe.modules import load_doctype_module
 	from frappe.website.doctype.web_form.web_form import get_web_form_module
