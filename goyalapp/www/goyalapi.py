@@ -49,7 +49,6 @@ def get(
 		"SG": kwargs,
 		"SG1": filters,
 		"SG3": meta,
-		"SG4": fields,
 	}
 
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
