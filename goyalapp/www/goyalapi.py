@@ -60,7 +60,6 @@ def get(doctype, txt=None, fields=None, filters=None, limit_start=0, limit=20, p
 		filters=filters,
 		limit_start=limit_start,
 		limit_page_length=limit,
-		ignore_permissions=True,
 		order_by=list_context.order_by or "modified desc",
 	)
 
@@ -90,6 +89,7 @@ def get_transaction_list(
 ):
 	user = frappe.session.user
 	ignore_permissions = False
+		return user
 
 	if not filters:
 		filters = {}
