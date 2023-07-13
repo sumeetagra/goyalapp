@@ -27,15 +27,14 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
-def get(doctype, txt=None, fields=None, filters=None, limit_start=0, limit=20, pathname=None, web_form_name=None, **kwargs):
+def get(
+	doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, web_form_name=None, **kwargs
+):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
 
 	if frappe.is_table(doctype):
 		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
-
-	if fields:
-		fields = json.loads(fields)
 
 	if not txt and frappe.form_dict.search:
 		txt = frappe.form_dict.search
@@ -43,6 +42,16 @@ def get(doctype, txt=None, fields=None, filters=None, limit_start=0, limit=20, p
 
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
+
+	filters = prepare_filters(doctype, controller, kwargs)
+	return {
+		"SG2": doctype,
+		"raw_result": controller,
+		"SG": kwargs,
+		"SG1": filters,
+		"SG3": meta,
+		"SG4": fields,
+	}
 
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 	list_context.title_field = getattr(controller, "website", {}).get(
@@ -75,123 +84,8 @@ def get(doctype, txt=None, fields=None, filters=None, limit_start=0, limit=20, p
 	return {
 		"raw_result": raw_result,
 		"SG": kwargs,
-		"SG1": filters,
+		"SG1": list_context,
 	}
-
-def get_transaction_list(
-	doctype,
-	txt=None,
-	filters=None,
-	limit_start=0,
-	limit_page_length=20,
-	order_by="modified",
-	custom=False,
-):
-	user = frappe.session.user
-	ignore_permissions = False
-
-	if not filters:
-		filters = {}
-
-	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
-		return filters
-
-	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
-		parties_doctype = (
-			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
-		)
-		# find party for this contact
-		customers, suppliers = get_customers_suppliers(parties_doctype, user)
-
-		if customers:
-			if doctype == "Quotation":
-				filters["quotation_to"] = "Customer"
-				filters["party_name"] = ["in", customers]
-			else:
-				filters["customer"] = ["in", customers]
-		elif suppliers:
-			filters["supplier"] = ["in", suppliers]
-		elif not custom:
-			return []
-
-		if doctype == "Request for Quotation":
-			parties = customers or suppliers
-			return rfq_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length)
-
-		# Since customers and supplier do not have direct access to internal doctypes
-		ignore_permissions = True
-
-		if not customers and not suppliers and custom:
-			ignore_permissions = False
-			filters = {}
-
-	transactions = get_list_for_transactions(
-		doctype,
-		txt,
-		filters,
-		limit_start,
-		limit_page_length,
-		fields="name",
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
-	)
-
-	if custom:
-		return transactions
-
-	return post_process(doctype, transactions)
-
-def get_list_for_transactions(
-	doctype,
-	txt,
-	filters,
-	limit_start,
-	limit_page_length=20,
-	ignore_permissions=False,
-	fields=None,
-	order_by=None,
-):
-	"""Get List of transactions like Invoices, Orders"""
-	from frappe.www.list import get_list
-
-	meta = frappe.get_meta(doctype)
-	data = []
-	or_filters = []
-
-	for d in get_list(
-		doctype,
-		txt,
-		filters=filters,
-		fields="name",
-		limit_start=limit_start,
-		limit_page_length=limit_page_length,
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
-	):
-		data.append(d)
-
-	if txt:
-		if meta.get_field("items"):
-			if meta.get_field("items").options:
-				child_doctype = meta.get_field("items").options
-				for item in frappe.get_all(child_doctype, {"item_name": ["like", "%" + txt + "%"]}):
-					child = frappe.get_doc(child_doctype, item.name)
-					or_filters.append([doctype, "name", "=", child.parent])
-
-	if or_filters:
-		for r in frappe.get_list(
-			doctype,
-			fields=fields,
-			filters=filters,
-			or_filters=or_filters,
-			limit_start=limit_start,
-			limit_page_length=limit_page_length,
-			ignore_permissions=ignore_permissions,
-			order_by=order_by,
-		):
-			data.append(r)
-
-	return data
 
 def prepare_filters(doctype, controller, kwargs):
 	for key in kwargs.keys():
@@ -220,162 +114,3 @@ def prepare_filters(doctype, controller, kwargs):
 			del filters[fieldname]
 
 	return filters
-
-
-def post_process(doctype, data):
-	result = []
-	for d in data:
-		doc = frappe.get_doc(doctype, d.name)
-
-		doc.status_percent = 0
-		doc.status_display = []
-
-		if doc.get("per_billed"):
-			doc.status_percent += flt(doc.per_billed)
-			doc.status_display.append(
-				_("Billed") if doc.per_billed == 100 else _("{0}% Billed").format(doc.per_billed)
-			)
-
-		if doc.get("per_delivered"):
-			doc.status_percent += flt(doc.per_delivered)
-			doc.status_display.append(
-				_("Delivered") if doc.per_delivered == 100 else _("{0}% Delivered").format(doc.per_delivered)
-			)
-
-		if hasattr(doc, "set_indicator"):
-			doc.set_indicator()
-
-		doc.status_display = ", ".join(doc.status_display)
-		doc.items_preview = ", ".join(d.item_name for d in doc.items if d.item_name)
-		result.append(doc)
-
-	return result
-
-
-def get_customers_suppliers(doctype, user):
-	customers = []
-	suppliers = []
-	meta = frappe.get_meta(doctype)
-
-	customer_field_name = get_customer_field_name(doctype)
-
-	has_customer_field = meta.has_field(customer_field_name)
-	has_supplier_field = meta.has_field("supplier")
-
-	if has_common(["Supplier", "Customer"], frappe.get_roles(user)):
-		suppliers = get_parents_for_user("Supplier")
-		customers = get_parents_for_user("Customer")
-	elif frappe.has_permission(doctype, "read", user=user):
-		customer_list = frappe.get_list("Customer")
-		customers = suppliers = [customer.name for customer in customer_list]
-
-	return customers if has_customer_field else None, suppliers if has_supplier_field else None
-
-
-def get_parents_for_user(parenttype: str) -> list[str]:
-	portal_user = frappe.qb.DocType("Portal User")
-
-	return (
-		frappe.qb.from_(portal_user)
-		.select(portal_user.parent)
-		.where(portal_user.user == frappe.session.user)
-		.where(portal_user.parenttype == parenttype)
-	).run(pluck="name")
-
-
-def has_website_permission(doc, ptype, user, verbose=False):
-	doctype = doc.doctype
-	customers, suppliers = get_customers_suppliers(doctype, user)
-	if customers:
-		return frappe.db.exists(doctype, get_customer_filter(doc, customers))
-	elif suppliers:
-		fieldname = "suppliers" if doctype == "Request for Quotation" else "supplier"
-		return frappe.db.exists(doctype, {"name": doc.name, fieldname: ["in", suppliers]})
-	else:
-		return False
-
-def get_list_context(context, doctype, web_form_name=None):
-	from frappe.modules import load_doctype_module
-	from frappe.website.doctype.web_form.web_form import get_web_form_module
-
-	list_context = context or frappe._dict()
-	meta = frappe.get_meta(doctype)
-
-	def update_context_from_module(module, list_context):
-		# call the user defined method `get_list_context`
-		# from the python module
-		if hasattr(module, "get_list_context"):
-			out = frappe._dict(module.get_list_context(list_context) or {})
-			if out:
-				list_context = out
-		return list_context
-
-	# get context from the doctype module
-	if not meta.custom:
-		# custom doctypes don't have modules
-		module = load_doctype_module(doctype)
-		list_context = update_context_from_module(module, list_context)
-
-	# get context for custom webform
-	if meta.custom and web_form_name:
-		webform_list_contexts = frappe.get_hooks("webform_list_context")
-		if webform_list_contexts:
-			out = frappe._dict(frappe.get_attr(webform_list_contexts[0])(meta.module) or {})
-			if out:
-				list_context = out
-
-	# get context from web form module
-	if web_form_name:
-		web_form = frappe.get_doc("Web Form", web_form_name)
-		list_context = update_context_from_module(get_web_form_module(web_form), list_context)
-
-	# get path from '/templates/' folder of the doctype
-	if not meta.custom and not list_context.row_template:
-		list_context.row_template = meta.get_row_template()
-
-	if not meta.custom and not list_context.list_template:
-		list_context.template = meta.get_list_template() or "www/list.html"
-
-	return list_context
-
-
-def get_list(
-	doctype,
-	txt,
-	filters,
-	limit_start,
-	limit_page_length=20,
-	ignore_permissions=False,
-	fields=None,
-	order_by=None,
-):
-	meta = frappe.get_meta(doctype)
-	if not filters:
-		filters = []
-
-	if not fields:
-		fields = "distinct *"
-
-	or_filters = []
-
-	if txt:
-		if meta.search_fields:
-			for f in meta.get_search_fields():
-				if f == "name" or meta.get_field(f).fieldtype in ("Data", "Text", "Small Text", "Text Editor"):
-					or_filters.append([doctype, f, "like", "%" + txt + "%"])
-		else:
-			if isinstance(filters, dict):
-				filters["name"] = ("like", "%" + txt + "%")
-			else:
-				filters.append([doctype, "name", "like", "%" + txt + "%"])
-
-	return frappe.get_list(
-		doctype,
-		fields=fields,
-		filters=filters,
-		or_filters=or_filters,
-		limit_start=limit_start,
-		limit_page_length=limit_page_length,
-		ignore_permissions=ignore_permissions,
-		order_by=order_by,
-	)
