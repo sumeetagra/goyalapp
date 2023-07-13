@@ -51,7 +51,7 @@ def get(doctype, txt=None, fields=None, filters=None, limit_start=0, limit=20, p
 	if list_context.filters:
 		filters.update(list_context.filters)
 
-	_get_list = get_transaction_listgoyal
+	_get_list = list_context.get_list or get_list
 
 	kwargs = dict(
 		doctype=doctype,
