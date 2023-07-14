@@ -56,6 +56,7 @@ def get_list(
 				filters["name"] = ("like", "%" + txt + "%")
 			else:
 				filters.append([doctype, "name", "like", "%" + txt + "%"])
+		ignore_permissions = True
 
 	return frappe.get_list(
 		doctype,
