@@ -27,6 +27,48 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
+def get_list(
+	doctype,
+	txt,
+	filters,
+	limit_start,
+	limit_page_length=20,
+	ignore_permissions=False,
+	fields=None,
+	order_by=None,
+):
+	meta = frappe.get_meta(doctype)
+	if not filters:
+		filters = []
+
+	if not fields:
+		fields = "distinct *"
+
+	or_filters = []
+
+	if txt:
+		if meta.search_fields:
+			for f in meta.get_search_fields():
+				if f == "name" or meta.get_field(f).fieldtype in ("Data", "Text", "Small Text", "Text Editor"):
+					or_filters.append([doctype, f, "like", "%" + txt + "%"])
+		else:
+			if isinstance(filters, dict):
+				filters["name"] = ("like", "%" + txt + "%")
+			else:
+				filters.append([doctype, "name", "like", "%" + txt + "%"])
+
+	return frappe.get_list(
+		doctype,
+		fields=fields,
+		filters=filters,
+		or_filters=or_filters,
+		limit_start=limit_start,
+		limit_page_length=limit_page_length,
+		ignore_permissions=ignore_permissions,
+		order_by=order_by,
+	)
+
+
 def get(
 	doctype, txt=None, limit_start=0, filters=None, cmd=None, limit=20, web_form_name=None, **kwargs
 ):
