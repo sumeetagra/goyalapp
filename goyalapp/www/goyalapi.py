@@ -70,6 +70,8 @@ def get_list(
 		ignore_permissions=ignore_permissions,
 		order_by=order_by,
 	)
-	return raw_result
-
+	return 
+	{
+		"SG2": raw_result,
+}
 
