@@ -60,7 +60,7 @@ def get_list(
 				filters.append([doctype, "name", "like", "%" + txt + "%"])
 		ignore_permissions = True
 
-	return frappe.get_list(
+	raw_result= frappe.get_list(
 		doctype,
 		fields=fields,
 		filters=filters,
@@ -70,3 +70,6 @@ def get_list(
 		ignore_permissions=ignore_permissions,
 		order_by=order_by,
 	)
+	return raw_result
+
+
