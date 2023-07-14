@@ -37,6 +37,8 @@ def get_list(
 	fields=None,
 	order_by=None,
 ):
+	user = frappe.session.user
+
 	meta = frappe.get_meta(doctype)
 	if not filters:
 		filters = []
