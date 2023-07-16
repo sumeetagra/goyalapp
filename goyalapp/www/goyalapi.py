@@ -127,7 +127,7 @@ def get_transaction_list(
 			filters = {}
 
 		# SG UPDATE
-		ignore_permissions = True
+		return ignore_permissions
 
 	transactions = get_list_for_transactions(
 		doctype,
