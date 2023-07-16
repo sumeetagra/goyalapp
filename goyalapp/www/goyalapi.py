@@ -28,7 +28,7 @@ def get_context(context, **dict_params):
 
 @frappe.whitelist(allow_guest=True)
 def get(
-	doctype, txt=None, limit_start=0, filters=None, fields=None, cmd=None, limit=20, web_form_name=None, **kwargs
+	doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, web_form_name=None, **kwargs
 ):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
@@ -43,9 +43,9 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
-#	return filters
 
-#	filters = prepare_filters(doctype, controller, kwargs)
+	filters = prepare_filters(doctype, controller, kwargs)
+	return filters
 #	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 #	list_context.title_field = getattr(controller, "website", {}).get(
 #		"page_title_field", meta.title_field or "name"
