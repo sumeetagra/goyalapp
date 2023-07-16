@@ -115,10 +115,6 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-		if doctype == "Request for Quotation":
-			parties = customers or suppliers
-			return rfq_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length)
-
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
 
@@ -128,23 +124,6 @@ def get_transaction_list(
 
 		# SG UPDATE
 		return ignore_permissions
-
-	transactions = get_list_for_transactions(
-		doctype,
-		txt,
-		filters,
-		limit_start,
-		limit_page_length,
-		fields="name",
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
-	)
-
-	if custom:
-		return transactions
-
-	return post_process(doctype, transactions)
-
 
 def get_list_for_transactions(
 	doctype,
