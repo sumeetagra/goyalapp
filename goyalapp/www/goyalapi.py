@@ -190,3 +190,28 @@ def get_list_for_transactions(
 
 	return data
 
+def prepare_filters(doctype, controller, kwargs):
+	for key in kwargs.keys():
+		try:
+			kwargs[key] = json.loads(kwargs[key])
+		except ValueError:
+			pass
+	filters = frappe._dict(kwargs)
+	meta = frappe.get_meta(doctype)
+
+	if hasattr(controller, "website") and controller.website.get("condition_field"):
+		filters[controller.website["condition_field"]] = 1
+
+	if filters.pathname:
+		# resolve additional filters from path
+		resolve_path(filters.pathname)
+		for key, val in frappe.local.form_dict.items():
+			if key not in filters and key != "flags":
+				filters[key] = val
+
+	# filter the filters to include valid fields only
+	for fieldname, val in list(filters.items()):
+		if not meta.has_field(fieldname):
+			del filters[fieldname]
+
+	return filters
