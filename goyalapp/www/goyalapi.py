@@ -43,6 +43,8 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
+	return meta
+
 	filters = prepare_filters(doctype, controller, kwargs)
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 	list_context.title_field = getattr(controller, "website", {}).get(
