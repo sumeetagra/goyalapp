@@ -92,10 +92,13 @@ def get_transaction_list(
 	if not filters:
 		filters = {}
 
-	
 
 		# SG UPDATE
-		return is_website_user()
+	return {
+		"raw_result": "",
+		"result": is_website_user(),
+		"user": user,
+	}
 
 
 def get_list_for_transactions(
