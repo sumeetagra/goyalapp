@@ -124,25 +124,6 @@ def get_transaction_list(
 			ignore_permissions = False
 			filters = {}
 
-		# SG UPDATE
-		return ignore_permissions
-
-	transactions = get_list_for_transactions(
-		doctype,
-		txt,
-		filters,
-		limit_start,
-		limit_page_length,
-		fields="name",
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
-	)
-
-	if custom:
-		return transactions
-
-	return post_process(doctype, transactions)
-
 
 def get_list_for_transactions(
 	doctype,
