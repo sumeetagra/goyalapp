@@ -54,7 +54,7 @@ def get(
 	# if list_context.filters:
 	#	filters.update(list_context.filters)
 
-	_get_list = list_context.get_list or get_list
+	_get_list = get_transaction_list
 
 	kwargs = dict(
 		doctype=doctype,
