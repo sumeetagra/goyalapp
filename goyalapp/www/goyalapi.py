@@ -205,3 +205,10 @@ def get_customers_suppliers(doctype, user):
 		customers = suppliers = [customer.name for customer in customer_list]
 
 	return customers if has_customer_field else None, suppliers if has_supplier_field else None
+
+
+def get_customer_field_name(doctype):
+	if doctype == "Quotation":
+		return "party_name"
+	else:
+		return "customer"
