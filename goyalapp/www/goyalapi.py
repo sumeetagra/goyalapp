@@ -69,9 +69,6 @@ def get(
 	# if not list_context.get_list and (list_context.allow_guest or meta.allow_guest_to_view):
 	#	kwargs["ignore_permissions"] = True
 
-
-
-
 	raw_result = _get_list(**kwargs)
 
 	# list context to be used if called as rendered list
@@ -105,7 +102,7 @@ def get_transaction_list(
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
 
 		# SG UPDATE
-		return customers
+		return user
 
 
 def get_list_for_transactions(
