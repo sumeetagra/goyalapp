@@ -85,16 +85,11 @@ def get_customers_suppliers(doctype, user):
 
 	has_customer_field = meta.has_field(customer_field_name)
 	has_supplier_field = meta.has_field("supplier")
-
-	if has_common(["Supplier", "Customer"], frappe.get_roles(user)):
-		suppliers = get_parents_for_user("Supplier")
-		customers = get_parents_for_user("Customer")
-	elif frappe.has_permission(doctype, "read", user=user):
-		customer_list = frappe.get_list("Customer")
-		customers = suppliers = [customer.name for customer in customer_list]
-
-	return customers if has_customer_field else None, suppliers if has_supplier_field else None
-
+return
+{
+		"has_customer_field": has_customer_field,
+		"has_supplier_field": has_supplier_field,
+}
 
 def get_customer_field_name(doctype):
 	if doctype == "Quotation":
@@ -133,8 +128,9 @@ def get_transaction_list(
 		parties_doctype = (
 			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
 		)
+
 		# find party for this contact
-		# customers, suppliers = get_customers_suppliers(parties_doctype, user)
+		customers = get_customers_suppliers(parties_doctype, user)
 
 
 		# SG UPDATE
@@ -142,7 +138,8 @@ def get_transaction_list(
 		"ignore_permissions": ignore_permissions,
 		"result": is_website_user(),
 		"user": user,
-		"customers": parties_doctype,
+		"Doctype": parties_doctype,
+		"customers": customers,
 	}
 
 
