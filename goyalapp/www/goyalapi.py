@@ -134,7 +134,7 @@ def get_transaction_list(
 			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
 		)
 		# find party for this contact
-		customers, suppliers = get_customers_suppliers(parties_doctype, user)
+		# customers, suppliers = get_customers_suppliers(parties_doctype, user)
 
 
 		# SG UPDATE
@@ -142,7 +142,7 @@ def get_transaction_list(
 		"ignore_permissions": ignore_permissions,
 		"result": is_website_user(),
 		"user": user,
-		"customers": customers,
+		"customers": parties_doctype,
 	}
 
 
