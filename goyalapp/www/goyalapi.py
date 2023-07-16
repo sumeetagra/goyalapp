@@ -42,8 +42,9 @@ def get(
 
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
+	filters = frappe._dict(kwargs)
 
-	return meta
+	return filters
 
 	filters = prepare_filters(doctype, controller, kwargs)
 	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
