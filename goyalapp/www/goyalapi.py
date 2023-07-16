@@ -96,6 +96,8 @@ def get_transaction_list(
 		filters = {}
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
+		# SG UPDATE
+		return ignore_permissions
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
 		parties_doctype = (
@@ -124,6 +126,23 @@ def get_transaction_list(
 
 		# SG UPDATE
 		return ignore_permissions
+
+	transactions = get_list_for_transactions(
+		doctype,
+		txt,
+		filters,
+		limit_start,
+		limit_page_length,
+		fields="name",
+		ignore_permissions=ignore_permissions,
+		order_by="modified desc",
+	)
+
+	if custom:
+		return transactions
+
+	return post_process(doctype, transactions)
+
 
 def get_list_for_transactions(
 	doctype,
