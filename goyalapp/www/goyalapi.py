@@ -73,8 +73,6 @@ def get(
 	return raw_result
 
 
-
-
 def get_customers_suppliers(doctype, user):
 	customers = []
 	suppliers = []
@@ -92,9 +90,8 @@ def get_customers_suppliers(doctype, user):
 		customer_list = frappe.get_list("Customer")
 		customers = suppliers = [customer.name for customer in customer_list]
 
-		return suppliers
-
 	return customers if has_customer_field else None, suppliers if has_supplier_field else None
+
 
 
 def get_customer_field_name(doctype):
