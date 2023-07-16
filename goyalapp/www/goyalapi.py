@@ -212,3 +212,13 @@ def get_customer_field_name(doctype):
 		return "party_name"
 	else:
 		return "customer"
+
+def get_parents_for_user(parenttype: str) -> list[str]:
+	portal_user = frappe.qb.DocType("Portal User")
+
+	return (
+		frappe.qb.from_(portal_user)
+		.select(portal_user.parent)
+		.where(portal_user.user == frappe.session.user)
+		.where(portal_user.parenttype == parenttype)
+	).run(pluck="name")
