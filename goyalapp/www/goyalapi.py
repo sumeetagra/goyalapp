@@ -76,6 +76,41 @@ def get(
 
 	return raw_result
 
+def get_customers_suppliers(doctype, user):
+	customers = []
+	suppliers = []
+	meta = frappe.get_meta(doctype)
+
+	customer_field_name = get_customer_field_name(doctype)
+
+	has_customer_field = meta.has_field(customer_field_name)
+	has_supplier_field = meta.has_field("supplier")
+
+	if has_common(["Supplier", "Customer"], frappe.get_roles(user)):
+		suppliers = get_parents_for_user("Supplier")
+		customers = get_parents_for_user("Customer")
+	elif frappe.has_permission(doctype, "read", user=user):
+		customer_list = frappe.get_list("Customer")
+		customers = suppliers = [customer.name for customer in customer_list]
+
+	return customers if has_customer_field else None, suppliers if has_supplier_field else None
+
+
+def get_customer_field_name(doctype):
+	if doctype == "Quotation":
+		return "party_name"
+	else:
+		return "customer"
+
+def get_parents_for_user(parenttype: str) -> list[str]:
+	portal_user = frappe.qb.DocType("Portal User")
+
+	return (
+		frappe.qb.from_(portal_user)
+		.select(portal_user.parent)
+		.where(portal_user.user == frappe.session.user)
+		.where(portal_user.parenttype == parenttype)
+	).run(pluck="name")
 
 def get_transaction_list(
 	doctype,
@@ -118,7 +153,6 @@ def get_transaction_list(
 
 		# SG UPDATE
 	return {
-		"customers": customers,
 		"ignore_permissions": ignore_permissions,
 		"result": is_website_user(),
 		"user": user,
@@ -202,40 +236,3 @@ def prepare_filters(doctype, controller, kwargs):
 			del filters[fieldname]
 
 	return filters
-
-
-def get_customers_suppliers(doctype, user):
-	customers = []
-	suppliers = []
-	meta = frappe.get_meta(doctype)
-
-	customer_field_name = get_customer_field_name(doctype)
-
-	has_customer_field = meta.has_field(customer_field_name)
-	has_supplier_field = meta.has_field("supplier")
-
-	if has_common(["Supplier", "Customer"], frappe.get_roles(user)):
-		suppliers = get_parents_for_user("Supplier")
-		customers = get_parents_for_user("Customer")
-	elif frappe.has_permission(doctype, "read", user=user):
-		customer_list = frappe.get_list("Customer")
-		customers = suppliers = [customer.name for customer in customer_list]
-
-	return customers if has_customer_field else None, suppliers if has_supplier_field else None
-
-
-def get_customer_field_name(doctype):
-	if doctype == "Quotation":
-		return "party_name"
-	else:
-		return "customer"
-
-def get_parents_for_user(parenttype: str) -> list[str]:
-	portal_user = frappe.qb.DocType("Portal User")
-
-	return (
-		frappe.qb.from_(portal_user)
-		.select(portal_user.parent)
-		.where(portal_user.user == frappe.session.user)
-		.where(portal_user.parenttype == parenttype)
-	).run(pluck="name")
