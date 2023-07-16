@@ -70,11 +70,10 @@ def get(
 	#	kwargs["ignore_permissions"] = True
 
 	raw_result = _get_list(**kwargs)
-
-	# list context to be used if called as rendered list
-	# frappe.flags.list_context = list_context
-
 	return raw_result
+
+
+
 
 def get_customers_suppliers(doctype, user):
 	customers = []
