@@ -96,8 +96,6 @@ def get_transaction_list(
 		filters = {}
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
-		# SG UPDATE
-		return ignore_permissions
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
 		parties_doctype = (
@@ -106,23 +104,8 @@ def get_transaction_list(
 		# find party for this contact
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
 
-		if customers:
-			if doctype == "Quotation":
-				filters["quotation_to"] = "Customer"
-				filters["party_name"] = ["in", customers]
-			else:
-				filters["customer"] = ["in", customers]
-		elif suppliers:
-			filters["supplier"] = ["in", suppliers]
-		elif not custom:
-			return []
-
-		# Since customers and supplier do not have direct access to internal doctypes
-		ignore_permissions = True
-
-		if not customers and not suppliers and custom:
-			ignore_permissions = False
-			filters = {}
+		# SG UPDATE
+		return customers
 
 
 def get_list_for_transactions(
