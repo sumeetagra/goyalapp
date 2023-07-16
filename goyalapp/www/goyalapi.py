@@ -150,6 +150,10 @@ def get_transaction_list(
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
 
+		if not customers and not suppliers and custom:
+			ignore_permissions = False
+			filters = {}
+
 
 		# SG UPDATE
 	return {
