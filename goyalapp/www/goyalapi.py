@@ -95,7 +95,7 @@ def get_transaction_list(
 	
 
 		# SG UPDATE
-		return user
+		return is_website_user()
 
 
 def get_list_for_transactions(
