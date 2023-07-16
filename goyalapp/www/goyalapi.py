@@ -125,6 +125,7 @@ def get_transaction_list(
 		if not customers and not suppliers and custom:
 			ignore_permissions = False
 			filters = {}
+		ignore_permissions = True
 
 	transactions = get_list_for_transactions(
 		doctype,
