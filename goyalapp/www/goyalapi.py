@@ -131,7 +131,7 @@ def get_transaction_list(
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
 		# Since customers and supplier do not have direct access to internal doctypes
-		ignore_permissions = True
+		# ignore_permissions = True
 
 	transactions = get_list_for_transactions(
 		doctype,
@@ -140,7 +140,7 @@ def get_transaction_list(
 		limit_start,
 		limit_page_length,
 		fields="name",
-		ignore_permissions=ignore_permissions,
+		ignore_permissions=True,
 		order_by="modified desc",
 	)
 	return post_process(doctype, transactions)
