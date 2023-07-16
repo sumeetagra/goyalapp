@@ -80,12 +80,7 @@ def get_customers_suppliers(doctype, user):
 	suppliers = []
 	meta = frappe.get_meta(doctype)
 
-	customer_field_name = get_customer_field_name(doctype)
-
-	has_customer_field = meta.has_field(customer_field_name)
-	has_supplier_field = meta.has_field("supplier")
-	hasgsg = frappe.has_permission(doctype, "read", user=user)
-	return hasgsg
+	return meta
 
 
 def get_customer_field_name(doctype):
