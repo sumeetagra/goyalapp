@@ -79,7 +79,9 @@ def get_customers_suppliers(doctype, user):
 	customers = []
 	suppliers = []
 	meta = frappe.get_meta(doctype)
-	return meta
+
+	customer_field_name = get_customer_field_name(doctype)
+	return customer_field_name
 
 
 def get_customer_field_name(doctype):
