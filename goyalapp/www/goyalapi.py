@@ -42,35 +42,10 @@ def get(
 
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
+	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
+	return list_context
 
 
-	filters = prepare_filters(doctype, controller, kwargs)
-#	return filters
-#	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
-#	list_context.title_field = getattr(controller, "website", {}).get(
-#		"page_title_field", meta.title_field or "name"
-#	)
-
-	# if list_context.filters:
-	#	filters.update(list_context.filters)
-
-	_get_list = get_transaction_list
-
-	kwargs = dict(
-		doctype=doctype,
-		txt=txt,
-		filters=filters,
-		limit_start=limit_start,
-		limit_page_length=limit,
-		order_by="modified desc",
-	)
-
-	# allow guest if flag is set
-	# if not list_context.get_list and (list_context.allow_guest or meta.allow_guest_to_view):
-	#	kwargs["ignore_permissions"] = True
-
-	raw_result = _get_list(**kwargs)
-	return raw_result
 
 
 def get_customers_suppliers(doctype, user):
