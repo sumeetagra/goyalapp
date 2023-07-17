@@ -116,20 +116,9 @@ def get_transaction_list(
 	user = frappe.session.user
 	ignore_permissions = False
 
-	if not filters:
-		filters = {}
+	sgt = frappe.has_permission(doctype, "read", user=user)
+	return sgt
 
-	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
-
-	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
-		parties_doctype = (
-			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
-		)
-		# find party for this contact
-		customers= get_customers_suppliers(parties_doctype, user)
-		
-		parties = customers or suppliers
-		return customers
 
 
 def get_list_for_transactions(
