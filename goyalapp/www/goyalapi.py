@@ -72,23 +72,6 @@ def get(
 	raw_result = _get_list(**kwargs)
 	return raw_result
 
-
-def get_customers_suppliers(doctype, user):
-	customers = []
-	suppliers = []
-	meta = frappe.get_meta(doctype)
-
-	customer_field_name = get_customer_field_name(doctype)
-
-	has_customer_field = meta.has_field(customer_field_name)
-	has_supplier_field = meta.has_field("supplier")
-
-		customer_list = frappe.get_list("Customer")
-		customers = suppliers = [customer.name for customer in customer_list]
-
-	return customers if has_customer_field else None, suppliers if has_supplier_field else None
-
-
 def get_customer_field_name(doctype):
 	if doctype == "Quotation":
 		return "party_name"
@@ -119,6 +102,8 @@ def get_transaction_list(
 
 	if not filters:
 		filters = {}
+
+	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
