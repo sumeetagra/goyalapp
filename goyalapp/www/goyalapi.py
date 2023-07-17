@@ -72,22 +72,6 @@ def get(
 	raw_result = _get_list(**kwargs)
 	return raw_result
 
-def get_customer_field_name(doctype):
-	if doctype == "Quotation":
-		return "party_name"
-	else:
-		return "customer"
-
-def get_parents_for_user(parenttype: str) -> list[str]:
-	portal_user = frappe.qb.DocType("Portal User")
-
-	return (
-		frappe.qb.from_(portal_user)
-		.select(portal_user.parent)
-		.where(portal_user.user == frappe.session.user)
-		.where(portal_user.parenttype == parenttype)
-	).run(pluck="name")
-
 def get_transaction_list(
 	doctype,
 	txt=None,
@@ -113,6 +97,9 @@ def get_transaction_list(
 		)
 		# find party for this contact
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
+		parties = customers or suppliers
+
+		return parties
 
 		if customers:
 			if doctype == "Quotation":
