@@ -103,7 +103,7 @@ def get_transaction_list(
 	if not filters:
 		filters = {}
 
-	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
+	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, post_process
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
@@ -114,10 +114,39 @@ def get_transaction_list(
 		# find party for this contact
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
 
-		parties = customers or suppliers
+		if customers:
+			if doctype == "Quotation":
+				filters["quotation_to"] = "Customer"
+				filters["party_name"] = ["in", customers]
+			else:
+				filters["customer"] = ["in", customers]
+		elif suppliers:
+			filters["supplier"] = ["in", suppliers]
+		elif not custom:
+			return []
 
-	return parties
+		# Since customers and supplier do not have direct access to internal doctypes
+		ignore_permissions = True
 
+		if not customers and not suppliers and custom:
+			ignore_permissions = False
+			filters = {}
+
+	transactions = get_list_for_transactions(
+		doctype,
+		txt,
+		filters,
+		limit_start,
+		limit_page_length,
+		fields="name",
+		ignore_permissions=ignore_permissions,
+		order_by="modified desc",
+	)
+
+	if custom:
+		return transactions
+
+	return post_process(doctype, transactions)
 
 
 def get_list_for_transactions(
@@ -172,35 +201,6 @@ def get_list_for_transactions(
 
 	return data
 
-
-def post_process(doctype, data):
-	result = []
-	for d in data:
-		doc = frappe.get_doc(doctype, d.name)
-
-		doc.status_percent = 0
-		doc.status_display = []
-
-		if doc.get("per_billed"):
-			doc.status_percent += flt(doc.per_billed)
-			doc.status_display.append(
-				_("Billed") if doc.per_billed == 100 else _("{0}% Billed").format(doc.per_billed)
-			)
-
-		if doc.get("per_delivered"):
-			doc.status_percent += flt(doc.per_delivered)
-			doc.status_display.append(
-				_("Delivered") if doc.per_delivered == 100 else _("{0}% Delivered").format(doc.per_delivered)
-			)
-
-		if hasattr(doc, "set_indicator"):
-			doc.set_indicator()
-
-		doc.status_display = ", ".join(doc.status_display)
-		doc.items_preview = ", ".join(d.item_name for d in doc.items if d.item_name)
-		result.append(doc)
-
-	return result
 
 def prepare_filters(doctype, controller, kwargs):
 	for key in kwargs.keys():
