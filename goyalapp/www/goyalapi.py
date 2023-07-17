@@ -97,9 +97,13 @@ def get_transaction_list(
 		)
 		# find party for this contact
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
-		parties = customers or suppliers
+# 		parties = customers or suppliers
 
-		return parties
+		return {
+		"customers": customers,
+		"suppliers": suppliers,
+		
+		}
 
 		if customers:
 			if doctype == "Quotation":
