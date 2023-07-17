@@ -83,9 +83,12 @@ def get_customers_suppliers(doctype, user):
 	has_customer_field = meta.has_field(customer_field_name)
 	has_supplier_field = meta.has_field("supplier")
 
-	sgt = frappe.has_permission(doctype, "read", user=user)
-	customer_list = frappe.get_list("Customer")	
-		return sgt
+if frappe.has_permission(doctype, "read", user=user):
+		customer_list = frappe.get_list("Customer")
+		customers = suppliers = [customer.name for customer in customer_list]
+
+	return customers if has_customer_field else None, suppliers if has_supplier_field else None
+
 
 
 def get_customer_field_name(doctype):
@@ -116,8 +119,21 @@ def get_transaction_list(
 	user = frappe.session.user
 	ignore_permissions = False
 
-	sgt = frappe.has_permission(doctype, "read", user=user)
-	return sgt
+	if not filters:
+		filters = {}
+
+	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
+
+	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
+		parties_doctype = (
+			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
+		)
+		# find party for this contact
+		customers, suppliers = get_customers_suppliers(parties_doctype, user)
+
+		parties = customers or suppliers
+
+	return parties
 
 
 
