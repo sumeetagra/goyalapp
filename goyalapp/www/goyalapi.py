@@ -99,12 +99,6 @@ def get_transaction_list(
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
 # 		parties = customers or suppliers
 
-		return {
-		"customers": customers,
-		"suppliers": suppliers,
-		
-		}
-
 		if customers:
 			if doctype == "Quotation":
 				filters["quotation_to"] = "Customer"
