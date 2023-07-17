@@ -126,7 +126,7 @@ def get_transaction_list(
 			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
 		)
 		# find party for this contact
-		customers, suppliers = get_customers_suppliers(parties_doctype, user)
+		customers= get_customers_suppliers(parties_doctype, user)
 		
 		parties = customers or suppliers
 		return parties
