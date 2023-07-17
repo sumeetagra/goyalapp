@@ -83,7 +83,7 @@ def get_customers_suppliers(doctype, user):
 	has_customer_field = meta.has_field(customer_field_name)
 	has_supplier_field = meta.has_field("supplier")
 
-	sgt = frappe.has_permission(doctype, "read", user=user):
+	sgt = frappe.has_permission(doctype, "read", user=user)
 	customer_list = frappe.get_list("Customer")	
 		return sgt
 
