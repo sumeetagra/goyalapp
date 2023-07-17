@@ -129,7 +129,7 @@ def get_transaction_list(
 		customers= get_customers_suppliers(parties_doctype, user)
 		
 		parties = customers or suppliers
-		return parties
+		return customers
 
 
 def get_list_for_transactions(
