@@ -43,12 +43,6 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
-	"""Get List of transactions for custom doctypes"""
-#	from frappe.www.list import prepare_filters
-
-	if frappe.local.form_dict.get("filters"):
-		filters = json.loads(frappe.local.form_dict["filters"])
-
 #	filters = prepare_filters(doctype, controller, kwargs)
 #	return filters
 
@@ -105,8 +99,9 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-		filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
-		return filters
+	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
+
+	return filters
 
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
