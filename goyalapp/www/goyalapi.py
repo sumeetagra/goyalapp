@@ -121,7 +121,7 @@ def get_transaction_list(
 		order_by="modified desc",
 	)
 
-	return post_process(doctype, transactions)
+	return post_process(doctype, data)
 
 def SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length):
 	data = frappe.db.get_list('tabSales Invoice')
