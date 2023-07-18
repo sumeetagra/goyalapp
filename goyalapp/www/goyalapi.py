@@ -43,18 +43,6 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
-	if frappe.local.form_dict.get("fields"):
-		fields = frappe.local.form_dict["fields"] = json.loads(frappe.local.form_dict["fields"])
-
-	# set limit of records for frappe.get_list
-	frappe.local.form_dict.setdefault(
-		"limit_page_length",
-		frappe.local.form_dict.limit or frappe.local.form_dict.limit_page_length or 20,
-	)
-
-	if frappe.local.form_dict.cmd:
-		del frappe.local.form_dict["cmd"]
-
 	_get_list = get_transaction_list
 
 	kwargs = dict(
@@ -126,55 +114,3 @@ def get_transaction_list(
 		return transactions
 
 	return post_process(doctype, transactions)
-
-	def get_list_for_transactions(
-	doctype,
-	txt,
-	filters,
-	limit_start,
-	limit_page_length=20,
-	ignore_permissions=False,
-	fields=None,
-	order_by=None,
-):
-	"""Get List of transactions like Invoices, Orders"""
-	from frappe.www.list import get_list
-
-	meta = frappe.get_meta(doctype)
-	data = []
-	or_filters = []
-
-	for d in get_list(
-		doctype,
-		txt,
-		filters=filters,
-		fields="name",
-		limit_start=limit_start,
-		limit_page_length=limit_page_length,
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
-	):
-		data.append(d)
-
-	if txt:
-		if meta.get_field("items"):
-			if meta.get_field("items").options:
-				child_doctype = meta.get_field("items").options
-				for item in frappe.get_all(child_doctype, {"item_name": ["like", "%" + txt + "%"]}):
-					child = frappe.get_doc(child_doctype, item.name)
-					or_filters.append([doctype, "name", "=", child.parent])
-
-	if or_filters:
-		for r in frappe.get_list(
-			doctype,
-			fields=fields,
-			filters=filters,
-			or_filters=or_filters,
-			limit_start=limit_start,
-			limit_page_length=limit_page_length,
-			ignore_permissions=ignore_permissions,
-			order_by=order_by,
-		):
-			data.append(r)
-
-	return data
