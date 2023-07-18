@@ -88,7 +88,7 @@ def get_transaction_list(
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
 	"""Get List of transactions for custom doctypes"""
-	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, get_list_for_transactions, post_process
+	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, post_process
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
 		parties_doctype = (
@@ -126,3 +126,55 @@ def get_transaction_list(
 		return transactions
 
 	return post_process(doctype, transactions)
+
+	def get_list_for_transactions(
+	doctype,
+	txt,
+	filters,
+	limit_start,
+	limit_page_length=20,
+	ignore_permissions=False,
+	fields=None,
+	order_by=None,
+):
+	"""Get List of transactions like Invoices, Orders"""
+	from frappe.www.list import get_list
+
+	meta = frappe.get_meta(doctype)
+	data = []
+	or_filters = []
+
+	for d in get_list(
+		doctype,
+		txt,
+		filters=filters,
+		fields="name",
+		limit_start=limit_start,
+		limit_page_length=limit_page_length,
+		ignore_permissions=ignore_permissions,
+		order_by="modified desc",
+	):
+		data.append(d)
+
+	if txt:
+		if meta.get_field("items"):
+			if meta.get_field("items").options:
+				child_doctype = meta.get_field("items").options
+				for item in frappe.get_all(child_doctype, {"item_name": ["like", "%" + txt + "%"]}):
+					child = frappe.get_doc(child_doctype, item.name)
+					or_filters.append([doctype, "name", "=", child.parent])
+
+	if or_filters:
+		for r in frappe.get_list(
+			doctype,
+			fields=fields,
+			filters=filters,
+			or_filters=or_filters,
+			limit_start=limit_start,
+			limit_page_length=limit_page_length,
+			ignore_permissions=ignore_permissions,
+			order_by=order_by,
+		):
+			data.append(r)
+
+	return data
