@@ -52,15 +52,9 @@ def get(
 		frappe.local.form_dict.limit or frappe.local.form_dict.limit_page_length or 20,
 	)
 
-	return frappe.local.form_dict
-
 	_get_list = get_transaction_list
 
 	kwargs = dict(frappe.local.form_dict)
-
-	# allow guest if flag is set
-	# if not list_context.get_list and (list_context.allow_guest or meta.allow_guest_to_view):
-	#	kwargs["ignore_permissions"] = True
 
 	raw_result = _get_list(**kwargs)
 	return raw_result
