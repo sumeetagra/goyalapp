@@ -107,6 +107,10 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
+	data = frappe.db.get_list('tabSales Invoice')
+
+	return data
+
 			parties = customers or suppliers
 			return SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length)
 
