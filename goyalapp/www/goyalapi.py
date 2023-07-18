@@ -43,8 +43,14 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
-	filters = prepare_filters(doctype, controller, kwargs)
-	return kwargs
+#	filters = prepare_filters(doctype, controller, kwargs)
+
+	if kwargs.filters:
+	filters = json.loads(kwargs.filters)
+	else:
+	filters = {}
+
+	return filters
 
 	_get_list = get_transaction_list
 
