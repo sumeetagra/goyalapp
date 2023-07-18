@@ -52,7 +52,7 @@ def get(
 	else:
 		filters = {}
 
-	return filters[0]
+	return filters
 
 	_get_list = get_transaction_list
 
