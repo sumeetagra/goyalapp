@@ -59,7 +59,7 @@ def get(
 
 	kwargs = dict(
 		doctype=doctype,
-		fields=None,
+		fields=fields,
 		txt=txt,
 		filters=None,
 		limit_start=limit_start,
