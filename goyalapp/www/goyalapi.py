@@ -46,7 +46,9 @@ def get(
 #	filters = prepare_filters(doctype, controller, kwargs)
 
 	if frappe.form_dict.filters:
-		filters = json.loads(frappe.form_dict.filters)
+		frappe.form_dict.filters = json.loads(frappe.form_dict.filters)
+		for d in frappe.form_dict.filters:
+			filters.append((d))
 	else:
 		filters = {}
 
