@@ -102,7 +102,7 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-		return filters	
+	#	filters["supplier"] = ["in", suppliers]
 
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
