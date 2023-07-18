@@ -47,7 +47,7 @@ def get(
 #	from frappe.www.list import prepare_filters
 
 	filters = prepare_filters(doctype, controller, kwargs)
-#	return filters
+	return filters
 
 	_get_list = get_transaction_list
 
@@ -102,7 +102,7 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-		filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
+	#	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
 
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
@@ -130,7 +130,7 @@ def prepare_filters(doctype, controller, kwargs):
 		except ValueError:
 			pass
 	filters = frappe._dict(kwargs)
-#	return filters
+	return filters
 
 	meta = frappe.get_meta(doctype)
 
