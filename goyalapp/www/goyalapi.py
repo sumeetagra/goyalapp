@@ -52,10 +52,7 @@ def get(
 		frappe.local.form_dict.limit or frappe.local.form_dict.limit_page_length or 20,
 	)
 
-	from frappe.www.list import prepare_filters
-
-#	filters = prepare_filters(doctype, controller, kwargs)
-	return frappe.local.form_dict
+	return (**frappe.local.form_dict)
 #	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 #	list_context.title_field = getattr(controller, "website", {}).get(
 #		"page_title_field", meta.title_field or "name"
