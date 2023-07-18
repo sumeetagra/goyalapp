@@ -128,10 +128,7 @@ def get_transaction_list(
 		order_by="modified desc",
 	)
 
-	if custom:
 		return transactions
-
-	return post_process(doctype, transactions)
 
 
 def get_list_for_transactions(
