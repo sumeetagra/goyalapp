@@ -137,8 +137,8 @@ def get_list_for_transactions(
 	filters,
 	limit_start,
 	limit_page_length=20,
-	ignore_permissions=False,
 	fields,
+	ignore_permissions=False,
 	order_by=None,
 ):
 	"""Get List of transactions like Invoices, Orders"""
