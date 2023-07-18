@@ -43,9 +43,10 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
+	from frappe.www.list import prepare_filters
 
 	filters = prepare_filters(doctype, controller, kwargs)
-#	return filters
+	return filters
 #	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 #	list_context.title_field = getattr(controller, "website", {}).get(
 #		"page_title_field", meta.title_field or "name"
@@ -129,6 +130,10 @@ def get_transaction_list(
 	)
 
 		return transactions
+	if custom:
+		return transactions
+
+	return post_process(doctype, transactions)
 
 
 def get_list_for_transactions(
