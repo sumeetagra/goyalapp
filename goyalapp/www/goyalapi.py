@@ -112,8 +112,6 @@ def get_transaction_list(
 			return SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length)
 
 def SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length):
-	data = frappe.db.get_list('tab{doctype}'.format(
-			doctype=parties_doctype)
-	)
+	data = frappe.db.get_list('tabSales Invoice')
 
 	return data
