@@ -76,7 +76,7 @@ def get_transaction_list(
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
 	"""Get List of transactions for custom doctypes"""
-	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, post_process
+	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, get_list_for_transactions, post_process
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
 		parties_doctype = (
