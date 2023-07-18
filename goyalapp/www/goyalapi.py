@@ -28,13 +28,17 @@ def get_context(context, **dict_params):
 
 @frappe.whitelist(allow_guest=True)
 def get(
-	doctype, limit_start=0, fields=None, cmd=None, limit=20, **kwargs
+	doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs
 ):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
 
 	if frappe.is_table(doctype):
 		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
+
+	if not txt and frappe.form_dict.search:
+		txt = frappe.form_dict.search
+		del frappe.form_dict["search"]
 
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
@@ -56,6 +60,7 @@ def get(
 	kwargs = dict(
 		doctype=doctype,
 		fields=fields,
+		txt=txt,
 		filters=None,
 		limit_start=limit_start,
 		limit_page_length=limit,
@@ -68,6 +73,7 @@ def get(
 def get_transaction_list(
 	doctype,
 	fields,
+	txt=None,
 	filters=None,
 	limit_start=0,
 	limit_page_length=20,
@@ -110,6 +116,7 @@ def get_transaction_list(
 
 	transactions = get_list_for_transactions(
 		doctype,
+		txt,
 		filters,
 		limit_start,
 		limit_page_length,
@@ -126,6 +133,7 @@ def get_transaction_list(
 
 def get_list_for_transactions(
 	doctype,
+	txt,
 	filters,
 	limit_start,
 	limit_page_length=20,
@@ -142,6 +150,7 @@ def get_list_for_transactions(
 
 	for d in get_list(
 		doctype,
+		txt,
 		filters=filters,
 		fields="name",
 		limit_start=limit_start,
@@ -150,5 +159,26 @@ def get_list_for_transactions(
 		order_by="modified desc",
 	):
 		data.append(d)
+
+	if txt:
+		if meta.get_field("items"):
+			if meta.get_field("items").options:
+				child_doctype = meta.get_field("items").options
+				for item in frappe.get_all(child_doctype, {"item_name": ["like", "%" + txt + "%"]}):
+					child = frappe.get_doc(child_doctype, item.name)
+					or_filters.append([doctype, "name", "=", child.parent])
+
+	if or_filters:
+		for r in frappe.get_list(
+			doctype,
+			fields=fields,
+			filters=filters,
+			or_filters=or_filters,
+			limit_start=limit_start,
+			limit_page_length=limit_page_length,
+			ignore_permissions=ignore_permissions,
+			order_by=order_by,
+		):
+			data.append(r)
 
 	return data
