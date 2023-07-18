@@ -44,8 +44,7 @@ def get(
 	meta = frappe.get_meta(doctype)
 
 	if frappe.local.form_dict.filters:
-		filters = json.loads(frappe.local.form_dict["filters"])
-		for d in filters:
+		for d in frappe.local.form_dict.filters:
 			filters.append(d)
 	else:
 		filters = {}
