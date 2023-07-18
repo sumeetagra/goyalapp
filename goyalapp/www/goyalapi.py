@@ -103,25 +103,6 @@ def get_transaction_list(
 
 	return filters
 
-		# Since customers and supplier do not have direct access to internal doctypes
-		ignore_permissions = True
-
-	transactions = get_list_for_transactions(
-		doctype,
-		txt,
-		filters,
-		limit_start,
-		limit_page_length,
-		fields="name",
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
-	)
-
-	if custom:
-		return transactions
-
-	return post_process(doctype, transactions)
-
 def prepare_filters(doctype, controller, kwargs):
 	for key in kwargs.keys():
 		try:
