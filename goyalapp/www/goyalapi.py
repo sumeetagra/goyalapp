@@ -44,9 +44,10 @@ def get(
 	meta = frappe.get_meta(doctype)
 
 	"""Get List of transactions for custom doctypes"""
-	from frappe.www.list import prepare_filters
+#	from frappe.www.list import prepare_filters
 
 	filters = prepare_filters(doctype, controller, kwargs)
+	return filters
 
 	_get_list = get_transaction_list
 
@@ -119,3 +120,31 @@ def get_transaction_list(
 		return transactions
 
 	return post_process(doctype, transactions)
+
+def prepare_filters(doctype, controller, kwargs):
+	for key in kwargs.keys():
+		try:
+			kwargs[key] = json.loads(kwargs[key])
+		except ValueError:
+			pass
+	filters = frappe._dict(kwargs)
+	return filters
+	
+	meta = frappe.get_meta(doctype)
+
+	if hasattr(controller, "website") and controller.website.get("condition_field"):
+		filters[controller.website["condition_field"]] = 1
+
+	if filters.pathname:
+		# resolve additional filters from path
+		resolve_path(filters.pathname)
+		for key, val in frappe.local.form_dict.items():
+			if key not in filters and key != "flags":
+				filters[key] = val
+
+	# filter the filters to include valid fields only
+	for fieldname, val in list(filters.items()):
+		if not meta.has_field(fieldname):
+			del filters[fieldname]
+
+	return filters	
