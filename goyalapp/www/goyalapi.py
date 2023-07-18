@@ -107,7 +107,7 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-	data = frappe.db.get_list('tabSales Invoice')
+	data = frappe.db.get_list('Sales Invoice')
 
 	return data
 
