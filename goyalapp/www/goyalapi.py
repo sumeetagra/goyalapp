@@ -102,6 +102,8 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
+		return filters	
+
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
 
