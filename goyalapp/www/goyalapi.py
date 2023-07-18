@@ -52,13 +52,6 @@ def get(
 		frappe.local.form_dict.limit or frappe.local.form_dict.limit_page_length or 20,
 	)
 
-		# convert strings to native types - only as_dict and debug accept bool
-		for param in ["as_dict", "debug"]:
-			param_val = frappe.local.form_dict.get(param)
-			if param_val is not None:
-				frappe.local.form_dict[param] = sbool(param_val)
-
-
 	return frappe.local.form_dict
 
 	_get_list = get_transaction_list
