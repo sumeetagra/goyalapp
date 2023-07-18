@@ -46,6 +46,8 @@ def get(
 	"""Get List of transactions for custom doctypes"""
 #	from frappe.www.list import prepare_filters
 
+	return frappe.local.form_dict:
+
 	filters = prepare_filters(doctype, controller, kwargs)
 	return filters
 
