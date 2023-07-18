@@ -107,6 +107,9 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
+	"""Get List of transactions like Invoices, Orders"""
+	from frappe.www.list import get_list
+
 	data = 	get_list(
 		doctype,
 		txt,
