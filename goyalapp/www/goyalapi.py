@@ -46,7 +46,7 @@ def get(
 #	filters = prepare_filters(doctype, controller, kwargs)
 
 	if filters:
-		filters = json.loads(kwargs.filters)
+		filters = json.loads(filters)
 	else:
 		filters = {}
 
