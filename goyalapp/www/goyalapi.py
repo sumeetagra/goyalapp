@@ -61,7 +61,7 @@ def get(
 		doctype=doctype,
 		fields=fields,
 		txt=txt,
-		filters=filters,
+		filters=None,
 		limit_start=limit_start,
 		limit_page_length=limit,
 		order_by="modified desc",
