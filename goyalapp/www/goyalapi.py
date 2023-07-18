@@ -50,7 +50,7 @@ def get(
 	else:
 		filters = {}
 
-	return filters
+	return filters[0]
 
 	_get_list = get_transaction_list
 
