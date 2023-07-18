@@ -46,7 +46,7 @@ def get(
 	if frappe.local.form_dict.filters:
 		filters = json.loads(frappe.local.form_dict["filters"])
 		for d in filters:
-			filters.append((d.{0}, "in"))
+			filters.append((d[0], "in"))
 	else:
 		filters = {}
 
