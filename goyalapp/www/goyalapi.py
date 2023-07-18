@@ -52,14 +52,14 @@ def get(
 		frappe.local.form_dict.limit or frappe.local.form_dict.limit_page_length or 20,
 	)
 
-	return (**frappe.local.form_dict)
-#	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
-#	list_context.title_field = getattr(controller, "website", {}).get(
-#		"page_title_field", meta.title_field or "name"
-#	)
+		# convert strings to native types - only as_dict and debug accept bool
+		for param in ["as_dict", "debug"]:
+			param_val = frappe.local.form_dict.get(param)
+			if param_val is not None:
+				frappe.local.form_dict[param] = sbool(param_val)
 
-	# if list_context.filters:
-	#	filters.update(list_context.filters)
+
+	return frappe.local.form_dict
 
 	_get_list = get_transaction_list
 
