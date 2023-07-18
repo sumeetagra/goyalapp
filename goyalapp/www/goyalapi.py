@@ -52,6 +52,9 @@ def get(
 		frappe.local.form_dict.limit or frappe.local.form_dict.limit_page_length or 20,
 	)
 
+	if frappe.local.form_dict.cmd:
+		del frappe.local.form_dict["cmd"]
+
 	_get_list = get_transaction_list
 
 	kwargs = dict(frappe.local.form_dict)
