@@ -36,6 +36,9 @@ def get(
 	if frappe.is_table(doctype):
 		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
 
+		if frappe.local.form_dict.get("fields"):
+			fields = frappe.local.form_dict["fields"] = json.loads(frappe.local.form_dict["fields"])
+
 	if not txt and frappe.form_dict.search:
 		txt = frappe.form_dict.search
 		del frappe.form_dict["search"]
@@ -46,7 +49,7 @@ def get(
 	from frappe.www.list import prepare_filters
 
 	filters = prepare_filters(doctype, controller, kwargs)
-	return frappe.local.form_dict
+	return fields
 #	list_context = get_list_context(frappe._dict(), doctype, web_form_name)
 #	list_context.title_field = getattr(controller, "website", {}).get(
 #		"page_title_field", meta.title_field or "name"
