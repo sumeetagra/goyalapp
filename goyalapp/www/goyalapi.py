@@ -28,7 +28,7 @@ def get_context(context, **dict_params):
 
 @frappe.whitelist(allow_guest=True)
 def get(
-	doctype, txt=None, filters=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs
+	doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs
 ):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
@@ -45,8 +45,8 @@ def get(
 
 #	filters = prepare_filters(doctype, controller, kwargs)
 
-	if filters:
-		filters = json.loads(filters)
+	if frappe.form_dict.filters:
+		filters = json.loads(frappe.form_dict.filters)
 	else:
 		filters = {}
 
