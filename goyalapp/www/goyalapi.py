@@ -107,7 +107,6 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-		if doctype == "Request for Quotation":
 			parties = customers or suppliers
 			return SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length)
 
