@@ -47,7 +47,7 @@ def get(
 #	from frappe.www.list import prepare_filters
 
 	filters = prepare_filters(doctype, controller, kwargs)
-	return filters
+#	return filters
 
 	_get_list = get_transaction_list
 
@@ -128,8 +128,8 @@ def prepare_filters(doctype, controller, kwargs):
 		except ValueError:
 			pass
 	filters = frappe._dict(kwargs)
-	return filters
-	
+#	return filters
+
 	meta = frappe.get_meta(doctype)
 
 	if hasattr(controller, "website") and controller.website.get("condition_field"):
