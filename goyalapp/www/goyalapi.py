@@ -107,28 +107,20 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-		# Since customers and supplier do not have direct access to internal doctypes
-		ignore_permissions = True
+		if doctype == "Request for Quotation":
+			parties = customers or suppliers
+			return SI_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length)
 
-		if not customers and not suppliers and custom:
-			ignore_permissions = False
-			filters = {}
-
-	transactions = get_list_for_transactions(
-		doctype,
-		txt,
-		filters,
-		limit_start,
-		limit_page_length,
-		fields,
-		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
+def SI_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length):
+	data = frappe.db.sql(
+		"""select distinct parent as name, supplier from `tab{doctype}`
+			where supplier = '{supplier}' and docstatus=1  order by modified desc limit {start}, {len}""".format(
+			doctype=parties_doctype, supplier=parties[0], start=limit_start, len=limit_page_length
+		),
+		as_dict=1,
 	)
 
-	if custom:
-		return transactions
-
-	return post_process(doctype, transactions)
+	return post_process(doctype, data)
 
 
 def get_list_for_transactions(
