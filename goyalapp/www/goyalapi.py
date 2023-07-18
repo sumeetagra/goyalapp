@@ -44,7 +44,7 @@ def get(
 	meta = frappe.get_meta(doctype)
 
 	filters = prepare_filters(doctype, controller, kwargs)
-	return filters
+#	return filters
 
 	_get_list = get_transaction_list
 
@@ -102,7 +102,7 @@ def get_transaction_list(
 	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
 
 	return filters
-	
+
 
 def prepare_filters(doctype, controller, kwargs):
 	for key in kwargs.keys():
