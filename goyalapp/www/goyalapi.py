@@ -43,12 +43,17 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
+	"""Get List of transactions for custom doctypes"""
+	from frappe.www.list import prepare_filters
+
+	filters = prepare_filters(doctype, controller, kwargs)
+
 	_get_list = get_transaction_list
 
 	kwargs = dict(
 		doctype=doctype,
 		txt=txt,
-		filters=None,
+		filters=filters,
 		limit_start=limit_start,
 		limit_page_length=limit,
 		order_by="modified desc",
