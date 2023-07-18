@@ -109,13 +109,13 @@ def get_transaction_list(
 
 		if doctype == "Request for Quotation":
 			parties = customers or suppliers
-			return SI_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length)
+			return SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length)
 
-def SI_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length):
+def SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length):
 	data = frappe.db.sql(
 		"""select distinct parent as name, customer from `tab{doctype}`
-			where customer = '{supplier}' and docstatus=1  order by modified desc limit {start}, {len}""".format(
-			doctype=parties_doctype, supplier=parties[0], start=limit_start, len=limit_page_length
+			where customer = '{customer}' and docstatus=1  order by modified desc limit {start}, {len}""".format(
+			doctype=parties_doctype, customer=customers, start=limit_start, len=limit_page_length
 		),
 		as_dict=1,
 	)
