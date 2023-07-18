@@ -120,7 +120,7 @@ def get_transaction_list(
 		filters,
 		limit_start,
 		limit_page_length,
-		fields="name",
+		fields,
 		ignore_permissions=ignore_permissions,
 		order_by="modified desc",
 	)
@@ -138,7 +138,7 @@ def get_list_for_transactions(
 	limit_start,
 	limit_page_length=20,
 	ignore_permissions=False,
-	fields="name",
+	fields,
 	order_by=None,
 ):
 	"""Get List of transactions like Invoices, Orders"""
@@ -152,7 +152,7 @@ def get_list_for_transactions(
 		doctype,
 		txt,
 		filters=filters,
-		fields="name",
+		fields,
 		limit_start=limit_start,
 		limit_page_length=limit_page_length,
 		ignore_permissions=ignore_permissions,
