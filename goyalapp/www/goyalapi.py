@@ -107,7 +107,16 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-	data = frappe.db.get_list('Sales Invoice')
+	data = 	get_list(
+		doctype,
+		txt,
+		filters=filters,
+		fields="name",
+		limit_start=limit_start,
+		limit_page_length=limit_page_length,
+		ignore_permissions=ignore_permissions,
+		order_by="modified desc",
+	)
 
 	return data
 
