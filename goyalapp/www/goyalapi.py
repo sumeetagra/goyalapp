@@ -72,7 +72,6 @@ def get(
 
 def get_transaction_list(
 	doctype,
-	fields,
 	txt=None,
 	filters=None,
 	limit_start=0,
@@ -86,15 +85,14 @@ def get_transaction_list(
 	if not filters:
 		filters = {}
 
-	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, get_list_for_transactions, post_process
-
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
-		parties_doctype = ("Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype)
+		parties_doctype = (
+			"Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
+		)
 		# find party for this contact
 		customers, suppliers = get_customers_suppliers(parties_doctype, user)
-# 		parties = customers or suppliers
 
 		if customers:
 			if doctype == "Quotation":
@@ -109,10 +107,6 @@ def get_transaction_list(
 
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
-
-		if not customers and not suppliers and custom:
-			ignore_permissions = False
-			filters = {}
 
 	transactions = get_list_for_transactions(
 		doctype,
