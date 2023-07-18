@@ -117,7 +117,7 @@ def get_transaction_list(
 		fields="name",
 		limit_start=limit_start,
 		limit_page_length=limit_page_length,
-		ignore_permissions=ignore_permissions,
+		ignore_permissions=False,
 		order_by="modified desc",
 	)
 
