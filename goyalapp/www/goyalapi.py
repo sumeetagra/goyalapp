@@ -112,12 +112,6 @@ def get_transaction_list(
 			return SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length)
 
 def SI_transaction_list(parties_doctype, doctype, customers, limit_start, limit_page_length):
-	data = frappe.db.sql(
-		"""select distinct parent as name, customer from `tab{doctype}`
-			where customer = '{customer}' and docstatus=1  order by modified desc limit {start}, {len}""".format(
-			doctype=parties_doctype, customer=customers, start=limit_start, len=limit_page_length
-		),
-		as_dict=1,
-	)
+	data = frappe.db.get_list('tab{doctype}')
 
 	return post_process(doctype, data)
