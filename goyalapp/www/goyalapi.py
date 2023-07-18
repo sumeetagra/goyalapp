@@ -43,14 +43,8 @@ def get(
 	controller = get_controller(doctype)
 	meta = frappe.get_meta(doctype)
 
-	if frappe.local.form_dict.filters:
-		for d in frappe.local.form_dict.filters:
-			filters.append(d)
-	else:
-		filters = {}
-
-#	filters = prepare_filters(doctype, controller, kwargs)
-	return filters
+	filters = prepare_filters(doctype, controller, kwargs)
+	return kwargs
 
 	_get_list = get_transaction_list
 
