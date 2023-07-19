@@ -103,9 +103,30 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
+	#	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
 
-	return filters
+		# Since customers and supplier do not have direct access to internal doctypes
+		ignore_permissions = True
+
+		if not customers and not suppliers and custom:
+			ignore_permissions = False
+			filters = {}
+
+	transactions = get_list_for_transactions(
+		doctype,
+		txt,
+		filters,
+		limit_start,
+		limit_page_length,
+		fields="name",
+		ignore_permissions=ignore_permissions,
+		order_by="modified desc",
+	)
+
+	if custom:
+		return transactions
+
+	return post_process(doctype, transactions)
 
 
 def prepare_filters(doctype, controller, kwargs):
