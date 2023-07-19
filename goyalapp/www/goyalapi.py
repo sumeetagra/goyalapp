@@ -44,6 +44,7 @@ def get(
 	meta = frappe.get_meta(doctype)
 
 	filters = prepare_filters(doctype, controller, kwargs)
+	return filters
 
 	_get_list = get_transaction_list
 
