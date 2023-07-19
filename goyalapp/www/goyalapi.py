@@ -57,11 +57,7 @@ def get(
 	)
 
 	raw_result = _get_list(**kwargs)
-	return {
-			"result": raw_result,
-		"filtersss": filters,
-
-	}
+	return raw_result
 
 
 def get_transaction_list(
