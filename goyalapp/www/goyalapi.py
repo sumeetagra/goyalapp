@@ -103,7 +103,7 @@ def get_transaction_list(
 			return []
 
 	#	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
-		return filters	
+	#	return filters	
 
 		# Since customers and supplier do not have direct access to internal doctypes
 		ignore_permissions = True
@@ -136,23 +136,5 @@ def prepare_filters(doctype, controller, kwargs):
 		except ValueError:
 			pass
 	filters = frappe._dict(kwargs)
-	return filters
-
-	meta = frappe.get_meta(doctype)
-
-	if hasattr(controller, "website") and controller.website.get("condition_field"):
-		filters[controller.website["condition_field"]] = 1
-
-	if filters.pathname:
-		# resolve additional filters from path
-		resolve_path(filters.pathname)
-		for key, val in frappe.local.form_dict.items():
-			if key not in filters and key != "flags":
-				filters[key] = [val]
-
-	# filter the filters to include valid fields only
-	for fieldname, val in list(filters.items()):
-		if not meta.has_field(fieldname):
-			del filters[fieldname]
 
 	return filters	
