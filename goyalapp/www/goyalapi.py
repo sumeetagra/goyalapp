@@ -44,7 +44,7 @@ def get(
 	meta = frappe.get_meta(doctype)
 
 	filters = prepare_filters(doctype, controller, kwargs)
-	return filters
+#	return filters
 
 	_get_list = get_transaction_list
 
@@ -58,7 +58,11 @@ def get(
 	)
 
 	raw_result = _get_list(**kwargs)
-	return raw_result
+	return {
+			"result": raw_result,
+		"filtersss": filters,
+
+	}
 
 
 def get_transaction_list(
