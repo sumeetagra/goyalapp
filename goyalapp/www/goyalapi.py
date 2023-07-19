@@ -102,7 +102,7 @@ def get_transaction_list(
 		elif not custom:
 			return []
 
-	#	filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
+		filters["posting_date"] = ["between", ("2021-09-21", "2021-09-23")]
 	#	return filters	
 
 		# Since customers and supplier do not have direct access to internal doctypes
