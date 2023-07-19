@@ -147,7 +147,7 @@ def prepare_filters(doctype, controller, kwargs):
 		resolve_path(filters.pathname)
 		for key, val in frappe.local.form_dict.items():
 			if key not in filters and key != "flags":
-				filters[key] = val
+				filters[key] = [val]
 
 	# filter the filters to include valid fields only
 	for fieldname, val in list(filters.items()):
