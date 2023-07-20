@@ -53,7 +53,7 @@ def get(
 		filters=filters,
 		limit_start=limit_start,
 		limit_page_length=limit,
-		order_by="modified desc",
+		order_by="name",
 	)
 
 	raw_result = _get_list(**kwargs)
@@ -66,7 +66,7 @@ def get_transaction_list(
 	filters=None,
 	limit_start=0,
 	limit_page_length=20,
-	order_by="modified",
+	order_by="name",
 	custom=False,
 ):
 	user = frappe.session.user
@@ -113,7 +113,7 @@ def get_transaction_list(
 		limit_page_length,
 		fields="name",
 		ignore_permissions=ignore_permissions,
-		order_by="modified desc",
+		order_by="name",
 	)
 
 	if custom:
