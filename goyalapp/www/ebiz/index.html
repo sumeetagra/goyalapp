@@ -162,15 +162,17 @@ frappe.ready(async () => {
 })
 
 async function initialise_select_date() {
-    setup_date_picker();
+    setup_startdate_picker();
     hide_next_button();
 }
 
-function setup_date_picker() {
+function setup_startdate_picker() {
     let date_picker = document.getElementById('start-date');
+	let date_picker1 = document.getElementById('end-date');
+    date_picker1.disabled = true;
     let today = new Date();
     date_picker.max = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 7);
+    today.setDate(today.getDate() - 90);
     date_picker.min = today.toISOString().substr(0, 10);
 }
 
@@ -182,7 +184,12 @@ function hide_next_button() {
 
 
 	function on_date_or_timezone_select() {
-        	frappe.throw(__('SG is HEREe'));
+	    let date_picker1 = document.getElementById('end-date');
+    	let today = new Date();
+	    date_picker1.max = today.toISOString().substr(0, 10);
+    	today.setDate(today.getDate() - 90);
+    	date_picker1.min = today.toISOString().substr(0, 10);
+	        	frappe.throw(__('SG is HEREe'));
 	}
 
 </script>
