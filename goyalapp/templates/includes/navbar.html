@@ -7,27 +7,21 @@
         role="navigation"
         style="min-height: unset; padding: 5px 0"
       >
-        <div class="container">
+        <div class="">
           <div class="top-header-item">
-            <div class="Utility">
-              <div class="remain-time item-list">
-                <span id="countTime"></span>
-              </div>
-              <div class="print item-list">
-                <span class="fa-printer icon-image"
-                  ><a href="" class="hidePrefs"
-                    ><i class="fa fa-inr icons" style="color: #fff"></i
-                    >&nbsp;</a
-                  ></span
+            <!--  <div class="balance-details" ng-if="loggedInUser">
+              <div class="balance due">
+                <span>Last Login: </span>
+                <span>
+                  {{loggedInUser.last_login | date}}</span
                 >
               </div>
 
-              <div class="wallet item-list">
-                <a href="#/walletRecharge" style="display: flex">
-                  <span class="fa-wallet icon-image"
-                    ><img src="/assets/goyalapp/images/wallet-filled-money-tool.svg"
-                  /></span>
-                  <span style="margin-left: 5px">Recharge</span></a
+            </div> -->
+            <div class="Utility">
+              <div class="wallet item-list" ng-if="loggedInUser">
+                <a href="" style="display: flex">
+                  <span style="margin-left: 5px">Goyal Xchange Portal</span></a
                 >
               </div>
             </div>
@@ -37,9 +31,10 @@
                 <img src="static/images/customer-service.svg" />
               </div>
               <div class="support-no">
+                <!-- <span class="title">Customer Support</span> -->
                 <span class="title"
-                  ><a href="tel:+91 9764999444">
-                    +91 9764999444</a
+                  ><a href="tel:+918799949170">
+                    +91 8799949170</a
                   ></span
                 >
               </div>
@@ -49,20 +44,20 @@
                   <div>
                     <i class="fa fa-whatsapp" aria-hidden="true"></i> Mobile
                   </div>
-                  <div>+91 9764999444</div>
+                  <div>+91 8799949170</div>
                 </div>
                 <div class="divinfo">
                   <div>
                     <i class="fa fa-phone" aria-hidden="true"></i> Helpline no
                   </div>
-                  <div>+91 9764999444</div>
+                  <div>+91 2527749 / 50</div>
                 </div>
                 <hr />
                 <div class="divinfo">
                   <div>
                     <i class="fa fa-envelope-o" aria-hidden="true"></i> Email Us
                   </div>
-                  <div>admin@goyalironsteel.com</div>
+                  <div> admin@goyalironsteel.com</div>
                 </div>
               </div>
             </div>
