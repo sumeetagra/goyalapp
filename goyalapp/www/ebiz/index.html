@@ -188,8 +188,8 @@ function on_start_date_select() {
     date_picker1.disabled = false;
    	let today = new Date();
     date_picker1.max = today.toISOString().substr(0, 10);
-   	today.setDate(today.getDate() - 90);
-   	date_picker1.min = date_picker.toISOString().substr(0, 10);
+	today.setDate(date_picker.value);
+   	date_picker1.min = today.toISOString().substr(0, 10);
    	frappe.throw(__('SG is HEREe'));
 	}
 
