@@ -166,6 +166,12 @@ async function initialise_select_date() {
     hide_next_button();
 }
 
+function hide_next_button() {
+    let next_button = document.getElementById('fetch-button');
+    next_button.disabled = true;
+    next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
+}
+
 function setup_startdate_picker() {
     let date_picker = document.getElementById('start-date');
 	let date_picker1 = document.getElementById('end-date');
@@ -174,12 +180,6 @@ function setup_startdate_picker() {
     date_picker.max = today.toISOString().substr(0, 10);
     today.setDate(today.getDate() - 90);
     date_picker.min = today.toISOString().substr(0, 10);
-}
-
-function hide_next_button() {
-    let next_button = document.getElementById('fetch-button');
-    next_button.disabled = true;
-    next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
 }
 
 
