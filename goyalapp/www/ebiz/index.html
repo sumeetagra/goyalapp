@@ -186,11 +186,7 @@ function hide_next_button() {
 function on_start_date_select() {
     let date_picker1 = document.getElementById('end-date');
     date_picker1.disabled = false;
-   	let today = new Date();
-    date_picker1.max = today.toISOString().substr(0, 10);
-	today.setDate(date_picker.value.getDate());
-   	date_picker1.min = today.toISOString().substr(0, 10);
-   	frappe.throw(__('SG is HEREe'));
+   	frappe.throw(__(date_picker.value));
 }
 
 </script>
