@@ -190,6 +190,7 @@ function on_start_date_select() {
     window.startdate = date_picker.value;
     date_picker1.disabled = false;
     let today = new Date();
+				console.log(today.getDate());
     date_picker1.max = today.toISOString().substr(0, 10);
     today.setDate(today.getDate() - 90);
     date_picker1.min = today.toISOString().substr(0, 10);
@@ -209,7 +210,6 @@ async function submit() {
         method: 'goyalapp.www.goyalapi.get',
         args: {
             'date': window.selected_date,
-            'doctype': window.selected_time,
             'doctype': 'Sales Invoice',
             'contact': contact,
             'tz':window.selected_timezone
