@@ -157,14 +157,14 @@
 			</div>
 
 <script>
-frappe.ready(async () => {
+frappe.ready(function() {
     initialise_select_date();
-})
 
-async function initialise_select_date() {
+function initialise_select_date() {
     setup_startdate_picker();
     hide_next_button();
 }
+
 
 function hide_next_button() {
     let button = document.getElementById('submit-button');
@@ -182,56 +182,50 @@ function setup_startdate_picker() {
     date_picker.min = today.toISOString().substr(0, 10);
 }
 
+	var next_start = {{ next_start or 0 }};
+	var result_wrapper = $(".website-list .result");
 
-function on_start_date_select() {
-    let date_picker = document.getElementById('start-date');
-    let date_picker1 = document.getElementById('end-date');
-    window.startdate = date_picker.value;
-    date_picker1.disabled = false;
-    let today = new Date();
-    date_picker1.max = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 90);
-    date_picker1.min = today.toISOString().substr(0, 10);
-}
+	$(".website-list .btn-more").on("click", function() {
+		var btn = $(this);
+		var data = $.extend(frappe.utils.get_query_params(), {
+			doctype: "{{ doctype }}",
+			txt: "{{ txt or '' }}",
+			limit_start: next_start,
+			pathname: location.pathname,
+		});
+		data.web_form_name = frappe.web_form_name;
+		data.pathname = location.pathname;
+		btn.prop("disabled", true);
+		return $.ajax({
+			url:"/api/method/frappe.www.list.get",
+			data: data,
+			statusCode: {
+				200: function(data) {
+					var data = data.message;
+					next_start = data.next_start;
+					$.each(data.result, function(i, d) {
+						$(d).appendTo(result_wrapper);
+					});
+					toggle_more(data.show_more);
+				}
+			}
+		}).always(function() {
+			btn.prop("disabled", false);
+		});
+	});
+	var toggle_more = function(show) {
+		if (!show) {
+			$(".website-list .more-block").addClass("hide");
+		}
+	};
 
-function on_end_date_select() {
-    let button = document.getElementById('submit-button');
-    let date_picker1 = document.getElementById('end-date');
-    window.enddate = date_picker1.value;
-    button.disabled = false;
-}
-
-async function submit() {
-    let button = document.getElementById('submit-button');
-    button.disabled = true;
-    let appointment =  frappe.call({
-        method: 'goyalapp.www.goyalapi.get',
-        args: {
-            'date': window.selected_date,
-            'doctype': window.selected_time,
-            'doctype': 'Sales Invoice',
-            'contact': contact,
-            'tz':window.selected_timezone
-        },
-        callback: (response)=>{
-            if (response.message.status == "Unverified") {
-                frappe.show_alert(__("Please check your email to confirm the appointment"))
-            } else {
-                frappe.show_alert(__("Appointment Created Successfully"));
-            }
-            setTimeout(()=>{
-                let redirect_url = "/";
-                if (window.appointment_settings.success_redirect_url){
-                    redirect_url += window.appointment_settings.success_redirect_url;
-                }
-                window.location.href = redirect_url;},5000)
-        },
-        error: (err)=>{
-            frappe.show_alert(__("Something went wrong please try again"));
-            button.disabled = false;
-        }
-    });
-}
+	if($('.navbar-header .navbar-toggle:visible').length === 1)
+	{
+		$('.page-head h1').addClass('list-head').click(function(){
+			window.history.back();
+	 	});
+	}
+});
 
 </script>
 
