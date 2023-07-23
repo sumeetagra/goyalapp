@@ -182,6 +182,24 @@ function setup_startdate_picker() {
     date_picker.min = today.toISOString().substr(0, 10);
 }
 
+function on_start_date_select() {
+    let date_picker = document.getElementById('start-date');
+    let date_picker1 = document.getElementById('end-date');
+    window.startdate = date_picker.value;
+    date_picker1.disabled = false;
+    let today = new Date();
+    date_picker1.max = today.toISOString().substr(0, 10);
+    today.setDate(today.getDate() - 90);
+    date_picker1.min = today.toISOString().substr(0, 10);
+}
+
+function on_end_date_select() {
+    let button = document.getElementById('submit-button');
+    let date_picker1 = document.getElementById('end-date');
+    window.enddate = date_picker1.value;
+    button.disabled = false;
+}
+
 	var next_start = {{ next_start or 0 }};
 	var result_wrapper = $(".website-list .result");
 
