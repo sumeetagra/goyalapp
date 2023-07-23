@@ -169,9 +169,9 @@ async function initialise_select_date() {
 function setup_date_picker() {
     let date_picker = document.getElementById('start-date');
     let today = new Date();
-    date_picker.min = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 7);
     date_picker.max = today.toISOString().substr(0, 10);
+    today.setDate(today.getDate() - 7);
+    date_picker.min = today.toISOString().substr(0, 10);
 }
 
 function hide_next_button() {
