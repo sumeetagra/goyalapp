@@ -169,7 +169,7 @@ async function initialise_select_date() {
 function hide_next_button() {
     let button = document.getElementById('submit-button');
     button.disabled = true;
-    next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
+    button.onclick = () => frappe.msgprint(__("Please select a date and time"));
 }
 
 function setup_startdate_picker() {
@@ -190,7 +190,7 @@ function on_start_date_select() {
     date_picker1.disabled = false;
     let today = new Date();
     date_picker1.max = today.toISOString().substr(0, 10);
-    today.setDate(date_picker.value);
+    today.setDate(today.getDate() - 90);
     date_picker1.min = today.toISOString().substr(0, 10);
 }
 
@@ -208,7 +208,8 @@ async function submit() {
         method: 'goyalapp.www.goyalapi.get',
         args: {
             'date': window.selected_date,
-            'time': window.selected_time,
+            'doctype': window.selected_time,
+            'doctype': 'Sales Invoice',
             'contact': contact,
             'tz':window.selected_timezone
         },
