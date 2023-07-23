@@ -40,7 +40,7 @@
 											<input type="date" name="end-date" id="end-date" class="form-control mt-3 col-md m-3">
 										</div>
 										<div class="col-md-3">
-							                <button class="btn btn-primary form-control" style="margin-top: 10px;" id="fetch-button">{{ _("Fetch") }}</button>
+							                <button class="btn btn-primary form-control" style="margin-top: 10px;" onclick="submit()" id="submit-button">{{ _("Fetch") }}</button>
 										</div>
 										<div class="col-md-3">
 										</div>
@@ -186,14 +186,52 @@ function setup_startdate_picker() {
 function on_start_date_select() {
     let date_picker = document.getElementById('start-date');
     let date_picker1 = document.getElementById('end-date');
+    window.startdate = date_picker.value;
     date_picker1.disabled = false;
     let today = new Date();
-frappe.msgprint(__(today.getDate()));
     date_picker1.max = today.toISOString().substr(0, 10);
     today.setDate(date_picker.value);
     date_picker1.min = today.toISOString().substr(0, 10);
-    frappe.throw(__('SG is HEREe'));
 }
+
+async function submit() {
+    let button = document.getElementById('submit-button');
+    button.disabled = true;
+    let form = document.querySelector('#customer-form');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        button.disabled = false;
+        return;
+    }
+    let contact = get_form_data();
+    let appointment =  frappe.call({
+        method: 'erpnext.www.book_appointment.index.create_appointment',
+        args: {
+            'date': window.selected_date,
+            'time': window.selected_time,
+            'contact': contact,
+            'tz':window.selected_timezone
+        },
+        callback: (response)=>{
+            if (response.message.status == "Unverified") {
+                frappe.show_alert(__("Please check your email to confirm the appointment"))
+            } else {
+                frappe.show_alert(__("Appointment Created Successfully"));
+            }
+            setTimeout(()=>{
+                let redirect_url = "/";
+                if (window.appointment_settings.success_redirect_url){
+                    redirect_url += window.appointment_settings.success_redirect_url;
+                }
+                window.location.href = redirect_url;},5000)
+        },
+        error: (err)=>{
+            frappe.show_alert(__("Something went wrong please try again"));
+            button.disabled = false;
+        }
+    });
+}
+
 </script>
 
 
