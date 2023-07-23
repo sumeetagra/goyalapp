@@ -34,7 +34,7 @@
 									<div class="box-header with-border">
 									<div class="col-md-9">
 										<div class="col-md-3">
-											<input type="date" name="start-date" id="start-date" class="form-control mt-3 col-md m-3">
+											<input type="date" oninput="on_start_date_select()" name="start-date" id="start-date" class="form-control mt-3 col-md m-3">
 										</div>
 										<div class="col-md-3">
 											<input type="date" name="end-date" id="end-date" class="form-control mt-3 col-md m-3">
@@ -183,7 +183,7 @@ function hide_next_button() {
 }
 
 
-	function on_date_or_timezone_select() {
+	function on_start_date_select() {
 	    let date_picker1 = document.getElementById('end-date');
     	let today = new Date();
 	    date_picker1.max = today.toISOString().substr(0, 10);
