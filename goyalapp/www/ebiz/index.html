@@ -188,7 +188,7 @@ function on_start_date_select() {
     let date_picker1 = document.getElementById('end-date');
     date_picker1.disabled = false;
     let today = new Date();
-frappe.msgprint(__(today));
+frappe.msgprint(__(today.getDate()));
     date_picker1.max = today.toISOString().substr(0, 10);
     today.setDate(date_picker.value);
     date_picker1.min = today.toISOString().substr(0, 10);
