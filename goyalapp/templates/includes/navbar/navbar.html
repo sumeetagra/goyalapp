@@ -1,39 +1,4 @@
 <nav class="navbar navbar-light navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="{{ url_prefix }}{{ home_page or "/" }}">
-      {%- if brand_html -%}
-        {{ brand_html }}
-      {%- elif banner_image -%}
-        <img src='{{ banner_image }}'>
-      {%- else -%}
-        <span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
-      {%- endif -%}
-    </a>
-    <button class="navbar-toggler" type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span>
-        <svg class="icon icon-lg">
-          <use href="#icon-menu"></use>
-        </svg>
-      </span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      {% include "templates/includes/navbar/navbar_items.html" %}
-    </div>
-    <div class="form-group mb-0 hide" id="language-switcher">
-      <select class="form-control"></select>
-    </div>
-  </div>
-</nav>
-
-
-
-      <header id="main-header" data-height-onload="66">
       <div class="container clearfix et_menu_container">
               <div class="logo_container">
           <span class="logo_helper"></span>
@@ -69,9 +34,6 @@
 <li id="menu-item-154" class="btn01 sg-popup-id-543 menu-item menu-item-type-custom menu-item-object-custom menu-item-154"><a href="#">Request a Quote</a></li>
 </ul>           </nav>
           
-          
-          
-          
           <div id="et_mobile_nav_menu">
         <div class="mobile_nav closed">
           <span class="select_page">Select Page</span>
@@ -79,6 +41,51 @@
         </div>
       </div>        </div> <!-- #et-top-navigation -->
       </div> <!-- .container -->
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_prefix }}{{ home_page or "/" }}">
+      {%- if brand_html -%}
+        {{ brand_html }}
+      {%- elif banner_image -%}
+        <img src='{{ banner_image }}'>
+      {%- else -%}
+        <span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+      {%- endif -%}
+    </a>
+    <button class="navbar-toggler" type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span>
+        <svg class="icon icon-lg">
+          <use href="#icon-menu"></use>
+        </svg>
+      </span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% include "templates/includes/navbar/navbar_items.html" %}
+    </div>
+    <div class="form-group mb-0 hide" id="language-switcher">
+      <select class="form-control"></select>
+    </div>
+  </div>
+</nav>
+
+
+
+      <header id="main-header" data-height-onload="66">
+
 
 
 <link rel="stylesheet" href="/assets/goyalapp/css/refactorHeaderWithMenu.css" />
