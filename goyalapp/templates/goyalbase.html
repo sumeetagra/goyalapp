@@ -88,6 +88,7 @@
     {% block content %}
         {{ content }}
     {% endblock %}
+    </div>
 
     {%- block footer -%}
         {{ web_block(
@@ -99,7 +100,6 @@
         ) }}
     {%- endblock -%}
     <a href="" class="scrollup" style="display: none;">Scroll</a>
-    </div>
 
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
