@@ -67,7 +67,7 @@
         window.show_language_picker = {{ show_language_picker or 'false' }};
     </script>
 </head>
-<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or 'home page-template-default page page-id-7 et_pb_button_helper_class et_fixed_nav et_show_nav et_cover_background et_pb_gutter osx et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns5 et_header_style_left et_pb_pagebuilder_layout et_smooth_scroll et_right_sidebar et_divi_theme et-db et_minified_js et_minified_css esg-blurlistenerexists chrome'}}">
+<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="home page-template-default page page-id-7 et_pb_button_helper_class et_fixed_nav et_show_nav et_cover_background et_pb_gutter osx et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns5 et_header_style_left et_pb_pagebuilder_layout et_smooth_scroll et_right_sidebar et_divi_theme et-db et_minified_js et_minified_css esg-blurlistenerexists chrome">
     {% include "public/icons/timeless/icons.svg" %}
     {%- block banner -%}
         {% include "templates/includes/banner_extension.html" ignore missing %}
