@@ -59,10 +59,13 @@
   </a>
 </li>
 {% else %}
-<a class="dropdown-item" href="{{ url }}"
-  {% if item.open_in_new_tab %} target="_blank" {% endif %}>
-  {{ _(item.label) }}
-</a>
+  <li class="menu-item menu-item-type-post_type menu-item-object-page">
+    <a href="{{ url }}"
+      {% if item.open_in_new_tab %} target="_blank" {% endif %}>
+      {{ _(item.label) }}
+    </a>
+</li>
+
 {% endif %}
 
 {% endif %}
