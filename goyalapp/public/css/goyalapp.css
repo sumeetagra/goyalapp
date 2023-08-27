@@ -39,6 +39,45 @@
     background-color: var(--bg-color);
     border: 1px solid var(--border-color);
 }
+
+#logo {
+    display: inline-block;
+    float: none;
+    max-height: 54%;
+    margin-bottom: 0;
+    vertical-align: middle;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    -webkit-transform: translate3d(0,0,0)
+}
+
+.et_pb_svg_logo #logo,.et_pb_svg_logo.et_header_style_split .et-fixed-header .centered-inline-logo-wrap #logo {
+    height: 54%
+}
+
+.logo_container {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out
+}
+
+span.logo_helper {
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle
+}
+
+.et_vertical_nav .logo_container {
+    position: relative;
+    height: auto;
+    padding: 0
+}
+
+.et_vertical_nav span.logo_helper {
+    display: none
+}
 .control-label {
     font-weight: 500;
 }
