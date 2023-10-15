@@ -117,102 +117,11 @@
                     <li><a href="./hoteliers.aspx"><i class="fa fa-shield"></i> Feedback</a></li>
                     <li><a href="https://mail.google.com/a/goyalironsteel.com"><i class="fa fa-envelope"></i> Web Mail</a></li>
                      <li><a href="./Contactus.htm"><i class="fa fa-phone-square" aria-hidden="true"></i> Contact Us</a></li>
+
+  {% include "templates/includes/gonavbar/gonavbar_login.html" %}
+
                 </ul>
             </div>
         </div>
        </nav>
     </header>
-
-
-
-
-<header id="main-header" data-height-onload="94" data-height-loaded="true" data-fixed-height-onload="94" style="top: 0px;" class="">
-  <div class="container clearfix et_menu_container">
-
-
-    <div id="et-top-navigation" data-height="66" data-fixed-height="40" style="padding-left: 240px;">
-      <nav id="top-menu-nav">
-{% macro render_item(item, submenu=False, parent=False) %}
-{% if item.child_items %}
-
-{% if parent %}
-
-{%- set dropdown_id = 'id-' + frappe.utils.generate_hash(length=12) -%}
-<li class="mdropdown {% if submenu %} dropdown-submenu {% endif %}">
-  <a href="#" id="{{ dropdown_id }}">
-    {{ _(item.label) }}
-  </a>
-    <ul class="sub-menu" aria-labelledby="{{ dropdown_id }}">
-    {% for child in item.child_items %}
-      {{ render_item(child, True) }}
-    {% endfor %}
-  </ul>
-</li>
-{% else %}
-{%- set dropdown_id = 'id-' + frappe.utils.generate_hash(length=12) -%}
-<li class="dropdown {% if submenu %} dropdown-submenu {% endif %}">
-  <a class="dropdown-item dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button"
-    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ _(item.label) }}
-  </a>
-  <ul class="dropdown-menu" aria-labelledby="{{ dropdown_id }}">
-    {% for child in item.child_items %}
-      {{ render_item(child, True) }}
-  {% endfor %}
-  </ul>
-</li>
-{% endif %}
-
-{% else %}
-
-{% set url = item.url or '' %}
-{% set url = url if url.startswith('#') else url | abs_url %}
-
-{% if parent %}
-<li class="menu-item menu-item-type-post_type menu-item-object-page">
-  <a href="{{ url }}"
-    {% if item.open_in_new_tab %} target="_blank" {% endif %}>
-    {{ _(item.label) }}
-  </a>
-</li>
-{% else %}
-  <li class="menu-item menu-item-type-post_type menu-item-object-page">
-    <a href="{{ url }}"
-      {% if item.open_in_new_tab %} target="_blank" {% endif %}>
-      {{ _(item.label) }}
-    </a>
-</li>
-
-{% endif %}
-
-{% endif %}
-{% endmacro %}
-
-
-          <ul id="top-menu" class="nav">
-            {%- for item in top_bar_items -%}
-              {% if not item.parent_label and not item.right -%}
-                {{ render_item(item, parent=True) }}
-              {%- endif -%}
-            {%- endfor %}
-
-
-  {% include "templates/includes/gonavbar/gonavbar_login.html" %}
-
-
-</ul>           
-
-
-</nav>
-          
-       </div> <!-- #et-top-navigation -->
-      </div> <!-- .container -->
-
-
-
-
-
-
-
-            </header> <!-- #main-header -->
-
