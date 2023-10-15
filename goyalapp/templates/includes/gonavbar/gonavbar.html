@@ -1,13 +1,21 @@
-    <header class="tbo_header">
-       <div class="tbocontainer clearfix">
-        <div class="tborow">
-            <div class="l3 m4 s9 tbo">
-                <div class="tbo_logo">
-                    <a href="/"><img src="https://goyalironsteel.com/tenders/assets/images/logo.png" alt="Goyal Group" title="Goyal Group"></a>
-                </div>
-            </div>
-            <div class="l9 m8 s3 tbo">
-                <a id="mob-menu"><i class="fa fa-bars"></i></a>
+<header id="main-header" data-height-onload="94" data-height-loaded="true" data-fixed-height-onload="94" style="top: 0px;" class="tbo_header">
+  <div class="tbocontainer clearfix">
+    <div class="tborow">
+      <div class="l3 m4 s9 tbo">
+        <div class="tbo_logo">
+          <a href="{{ url_prefix }}{{ home_page or "/" }}">
+          {%- if brand_html -%}
+          {{ brand_html }}
+          {%- elif banner_image -%}
+            <img src="{{ banner_image }}" alt="Goyal Group" title="Goyal Group">
+          {%- else -%}
+            <span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+          {%- endif -%}
+          </a>
+        </div>
+      </div>
+      <div class="l9 m8 s3 tbo">
+        <a id="mob-menu"><i class="fa fa-bars"></i></a>
                 <div class="cont_dtl">
                     <i class="fa fa-phone"></i>
                    <code><tt>Enquiry Helpdesk:</tt>  +91-87999-49170</code>
@@ -54,18 +62,7 @@
 
 <header id="main-header" data-height-onload="94" data-height-loaded="true" data-fixed-height-onload="94" style="top: 0px;" class="">
   <div class="container clearfix et_menu_container">
-    <div class="logo_container">
-          <span class="logo_helper"></span>
-        <a href="{{ url_prefix }}{{ home_page or "/" }}">
-      {%- if brand_html -%}
-        {{ brand_html }}
-      {%- elif banner_image -%}
-            <img src='{{ banner_image }}' alt="Goyal Xchange" id="logo" data-height-percentage="91" />
-      {%- else -%}
-        <span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
-      {%- endif -%}
-          </a>
-    </div>
+
 
     <div id="et-top-navigation" data-height="66" data-fixed-height="40" style="padding-left: 240px;">
       <nav id="top-menu-nav">
