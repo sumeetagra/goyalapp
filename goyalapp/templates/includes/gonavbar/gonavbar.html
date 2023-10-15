@@ -72,7 +72,7 @@
 {% if parent %}
 
 {%- set dropdown_id = 'id-' + frappe.utils.generate_hash(length=12) -%}
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children {% if submenu %} dropdown-submenu {% endif %}">
+<li class="mdropdown {% if submenu %} dropdown-submenu {% endif %}">
   <a href="#" id="{{ dropdown_id }}">
     {{ _(item.label) }}
   </a>
