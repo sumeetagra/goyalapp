@@ -25,74 +25,9 @@
        </div>
        <nav class="tbo_nav tbofullwidth">
 
-
-{% macro render_item(item, submenu=False, parent=False) %}
-{% if item.child_items %}
-
-{% if parent %}
-
-{%- set dropdown_id = 'id-' + frappe.utils.generate_hash(length=12) -%}
-<li class="mdropdown {% if submenu %} dropdown-submenu {% endif %}">
-  <a href="#" id="{{ dropdown_id }}">
-    {{ _(item.label) }}
-  </a>
-    <ul class="sub-menu" aria-labelledby="{{ dropdown_id }}">
-    {% for child in item.child_items %}
-      {{ render_item(child, True) }}
-    {% endfor %}
-  </ul>
-</li>
-{% else %}
-{%- set dropdown_id = 'id-' + frappe.utils.generate_hash(length=12) -%}
-<li class="dropdown {% if submenu %} dropdown-submenu {% endif %}">
-  <a class="dropdown-item dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button"
-    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ _(item.label) }}
-  </a>
-  <ul class="dropdown-menu" aria-labelledby="{{ dropdown_id }}">
-    {% for child in item.child_items %}
-      {{ render_item(child, True) }}
-  {% endfor %}
-  </ul>
-</li>
-{% endif %}
-
-{% else %}
-
-{% set url = item.url or '' %}
-{% set url = url if url.startswith('#') else url | abs_url %}
-
-{% if parent %}
-<li class="menu-item menu-item-type-post_type menu-item-object-page">
-  <a href="{{ url }}"
-    {% if item.open_in_new_tab %} target="_blank" {% endif %}>
-    {{ _(item.label) }}
-  </a>
-</li>
-{% else %}
-  <li class="menu-item menu-item-type-post_type menu-item-object-page">
-    <a href="{{ url }}"
-      {% if item.open_in_new_tab %} target="_blank" {% endif %}>
-      {{ _(item.label) }}
-    </a>
-</li>
-
-{% endif %}
-
-{% endif %}
-{% endmacro %}
-
-
        <div class="tbocontainer pad_sixteen">
             <div class="mmenu_show">
                 <ul class="menu_ul">
-            {%- for item in top_bar_items -%}
-              {% if not item.parent_label and not item.right -%}
-                {{ render_item(item, parent=True) }}
-              {%- endif -%}
-            {%- endfor %}
-
-
                     <li class="active"><a href="/index.html"><i class="fa fa-th-large"></i> Home</a></li>
                     <li class="mdropdown">
                         <a href="javascript:void(0)"><i class="fa fa-bars"></i> About Us <i class="fa fa-angle-down"></i></a>
