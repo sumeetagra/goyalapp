@@ -27,6 +27,13 @@
        <div class="tbocontainer pad_sixteen">
             <div class="mmenu_show">
                 <ul class="menu_ul">
+            {%- for item in top_bar_items -%}
+              {% if not item.parent_label and not item.right -%}
+                {{ render_item(item, parent=True) }}
+              {%- endif -%}
+            {%- endfor %}
+
+
                     <li class="active"><a href="/index.html"><i class="fa fa-th-large"></i> Home</a></li>
                     <li class="mdropdown">
                         <a href="javascript:void(0)"><i class="fa fa-bars"></i> About Us <i class="fa fa-angle-down"></i></a>
