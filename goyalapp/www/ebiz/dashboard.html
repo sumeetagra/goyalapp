@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <img src="./website_files/inner_ban1.jpg" alt="White Label Solutions" class="img_fw">
+        <img src="/assets/goyalapp/images/inner_ban1.jpg" alt="Coal" class="img_fw">
     </div>
 <div class="cont_strip tbofullwidth">
         <div class="tbocontainer clearfix">
@@ -107,90 +107,5 @@
         </div>
     </main>
      
-
-
-
-
-
-<script>
-
-frappe.ready(async () => {
-    initialise_select_date();
-})
-
-async function initialise_select_date() {
-    setup_startdate_picker();
-    hide_next_button();
-}
-
-function hide_next_button() {
-    let button = document.getElementById('submit-button');
-    button.disabled = true;
-    button.onclick = () => frappe.msgprint(__("Please select a date and time"));
-}
-
-function setup_startdate_picker() {
-    let date_picker = document.getElementById('start-date');
-	let date_picker1 = document.getElementById('end-date');
-    date_picker1.disabled = true;
-    let today = new Date();
-    date_picker.max = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 90);
-    date_picker.min = today.toISOString().substr(0, 10);
-}
-
-
-function on_start_date_select() {
-    let date_picker = document.getElementById('start-date');
-    let date_picker1 = document.getElementById('end-date');
-    window.startdate = date_picker.value;
-    date_picker1.disabled = false;
-    let today = new Date();
-				console.log(today.getDate());
-    date_picker1.max = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 90);
-    date_picker1.min = today.toISOString().substr(0, 10);
-}
-
-function on_end_date_select() {
-    let button = document.getElementById('submit-button');
-    let date_picker1 = document.getElementById('end-date');
-    window.enddate = date_picker1.value;
-    button.disabled = false;
-}
-
-async function submit() {
-    let button = document.getElementById('submit-button');
-    button.disabled = true;
-    let appointment =  frappe.call({
-        method: 'goyalapp.www.goyalapi.get',
-        args: {
-            'date': window.selected_date,
-            'doctype': 'Sales Invoice',
-            'contact': contact,
-            'tz':window.selected_timezone
-        },
-        callback: (response)=>{
-				log(response);
-            if (response.message.status == "Unverified") {
-                frappe.show_alert(__("Please check your email to confirm the appointment"))
-            } else {
-                frappe.show_alert(__("Appointment Created Successfully"));
-            }
-            setTimeout(()=>{
-                let redirect_url = "/";
-                if (window.appointment_settings.success_redirect_url){
-                    redirect_url += window.appointment_settings.success_redirect_url;
-                }
-                window.location.href = redirect_url;},5000)
-        },
-        error: (err)=>{
-            frappe.show_alert(__("Something went wrong please try again"));
-            button.disabled = false;
-        }
-    });
-}
-</script>
-
 
 {% endblock %}
