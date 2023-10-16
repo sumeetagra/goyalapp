@@ -95,14 +95,210 @@
 
                     </div>
                 </div>
+     <div class="tbo l4 m5 s12">
+         <!--=================Zoho query form ========================--->  
+         <div id="crmWebToEntityForm" class="queryform">
+         
+         <form action="https://crm.zoho.com/crm/WebToLeadForm" name="WebToLeads1402644000000089005" method="POST" onsubmit="javascript:document.charset=&quot;UTF-8&quot;; return checkMandatory()" accept-charset="UTF-8" class="form_cont reldiv clearfix" id="contact_form" siq_id="autopick_2490">
+                        <h2>Contact Us</h2>
+                         <!-- Do not remove this code. -->
+                        <input type="text" style="display:none;" name="xnQsjsdp" value="5ec42c0f6df15b127638156f5a503f1d28adfc90dc744cb6608298d6258f27dd">
+                        <input type="hidden" name="zc_gad" id="zc_gad" value="">
+                        <input type="text" style="display:none;" name="xmIwtLD" value="fe50e137bafeb7d10cb45df0bc7ad6e5fca8bf511b67159c575820f11eb0c784">
+                        <input type="text" style="display:none;" name="actionType" value="TGVhZHM=">
+                        <input type="text" style="display:none;" name="returnURL" value="./thanks.aspx"> 
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>Your Name<dfn>*</dfn></label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <input type="text" maxlength="80" placeholder="Your Name" class="full_form" name="Last Name">
+                            </div>
+                        </div>
+                        
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>Email<dfn>*</dfn></label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <input type="text" placeholder="name@example.com" maxlength="100" class="full_form" name="Email">
+                            </div>
+                        </div>
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>Phone No.</label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <input type="text" placeholder="+91 999XXXXXXX" maxlength="30" class="full_form" name="Phone">
+                            </div>
+                        </div>
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>Category<dfn>*</dfn></label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <select name="Industry" class="full_form">
+                                    <option value="-None-">-None-</option>
+                                    <option selected="" value="General Enquiries">General Enquiries</option>
+                                    <option value="Coal Enquiries">Coal Enquiries</option>
+                                    <option value="Steel Enquiries">Steel Enquiries</option>
+                                    <option value="Foundry Solutions Enquiry">Foundry Solutions Enquiry</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>Our Products<dfn>*</dfn></label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <select name="Lead Source" class="full_form">
+                                    <option value="-None-">-None-</option>
+                                    <option selected="" value="Pig Iron">Pig Iron</option>
+                                    <option value="Imported Coal">Imported Coal</option>
+                                    <option value="Indian Coal">Indian Coal</option>
+                                    <option value="Coal Fines">Coal Fines</option>
+                                    <option value="Gotron LCA">Gotron LCA</option>
+                                    <option value="Others">Others</option>
+                                </select>
+                            </div>
+                        </div>          
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>City<dfn>*</dfn></label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <input type="text" placeholder="Choose City" maxlength="30" name="City" class="full_form">
+                            </div>
+                        </div>
+                        <div class="tborowinner">
+                            <div class="l5 m5 s12 tbo">
+                                <label>Country<dfn>*</dfn></label>
+                            </div>
+                            <div class="l7 m7 s12 tbo">
+                                <input type="text" placeholder="Country" maxlength="30" name="Country" class="full_form">
+                            </div>
+                        </div>
+                        <div class="tborowinner">
+                            <div class="l12 m12 s12 tbo">
+                                <label>Your Query</label>
+                            </div>
+                            <div class="l12 m12 s12 tbo">
+                                <textarea name="Description" maxlength="1000" class="full_form"></textarea>
+                            </div>
+                        </div>
 
+                           <script>
+      var mndFileds=new Array('Last Name','Email','Lead Source','Industry','City','Country');
+      var fldLangVal=new Array('Your Name','Email','Our Products','Category','City','Country');
+        var name='';
+        var email='';
 
+  /* Do not remove this code. */
+      function reloadImg() {
+        if(document.getElementById('imgid').src.indexOf('&d') !== -1 ) {
+          document.getElementById('imgid').src=document.getElementById('imgid').src.substring(0,document.getElementById('imgid').src.indexOf('&d'))+'&d'+new Date().getTime();
+        }  else {
+          document.getElementById('imgid').src = document.getElementById('imgid').src+'&d'+new Date().getTime();
+         } 
+     }
 
-
-
+      function checkMandatory() {
+        for(i=0;i<mndFileds.length;i++) {
+          var fieldObj=document.forms['WebToLeads1402644000000089005'][mndFileds[i]];
+          if(fieldObj) {
+            if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
+             if(fieldObj.type =='file')
+                { 
+                 alert('Please select a file to upload'); 
+                 fieldObj.focus(); 
+                 return false;
+                } 
+            alert(fldLangVal[i] +' cannot be empty'); 
+              fieldObj.focus();
+              return false;
+            }  else if(fieldObj.nodeName=='SELECT') {
+             if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
+                alert(fldLangVal[i] +' cannot be none'); 
+                fieldObj.focus();
+                return false;
+               }
+            } else if(fieldObj.type =='checkbox'){
+             if(fieldObj.checked == false){
+                alert('Please accept  '+fldLangVal[i]);
+                fieldObj.focus();
+                return false;
+               } 
+             } 
+             try {
+                 if(fieldObj.name == 'Last Name') {
+                name = fieldObj.value;
+                }
+            } catch (e) {}
+            }
+        }
+         }
+       
+     </script>
+     <!-- Do not remove this code. -->
+     </form>
+       </div>
+         <!--=================Zoho query form End ========================--->
+     </div>
 
             </div>
         </div>
      
+<div class="tbofullwidth video_col">
+            <div class="shape1 hidden-xs hidden-sm"></div>
+            <div class="shape2 hidden-xs hidden-sm"></div>
+            <div class="shape3 hidden-xs hidden-sm"></div>
+            <div class="tbocontainer clearfix video_col_inner">
+                <div class="l7 m7 s12 tbo">
+                    <div class="video_col_lft">
+                        <h2 class="binner_inner">Benefits</h2>
+                        <ul>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                Large Stocking capacity with presence in the Centre of India, Nagpur.
+                            </li>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                Having rich and diversified experience of over 32 years.
+                            </li>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                Customer Centric Approach with optimum satisfaction and win win situation for both Buyer and Seller.
+                            </li>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                The Group has a specialised Laboratory for its testing procedures.
+                            </li>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                Highly Professional approach with Full IT infrastrucure for 24*7 data access for every Customer and Supplier through SAP Goyal Xchange Portal for realtime access to data.
+                            </li>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                Multiple location, Multi Product organsiation with presence in all major Industrial zones for urgent availability of material.
+                            </li>
+                            <li>
+                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                Reliability and consistenacy with zero unfair practise record for past 32 years.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="l5 m5 s12 tbo">
+                    <div class="video_col_rht">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
 
 {% endblock %}
