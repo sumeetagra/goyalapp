@@ -98,13 +98,40 @@
     </div>
 
     {%- block footer -%}
-        {{ web_block(
-            footer_template or 'Standard Footer',
-            values=_context_dict,
-            add_container=0,
-            add_top_padding=0,
-            add_bottom_padding=0
-        ) }}
+        <div class="tbocontainer clearfix">
+            <div class="tborow">
+                <div class="l8 m12 s12 tbo">
+                    <ul class="ft_links">
+                       <li><a href="/">Home </a> | </li>
+                        <li><a href="./faq.aspx">FAQs </a> | </li>
+                        <li><a href="./terms-conditions.aspx">Terms &amp; Conditions</a> | </li>
+                        <li><a href="./privacy-policy.aspx">Privacy Policy </a> | </li>
+                       
+                        <li><a href="./news_events.aspx">News &amp; Events </a> | </li>
+                        <li><a href="./about-us.aspx">About Us </a> | </li>
+                        <li><a href="./contactus.htm">Contact Us </a></li>
+                    </ul>
+                </div>
+                <div class="l4 m12 s12 tbo">
+                    <small class="tbo_copyr" id="copyright">© 2023 Goyal Group</small>
+                </div>
+                <div class="l12 m12 s12 tbo">
+                    <div class="ft_social">
+                        <span>Follow Us:</span>
+                        <a class="fb" href="https://www.facebook.com/goyalgroupindia" target="_blank">
+                            <i class="fa fa-facebook" aria-label="facebook"></i>
+                        </a>
+                        <a class="tw" href="https://twitter.com/Goyal_India" target="_blank">
+                            <i class="fa fa-twitter" aria-label="twitter"></i>
+                        </a>
+                        <a class="in" href="https://in.linkedin.com/company/goyal-group" target="_blank">
+                            <i class="fa fa-linkedin" aria-label="linkedin"></i>
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+        </div> 
     {%- endblock -%}
     <a href="" class="scrollup" style="display: none;">Scroll</a>
 
