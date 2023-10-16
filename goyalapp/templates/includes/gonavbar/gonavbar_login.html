@@ -1,10 +1,6 @@
 <!-- post login tools -->
 {% if not only_static %}
 
-
-
-
-
 	{% if frappe.session.user != 'Guest' %}
 	<div class="profilesec">
         <div class="m-r-10"><p class="tellipsis">Goyal Dhatu Udyog Pvt Ltd<span>(Agent)</span></p><p class="grey_clr">EMTA39279917</p></div>
@@ -20,11 +16,6 @@
 			{%- endif -%}
 			{%- endfor -%}
 
-
-                <a class="sb_link_2" href="/agents/UpdateProfile/UpdateProfile"> <i class="sm_mg"></i> My Profile</a>
-                <a class="sb_link_2" href="/agents/UpdateProfile/ChangePassword"> <i class="sm_mg2"></i> Change Password</a>
-               	<a class="sb_link_2" href="/agents/UpdateProfile/UserAuthetication"> <i class="sm_mg2"></i> User Authetication</a>
-                            
                 <a class="sb_link_2 bck_grnd" ng-click="Logout()"><i class="sm_mg6"></i> Log Out</a>
             </div>
         </div>
@@ -36,13 +27,7 @@
 			<span class="user-image-wrapper"></span>
 		</a>
 		<ul class="dropdown-menu dropdown-menu-right" role="menu">
-			{%- for child in post_login -%}
-			{%- if child.url -%}
-			<a class="dropdown-item" href="{{ child.url | abs_url }}"  {% if child.open_in_new_tab %} target="_blank" {% endif %} rel="nofollow">
-				{{ child.label }}
-			</a>
-			{%- endif -%}
-			{%- endfor -%}
+
 			<a class="dropdown-item switch-to-desk hidden" href="/app">{{ _('Switch To Desk') }}</a>
 		</ul>
 	</li>
@@ -55,10 +40,5 @@
           <i class="fa fa-phone"></i>
 	    	<a href="/login">{{ _("E-Login") }}</a>
         </div>
-
-	<div class="profilesec">
-    <li class="btn01 sg-popup-id-543 menu-item menu-item-type-custom menu-item-object-custom menu-item-154">
-    	<a href="/login">{{ _("E-Login") }}</a>
-    </li>
 	{% endif %}
 {% endif %}
