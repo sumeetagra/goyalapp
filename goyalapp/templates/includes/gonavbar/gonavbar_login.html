@@ -6,21 +6,21 @@
 
 
 	{% if frappe.session.user != 'Guest' %}
-<div class="profilesec">
-                    <div class="m-r-10"><p class="tellipsis">Goyal Dhatu Udyog Pvt Ltd<span>(Agent)</span></p><p class="grey_clr">EMTA39279917</p></div>
-                    <div class="m-r-5"><img src="/agents/Content/assets/dist/img/user-profile.svg"></div>
-                    <img src="/agents/Content/assets/dist/img/downArrow.svg" alt="Arrow">
+	<div class="profilesec">
+        <div class="m-r-10"><p class="tellipsis">Goyal Dhatu Udyog Pvt Ltd<span>(Agent)</span></p><p class="grey_clr">EMTA39279917</p></div>
+        <div class="m-r-5"><img src="/agents/Content/assets/dist/img/user-profile.svg"></div>
+        <img src="/agents/Content/assets/dist/img/downArrow.svg" alt="Arrow">
 
-                    <div class="dropdown-menu3 ng-scope" ng-controller="AdminController" ng-click="BindSubAgentListForDistributor()">
-                        <div class="booking_pnl">
-                            <a class="sb_link_2" href="/agents/UpdateProfile/UpdateProfile"> <i class="sm_mg"></i> My Profile</a>
-                            <a class="sb_link_2" href="/agents/UpdateProfile/ChangePassword"> <i class="sm_mg2"></i> Change Password</a>
-               <a class="sb_link_2" href="/agents/UpdateProfile/UserAuthetication"> <i class="sm_mg2"></i> User Authetication</a>
+        <div class="dropdown-menu3 ng-scope" ng-controller="AdminController" ng-click="BindSubAgentListForDistributor()">
+            <div class="booking_pnl">
+                <a class="sb_link_2" href="/agents/UpdateProfile/UpdateProfile"> <i class="sm_mg"></i> My Profile</a>
+                <a class="sb_link_2" href="/agents/UpdateProfile/ChangePassword"> <i class="sm_mg2"></i> Change Password</a>
+               	<a class="sb_link_2" href="/agents/UpdateProfile/UserAuthetication"> <i class="sm_mg2"></i> User Authetication</a>
                             
-                            <a class="sb_link_2 bck_grnd" ng-click="Logout()"><i class="sm_mg6"></i> Log Out</a>
-                        </div>
-                    </div>
-                </div>
+                <a class="sb_link_2 bck_grnd" ng-click="Logout()"><i class="sm_mg6"></i> Log Out</a>
+            </div>
+        </div>
+    </div>
 
 
 	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children logged-in" id="website-post-login" data-label="website-post-login" style="display: none">
@@ -41,7 +41,14 @@
 	{% endif %}
 
 
-	{% if not hide_login %}
+	{% if frappe.session.user == 'Guest' %}
+
+        <div class="cont_dtl">
+          <i class="fa fa-phone"></i>
+	    	<a href="/login">{{ _("E-Login") }}</a>
+        </div>
+
+	<div class="profilesec">
     <li class="btn01 sg-popup-id-543 menu-item menu-item-type-custom menu-item-object-custom menu-item-154">
     	<a href="/login">{{ _("E-Login") }}</a>
     </li>
