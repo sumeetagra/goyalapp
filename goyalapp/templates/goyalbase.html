@@ -121,6 +121,27 @@
     <!-- js should be loaded in body! -->
     <script type="text/javascript" src="/assets/goyalapp/js/owl.carousel.min.js"></script>
     <script src="/assets/goyalapp/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+              $('#sbanner').owlCarousel({
+                loop: true,
+                margin:0,
+                responsiveClass: true,
+                autoplay:true,
+                responsive: {
+                  0: {
+                    items: 1,
+                    nav: false
+                  },
+                  1000: {
+                    items: 1,
+                    nav: false, 
+                    margin:0
+                  }
+                }
+              })
+            })
+    </script>
     <script>
         frappe.boot = {{ boot }}
         // for backward compatibility of some libs
