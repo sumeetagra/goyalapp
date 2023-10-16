@@ -4,237 +4,105 @@
 
 
 {% block title %}
-{{ _("My Account") }}
+{{ _("Goyal Group | Steam Coal - Pig Iron - Foundry Scrap - Foundry Solutions - Foundry Coke") }}
 {% endblock %}
+
 {% block page_content %}
+     
+<div class="inner_ban"> 
+        <div class="tbocontainer">
+            <div class="tborow">
+                <div class="l10 m10 s12 tbo">
+                    <h2 class="wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;"><span>Uncompromising Quality<br>at</span> The Most Competitive Price!</h2>
+                </div>
+            </div>
+        </div>
+        <img src="/assets/goyalapp/images/inner_ban1.jpg" alt="Coal" class="img_fw">
+    </div>
+<div class="cont_strip tbofullwidth">
+        <div class="tbocontainer clearfix">
+            <div class="tborow">
+                <div class="l12 m12 s12 tbo">
 
-<link rel='stylesheet' href='/assets/goyalapp/admin/style/style.css'></link>
-<link rel='stylesheet' href='/assets/goyalapp/admin/style/MTMH.css'></link>
-<link href='/assets/goyalapp/css/GAPI-ColorTheme.css' rel='stylesheet'></link>
-<link href='/assets/goyalapp/css/GAPI-ThemeSite.css' rel='stylesheet'></link>
-			<div class="wrapper">
-				<div class="content-wrapper">
-					<section class="content-header">
-						<h1>View Markup</h1>
-						<!-- <ol class="breadcrumb">
-							<li><a href="" ng-click="navigateHome()"><i
-									class="fa fa-dashboard"></i> Home</a></li>
-							<li><a href="#">User</a></li>
-							<li><a href="#">View All Users</a></li>
-							<li class="active">View Markup</li>
-						</ol> -->
-					</section>
-					<!-- Main content -->
-					<section class="content">
-						<div id="divLoading"></div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="box">
-									
-									<div class="box-header with-border">
-									<div class="col-md-9">
-										<div class="col-md-3">
-											<input type="date" oninput="on_start_date_select()" name="start-date" id="start-date" class="form-control mt-3 col-md m-3">
-										</div>
-										<div class="col-md-3">
-											<input type="date" oninput="on_end_date_select()" name="end-date" id="end-date" class="form-control mt-3 col-md m-3">
-										</div>
-										<div class="col-md-3">
-							                <button class="btn btn-primary form-control" style="margin-top: 10px;" onclick="submit()" id="submit-button">{{ _("Fetch") }}</button>
-										</div>
-										<div class="col-md-3">
-										</div>
+                </div>
+            </div>
+        </div>        
+    </div>
 
-									</div>
-									<div class="col-md-3">
-									</div>
-								</div>
-									
-									<div class="box-body">
-										<form class="form-horizontal">
-											<div class="form-group">
+     <div class="inner_pg tbofullwidth">
+     <div class="tbocontainer clearfix">
+     <div class="tborow">
+     
+<div class="tbo l8 m7 s12">
+                    <h2 class="inner_heading">Welcome to Goyal Group!</h2>
+                    <p>Goyal Group, by virtue of its entrepreneurial skills, innovative strategies and seamless execution, is emerging as one of the fastest growing and leading private sector organisations in India. With a mere scrap trading activity since inception, We have turned out to be a versatile Global Company with presence in every core sector of the economy such as Steel, Coal, Foundry Solutions, Education etc, with reach and presence in every part of India.</p>
+                    <p>Goyal Group is one of the leading integrated steel traders and one of the largest private sector trader of Pig Iron and Steam Coal in India. Ever since our inception, we have always looked at things differently. When the world saw possibilities, we saw opportunities. The companys strengths lie in its integrated process management, knowledge management and control systems. Its staff of highly skilled engineers, technicians and managers with specialised domain knowledge, ensure seamless supply chain management systems. As it rapidly forges ahead on all these fronts, GISNPL has successfully reinforced its position as market leader, while simultaneously making technological breakthroughs and setting even higher standards for itself.</p>
+                    
+                    <div class="inner_bslide">
+                        <div class="owl-carousel owl-theme owl-loaded owl-drag" id="sbanner"> 
+                            
+                            
+                            
+							 
+							 
+							
 
-												<div class="clearfix"></div>
-												<div class="col-md-12">
-													<div class="responsive-table table-container">
-													<table id="example2"
-														class="table table-bordered table-hover dataTable"
-														role="grid" aria-describedby="example2_info">
-														<thead>
-															<tr role="row">
-															<th colspan="1" rowspan="1" class="sorting"
-														aria-controls="example2" aria-label="" tabindex="0">
-														<label class="Airlines"><input
-															id="checkAll" type="checkbox" ng-model="checkAll"
-															ng-change="selectAll()"> <span
-															class="checkmark"></span>
-													</label>
-													</th>
-																<th width="8%" colspan="1" rowspan="1"
-																	class="sorting_desc" aria-controls="example2"
-																	aria-label="" aria-sort="descending" tabindex="0">Carrier</th>
-																	<th width="8%" colspan="1" rowspan="1"
-																	class="sorting_desc" aria-controls="example2"
-																	aria-label="" aria-sort="descending" tabindex="0">Category</th>
-																<th width="8%" colspan="1" rowspan="1"
-																	class="sorting_desc" aria-controls="example2"
-																	aria-label="" aria-sort="descending" tabindex="0">Service
-																	Type</th>
-																<th width="8%" colspan="1" rowspan="1"
-																	class="sorting_desc" aria-controls="example2"
-																	aria-label="" aria-sort="descending" tabindex="0">Base
-																	Fare %</th>
-																<th width="13%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">YQ
-																	%</th>
-																<th width="10%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">Flat Markup</th>
-																	<th width="10%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">% Markup</th>
-																	<th width="10%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">Created On</th>
-																	<th width="10%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">Company</th>
-																	<th width="10%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">Status</th>
-																	
-																	<th width="10%" colspan="1" rowspan="1" class="sorting"
-																	aria-controls="example2" aria-label="" tabindex="0">Select</th>
+                        <div class="owl-stage-outer"><div class="owl-stage" style="width: 9276px; transform: translate3d(-6184px, 0px, 0px); transition: all 0.25s ease 0s;"><div class="owl-item cloned" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class="lazyload" data-src="imagesnew/inner_ban3.jpg" alt="TBO">
+                                </a>
+                            </div></div><div class="owl-item cloned" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" ls-is-cached lazyloaded" data-src="imagesnew/inner_ban4.jpg" alt="TBO" src="./website_files/inner_ban4.jpg">
+                                </a>
+                            </div></div><div class="owl-item cloned" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" lazyloaded" data-src="imagesnew/inner_ban5.jpg" alt="TBO" src="./website_files/inner_ban5.jpg">
+                                </a>
+                            </div></div><div class="owl-item" style="width: 773px;"><div class="item">
+                                    <img class=" lazyloaded" data-src="imagesnew/inner_ban1.jpg" alt="TBO" src="./website_files/inner_ban1.jpg">
+                            </div></div><div class="owl-item" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" lazyloaded" data-src="imagesnew/inner_ban2.jpg" alt="TBO" src="./website_files/inner_ban2.jpg">
+                                </a>
+                            </div></div><div class="owl-item" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" lazyloaded" data-src="imagesnew/inner_ban6.jpg" alt="TBO" src="./website_files/inner_ban6.jpg">
+                                </a>
+                            </div></div><div class="owl-item" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" lazyloaded" data-src="imagesnew/inner_ban3.jpg" alt="TBO" src="./website_files/inner_ban3.jpg">
+                                </a>
+                            </div></div><div class="owl-item" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" lazyloaded" data-src="imagesnew/inner_ban4.jpg" alt="TBO" src="./website_files/inner_ban4.jpg">
+                                </a>
+                            </div></div><div class="owl-item active" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" ls-is-cached lazyloaded" data-src="imagesnew/inner_ban5.jpg" alt="TBO" src="./website_files/inner_ban5.jpg">
+                                </a>
+                            </div></div><div class="owl-item cloned" style="width: 773px;"><div class="item">
+                                    <img class=" ls-is-cached lazyloaded" data-src="imagesnew/inner_ban1.jpg" alt="TBO" src="./website_files/inner_ban1.jpg">
+                            </div></div><div class="owl-item cloned" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class=" ls-is-cached lazyloaded" data-src="imagesnew/inner_ban2.jpg" alt="TBO" src="./website_files/inner_ban2.jpg">
+                                </a>
+                            </div></div><div class="owl-item cloned" style="width: 773px;"><div class="item">
+                                <a href="./Whitelabel_solutions.aspx#">
+                                    <img class="lazyload" data-src="imagesnew/inner_ban6.jpg" alt="TBO">
+                                </a>
+                            </div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button></div></div>
 
-															</tr>
-														<tbody>
-															<tr role="row" class="even table-row"
-																ng-repeat="markup in ctrl.markupList">
-																<td data-label="Ticket No">
-														<div class="input-group">
-															<label class=" Airlines"> <input type="checkbox"
-																ng-model="markup.selected"> <span
-																class="checkmark"></span>
-															</label>
-														</div>
-													</td>
-																<td>1</td>
-																<td>2</td>
-																<td>3</td>
-																<td>4</td>
-																<td>5</td>
-																<td>6</td>
-																<td>7</td>
-																<td>8</td>
-																<td>9</td>
-																<td>10</td>
-																<td><div class="dropdown">
-													<button class="dropbtn">Select</button>
-													<div class="dropdown-content">
-														<a href="" style="color: blue;"> Edit</a> 
-													</div>
-												</div> 
-												</td>
-
-															</tr>
-															<!-- </c:forEach>    -->
-														</tbody>
-														<tfoot>
-
-														</tfoot>
-													</table>
-													</div>
-												</div>
-
-											</div>
-
-										</form>
-									</div>
-									<!-- /.box-body -->
-									<div class="box-footer"></div>
-									<!-- /.box-footer-->
-								</div>
-							</div>
-						</div>
-					</section>
-				</div>
-				<div class="control-sidebar-bg"></div>
-			</div>
-
-<script>
-
-frappe.ready(async () => {
-    initialise_select_date();
-})
-
-async function initialise_select_date() {
-    setup_startdate_picker();
-    hide_next_button();
-}
-
-function hide_next_button() {
-    let button = document.getElementById('submit-button');
-    button.disabled = true;
-    button.onclick = () => frappe.msgprint(__("Please select a date and time"));
-}
-
-function setup_startdate_picker() {
-    let date_picker = document.getElementById('start-date');
-	let date_picker1 = document.getElementById('end-date');
-    date_picker1.disabled = true;
-    let today = new Date();
-    date_picker.max = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 90);
-    date_picker.min = today.toISOString().substr(0, 10);
-}
+                    </div>
+                </div>
 
 
-function on_start_date_select() {
-    let date_picker = document.getElementById('start-date');
-    let date_picker1 = document.getElementById('end-date');
-    window.startdate = date_picker.value;
-    date_picker1.disabled = false;
-    let today = new Date();
-				console.log(today.getDate());
-    date_picker1.max = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() - 90);
-    date_picker1.min = today.toISOString().substr(0, 10);
-}
 
-function on_end_date_select() {
-    let button = document.getElementById('submit-button');
-    let date_picker1 = document.getElementById('end-date');
-    window.enddate = date_picker1.value;
-    button.disabled = false;
-}
 
-async function submit() {
-    let button = document.getElementById('submit-button');
-    button.disabled = true;
-    let appointment =  frappe.call({
-        method: 'goyalapp.www.goyalapi.get',
-        args: {
-            'date': window.selected_date,
-            'doctype': 'Sales Invoice',
-            'contact': contact,
-            'tz':window.selected_timezone
-        },
-        callback: (response)=>{
-				log(response);
-            if (response.message.status == "Unverified") {
-                frappe.show_alert(__("Please check your email to confirm the appointment"))
-            } else {
-                frappe.show_alert(__("Appointment Created Successfully"));
-            }
-            setTimeout(()=>{
-                let redirect_url = "/";
-                if (window.appointment_settings.success_redirect_url){
-                    redirect_url += window.appointment_settings.success_redirect_url;
-                }
-                window.location.href = redirect_url;},5000)
-        },
-        error: (err)=>{
-            frappe.show_alert(__("Something went wrong please try again"));
-            button.disabled = false;
-        }
-    });
-}
-</script>
 
+
+            </div>
+        </div>
+     
 
 {% endblock %}
