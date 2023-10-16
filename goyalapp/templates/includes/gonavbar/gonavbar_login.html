@@ -13,6 +13,14 @@
 
         <div class="dropdown-menu3 ng-scope" ng-controller="AdminController" ng-click="BindSubAgentListForDistributor()">
             <div class="booking_pnl">
+			{%- for child in post_login -%}
+			{%- if child.url -%}
+                <a class="sb_link_2" href="/agents/UpdateProfile/UpdateProfile"> <i class="sm_mg"></i> {{ child.label }}</a>
+
+			{%- endif -%}
+			{%- endfor -%}
+
+
                 <a class="sb_link_2" href="/agents/UpdateProfile/UpdateProfile"> <i class="sm_mg"></i> My Profile</a>
                 <a class="sb_link_2" href="/agents/UpdateProfile/ChangePassword"> <i class="sm_mg2"></i> Change Password</a>
                	<a class="sb_link_2" href="/agents/UpdateProfile/UserAuthetication"> <i class="sm_mg2"></i> User Authetication</a>
