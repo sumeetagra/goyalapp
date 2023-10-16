@@ -35,9 +35,7 @@
     >
     {% endblock %}
     
-    <link rel="stylesheet" type="text/css" href="/assets/goyalapp/css/owl.carousel.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/goyalapp/css/slick.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/goyalapp/css/owl.transitions.css" />
+    <link rel="stylesheet" href="/assets/goyalapp/css/owl.carousel.min.css"/>
 
     {%- block head_include %}
         {{ head_include or "" }}
@@ -121,6 +119,7 @@
 
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
+    <script type="text/javascript" src="/assets/goyalapp/js/owl.carousel.min.js"></script>
     <script src="/assets/goyalapp/js/jquery.min.js"></script>
     <script>
         frappe.boot = {{ boot }}
