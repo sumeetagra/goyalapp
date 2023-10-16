@@ -22,6 +22,7 @@ textarea{resize:none;}
     font-size: 12px;
     margin-left: auto;
     align-items: center;
+    float: right;
 	cursor:pointer
 }
 .grey_clr {color:#8F9198}
