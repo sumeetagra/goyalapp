@@ -15,7 +15,7 @@
             <div class="booking_pnl">
 			{%- for child in post_login -%}
 			{%- if child.url -%}
-                <a class="sb_link_2" href="/agents/UpdateProfile/UpdateProfile"> <i class="sm_mg"></i> {{ child.label }}</a>
+                <a class="sb_link_2" href="{{ child.url | abs_url }}" {% if child.open_in_new_tab %} target="_blank" {% endif %} rel="nofollow"> <i class="sm_mg"></i> {{ child.label }}</a>
 
 			{%- endif -%}
 			{%- endfor -%}
