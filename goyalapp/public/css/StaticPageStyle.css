@@ -13,6 +13,9 @@ textarea{resize:none;}
 .tbo_header {background: url(../imagesnew/headerbg.png) repeat, linear-gradient(#e0e0e0, #ffffff 30%);}
 .tbo_logo {margin-top: 8px;}
 .cont_dtl {font-weight: bold; font-size: 14px; line-height: 19px; color: #1e417c; float: right; margin-top: 20px; text-transform: uppercase;}
+.sb_link_2:hover,.sb_link_drpdn:hover {text-decoration:none;color:#333;background: #EBF8FD;}
+.sb_link_2:hover i {filter: brightness(1) invert(1);transition:0.5s}
+.sb_link_2:hover .sm_mg6 {filter:brightness(1) invert(0);opacity:1}
 .profilesec:hover .dropdown-menu3 { max-height: 450px; }
 .profilesec {
     display: flex;
@@ -21,6 +24,11 @@ textarea{resize:none;}
     align-items: center;
 	cursor:pointer
 }
+.grey_clr {color:#8F9198}
+.booking_pnl { width: 100%; float: left;    }
+.booking_pnl2 {width: 100%;
+    float: left;
+    margin-bottom: 7px;}
 .dropdown-menu3 {
    
     position: absolute;
@@ -39,6 +47,13 @@ textarea{resize:none;}
 	background: #fff;    border-radius: 5px;
 }
 .dropdown-menu3 { display: block;}
+.tellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 11em;
+}
+.sb_link_2 {transition:text-indent .7s;position: relative;padding: 10px 0px 10px 15px;width: 100%;float: left;text-decoration: none;color: #000;display: flex;font-size: 13px;border-bottom: 1px solid #EBF8FD;align-items: center;}
 
 #mob-menu{display:none;}
 
