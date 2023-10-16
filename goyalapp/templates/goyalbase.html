@@ -12,6 +12,7 @@
     <link href="/assets/goyalapp/css/grid.css" rel="stylesheet" type="text/css">
     <link href="/assets/goyalapp/css/StaticPageStyle.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="/assets/goyalapp/css/animate.min.css" rel="stylesheet" type="text/css">
     
 
     <meta name="description"
@@ -123,6 +124,7 @@
 
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
+    <script src="/assets/goyalapp/js/jquery.min.js"></script>
     <script>
         frappe.boot = {{ boot }}
         // for backward compatibility of some libs
