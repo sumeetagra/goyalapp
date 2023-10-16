@@ -15,3 +15,4 @@ def get_context(context):
 	context.current_user = frappe.get_doc("User", frappe.session.user)
 	context.show_sidebar = False
 	context.full_width = True
+	context.only_static = False
