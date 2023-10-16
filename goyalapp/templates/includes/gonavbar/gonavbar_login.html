@@ -15,22 +15,10 @@
 
 			{%- endif -%}
 			{%- endfor -%}
-
-                <a class="sb_link_2 bck_grnd" ng-click="Logout()"><i class="sm_mg6"></i> Log Out</a>
+			<a class="sb_link_2 switch-to-desk hidden" href="/app">{{ _('Switch To Desk') }}</a>
             </div>
         </div>
     </div>
-
-
-	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children logged-in" id="website-post-login" data-label="website-post-login" style="display: none">
-		<a href="#" class="nav-link nav-avatar" data-toggle="dropdown">
-			<span class="user-image-wrapper"></span>
-		</a>
-		<ul class="dropdown-menu dropdown-menu-right" role="menu">
-
-			<a class="dropdown-item switch-to-desk hidden" href="/app">{{ _('Switch To Desk') }}</a>
-		</ul>
-	</li>
 	{% endif %}
 
 
