@@ -14,18 +14,6 @@
 
 	{% block page_container %}
 	<main class="{% if full_width %}tbofullwidth {% endif %}{% if not full_width %}container my-4{% endif %}">
-		<div class="page-header-wrapper">
-			<div class="page-header">
-				{% block header %}{% endblock %}
-			</div>
-
-			{% if self.header_actions() %}
-			<div class="page-header-actions-block">
-				{% block header_actions %}{% endblock %}
-			</div>
-			{% endif %}
-		</div>
-
 		<div class="page_content">
 			{%- block page_content -%}{%- endblock -%}
 		</div>
