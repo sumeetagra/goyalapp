@@ -74,7 +74,7 @@ textarea{resize:none;}
 
 /*.phoneicon {float: left; height: 36px; margin-right: 8px; width: 36px; background: url(../imagesnew/ph-icon.png) no-repeat;}*/
 .cont_dtl code {margin-top: 7px;}
-.cont_dtl .fa{font-size: 28px; margin-right:8px; background: #d1aa54; color: #fff; padding: 4px 7px; border-radius: 5px; vertical-align: middle; margin-top: -2px;}
+.cont_dtl .fa{font-size: 20px; margin-right:8px; background: #d1aa54; color: #fff; padding: 4px 7px; border-radius: 5px; vertical-align: middle; margin-top: -2px;}
 code, dfn, kbd, tt {font-style: normal; font-family: Arial, Sans-Serif;}
 .tbo_header, .tbo_container, .tbo_footer { width: 100%; float: left;}
 .tbo_nav{background: rgba(26,75,161,1); transition: background 0.5s linear; margin-top:10px;
