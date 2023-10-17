@@ -71,6 +71,164 @@ textarea{resize:none;}
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     background-color: #0533b2;
 }
+.sidebar {
+    padding-bottom: 10px;
+}
+.sidebar-form input:focus {
+    border-color: transparent;
+}
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sidebar-menu > li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.sidebar-menu > li > a {
+    padding: 12px 5px 12px 15px;
+    display: block;
+    color: #B5C4EA;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+}
+.sidebar-menu > li > a > i {
+    margin-right: 10px;
+    display: inline-block;
+    font-size: 16px;
+}
+.sidebar-menu > li.active > a::after {
+    content: '';
+    width: 3px;
+    height: 18px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 14px;
+}
+.sidebar-menu > li.active > a:before {
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 3px;
+}
+.sidebar-menu > li:hover > a,
+.sidebar-menu > li.active > a {
+    color: #fff;
+    background:#1e45b6;
+}
+.sidebar-menu > li > a > .fa,
+.sidebar-menu > li > a > .glyphicon,
+.sidebar-menu > li > a > .ion {
+    width: 20px;
+}
+.sidebar-menu > li .label,
+.sidebar-menu > li .badge {
+    margin-right: 5px;
+}
+.sidebar-menu > li .badge {
+    margin-top: 3px;
+}
+.sidebar-menu li.header {
+    padding: 10px 25px 10px 15px;
+    font-size: 12px;
+    color: #fff;
+}
+.sidebar-menu li > a > .fa-angle-left,
+.sidebar-menu li > a > .pull-right-container > .fa-angle-left {
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin-right: 10px;
+}
+.sidebar-menu li.active > a > .fa-angle-left,
+.sidebar-menu li.active > a > .pull-right-container > .fa-angle-left {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+.sidebar-menu li.active > .treeview-menu {
+    display: block;
+}
+.sidebar-menu .treeview-menu {
+    position: relative;
+    display: none;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    padding-left: 35px;
+    background-color:#032a96;
+}
+.sidebar-menu .treeview-menu:before {
+    width: 2px;
+    bottom: 0;
+    background:rgb(177 192 208 / 35%);
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 33px;
+}
+.sidebar-menu .treeview-menu .treeview-menu {
+    padding-left: 20px;
+}
+.sidebar-menu .treeview-menu > li {
+    margin: 0;
+    position: relative;
+}
+.sidebar-menu .treeview-menu > li > a {
+    padding: 5px 5px 5px 20px;
+    display: block;
+    color: #B5C4EA;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    font-size: 12px;
+}
+.sidebar-menu .treeview-menu > li > a:hover {color:#fff}
+.sidebar-menu .treeview-menu li.disabled a {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+.sidebar-menu .treeview-menu > li.active > a
+{
+  color: #009688;
+  font-weight: 600;
+}
+.sidebar-menu .treeview-menu > li.active
+{
+  color: #009688;
+  font-weight: 600;
+}
+.sidebar-menu .treeview-menu > li::before {
+    left: 0;
+    top: 13px;
+    width: 15px;
+    content: ' ';
+    position: absolute;
+    display: inline-block;
+    border: 1px solid rgb(177 192 208 / 35%);
+}
+.sidebar-menu .treeview-menu > li > a > .fa,
+.sidebar-menu .treeview-menu > li > a > .glyphicon,
+.sidebar-menu .treeview-menu > li > a > .ion {
+    width: 20px;
+}
+.sidebar-menu .treeview-menu > li > a > .pull-right-container > .fa-angle-left,
+.sidebar-menu .treeview-menu > li > a > .pull-right-container > .fa-angle-down,
+.sidebar-menu .treeview-menu > li > a > .fa-angle-left,
+.sidebar-menu .treeview-menu > li > a > .fa-angle-down {
+    width: auto;
+}
 #mob-menu{display:none;}
 
 /*banner*/
