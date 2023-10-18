@@ -69,6 +69,8 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 <div {{ container_attributes() }}>
 <div class="cont_strip tbofullwidth">
     <div class="tbocontainer clearfix">
+		{{ main_content() }}
+
         <div class="tborow">
             <div class="l12 m12 s12 tbo">
 
@@ -76,7 +78,6 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
         </div>
     </div>        
 </div>
-	{{ main_content() }}
 </div>
 {% endif %}
 
