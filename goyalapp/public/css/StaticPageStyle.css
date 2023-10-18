@@ -61,7 +61,6 @@ textarea{resize:none;}
     left: 0;
     padding-top: 60px;
     min-height: 100%;
-    width: 230px;
     z-index: 810;
     font-family: 'Poppins', sans-serif;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
