@@ -341,7 +341,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdc448', end
 .tbo_nav li.active a{font-weight:bold;}
 .tbo_nav li.mdropdown{position:relative;}
 .tbo_nav ul .dropdown_list{display: none;}
-.dropdown_list{position: absolute; display:none; left: 0; z-index: 9; background: #fff; color: #000; min-width: 130px; box-shadow: 0 0 6px #666; border: 1px solid #fff; top: 5px; animation: zoomIn 400ms; transition:0.5s;}
+.dropdown_list{position: absolute; display:none; left: 0; z-index: 9; background: #fff; color: #000; min-width: 130px; box-shadow: 0 0 6px #666; border: 1px solid #fff; top: 30px; animation: zoomIn 400ms; transition:0.5s;}
 .tbo_nav li:hover .dropdown_list{display:block; width:175px; text-align:left;}
 .dropdown_list li{display:block; border-right:0; text-align:left;}
 .dropdown_list li a{color:#000;}
