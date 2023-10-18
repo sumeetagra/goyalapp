@@ -386,7 +386,7 @@ a:hover, .ab_cl{color: #1A396D;}
 .inner_adrs p{margin-bottom:5px;}
 .tbo_ti{width: 100% !important; overflow: auto;}
 .tbo_ti table{ border: 0px solid #bcbcbc; border-collapse: collapse; text-align: left; width: 100%; margin-bottom:20px;}
-.tbo_ti table th { border: 1px solid #bcbcbc; padding: 5px 8px; background: #1a396d; color: #fff; text-align:center; font-size: 13px;}
+.tbo_ti table th { border: 1px solid #bcbcbc; padding: 20px; background: #1a396d; color: #fff; text-align:center; font-size: 13px;}
 .tbo_ti table td { border: 1px solid #bcbcbc; padding: 5px 5px; text-align:center; background: #fff; font-size: 12px; font-family: Arial;}
 .hfix{height: 550px;}
 .bggrey, .tbo_ti table .bggrey td{background:#eee;}
