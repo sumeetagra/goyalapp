@@ -4,7 +4,6 @@
 {% block content %}
 
 {% macro main_content() %}
-<div>
 	<!-- breadcrumbs -->
 	<div class="page-breadcrumbs">
 		{% block breadcrumbs %}
@@ -19,7 +18,6 @@
 		</div>
 	</main>
 	{% endblock %}
-</div>
 {% endmacro %}
 
 {% macro container_attributes() -%}
@@ -69,10 +67,9 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 <div {{ container_attributes() }}>
 <div class="cont_strip tbofullwidth">
 </div>
-    <div class="tbocontainer clearfix">
+
 		{{ main_content() }}
 
-    </div>        
 {% endif %}
 
 {% endblock %}
