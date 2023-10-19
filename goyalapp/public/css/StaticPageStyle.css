@@ -60,12 +60,14 @@ textarea{resize:none;}
     margin: 0;
 }
 .sb_link_2 {transition:text-indent .7s;position: relative;padding: 10px 0px 10px 15px;width: 100%;float: left;text-decoration: none;color: #000;display: flex;font-size: 13px;border-bottom: 1px solid #EBF8FD;align-items: center;}
+
 .main-sidebar {
-    position: inherit;
+    position: absolute;
     top: 0;
     left: 0;
     padding-top: 60px;
     min-height: 100%;
+    width: 200px;
     z-index: 810;
     font-family: 'Poppins', sans-serif;
     -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
