@@ -44,26 +44,6 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 
 {{ main_content() }}
 
-<div class="cont_strip tbofullwidth"></div>
-
-<div class="inner_pg tbofullwidth">
-    <div class="tbocontainer clearfix">
-		<div class="tborow" {{ container_attributes() }}>
-	<div class="tbo l12">
-		{%- set columns = sidebar_columns or 2 -%}
-		{%- if not sidebar_right -%}
-		{{ sidebar() }}
-		{%- endif -%}
-		<div class="main-column tbo l9">
-			{{ main_content() }}
-		</div>
-		{%- if sidebar_right -%}
-		{{ sidebar() }}
-		{%- endif -%}
-	</div>
-		</div>
-	</div>
-</div>
 {% else %}
 <div {{ container_attributes() }}>
 <div class="cont_strip tbofullwidth"></div>
