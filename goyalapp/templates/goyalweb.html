@@ -27,6 +27,7 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {%- endmacro %}
 
 {% macro sidebar() %}
+
 <div class="main-sidebar tbo l3">
 	{% block page_sidebar %}
 	{% include "templates/includes/web_sidebar.html" %}
@@ -35,15 +36,15 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {% endmacro %}
 
 {% if show_sidebar %}
-<div class="cont_strip tbofullwidth">
-    <div class="tbocontainer clearfix">
-        <div class="tborow">
-            <div class="l12 m12 s12 tbo">
+<div {{ container_attributes() }}>
+<aside class="main-sidebar">
+		{{ sidebar() }}
+</aside>
+<div class="cont_strip tbofullwidth"></div>
 
-            </div>
-        </div>
-    </div>        
-</div>
+{{ main_content() }}
+
+<div class="cont_strip tbofullwidth"></div>
 
 <div class="inner_pg tbofullwidth">
     <div class="tbocontainer clearfix">
@@ -65,10 +66,9 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 </div>
 {% else %}
 <div {{ container_attributes() }}>
-<div class="cont_strip tbofullwidth">
-</div>
+<div class="cont_strip tbofullwidth"></div>
 
-		{{ main_content() }}
+{{ main_content() }}
 
 {% endif %}
 
