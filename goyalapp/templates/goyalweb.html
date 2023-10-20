@@ -40,20 +40,18 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {% endmacro %}
 
 {% if show_sidebar %}
-<div {{ container_attributes() }}>
 <aside class="main-sidebar">
-		{{ sidebar() }}
+	{{ sidebar() }}
 </aside>
+<div class="content-wrapper" style="min-height: 332px;" {{ container_attributes() }}>
+	{{ main_content() }}
+</div>
 <div class="cont_strip tbofullwidth"></div>
-
-{{ main_content() }}
-
 {% else %}
-<div {{ container_attributes() }}>
+<div class="content-wrapper" style="min-height: 332px;" {{ container_attributes() }}>
+	{{ main_content() }}
+</div>
 <div class="cont_strip tbofullwidth"></div>
-
-{{ main_content() }}
-
 {% endif %}
 
 {% endblock %}
