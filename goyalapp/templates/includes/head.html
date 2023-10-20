@@ -16,6 +16,65 @@
     content="Steam Coal, Indian Coal, Pig Iron, MS Scrap, End Cutting, Fish Cutting, Gotron, Foundry Solutions, Cental India, Nagpur, Mines, Turbines, Power Plant, Indian Coal, GCV, GAR, Indonesia, port" />
     <meta name="author" content="Goyal Group" />
 
+    <script src="https://www.easemytrip.com/js/mobjquery.min.js"></script>
+    <link href="/agents/Content/assets/dist/css/new-b2b-common.css?v=nj69691" rel="stylesheet" />
+    <link href="/agents/Content/assets/dist/css/stylecrm.css?v=23608" rel="stylesheet" />
+    <link href="/agents/Content/JQGrid/ui.jqgrid.css?v=469559" rel="stylesheet" type="text/css" />
+	<script src="https://fph.easemytrip.com/Scripts/js/angular-sanitize-1.8.2.js?v=637735510010180381"></script>
+
+
+    <style>
+        .mob_view {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .mob_view {
+                display: block;
+            }
+        }
+
+        .container_loader {
+            background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+            font-family: Helvetica;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            z-index: 9999;
+            display: block;
+            top: 0;
+        }
+
+        .loaman {
+            height: 48px;
+            width: 300px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            margin: auto;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .pl-wt-l {
+            width: 10%;
+            float: left;
+        }
+
+        .pl-wt {
+            font-size: 17px;
+            font-weight: 600;
+            color: #000;
+            width: 90%;
+            padding: 2% 18%;
+            float: left;
+        }
+    </style>
 {%- endif -%}
 
 {%- for link in web_include_css %}
