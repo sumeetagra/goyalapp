@@ -58,13 +58,6 @@
 
     {%- block navbar -%}
         {% include 'templates/includes/gonavbar/gonavbar.html' %}
-        {{ web_block(
-            navbar_template or 'Standard Navbar',
-            values=_context_dict,
-            add_container=0,
-            add_top_padding=0,
-            add_bottom_padding=0,
-        ) }}
     {%- endblock -%}
 
     {% block content %}
