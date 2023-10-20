@@ -34,7 +34,7 @@
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
-<li class="active">
+<li class="'active' if data-path =='index'">
                             <a href="/agents/Home/index">
                                 <img src="/agents/Content/assets/dist/img/dashboard-ico.svg" alt=""><span>Dashboard</span>
                                 <span class="pull-right-container">
