@@ -24,7 +24,7 @@
        <div class="tbocontainer pad_sixteen">
             <div class="mmenu_show">
                 <ul class="menu_ul">
-                    <li class="{{'active' if data-path =='index'}}"><a href="/index.html"><i class="fa fa-th-large"></i> Home</a></li>
+                    <li class="{{'active' if pathname =='index'}}"><a href="/index.html"><i class="fa fa-th-large"></i> Home</a></li>
 
                     <li class="mdropdown">
                         <a href="javascript:void(0)"><i class="fa fa-bars"></i> About Us <i class="fa fa-angle-down"></i></a>
@@ -50,7 +50,7 @@
                     <li><a href="https://goyalironsteel.com/tenders"><i class="fa fa-tasks"></i> E-Tenders</a></li>
                     <li><a href="https://mail.google.com/a/goyalironsteel.com"><i class="fa fa-envelope"></i> Web Mail</a></li>
     {% if frappe.session.user != 'Guest' %}
-                    <li class="{{'active' if data-path =='dashboard'}}"><a href="/dashboard"><i class="fa fa-tasks"></i> Xchange Portal</a></li>
+                    <li class="{{'active' if pathname =='dashboard'}}"><a href="/dashboard"><i class="fa fa-tasks"></i> Xchange Portal</a></li>
     {% endif %}
                     <li><a href="/Contactus"><i class="fa fa-phone-square" aria-hidden="true"></i> Contact Us</a></li>
 
