@@ -14,9 +14,7 @@
 	{% block page_container %}
 	<main class="{% if full_width %}tbofullwidth {% endif %}{% if not full_width %}container my-4{% endif %}">
 		<div class="page_content">
-			<div class="wrapper">
 			{%- block page_content -%}{%- endblock -%}
-			<div>
 		</div>
 	</main>
 	{% endblock %}
