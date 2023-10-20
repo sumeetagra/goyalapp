@@ -90,12 +90,11 @@ body {
     padding-top: 108px;
 }
 .main-footer {
-    background: #dedede;
-    padding: 15px;
+    background: #1e417c; 
+    padding: 8px 0 0; 
+    margin-top: 5px;
     color: #000;
-    border-top: 1px solid #d2d6de;
-    text-align: center;
-font-size:13px;
+    font-size:13px;
 }
 /*--- Fixed layout ---*/
 
