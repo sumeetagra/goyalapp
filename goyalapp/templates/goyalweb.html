@@ -4,19 +4,18 @@
 {% block content %}
 
 {% macro main_content() %}
-	<!-- breadcrumbs -->
-	<div class="page-breadcrumbs">
-		{% block breadcrumbs %}
-			{% include 'templates/includes/breadcrumbs.html' %}
-		{% endblock %}
-	</div>
-
-	{% block page_container %}
-
-	<div>
-		{%- block page_content -%}{%- endblock -%}
-	</div>
+<!-- breadcrumbs -->
+<div class="page-breadcrumbs">
+	{% block breadcrumbs %}
+		{% include 'templates/includes/breadcrumbs.html' %}
 	{% endblock %}
+</div>
+
+{% block page_container %}
+<div>
+	{%- block page_content -%}{%- endblock -%}
+</div>
+{% endblock %}
 {% endmacro %}
 
 {% macro container_attributes() -%}
