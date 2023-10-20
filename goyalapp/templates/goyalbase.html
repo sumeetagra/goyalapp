@@ -58,6 +58,7 @@
     {%- endblock -%}
 
     {%- block navbar -%}
+        {% include 'templates/includes/gonavbar/gonavbar.html' %}
         {{ web_block(
             navbar_template or 'Standard Navbar',
             values=_context_dict,
