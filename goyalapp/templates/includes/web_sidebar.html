@@ -1,5 +1,4 @@
 {% macro render_sidebar_item(item) %}
-<ul class="sub-menu collapse in" id="service">
 <li class="{{ 'sidebar-group' if item.group_title else 'side-item' }}">
 	{%- if item.group_title -%}
 
@@ -23,12 +22,11 @@
 
 	{%- endif -%}
 </li>
-</ul>
 {% endmacro %}
 
 {% macro render_sidebar_items(items) %}
 {%- if items | len > 0 -%}
-<ul id="menu-content" class="menu-content collapse in">
+<ul id="menu-content" class="sidebar-menu">
 	{% for item in items -%}
 	{{ render_sidebar_item(item) }}
 	{%- endfor %}
