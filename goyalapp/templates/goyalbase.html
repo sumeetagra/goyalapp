@@ -59,10 +59,12 @@
     {%- block navbar -%}
         {% include 'templates/includes/gonavbar/gonavbar.html' %}
     {%- endblock -%}
+    <div class="wrapper">
 
     {% block content %}
         {{ content }}
     {% endblock %}
+    </div>
 
     {%- block footer -%}
         {{ web_block(
