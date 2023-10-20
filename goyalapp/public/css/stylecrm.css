@@ -938,14 +938,20 @@ a.sidebar-toggle .pe-7s-angle-left-circle {
     right: 6px;
     border: 2px solid #fff;
 }
+.profilesec:hover .dropdown-menu3 { max-height: 450px; }
 .profilesec {
     display: flex;
     font-size: 12px;
     margin-left: auto;
     align-items: center;
-	cursor:pointer
+    float: right;
+    margin-top: 10px;
+    cursor:pointer
 }
-.grey_clr {color:#8F9198}
+.grey_clr {
+    margin: 0;
+    color:#8F9198
+}
 .dropdown-menu3 {
    
     position: absolute;
@@ -957,13 +963,14 @@ a.sidebar-toggle .pe-7s-angle-left-circle {
     transition: max-height 0.4s ease-in;
     -webkit-transition: max-height 0.4s ease-in;
     top: 59px;
-    right: 19px;
-	box-shadow:  0 0 5px rgba(0,0,0,.25);
+    right: 50px;
+    box-shadow:  0 0 5px rgba(0,0,0,.25);
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,.25);
     -moz-box-shadow:  0 0 5px rgba(0,0,0,.25);
-	background: #fff;    border-radius: 5px;
+    background: #fff;    border-radius: 5px;
 }
 .dropdown-menu3 { display: block;}
+
 .signup_pnl { width: 100%; float: left; padding: 0 10px }
 .booking_pnl { width: 100%; float: left;    }
 .sb_link_drpdn {transition:text-indent .7s; position: relative; padding: 12px 10px 12px 22px; width: 100%; float: left; text-decoration: none; color: #000; font-size: 13px; }
