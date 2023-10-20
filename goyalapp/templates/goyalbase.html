@@ -93,7 +93,6 @@
     {% block content %}
         {{ content }}
     {% endblock %}
-    </div>
 
     {%- block footer -%}
         {{ web_block(
@@ -104,6 +103,7 @@
             add_bottom_padding=0
         ) }}
     {%- endblock -%}
+    </div>
 
     {% block base_scripts %}
     <!-- js should be loaded in body! -->
