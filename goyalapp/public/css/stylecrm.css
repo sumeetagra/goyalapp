@@ -494,7 +494,7 @@ a.sidebar-toggle .pe-7s-angle-left-circle {
     position: absolute;
     top: 105px;
     left: 0;
-    padding-top: 60px;
+    padding-top: 10px;
     min-height: 100%;
     width: 230px;
     z-index: 810;
