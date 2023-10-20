@@ -34,7 +34,7 @@
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
-<li class="active">
+<li {% if data-path="dashboard" %} class="active" {%- endif %}>
                             <a href="/agents/Home/index">
                                 <img src="/agents/Content/assets/dist/img/dashboard-ico.svg" alt=""><span>Dashboard</span>
                                 <span class="pull-right-container">
@@ -44,18 +44,18 @@
 <li class="treeview">
     <a href="#">
         <img src="/agents/Content/assets/dist/img/admin-ico.svg" alt=""><span>Admin</span>
-                                    <span class="pull-right-container">
-                                        <img src="/agents/Content/assets/dist/img/chevron-right.svg" width="6">
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                        <li><a href="/agents/SaveCard/SaveCard">SaveCard</a></li>
-                                        <li><a href="/agents/MarkUp/AfterBooking">Add MarkUp After Booking</a></li>
+            <span class="pull-right-container">
+                <img src="/agents/Content/assets/dist/img/chevron-right.svg" width="6">
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href="/agents/SaveCard/SaveCard">SaveCard</a></li>
+        <li><a href="/agents/MarkUp/AfterBooking">Add MarkUp After Booking</a></li>
                                         <li><a href="/agents/CreateUser/CreateUser">Create User</a></li>
                                         <li><a href="/agents/UpdateProfile/UpdateProfile">Account Information</a></li>
                                         <li><a href="/agents/Markup">Set Markup</a></li>
                                         <li><a href="/agents/CommisionDetail/CommisionDetail">Show Commision Detail</a></li>
-                                </ul>
+    </ul>
 </li>
 {% endif %}
 {% endmacro %}
