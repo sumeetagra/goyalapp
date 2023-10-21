@@ -1,0 +1,52 @@
+<header class="header">
+    <div class="page-brand brandexceptmainmenu">
+        <ul class="nav navbar-toolbar">
+            <li>
+                <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="flexbox flex-1">
+        <a class="link form-inline brandlink p-0" href="#">
+            {%- if brand_html -%}
+            {{ brand_html }}
+            {%- elif banner_image -%}
+
+            <img src="{{ banner_image }}" alt="Goyal Group" style="border-width:0px;">
+                <p class="logobrand">
+                                Goyal Group 
+                            <br>
+                                <span class="brand-tip">Goyal Xchange Portal</span>
+                            </p>
+          {%- else -%}
+            <span>{{ (frappe.get_hooks("brand_html") or [_("Home")])[0] }}</span>
+          {%- endif -%}
+                            
+        </a>
+
+                        <!-- START TOP-RIGHT TOOLBAR-->
+        <ul class="nav navbar-toolbar p-0">
+
+            <li class="dropdown dropdown-inbox">
+                <img src="https://docs.ewaybillgst.gov.in/assets/img/logo/Gstlogo.png" alt="GST Logo" style="border-width:0px;">
+
+            </li>
+            <li class="dropdown dropdown-inbox">
+                <img src="https://docs.ewaybillgst.gov.in/assets/img/logo/nic-logo.png" alt="NIC Logo" style="border-width:0px;">
+            </li>
+
+                            <li class="dropdown dropdown-user">
+                                <a class="nav-link dropdown-toggle link p-0" data-toggle="dropdown">
+                                    <img src="https://docs.ewaybillgst.gov.in/assets/img/admin-avatar.png" alt="Profile" style="border-width:0px;">
+                                    </a><ul class="dropdown-menu dropdown-menu-right"><a class="nav-link dropdown-toggle link p-0" data-toggle="dropdown">
+                                        </a><a class="dropdown-item" data-toggle="modal" data-target="#profile"><i class="fa fa-user"></i>Profile</a>
+                                        <li class="dropdown-divider"></li>
+                                        <a id="ctl00_headercont_LinkButton1" class="dropdown-item" href="javascript:__doPostBack('ctl00$headercont$LinkButton1','')"><i class="fa fa-power-off"></i>Logout</a>
+                                    </ul></li>
+        </ul>
+
+                        <!-- END TOP-RIGHT TOOLBAR-->
+    </div>
+
+</header>
