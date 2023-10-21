@@ -4502,7 +4502,7 @@ a.text-danger:hover {
     position: absolute;
     top: 0;
     bottom:0;
-    margin-top: 117px;
+    margin-top: 120px;
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -4561,6 +4561,7 @@ a.text-danger:hover {
 
     .side-menu li .nav-label {
         display: block;
+        font-weight: 600;
     }
 
     .side-menu li .arrow {
@@ -5371,9 +5372,12 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 
 .modultitle {
-    background: linear-gradient(to bottom, rgba(253,196,72,1) 0%, rgba(211,171,84,1) 100%);
-    color: #192734;
+    background: linear-gradient(to bottom, rgba(26,75,161,1) 0%, rgba(25,68,137,1) 100%);
+    color: #fff;
+    font-weight: 700;
+    border-bottom: 4px solid #fcc547;
 }
+
 
 .bg-customized {
     background-image: linear-gradient(to right, #7c7fb9,#b7b9dc);
