@@ -5033,8 +5033,7 @@ body.has-backdrop .backdrop {
         }
 
 .page-sidebar {
-    background-color: #253544;
-    background-image: linear-gradient(to right, #4b4b94,#8691ca);
+    background: linear-gradient(to bottom, rgba(26,75,161,1) 0%, rgba(25,68,137,1) 100%);
 }
 
     .page-sidebar .admin-block .admin-info {
