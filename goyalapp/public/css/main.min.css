@@ -5372,8 +5372,8 @@ div.dataTables_wrapper div.dataTables_length label {
 }
 
 .modultitle {
-    background-image: linear-gradient(to right, #7c7fb9,#b7b9dc);
-    color: #fff;
+    background: linear-gradient(to bottom, rgba(253,196,72,1) 0%, rgba(211,171,84,1) 100%);
+    color: #192734;
 }
 
 .bg-customized {
