@@ -34,6 +34,17 @@
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
+
+<li id="ctl00_ContentPlaceHolder1_Li3">
+                <a href="javascript:;" aria-expanded="false"><i class="sidebar-item-icon fa fa-key"></i>
+                    <span class="nav-label">2Factor Authentication </span><i class="fa fa-angle-left arrow"></i></a>
+                <ul class="nav-2-level collapse" aria-expanded="false">
+                    <li id="ctl00_ContentPlaceHolder1_R65"><a href="Account/SMS2FReg.aspx">Registration</a></li>
+                    <li><a href="Account/SandesReg.aspx" aria-expanded="false">Install Sandes</a></li>
+                    <li id="ctl00_ContentPlaceHolder1_Li5"><a href="Account/TotpRegistration.aspx" aria-expanded="false">Install NIC-GST-Shield</a></li>
+                </ul>
+            </li>
+
 <li class="'active' if data-path =='dashboard'">
     <a href="/dashboard">
         <img src="/assets/goyalapp/img/dashboard-ico.svg" alt="">
@@ -73,16 +84,11 @@
 {% endif %}
 {% endmacro %}
 
-<div class="sidebar">
-	{% if sidebar_title %}
-	<li class="title">
-		{{ sidebar_title }}
-	</li>
-	{% endif %}
-    <div class="menu-list">
-		{{ render_sidebar_items(sidebar_items) }}
-	</div>
-</div>
+
+
+<ul class="side-menu metismenu">
+	{{ my_account() }}
+</ul>
 
 <script>
 	frappe.ready(function () {

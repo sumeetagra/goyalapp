@@ -25,7 +25,6 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {%- endmacro %}
 
 {% macro sidebar() %}
-
 <div id="sidebar-collapse">
 	{% block page_sidebar %}
 	{% include "templates/includes/web_sidebar.html" %}
@@ -34,18 +33,21 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {% endmacro %}
 
 {% if show_sidebar %}
-<nav class="page-sidebar" id="sidebar">
-	{{ sidebar() }}
-</nav>
-<div class="content-wrapper" style="margin-left: 230px;" {{ container_attributes() }}>
-	{{ main_content() }}
-</div>
-<div class="cont_strip tbofullwidth"></div>
+	<nav class="page-sidebar" id="sidebar">
+		{{ sidebar() }}
+	</nav>
+
+	<div class="content-wrapper" style="margin-left: 230px;" {{ container_attributes() }}>
+		{{ main_content() }}
+	</div>
+
+	<div class="cont_strip tbofullwidth"></div>
+
 {% else %}
-<div class="container-fluid" {{ container_attributes() }}>
-	{{ main_content() }}
-</div>
-<div class="cont_strip tbofullwidth"></div>
+	<div class="container-fluid" {{ container_attributes() }}>
+		{{ main_content() }}
+	</div>
+	<div class="cont_strip tbofullwidth"></div>
 {% endif %}
 
 {% endblock %}
