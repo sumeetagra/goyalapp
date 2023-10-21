@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="generator" content="frappe">
-
-    {% block meta_block %}
-        {% include "templates/includes/meta_block.html" %}
-    {% endblock %}
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <title>{% block title %}{{ title | striptags }}{% endblock %}</title>
 
     {% block favicon %}
@@ -18,6 +12,12 @@
         href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
         type="image/x-icon"
     >
+    {% endblock %}
+    <link rel="icon" href="https://docs.ewaybillgst.gov.in/assets/img/favicon.ico" type="image/x-icon" />
+    <meta name="generator" content="frappe">
+
+    {% block meta_block %}
+        {% include "templates/includes/meta_block.html" %}
     {% endblock %}
 
 
@@ -46,6 +46,8 @@
         window.show_language_picker = {{ show_language_picker or 'false' }};
     </script>
 </head>
+
+
 <body class="hold-transition sidebar-mini" frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %}>
     {% include "public/icons/timeless/icons.svg" %}
     {%- block banner -%}
