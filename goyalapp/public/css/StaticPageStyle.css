@@ -312,6 +312,7 @@ a:hover, .ab_cl{color: #1A396D;}
         transform: scale(1, 1)
     }
 }
+.tbo_footer {background: #1e417c; padding: 8px 0 0; margin-top: 5px;}
 @media(max-width:1024px){
 .tbo_nav li .fa, .tbo_nav li img{display:block; margin:0 auto;}
  .tbo_nav li a{padding: 10px 5px;}
