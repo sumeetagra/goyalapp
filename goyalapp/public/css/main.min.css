@@ -4295,10 +4295,7 @@ a.text-danger:hover {
     /*background-image: linear-gradient(to right, #494994,#99a4e8);
     background: #14296d;*/
     position: relative;
-    background-image: url(../assets/goyalapp/img/headerbg.png) repeat, linear-gradient(#e0e0e0, #ffffff 30%);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background: url(../assets/goyalapp/img/headerbg.png) repeat, linear-gradient(#e0e0e0, #ffffff 30%);
 }
 
     .header .page-brand {
