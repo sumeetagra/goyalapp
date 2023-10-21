@@ -34,39 +34,39 @@
 
 {% macro my_account() %}
 {% if frappe.user != 'Guest' %}
-<li class="'active' if data-path =='index'">
-                            <a href="/agents/Home/index">
-                                <img src="/assets/goyalapp/img/dashboard-ico.svg" alt=""><span>Dashboard</span>
-                                <span class="pull-right-container">
-                                </span>
-                            </a>
-</li>
-<li class="'active' if data-path =='index'">
-    <a href="/agents/Home/index">
-        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt=""><span>Customer Bills</span>
-    	<span class="pull-right-container">
-        </span>
+<li class="'active' if data-path =='dashboard'">
+    <a href="/dashboard">
+        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt="">
+        <span>Dashboard</span>
+        <span class="pull-right-container"></span>
     </a>
 </li>
-<li class="'active' if data-path =='index'">
-    <a href="/agents/Home/index">
-        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt=""><span>Delivery Notes</span>
-    	<span class="pull-right-container">
-        </span>
+<li class="'active' if data-path =='CustomerBills'">
+    <a href="/CustomerBills">
+        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt="">
+        <span>Customer Bills</span>
+    	<span class="pull-right-container"></span>
     </a>
 </li>
-<li class="'active' if data-path =='index'">
-    <a href="/agents/Home/index">
-        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt=""><span>Supplier Bills</span>
-    	<span class="pull-right-container">
-        </span>
+<li class="'active' if data-path =='CustomerDelivery'">
+    <a href="/CustomerDelivery">
+        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt="">
+        <span>Delivery Notes</span>
+    	<span class="pull-right-container"></span>
     </a>
 </li>
-<li class="'active' if data-path =='index'">
-    <a href="/agents/Home/index">
-        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt=""><span>Goods Receipt Note</span>
-    	<span class="pull-right-container">
-        </span>
+<li class="'active' if data-path =='SupplierBills'">
+    <a href="/SupplierBills">
+        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt="">
+        <span>Supplier Bills</span>
+    	<span class="pull-right-container"></span>
+    </a>
+</li>
+<li class="'active' if data-path =='SupplierGRN'">
+    <a href="/SupplierGRN">
+        <img src="/assets/goyalapp/img/dashboard-ico.svg" alt="">
+        <span>Goods Receipt Note</span>
+    	<span class="pull-right-container"></span>
     </a>
 </li>
 
