@@ -26,7 +26,7 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 
 {% macro sidebar() %}
 
-<div class="sidebar">
+<div id="sidebar-collapse">
 	{% block page_sidebar %}
 	{% include "templates/includes/web_sidebar.html" %}
 	{% endblock %}
@@ -34,9 +34,9 @@ id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
 {% endmacro %}
 
 {% if show_sidebar %}
-<aside class="main-sidebar">
+<nav class="page-sidebar" id="sidebar">
 	{{ sidebar() }}
-</aside>
+</nav>
 <div class="content-wrapper" style="margin-left: 230px;" {{ container_attributes() }}>
 	{{ main_content() }}
 </div>
