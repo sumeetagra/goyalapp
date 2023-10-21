@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="generator" content="frappe">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     {% block meta_block %}
         {% include "templates/includes/meta_block.html" %}
@@ -47,7 +49,8 @@
         window.show_language_picker = {{ show_language_picker or 'false' }};
     </script>
 </head>
-<body class="hold-transition sidebar-mini" frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %}>
+<body class="" frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %}>
+    <div id="page-container">
     {% include "public/icons/timeless/icons.svg" %}
     {%- block banner -%}
         {% include "templates/includes/banner_extension.html" ignore missing %}
@@ -57,7 +60,6 @@
         {%- endif %}
     {%- endblock -%}
 
-    <div class="wrapper">
     {%- block navbar -%}
         {% include 'templates/includes/gonavbar/gonavbar.html' %}
     {%- endblock -%}
