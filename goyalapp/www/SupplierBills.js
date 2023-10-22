@@ -3,11 +3,12 @@ frappe.ready(async () => {
 })
 
 async function initialise_select_date() {
-    setup_date_picker();
+    setup_start_datepicker();
     hide_next_button();
+    hide_end_date();
 }
 
-function setup_date_picker() {
+function setup_start_datepicker() {
     let date_picker = document.getElementById('start-date');
     let today = new Date();
     let timediff = '15';
@@ -19,7 +20,22 @@ function setup_date_picker() {
 function hide_next_button() {
     let next_button = document.getElementById('fetch-button');
     next_button.disabled = true;
-    next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
+    next_button.onclick = () => frappe.msgprint(__("Please select Start and End Date"));
+}
+
+function hide_end_date() {
+    let date_picker = document.getElementById('stop-date');
+    date_picker.disabled = true;
+    date_picker.onclick = () => frappe.msgprint(__("Please select To Date"));
+}
+
+function show_end_date() {
+    let date_picker = document.getElementById('stop-date');
+    let today = new Date();
+    let timediff = '15';
+    date_picker.max = today.toISOString().substr(0, 10);
+    today.setDate(today.getDate() - timediff);
+    date_picker.min = today.toISOString().substr(0, 10);
 }
 
 function show_next_button() {
@@ -34,6 +50,7 @@ function on_date_or_timezone_select() {
         hide_next_button();
         frappe.throw(__('Please select a date'));
     }
+    show_end_date();
     window.selected_date = date_picker.value;
 }
 
