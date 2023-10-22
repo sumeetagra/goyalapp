@@ -8,15 +8,16 @@ async function initialise_select_date() {
 }
 
 function setup_date_picker() {
-    let date_picker = document.getElementById('appointment-date');
+    let date_picker = document.getElementById('start-date');
     let today = new Date();
-    date_picker.min = today.toISOString().substr(0, 10);
-    today.setDate(today.getDate() + window.appointment_settings.advance_booking_days);
+    let timediff = '15';
     date_picker.max = today.toISOString().substr(0, 10);
+    today.setDate(today.getDate() - timediff);
+    date_picker.min = today.toISOString().substr(0, 10);
 }
 
 function hide_next_button() {
-    let next_button = document.getElementById('next-button');
+    let next_button = document.getElementById('fetch-button');
     next_button.disabled = true;
     next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
 }
@@ -28,18 +29,12 @@ function show_next_button() {
 }
 
 function on_date_or_timezone_select() {
-    let date_picker = document.getElementById('appointment-date');
-    let timezone = document.getElementById('appointment-timezone');
+    let date_picker = document.getElementById('start-date');
     if (date_picker.value === '') {
-        clear_time_slots();
         hide_next_button();
         frappe.throw(__('Please select a date'));
     }
     window.selected_date = date_picker.value;
-    window.selected_timezone = timezone.value;
-    update_time_slots(date_picker.value, timezone.value);
-    let lead_text = document.getElementById('lead-text');
-    lead_text.innerHTML = __("Select Time")
 }
 
 async function get_time_slots(date, timezone) {

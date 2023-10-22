@@ -36,6 +36,9 @@
 
                     <span id="ctl00_ContentPlaceHolder1_Label4" class="mr-1">  To </span>
                     <div id="ctl00_ContentPlaceHolder1_txtdate1div" class="input-group mr-2">
+                        <input type="date" oninput="on_date_or_timezone_select()" name="start-date"
+                        id="start-date" class="form-control mt-3 col-md m-3">
+
                         <input name="ctl00$ContentPlaceHolder1$txtDate1" type="text" value="21/10/2023" maxlength="10" id="ctl00_ContentPlaceHolder1_txtDate1" class="txtDate1 datepicker1 texbox form-control hasDatepicker" autocomplete="off" aria-labelledby="To Date">
                         <div class="input-group-append">
                             <span class="input-group-text txtDate1"><i class="fa fa-calendar fa-2x"></i></span>
@@ -51,7 +54,8 @@
                     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" class="errormsg" style="color:Red;display:none;">*</span>
 
                     
-                    <input type="submit" name="ctl00$ContentPlaceHolder1$btn_submit" value="Go" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$btn_submit&quot;, &quot;&quot;, true, &quot;go_btn&quot;, &quot;&quot;, false, false))" id="ctl00_ContentPlaceHolder1_btn_submit" class="btn btn-primary mr-1">
+                <button class="btn btn-primary form-control" id="fetch-button">{{ _("Submit") }}</button>
+
                     <a href="../mainmenu.aspx" class="btn btn-danger btnprint">Exit</a>
                 </div>
             </div>
