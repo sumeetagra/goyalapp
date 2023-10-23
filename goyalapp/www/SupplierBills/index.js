@@ -223,9 +223,11 @@ async function submit() {
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
+    let timeslot_container = document.getElementById('timeslot-container');
+        timeslot_container.appendChild(listdata1);
 
         let testing = document.getElementById("customer_notes");
-        testing.value = json.loads(listdata1);
+        testing.value = listdata1;
 
 }
 
