@@ -209,12 +209,9 @@ async function submit() {
     let button = document.getElementById('fetch-button');
     button.disabled = true;
     let appointment =  frappe.call({
-        method: 'goyalapp.www.goyalapi.get?doctype=Purchase Invoice',
+        method: 'goyalapp.www.goyalapi.get',
         args: {
-            'doctype': 'Purchase Invoice',
-            'time': window.selected_time,
-            'contact': contact,
-            'tz':window.selected_timezone
+            'doctype': 'Purchase Invoice'
         },
         callback: (response)=>{
         let testing = document.getElementById("demotext");
