@@ -223,7 +223,9 @@ async function submit() {
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
-    pprint.pprint(listdata1);
+    json_object = json.loads(listdata1);
+    
+    print(json.dumps(json_object, indent = 1));
     
     let testing = document.getElementById("customer_notes");
     testing.value = listdata1;
