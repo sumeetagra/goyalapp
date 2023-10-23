@@ -20,13 +20,11 @@ function setup_start_datepicker() {
 function hide_fetch_button() {
     let next_button = document.getElementById('fetch-button');
     next_button.disabled = true;
-    next_button.onclick = () => frappe.msgprint(__("Please select Start and End Date"));
 }
 
 function hide_end_date() {
     let date_picker = document.getElementById('stop-date');
     date_picker.disabled = true;
-    date_picker.onclick = () => frappe.msgprint(__("Please select To Date"));
 }
 
 function show_end_date() {
@@ -61,13 +59,13 @@ function on_start_date_select() {
 }
 
 function on_end_date_select() {
-    let date_picker = document.getElementById('start-date');
-    if (date_picker.value === '') {
-        show_fetch_button();
+    let date_picker3 = document.getElementById('stop-date');
+    if (date_picker3.value === '') {
+        hide_fetch_button();
         frappe.throw(__('Please select a date'));
     }
     show_fetch_button();
-    window.selected_date = date_picker.value;
+    window.selected_date = date_picker3.value;
 }
 
 async function get_time_slots(date, timezone) {
