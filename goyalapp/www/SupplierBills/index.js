@@ -225,7 +225,4 @@ async function submit() {
 
     let testing = document.getElementById("customer_notes");
     testing.value = listdata1;
-    data = json.load(listdata1); 
-
-    print(json.dumps(data, indent = 1);
 }
