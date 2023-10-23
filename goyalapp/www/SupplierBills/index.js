@@ -226,7 +226,7 @@ async function submit() {
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     window.listdata1.forEach((slot, index) => {
         // Get and append timeslot div
-        let timeslot_div = get_timeslot_div_layout(slot)
+        let timeslot_div = get_timeslot_div_layout(index)
         timeslot_container.appendChild(timeslot_div);
     });
     
