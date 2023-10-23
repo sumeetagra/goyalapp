@@ -216,7 +216,6 @@ async function get_list_data(date, timezone) {
     return listingdata;
 }
 
-
 async function submit() {
     let button = document.getElementById('fetch-button');
     button.disabled = true;
@@ -226,14 +225,7 @@ async function submit() {
 
     let testing = document.getElementById("customer_notes");
     testing.value = listdata1;
-    data = json.load(listdata1) 
+    data = json.load(listdata1); 
 
-    print(json.dumps(data, indent = 1)
-}
-
-function get_form_data() {
-    let contact = {};
-    let inputs = ['name', 'skype', 'number', 'notes', 'email'];
-    inputs.forEach((id) => contact[id] = document.getElementById(`customer_${id}`).value)
-    return contact
+    print(json.dumps(data, indent = 1);
 }
