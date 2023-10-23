@@ -209,15 +209,8 @@ function setup_search_params() {
 async function submit() {
     let button = document.getElementById('fetch-button');
     button.disabled = true;
-    let form = document.querySelector('#customer-form');
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        button.disabled = false;
-        return;
-    }
-    let contact = get_form_data();
     let appointment =  frappe.call({
-        method: 'erpnext.www.book_appointment.index.create_appointment',
+        method: 'goyalapp.www.goyalapi.get?doctype=Purchase Invoice',
         args: {
             'date': window.selected_date,
             'time': window.selected_time,
