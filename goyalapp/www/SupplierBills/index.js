@@ -225,7 +225,6 @@ async function submit() {
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     let timeslot_container = document.getElementById('timeslot-container');
         timeslot_container.appendChild(listdata1);
-
         let testing = document.getElementById("customer_notes");
         testing.value = listdata1;
 
