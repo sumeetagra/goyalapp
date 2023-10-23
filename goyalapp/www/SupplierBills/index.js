@@ -211,12 +211,14 @@ async function submit() {
     let appointment =  frappe.call({
         method: 'goyalapp.www.goyalapi.get?doctype=Purchase Invoice',
         args: {
-            'date': window.selected_date,
+            'doctype': 'Purchase Invoice',
             'time': window.selected_time,
             'contact': contact,
             'tz':window.selected_timezone
         },
         callback: (response)=>{
+        let testing = document.getElementById("demotext");
+        testing.value = response;
             if (response.message.status == "Unverified") {
                 frappe.show_alert(__("Please check your email to confirm the appointment"))
             } else {
