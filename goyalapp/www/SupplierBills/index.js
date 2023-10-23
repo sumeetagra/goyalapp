@@ -205,34 +205,28 @@ function setup_search_params() {
         detail_input.disabled = true;
     }
 }
+
+async function get_list_data(date, timezone) {
+    let listingdata = (await frappe.call({
+        method: 'goyalapp.www.goyalapi.get',
+        args: {
+            doctype: date
+        }
+    })).message;
+    return listingdata;
+}
+
+
 async function submit() {
     let button = document.getElementById('fetch-button');
     button.disabled = true;
-    let appointment =  frappe.call({
-        method: 'goyalapp.www.goyalapi.get',
-        args: {
-            'doctype': 'Purchase Invoice'
-        },
-        callback: (response)=>{
-        let testing = document.getElementById("demotext");
-        testing.value = response;
-            if (response.message.status == "Unverified") {
-                frappe.show_alert(__("Please check your email to confirm the appointment"))
-            } else {
-                frappe.show_alert(__("Appointment Created Successfully"));
-            }
-            setTimeout(()=>{
-                let redirect_url = "/";
-                if (window.appointment_settings.success_redirect_url){
-                    redirect_url += window.appointment_settings.success_redirect_url;
-                }
-                window.location.href = redirect_url;},5000)
-        },
-        error: (err)=>{
-            frappe.show_alert(__("Something went wrong please try again"));
-            button.disabled = false;
-        }
-    });
+    let listDoctype = 'Purchase Invoice';
+    let listDoctype1 = 'Purchase Invoice';
+    window.listdata1 = await get_list_data(listDoctype, listDoctype1);
+
+        let testing = document.getElementById("customer_notes");
+        testing.value = listdata1;
+
 }
 
 function get_form_data() {
