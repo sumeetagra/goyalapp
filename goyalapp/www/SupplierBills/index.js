@@ -222,7 +222,13 @@ async function submit() {
     button.disabled = true;
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
+    let timeslot_container = document.getElementById('timeslot-container');
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
+    window.slots.forEach((slot, index) => {
+        // Get and append timeslot div
+        let timeslot_div = get_timeslot_div_layout(slot)
+        timeslot_container.appendChild(timeslot_div);
+    });
     
     let testing = document.getElementById("customer_notes");
     testing.value = listdata1;
