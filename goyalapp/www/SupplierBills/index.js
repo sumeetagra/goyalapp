@@ -225,7 +225,7 @@ async function submit() {
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
 
         let testing = document.getElementById("customer_notes");
-        testing.value = listdata1;
+        testing.value = json.loads(listdata1);
 
 }
 
