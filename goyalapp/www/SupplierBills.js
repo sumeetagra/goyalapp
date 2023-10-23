@@ -31,6 +31,7 @@ function hide_end_date() {
 
 function show_end_date() {
     let date_picker = document.getElementById('stop-date');
+    date_picker.disabled = false;
     let today = new Date();
     let timediff = '15';
     date_picker.max = today.toISOString().substr(0, 10);
@@ -44,7 +45,17 @@ function show_next_button() {
     next_button.onclick = setup_details_page;
 }
 
-function on_date_or_timezone_select() {
+function on_start_date_select() {
+    let date_picker = document.getElementById('start-date');
+    if (date_picker.value === '') {
+        hide_next_button();
+        frappe.throw(__('Please select a date'));
+    }
+    show_end_date();
+    window.selected_date = date_picker.value;
+}
+
+function on_end_date_select() {
     let date_picker = document.getElementById('start-date');
     if (date_picker.value === '') {
         hide_next_button();
