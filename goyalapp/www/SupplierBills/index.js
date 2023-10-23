@@ -40,7 +40,6 @@ function show_end_date() {
 function show_fetch_button() {
     let next_button = document.getElementById('fetch-button');
     next_button.disabled = false;
-    next_button.onclick = () => frappe.msgprint(__("Yuvraj is here!"));;
 }
 
 function show_next_button() {
