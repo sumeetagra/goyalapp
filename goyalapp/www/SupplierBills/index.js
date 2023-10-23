@@ -42,6 +42,7 @@ function show_fetch_button() {
     next_button.disabled = false;
     next_button.onclick = () => frappe.msgprint(__("Yuvraj is here!"));;
 }
+
 function show_next_button() {
     let next_button = document.getElementById('next-button');
     next_button.disabled = false;
@@ -174,6 +175,8 @@ function navigate_to_page(page_number) {
 }
 
 function setup_details_page() {
+    let next_button = document.getElementById('fetch-button');
+
     navigate_to_page(2)
     let date_container = document.getElementsByClassName('date-span')[0];
     let time_container = document.getElementsByClassName('time-span')[0];
@@ -204,7 +207,7 @@ function setup_search_params() {
     }
 }
 async function submit() {
-    let button = document.getElementById('submit-button');
+    let button = document.getElementById('fetch-button');
     button.disabled = true;
     let form = document.querySelector('#customer-form');
     if (!form.checkValidity()) {
