@@ -4,7 +4,7 @@ frappe.ready(async () => {
 
 async function initialise_select_date() {
     setup_start_datepicker();
-    hide_next_button();
+    hide_fetch_button();
     hide_end_date();
 }
 
@@ -17,7 +17,7 @@ function setup_start_datepicker() {
     date_picker.min = today.toISOString().substr(0, 10);
 }
 
-function hide_next_button() {
+function hide_fetch_button() {
     let next_button = document.getElementById('fetch-button');
     next_button.disabled = true;
     next_button.onclick = () => frappe.msgprint(__("Please select Start and End Date"));
@@ -39,6 +39,11 @@ function show_end_date() {
     date_picker.min = today.toISOString().substr(0, 10);
 }
 
+function show_fetch_button() {
+    let next_button = document.getElementById('fetch-button');
+    next_button.disabled = false;
+    next_button.onclick = () => frappe.msgprint(__("Yuvraj is here!"));;
+}
 function show_next_button() {
     let next_button = document.getElementById('next-button');
     next_button.disabled = false;
@@ -48,7 +53,7 @@ function show_next_button() {
 function on_start_date_select() {
     let date_picker = document.getElementById('start-date');
     if (date_picker.value === '') {
-        hide_next_button();
+        hide_fetch_button();
         frappe.throw(__('Please select a date'));
     }
     show_end_date();
@@ -58,10 +63,10 @@ function on_start_date_select() {
 function on_end_date_select() {
     let date_picker = document.getElementById('start-date');
     if (date_picker.value === '') {
-        hide_next_button();
+        show_fetch_button();
         frappe.throw(__('Please select a date'));
     }
-    show_end_date();
+    show_fetch_button();
     window.selected_date = date_picker.value;
 }
 
