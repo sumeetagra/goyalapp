@@ -104,7 +104,7 @@ function get_timeslot_div_layout(timeslot) {
     if (!timeslot.availability) {
         timeslot_div.classList.add('unavailable')
     }
-    timeslot_div.innerHTML = __("There are no slots available on this date");
+    timeslot_div.innerHTML = get_slot_layout(start_time);
     timeslot_div.id = timeslot.time.substring(11, 19);
     timeslot_div.addEventListener('click', select_time);
     return timeslot_div
@@ -213,7 +213,7 @@ async function get_list_data(date, timezone) {
             doctype: date
         }
     })).message;
-    return json.dumps(listingdata, default=json_handler);
+    return listingdata;
 }
 
 
@@ -222,7 +222,6 @@ async function submit() {
     button.disabled = true;
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
-    let timeslot_container = document.getElementById('timeslot-container');
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     
     let testing = document.getElementById("customer_notes");
