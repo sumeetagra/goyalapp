@@ -227,7 +227,6 @@ async function submit() {
         timeslot_container.appendChild(listdata1);
         let testing = document.getElementById("customer_notes");
         testing.value = listdata1;
-
 }
 
 function get_form_data() {
