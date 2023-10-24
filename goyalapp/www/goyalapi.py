@@ -55,7 +55,13 @@ def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwa
 	)
 
 	raw_result = _get_list(**kwargs)
-	return raw_result
+
+	from frappe.utils.response import json_handler
+
+	return {
+		"raw_result": json.dumps(raw_result, default=json_handler),
+		"result": raw_result,
+	}
 
 
 def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_length=20,order_by="name",custom=False,):
