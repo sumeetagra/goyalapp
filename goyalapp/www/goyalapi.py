@@ -54,6 +54,7 @@ def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwa
 		order_by="name",
 	)
 
+	limit_start = cint(limit_start)
 	raw_result = _get_list(**kwargs)
 	show_more = len(raw_result) > limit
 	if show_more:
@@ -65,6 +66,7 @@ def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwa
 		"raw_result": json.dumps(raw_result, default=json_handler),
 		"result": raw_result,
 		"show_more": show_more,
+		"next_start": limit_start + limit,
 	}
 
 
