@@ -119,7 +119,7 @@ function clear_time_slots() {
 }
 
 function get_slot_layout(time) {
-    return `<span style="font-size: 1.2em;">${start_time_string}</span><br><span class="text-muted small">${__("to") } ${end_time_string}</span>`;
+    return `<span style="font-size: 1.2em;">${__("Sg is HERE") }</span><br><span class="text-muted small">${__("to") } ${__("Sg is HERE") }</span>`;
 }
 
 function select_time() {
