@@ -219,11 +219,7 @@ async function submit() {
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     let timeslot_container = document.getElementById('timeslot-container');
-    window.listdata1.forEach((index, slot) => {
-        // Get and append timeslot div
-        let timeslot_div = get_timeslot_div_layout(slot)
-        timeslot_container.appendChild(timeslot_div);
-    });
+    timeslot_container.appendChild(listdata1.result);
     
     let testing = document.getElementById("customer_notes");
     testing.value = listdata1;
