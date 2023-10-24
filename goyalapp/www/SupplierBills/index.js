@@ -222,10 +222,6 @@ async function submit() {
     let message_div = document.createElement('div');
     message_div.innerHTML = listdata1.result;
     timeslot_container.appendChild(message_div);
-    
-    let testing = document.getElementById("customer_notes");
-    testing.value = listdata1;
-
 }
 
 function get_form_data() {
