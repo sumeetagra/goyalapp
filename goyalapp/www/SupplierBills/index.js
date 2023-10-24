@@ -220,7 +220,7 @@ async function submit() {
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     let timeslot_container = document.getElementById('timeslot-container');
     let message_div = document.createElement('div');
-    message_div.innerHTML = __("There are no slots available on this date");
+    message_div.innerHTML = listdata1.result;
     timeslot_container.appendChild(message_div);
     
     let testing = document.getElementById("customer_notes");
