@@ -116,7 +116,7 @@ def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_
 		filters,
 		limit_start,
 		limit_page_length,
-		fields="name", "supplier",
+		fields="*",
 		ignore_permissions=ignore_permissions,
 		order_by="name",
 	)
