@@ -213,7 +213,7 @@ async function get_list_data(date, timezone) {
             doctype: date
         }
     })).message;
-    return listingdata.message;
+    return listingdata;
 }
 
 
@@ -223,6 +223,12 @@ async function submit() {
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
+    let timeslot_container = document.getElementById('timeslot-container');
+    window.listdata1.forEach((index, slot) => {
+        // Get and append timeslot div
+        let timeslot_div = get_timeslot_div_layout(slot)
+        timeslot_container.appendChild(timeslot_div);
+    });
     
     let testing = document.getElementById("customer_notes");
     testing.value = listdata1;
