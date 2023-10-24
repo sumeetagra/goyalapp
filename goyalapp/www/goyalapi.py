@@ -55,12 +55,16 @@ def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwa
 	)
 
 	raw_result = _get_list(**kwargs)
+	show_more = len(raw_result) > limit
+	if show_more:
+		raw_result = raw_result[:-1]
 
 	from frappe.utils.response import json_handler
 
 	return {
 		"raw_result": json.dumps(raw_result, default=json_handler),
 		"result": raw_result,
+		"show_more": show_more,
 	}
 
 
