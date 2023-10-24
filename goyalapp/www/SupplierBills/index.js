@@ -213,7 +213,7 @@ async function get_list_data(date, timezone) {
             doctype: date
         }
     })).message;
-    return listingdata;
+    return listingdata.message;
 }
 
 
