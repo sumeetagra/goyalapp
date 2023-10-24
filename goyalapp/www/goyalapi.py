@@ -60,6 +60,9 @@ def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwa
 	if show_more:
 		raw_result = raw_result[:-1]
 
+	if not raw_result:
+		return {"result": []}
+
 	from frappe.utils.response import json_handler
 
 	return {
