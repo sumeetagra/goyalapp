@@ -27,9 +27,7 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
-def get(
-	doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs
-):
+def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs):
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
 
@@ -60,15 +58,7 @@ def get(
 	return raw_result
 
 
-def get_transaction_list(
-	doctype,
-	txt=None,
-	filters=None,
-	limit_start=0,
-	limit_page_length=20,
-	order_by="name",
-	custom=False,
-):
+def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_length=20,order_by="name",custom=False,):
 	user = frappe.session.user
 	ignore_permissions = False
 
@@ -116,10 +106,7 @@ def get_transaction_list(
 		order_by="name",
 	)
 
-	if custom:
-		return transactions
-
-	return post_process(doctype, transactions)
+	return transactions
 
 
 def prepare_filters(doctype, controller, kwargs):
