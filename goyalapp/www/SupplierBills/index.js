@@ -98,15 +98,9 @@ async function update_time_slots(selected_date, selected_timezone) {
 }
 
 function get_timeslot_div_layout(timeslot) {
-    let start_time = new Date(timeslot.time)
     let timeslot_div = document.createElement('div');
-    timeslot_div.classList.add('time-slot');
-    if (!timeslot.availability) {
-        timeslot_div.classList.add('unavailable')
-    }
-    timeslot_div.innerHTML = get_slot_layout(start_time);
-    timeslot_div.id = timeslot.time.substring(11, 19);
-    timeslot_div.addEventListener('click', select_time);
+    timeslot_div.innerHTML = get_slot_layout(timeslot);
+    timeslot_div.id = timeslot.name;
     return timeslot_div
 }
 
@@ -119,7 +113,9 @@ function clear_time_slots() {
 }
 
 function get_slot_layout(time) {
-    return `<span style="font-size: 1.2em;">${__("Sg is HERE") }</span><br><span class="text-muted small">${__("to") } ${__("Sg is HERE") }</span>`;
+    let start_time_string = time.name;
+    let end_time_string = time.name;
+    return `<span style="font-size: 1.2em;">${start_time_string}</span><br><span class="text-muted small">${__("to") } ${end_time_string}</span>`;
 }
 
 function select_time() {
@@ -219,9 +215,13 @@ async function submit() {
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     let timeslot_container = document.getElementById('timeslot-container');
-    let message_div = document.createElement('div');
-    message_div.innerHTML = listdata1.result;
-    timeslot_container.appendChild(message_div);
+    window.listdata1.raw_result.forEach(slot => {
+        // Get and append timeslot div
+        let timeslot_div = get_timeslot_div_layout(slot)
+        timeslot_container.appendChild(timeslot_div);
+    });
+
+
 }
 
 function get_form_data() {
