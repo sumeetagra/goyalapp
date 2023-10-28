@@ -80,18 +80,12 @@ async function get_time_slots(date, timezone) {
 }
 
 function get_timeslot_div_layout(timeslot) {
-    let timeslot_div = document.createElement('div');
+    let timeslot_div = document.createElement('tr');
+    timeslot_div.classList.add('tab_content')
+    timeslot_div.classList.add('odd')
     timeslot_div.innerHTML = get_slot_layout(timeslot);
     timeslot_div.id = timeslot.name;
     return timeslot_div
-}
-
-function clear_time_slots() {
-    // Clear any existing divs in timeslot container
-    let timeslot_container = document.getElementById('ListOthtable');
-    while (timeslot_container.firstChild) {
-        timeslot_container.removeChild(timeslot_container.firstChild);
-    }
 }
 
 function get_slot_layout(time) {
@@ -101,34 +95,6 @@ function get_slot_layout(time) {
 
 }
 
-function select_time() {
-    if (this.classList.contains('unavailable')) {
-        return;
-    }
-    let selected_element = document.getElementsByClassName('selected');
-    if (!(selected_element.length > 0)) {
-        this.classList.add('selected');
-        show_next_button();
-        return;
-    }
-    selected_element = selected_element[0]
-    window.selected_time = this.id;
-    selected_element.classList.remove('selected');
-    this.classList.add('selected');
-    show_next_button();
-}
-
-function set_default_timeslot() {
-    let timeslots = document.getElementsByClassName('time-slot')
-    // Can't use a forEach here since, we need to break the loop after a timeslot is selected
-    for (let i = 0; i < timeslots.length; i++) {
-        const timeslot = timeslots[i];
-        if (!timeslot.classList.contains('unavailable')) {
-            timeslot.classList.add('selected');
-            break;
-        }
-    }
-}
 
 function navigate_to_page(page_number) {
     let page1 = document.getElementById('select-date-time');
