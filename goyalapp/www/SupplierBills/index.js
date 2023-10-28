@@ -98,7 +98,7 @@ async function update_time_slots(selected_date, selected_timezone) {
 }
 
 function get_timeslot_div_layout(timeslot) {
-    let timeslot_div = document.createElement('div');
+    let timeslot_div = document.createElement('tbody');
     timeslot_div.innerHTML = get_slot_layout(timeslot);
     timeslot_div.id = timeslot.name;
     return timeslot_div
@@ -106,7 +106,7 @@ function get_timeslot_div_layout(timeslot) {
 
 function clear_time_slots() {
     // Clear any existing divs in timeslot container
-    let timeslot_container = document.getElementById('timeslot-container');
+    let timeslot_container = document.getElementById('ListOthtable');
     while (timeslot_container.firstChild) {
         timeslot_container.removeChild(timeslot_container.firstChild);
     }
@@ -115,7 +115,8 @@ function clear_time_slots() {
 function get_slot_layout(time) {
     let start_time_string = time.name;
     let end_time_string = time.name;
-    return `<span style="font-size: 1.2em;">${start_time_string}</span><br><span class="text-muted small">${__("to") } ${end_time_string}</span>`;
+    return `<tr class="tab_content odd"><span style="font-size: 1.2em;">${start_time_string}</span><br><span class="text-muted small">${__("to") } ${end_time_string}</span></tr>`;
+
 }
 
 function select_time() {
