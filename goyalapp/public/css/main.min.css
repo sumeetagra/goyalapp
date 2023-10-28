@@ -4707,15 +4707,10 @@ body.fixed-layout.sidebar-mini .content-wrapper {
     -ms-flex-align: center;
     align-items: center;
     padding: 10px 15px;
-    background-color: #fff;
-    background-image: linear-gradient(to right, #3f438f,#6975c3);
+    background-color: linear-gradient(to bottom, rgba(26,75,161,1) 0%, rgba(25,68,137,1) 100%);
     /*margin-left: 200px;
     width: calc(100% - 200px);*/
     z-index: 9999;
-    background-image: url('https://docs.ewaybillgst.gov.in/assets/img/bg1.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 .page-wrapper {
