@@ -97,7 +97,7 @@ function clear_time_slots() {
 function get_slot_layout(time) {
     let start_time_string = time.name;
     let end_time_string = time.name;
-    return `<tr class="tab_content odd"><span style="font-size: 1.2em;">${start_time_string}</span><br><span class="text-muted small">${__("to") } ${end_time_string}</span></tr>`;
+    return `<tr class="tab_content odd"><td>${start_time_string}</td><td>${start_time_string}</td><td>Tax Invoice</td><span style="font-size: 1.2em;">${start_time_string}</span><br><span class="text-muted small">${__("to") } ${end_time_string}</span></tr>`;
 
 }
 
@@ -198,6 +198,7 @@ async function submit() {
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     let timeslot_container = document.getElementById('slot-container');
+    let timeslot_div = document.createElement('tbody');
     window.listdata1.result.forEach(slot => {
         // Get and append timeslot div
         let timeslot_div = get_timeslot_div_layout(slot)
