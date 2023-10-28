@@ -79,26 +79,8 @@ async function get_time_slots(date, timezone) {
     return slots;
 }
 
-async function update_time_slots(selected_date, selected_timezone) {
-    let timeslot_container = document.getElementById('timeslot-container');
-    window.slots = await get_time_slots(selected_date, selected_timezone);
-    clear_time_slots();
-    if (window.slots.length <= 0) {
-        let message_div = document.createElement('p');
-        message_div.innerHTML = __("There are no slots available on this date");
-        timeslot_container.appendChild(message_div);
-        return
-    }
-    window.slots.forEach((slot, index) => {
-        // Get and append timeslot div
-        let timeslot_div = get_timeslot_div_layout(slot)
-        timeslot_container.appendChild(timeslot_div);
-    });
-    set_default_timeslot();
-}
-
 function get_timeslot_div_layout(timeslot) {
-    let timeslot_div = document.createElement('tbody');
+    let timeslot_div = document.createElement('div');
     timeslot_div.innerHTML = get_slot_layout(timeslot);
     timeslot_div.id = timeslot.name;
     return timeslot_div
@@ -215,7 +197,7 @@ async function submit() {
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
-    let timeslot_container = document.getElementById('timeslot-container');
+    let timeslot_container = document.getElementById('ListOthtable');
     window.listdata1.result.forEach(slot => {
         // Get and append timeslot div
         let timeslot_div = get_timeslot_div_layout(slot)
