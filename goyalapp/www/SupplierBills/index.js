@@ -197,7 +197,7 @@ async function submit() {
     let listDoctype = 'Purchase Invoice';
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
-    let timeslot_container = document.getElementById('ListOthtable');
+    let timeslot_container = document.getElementById('slot-container');
     window.listdata1.result.forEach(slot => {
         // Get and append timeslot div
         let timeslot_div = get_timeslot_div_layout(slot)
