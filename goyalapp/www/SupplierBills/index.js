@@ -68,17 +68,6 @@ function on_end_date_select() {
     window.selected_date = date_picker3.value;
 }
 
-async function get_time_slots(date, timezone) {
-    let slots = (await frappe.call({
-        method: 'erpnext.www.book_appointment.index.get_appointment_slots',
-        args: {
-            date: date,
-            timezone: timezone
-        }
-    })).message;
-    return slots;
-}
-
 function get_timeslot_div_layout(timeslot) {
     let timeslot_div = document.createElement('tr');
     timeslot_div.classList.add('tab_content')

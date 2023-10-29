@@ -121,7 +121,11 @@ def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_
 		order_by="name",
 	)
 
-	return transactions
+
+	if custom:
+		return transactions
+
+	return post_process(doctype, transactions)
 
 
 def prepare_filters(doctype, controller, kwargs):
