@@ -88,6 +88,9 @@ function get_slot_layout(time) {
     let SupplierDt = time.bill_date;
     let TotalQty = time.total_qty;
     let incoterm = time.incoterm;
+    let SupplierBs = time.base_total;
+    let SupplierTx = time.total_taxes_and_charges;
+    let SupplierTl = time.rounded_total;
     return `<tr class="tab_content odd">
     <td>${DocName}</td>
     <td>${SupplierCode}</td>
@@ -96,6 +99,9 @@ function get_slot_layout(time) {
     <br>${SupplierDt}</td>
     <td>${TotalQty}</td>
     <td>${incoterm}</td>
+    <td>${SupplierBs}</td>
+    <td>${SupplierTx}</td>
+    <td>${SupplierTl}</td>
     </tr>`;
 }
 
