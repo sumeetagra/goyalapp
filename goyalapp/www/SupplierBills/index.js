@@ -24,7 +24,10 @@ function hide_fetch_button() {
 
 function hide_end_date() {
     let date_picker = document.getElementById('stop-date');
+    let dataTable = document.getElementById('ctl00_ContentPlaceHolder1_tr_data');
     date_picker.disabled = true;
+    dataTable.style.display = 'none';
+
 }
 
 function show_end_date() {
@@ -163,6 +166,8 @@ async function submit() {
     let listDoctype1 = 'Purchase Invoice';
     window.listdata1 = await get_list_data(listDoctype, listDoctype1);
     let timeslot_container = document.getElementById('slot-container');
+    let dataTable = document.getElementById('ctl00_ContentPlaceHolder1_tr_data');
+    dataTable.style.display = 'block';
     let timeslot_div = document.createElement('tbody');
     window.listdata1.result.forEach(slot => {
         // Get and append timeslot div
