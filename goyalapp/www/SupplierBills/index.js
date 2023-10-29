@@ -91,6 +91,7 @@ function get_slot_layout(time) {
     let SupplierBs = time.base_total;
     let SupplierTx = time.total_taxes_and_charges;
     let SupplierTl = time.rounded_total;
+    let SupplierOs = time.outstanding_amount;    
     return `<tr class="tab_content odd">
     <td>${DocName}</td>
     <td>${SupplierCode}</td>
@@ -102,6 +103,7 @@ function get_slot_layout(time) {
     <td>${SupplierBs}</td>
     <td>${SupplierTx}</td>
     <td>${SupplierTl}</td>
+    <td>${SupplierOs}</td>
     </tr>`;
 }
 
