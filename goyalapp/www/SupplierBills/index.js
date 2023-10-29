@@ -83,6 +83,7 @@ function get_timeslot_div_layout(timeslot) {
 function get_slot_layout(time) {
     let DocName = time.name;
     let SupplierCode = time.supplier;
+    let SupplierNm = time.supplier_name;
     let SupplierDoc = time.bill_no;
     let SupplierDt = time.bill_date;
     let TotalQty = time.total_qty;
@@ -90,6 +91,7 @@ function get_slot_layout(time) {
     return `<tr class="tab_content odd">
     <td>${DocName}</td>
     <td>${SupplierCode}</td>
+    <td>${SupplierNm}</td>
     <td>${SupplierDoc}
     <br>${SupplierDt}</td>
     <td>${TotalQty}</td>
