@@ -80,11 +80,18 @@ function get_timeslot_div_layout(timeslot) {
 function get_slot_layout(time) {
     let DocName = time.name;
     let SupplierCode = time.supplier;
+    let SupplierDoc = time.bill_no;
+    let SupplierDt = time.bill_date;
+    let TotalQty = time.total_qty;
+    let incoterm = time.incoterm;
     return `<tr class="tab_content odd">
     <td>${DocName}</td>
     <td>${SupplierCode}</td>
-    <td>Tax Invoice</td></tr>`;
-
+    <td>${SupplierDoc}
+    <br>${SupplierDt}</td>
+    <td>${TotalQty}</td>
+    <td>${incoterm}</td>
+    </tr>`;
 }
 
 
