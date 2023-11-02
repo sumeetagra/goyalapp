@@ -68,8 +68,6 @@ def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwa
 	return {
 		"raw_result": json.dumps(raw_result, default=json_handler),
 		"result": raw_result,
-		"show_more": show_more,
-		"next_start": limit_start + limit,
 	}
 
 
