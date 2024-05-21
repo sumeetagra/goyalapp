@@ -173,8 +173,10 @@ async function submit() {
     let button = document.getElementById('fetch-button');
     button.disabled = true;
     let listDoctype = 'Purchase Invoice';
-    let listDoctype1 = 'Purchase Invoice';
-    window.listdata1 = await get_list_data(listDoctype, listDoctype1);
+    let date_start = document.getElementById('start-date');
+    let date_stop = document.getElementById('stop-date');
+
+    window.listdata1 = await get_list_data(listDoctype, date_start, date_stop);
     let timeslot_container = document.getElementById('slot-container');
     let dataTable = document.getElementById('ctl00_ContentPlaceHolder1_tr_data');
     dataTable.style.display = 'block';
