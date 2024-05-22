@@ -153,7 +153,6 @@ frappe.ready(function() {
                 },
                 200: function(r) {
                     console.log(r);
-                    frappe.msgprint({ title: r, message: r, clear: true });
                     return false;
 
                     $("input").val("");
