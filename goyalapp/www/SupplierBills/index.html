@@ -96,7 +96,6 @@
 frappe.ready(function() {
     // URL args
     const key = frappe.utils.get_url_arg('key');
-    const password_expired = frappe.utils.get_url_arg('password_expired');
     // inputs, paragraphs and button elements
     const old_password = $('#start-date');
     const new_password = $('#stop-date');
@@ -116,10 +115,6 @@ frappe.ready(function() {
         old_password.parent().toggle();
     }
 
-    if(password_expired) {
-        $(".password-box").html("{{ _('The password of your account has expired.') }}");
-    }
-
     $("#reset-password").on("submit", function() {
         return false;
     });
@@ -129,43 +124,12 @@ frappe.ready(function() {
     })
 
     update_button.click(function() {
-                console.log(old_password.val());
         var args = {
-            key: key || "",
-            old_password: old_password.val(),
-            new_password: new_password.val(),
-            confirm_password: confirm_password.val(),
-            logout_all_sessions: 1
+            doctype: "PurchaseInvoice",
+            StartDate: old_password.val(),
+            EndDate: new_password.val()
         }
-        if (!args.old_password && !args.key) {
-            frappe.msgprint({
-                title: "{{ _('Missing Value') }}",
-                message: "{{ _('Please enter your old password.') }}",
-                clear: true
-            });
-        }
-        if (!args.new_password) {
-            frappe.msgprint({
-                title: "{{ _('Missing Value') }}",
-                message: "{{ _('Please enter your new password.') }}",
-                clear: true
-            });
-        }
-        if (args.old_password === args.new_password) {
-            frappe.msgprint({
-                title: "{{ _('Invalid Password') }}",
-                message: password_not_same_as_old_password,
-            });
-            password_strength_message.addClass('hidden');
-            return;
-        }
-
-        if (args.new_password !== args.confirm_password) {
-            password_mismatch_message.text(password_mismatch)
-                .removeClass('hidden text-muted').addClass('text-danger');
-            password_strength_message.addClass('hidden');
-            return;
-        }
+                console.log(args);
 
         frappe.call({
             type: "POST",
