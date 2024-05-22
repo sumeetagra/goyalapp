@@ -22,6 +22,8 @@
                 </h5>
         </div>
     </div>
+        <form id="reset-password">
+
     <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 px-2 justify-content-center mx-auto">
                 <div class="form-inline justify-content-left font-weight-bold bg-light p-2">
@@ -54,6 +56,7 @@
                 </div>
             </div>
     </div>
+        </form>
 
     <div class="row my-1">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 justify-content-center mx-auto">
@@ -126,7 +129,7 @@ frappe.ready(function() {
     })
 
     update_button.click(function() {
-                console.log(old_password);
+                console.log(old_password.val());
         var args = {
             key: key || "",
             old_password: old_password.val(),
