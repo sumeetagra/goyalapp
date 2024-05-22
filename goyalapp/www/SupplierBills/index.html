@@ -48,7 +48,7 @@
                     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator8" class="errormsg" style="color:Red;display:none;">*</span>
                     <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" class="errormsg" style="color:Red;display:none;">*</span>
 
-                <button class="btn btn-primary form-control" style="margin: 0px 10px;" onclick="submit()" id="fetch-button">{{ _("Submit") }}</button>
+                <button type="submit" class="btn btn-primary form-control" style="cursor: not-allowed; margin: 0px 10px;" id="fetch-button">{{ _("Submit") }}</button>
 
                     <a href="/dashboard" class="btn btn-danger btnprint">Main Menu</a>
                 </div>
@@ -101,7 +101,7 @@ frappe.ready(function() {
                 console.log(old_password);
 
     const confirm_password = $('#confirm_password');
-    const update_button = $('#update');
+    const update_button = $('#fetch-button');
     const password_strength_indicator = $('.password-strength-indicator');
     const password_strength_message =$('.password-strength-message');
     const password_mismatch_message = $('.password-mismatch-message');
