@@ -153,6 +153,7 @@ frappe.ready(function() {
                     frappe.msgprint({ title: title, message: message, clear: true });
                 },
                 200: function(r) {
+                console.log("Sucess SG!");
                     $("input").val("");
                     strength_indicator.addClass("hidden");
                     strength_message.addClass("hidden");
