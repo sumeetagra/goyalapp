@@ -98,7 +98,6 @@ frappe.ready(function() {
     const old_password = $('#start-date');
     const new_password = $('#stop-date');
 
-                console.log(old_password);
 
     const confirm_password = $('#confirm_password');
     const update_button = $('#fetch-button');
@@ -127,6 +126,7 @@ frappe.ready(function() {
     })
 
     update_button.click(function() {
+                console.log(old_password);
         var args = {
             key: key || "",
             old_password: old_password.val(),
