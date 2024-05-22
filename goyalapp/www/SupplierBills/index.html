@@ -153,8 +153,9 @@ frappe.ready(function() {
                     frappe.msgprint({ title: title, message: message, clear: true });
                 },
                 200: function(r) {
-                console.log(r);
-                return false;
+                    console.log(r);
+                    frappe.msgprint({ title: r, message: r, clear: true });
+                    return false;
 
                     $("input").val("");
                     strength_indicator.addClass("hidden");
