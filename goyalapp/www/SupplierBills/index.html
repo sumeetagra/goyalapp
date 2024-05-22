@@ -155,7 +155,7 @@ frappe.ready(function() {
                 },
                 200: function(r) {
                     console.log(r);
-                    ReportDivId.style.display = "block";
+                    window.ReportDivId.style.display = "block";
                     frappe.msgprint({ title: r, message: r, clear: true });
                     return false;
 
