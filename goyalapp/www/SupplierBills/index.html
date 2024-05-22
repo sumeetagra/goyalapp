@@ -154,7 +154,7 @@ frappe.ready(function() {
                 },
                 200: function(r) {
                     console.log(r);
-                    ReportDiv.addClass("block");
+                    ReportDiv.style.display = 'block';
                     return false;
 
                     $("input").val("");
