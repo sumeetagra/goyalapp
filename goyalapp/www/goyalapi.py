@@ -27,7 +27,11 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
-def get(doctype, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs):
+def get(doctype, StartDate, EndDate, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs):
+	return {
+		"result": "SG Is HERE",
+	}
+
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
 
