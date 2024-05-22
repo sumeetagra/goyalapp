@@ -133,7 +133,7 @@ frappe.ready(function() {
 
         frappe.call({
             type: "POST",
-            method: "frappe.core.doctype.user.user.update_password",
+            method: "goyalapp.www.goyalapi.get",
             btn: update_button,
             args: args,
             statusCode: {
