@@ -30,6 +30,7 @@
                     </label>
 
                     <div id="ctl00_ContentPlaceHolder1_txtdatediv" class="input-group mr-2">
+
                         <input type="date" oninput="on_start_date_select()" name="start-date"
                         id="start-date" class="form-control mt-3 col-md m-3">
 
@@ -57,10 +58,6 @@
     <div class="row my-1">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 justify-content-center mx-auto">
                 <div style="display:none;" id="ctl00_ContentPlaceHolder1_tr_data" class="bg-white pt-1 reportstablediv">
-
-                    
-
-                    
 
                     
                             <div id="ListOthtable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="ListOthtable_length"><label>Show <select name="ListOthtable_length" aria-controls="ListOthtable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="ListOthtable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="ListOthtable"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered table-striped mb-0 dataTable no-footer" id="ListOthtable" role="grid" aria-describedby="ListOthtable_info">
@@ -98,8 +95,11 @@ frappe.ready(function() {
     const key = frappe.utils.get_url_arg('key');
     const password_expired = frappe.utils.get_url_arg('password_expired');
     // inputs, paragraphs and button elements
-    const old_password = $('#old_password');
-    const new_password = $('#new_password');
+    const old_password = $('#start-date');
+    const new_password = $('#stop-date');
+
+                console.log(old_password);
+
     const confirm_password = $('#confirm_password');
     const update_button = $('#update');
     const password_strength_indicator = $('.password-strength-indicator');
@@ -333,7 +333,7 @@ frappe.ready(function() {
 
 </script>
 
-            
+
     </div>
 <br><br><br>
 </div>
