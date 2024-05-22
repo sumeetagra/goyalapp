@@ -71,24 +71,6 @@ def get(doctype, StartDate, EndDate, txt=None, limit_start=0, fields=None, cmd=N
 		"result": raw_result,
 	}
 
-
-def get_list_sg(self, doctype, fields='["name"]', filters=None, limit_start=0, limit_page_length=None):
-		"""Return list of records of a particular type."""
-		if not isinstance(fields, str):
-			fields = json.dumps(fields)
-		params = {
-			"fields": fields,
-		}
-		if filters:
-			params["filters"] = json.dumps(filters)
-		if limit_page_length is not None:
-			params["limit_start"] = limit_start
-			params["limit_page_length"] = limit_page_length
-		res = self.session.get(
-			self.url + "/api/resource/" + doctype, params=params, verify=self.verify, headers=self.headers
-		)
-		return self.post_process(res)
-
 def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_length=20,order_by="name",custom=False,):
 	user = frappe.session.user
 	ignore_permissions = False
