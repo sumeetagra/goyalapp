@@ -99,7 +99,6 @@ frappe.ready(function() {
     // inputs, paragraphs and button elements
     const old_password = $('#start-date');
     const new_password = $('#stop-date');
-    const ReportDiv = $('#ctl00_ContentPlaceHolder1_tr_data');
 
     const confirm_password = $('#confirm_password');
     const update_button = $('#fetch-button');
@@ -154,7 +153,9 @@ frappe.ready(function() {
                 },
                 200: function(r) {
                     console.log(r);
-                    window.ReportDiv.style.display = 'block';
+                    const ReportDiv5 = $('#ctl00_ContentPlaceHolder1_tr_data');
+
+                    ReportDiv5.css("display", "block");
                     return false;
 
                     $("input").val("");
