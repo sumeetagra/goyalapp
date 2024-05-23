@@ -86,10 +86,6 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-5">
 
-                                {% for col in Datalist %}
-                                  <td>{{ col }}</td>
-                                {% endfor %}
-
                                 <div class="dataTables_info" id="ListOthtable_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries</div>
                             </div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="ListOthtable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="ListOthtable_previous"><a href="#" aria-controls="ListOthtable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="ListOthtable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="ListOthtable_next"><a href="#" aria-controls="ListOthtable" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
                             <div class="text-center"> <input type="submit" name="ctl00$ContentPlaceHolder1$List_Oth$btn_export_excel_List_Oth" value="Export To Excel" id="ctl00_ContentPlaceHolder1_List_Oth_btn_export_excel_List_Oth" class="btn btn-primary"></div>
@@ -163,9 +159,10 @@ frappe.ready(function() {
                     frappe.msgprint({ title: title, message: message, clear: true });
                 },
                 200: function(r) {
-                    console.log(r);
                     if (r.DataResponse) {
                         var Datalist = r.DataResponse,
+                        console.log(Datalist);
+                        console.log("SG Reported");
                         ReportDiv5.css("display", "block");
                     }
 
