@@ -106,8 +106,6 @@ def get_list_SG_transactions(
 	fields=None,
 	order_by=None,
 ):
-	"""Get List of transactions like Invoices, Orders"""
-	from frappe.www.list import get_list
 
 	data = []
 	or_filters = []
