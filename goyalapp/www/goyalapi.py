@@ -28,8 +28,14 @@ def get_context(context, **dict_params):
 
 @frappe.whitelist(allow_guest=True)
 def GetSupplierBills(doctype, StartDate, EndDate):
+
+	if StartDate > EndDate:
+		frappe.throw(_("Start Date shall be before the End Date."))
+
 	return {
 		"result": "SG is Here!",
+		"Start Date": StartDate,
+		"End Date": EndDate,
 	}
 
 	"""Update password for the current user.
