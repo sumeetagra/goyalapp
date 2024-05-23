@@ -47,8 +47,6 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 	filters["posting_date"] = ["between", [StartDate, EndDate]]
 
-	fields = ["name", "posting_date"]
-
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
@@ -84,7 +82,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 		filters,
 		limit_start,
 		limit_page_length,
-		fields=fields,
+		fields="name",
 		ignore_permissions=ignore_permissions,
 		order_by="creation desc",
 	)
@@ -108,15 +106,15 @@ def get_list_SG_transactions(
 	"""Get List of transactions like Invoices, Orders"""
 	from frappe.www.list import get_list
 
-	meta = frappe.get_meta(doctype)
 	data = []
+	fields = ["name", "posting_date"]
 	or_filters = []
 
 	for d in get_list(
 		doctype,
 		txt,
 		filters=filters,
-		fields="name",
+		fields=fields,
 		limit_start=limit_start,
 		limit_page_length=limit_page_length,
 		ignore_permissions=ignore_permissions,
