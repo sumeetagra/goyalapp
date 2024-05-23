@@ -45,6 +45,9 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
+	filters["posting_date"] = [">", StartDate] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
+	filters["posting_date"] = ["<", EndDate] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
+
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
