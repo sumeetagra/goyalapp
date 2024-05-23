@@ -76,6 +76,17 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 			ignore_permissions = False
 			filters = {}
 
+	transactions = get_list_SG_transactions(
+		doctype,
+		txt,
+		filters,
+		limit_start,
+		limit_page_length,
+		fields="name",
+		ignore_permissions=ignore_permissions,
+		order_by="creation desc",
+	)
+
 	return {
 		"Start Date": StartDate,
 		"End Date": EndDate,
@@ -84,7 +95,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	}
 
 
-def get_list_for_transactions(
+def get_list_SG_transactions(
 	doctype,
 	txt,
 	filters,
