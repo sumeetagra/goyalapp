@@ -107,7 +107,7 @@ def get_list_SG_transactions(
 	from frappe.www.list import get_list
 
 	data = []
-	fields = ["name", "posting_date"]
+	fields = ["name", "posting_date", "supplier", "supplier_name", "total_qty"]
 	or_filters = []
 
 	for d in get_list(
