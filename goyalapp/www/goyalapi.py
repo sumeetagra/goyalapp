@@ -47,6 +47,8 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 	filters["posting_date"] = ["between", [StartDate, EndDate]]
 
+	fields = ["name", "posting_date"]
+
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
@@ -82,13 +84,12 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 		filters,
 		limit_start,
 		limit_page_length,
-		fields=["name", "posting_date"],
+		fields=fields,
 		ignore_permissions=ignore_permissions,
 		order_by="creation desc",
 	)
 
 	return {
-		"Filters": filters,
 		"DataResponse": transactions
 	}
 
