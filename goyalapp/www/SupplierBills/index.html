@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-5">
 
-                                {% for col in dataArray %}
+                                {% for col in Datalist %}
                                   <td>{{ col }}</td>
                                 {% endfor %}
 
@@ -164,8 +164,12 @@ frappe.ready(function() {
                 },
                 200: function(r) {
                     console.log(r);
-                    ReportDiv5.css("display", "block");
-                    const dataArray = r.DataResponse;
+                    if (r.DataResponse) {
+                        var Datalist = r.DataResponse,
+                        ReportDiv5.css("display", "block");
+                    }
+
+
                     return false;
 
                     $("input").val("");
