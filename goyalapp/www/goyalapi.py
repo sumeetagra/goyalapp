@@ -102,14 +102,10 @@ def get_list_SG_transactions(
 	order_by=None,
 ):
 
-	"""Get List of transactions like Invoices, Orders"""
-	from frappe.www.list import get_list
-
-	meta = frappe.get_meta(doctype)
 	data = []
 	or_filters = []
 
-	for d in get_list(
+	for d in frappe.get_list(
 		doctype,
 		txt,
 		filters=filters,
@@ -119,6 +115,7 @@ def get_list_SG_transactions(
 		ignore_permissions=ignore_permissions,
 		order_by="creation desc",
 	):
+
 		data.append(d)
 
 	return data
