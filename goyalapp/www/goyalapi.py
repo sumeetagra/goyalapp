@@ -109,9 +109,7 @@ def get_list_SG_transactions(
 	data = []
 	or_filters = []
 
-	_get_list = frappe.get_list
-
-	kwargs = dict(
+	for d in get_list(
 		doctype,
 		txt,
 		filters=filters,
@@ -120,10 +118,7 @@ def get_list_SG_transactions(
 		limit_page_length=limit_page_length,
 		ignore_permissions=ignore_permissions,
 		order_by="creation desc",
-	)
-
-	for d in get_list(**kwargs):
-		
+	):
 		data.append(d)
 
 	return data
