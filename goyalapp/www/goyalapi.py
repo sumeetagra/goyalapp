@@ -29,13 +29,24 @@ def get_context(context, **dict_params):
 @frappe.whitelist(allow_guest=True)
 def GetSupplierBills(doctype, StartDate, EndDate):
 
+	if StartDate == '':
+		frappe.throw(_("Please Enter Start Date."))
+
+	if EndDate == '':
+		frappe.throw(_("Please Enter End Date."))
+
 	if StartDate > EndDate:
 		frappe.throw(_("Start Date shall be before the End Date."))
+
+
+	user_data = frappe.db.get_list("PurchaseInvoice")
+
 
 	return {
 		"result": "SG is Here!",
 		"Start Date": StartDate,
 		"End Date": EndDate,
+		"Data": user_data,
 	}
 
 	"""Update password for the current user.
@@ -90,9 +101,6 @@ def GetSupplierBills(doctype, StartDate, EndDate):
 
 @frappe.whitelist(allow_guest=True)
 def get(doctype, StartDate, EndDate, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs):
-	return {
-		"result": "SG is Here!",
-	}
 
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
