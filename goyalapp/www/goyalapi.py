@@ -39,7 +39,7 @@ def GetSupplierBills(doctype, StartDate, EndDate):
 		frappe.throw(_("Start Date shall be before the End Date."))
 
 
-	user_data = frappe.db.get_list("PurchaseInvoice")
+	user_data = frappe.db.get_list("Purchase Invoice")
 
 
 	return {
