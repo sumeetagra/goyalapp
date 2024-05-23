@@ -47,6 +47,34 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
+	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
+
+	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
+		parties_doctype = "Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
+		# find party for this contact
+		customers, suppliers = get_customers_suppliers(parties_doctype, user)
+
+		if customers:
+			if doctype == "Quotation":
+				filters["quotation_to"] = "Customer"
+				filters["party_name"] = ["in", customers]
+			else:
+				filters["customer"] = ["in", customers]
+		elif suppliers:
+			filters["supplier"] = ["in", suppliers]
+		elif not custom:
+			return []
+
+		if doctype == "Request for Quotation":
+			parties = customers or suppliers
+			return rfq_transaction_list(parties_doctype, doctype, parties, limit_start, limit_page_length)
+
+		# Since customers and supplier do not have direct access to internal doctypes
+		ignore_permissions = True
+
+		if not customers and not suppliers and custom:
+			ignore_permissions = False
+			filters = {}
 
 	return {
 		"Start Date": StartDate,
