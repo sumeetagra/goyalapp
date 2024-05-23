@@ -88,10 +88,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	)
 
 	return {
-		"Start Date": StartDate,
-		"End Date": EndDate,
 		"filters": filters,
-		"user": user,
 		"transactions": transactions
 	}
 
@@ -107,8 +104,17 @@ def get_list_SG_transactions(
 	order_by=None,
 ):
 
+
 	return {
-		"Start Date": "SG HAS BEEN HERE!"
+		"doctype": doctype,
+		"txt": txt,
+		"filters": filters;
+		"limit_start": limit_start,
+		"limit_page_length": limit_page_length,
+		"ignore_permissions": ignore_permissions,
+		"order_by": order_by,
+		"fields": fields,
+		"Message": "SG IS here Finally!",
 	}
 
 	data = []
