@@ -91,7 +91,8 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 		"Start Date": StartDate,
 		"End Date": EndDate,
 		"filters": filters,
-		"user": user
+		"user": user,
+		"transactions": transactions
 	}
 
 
@@ -108,11 +109,10 @@ def get_list_SG_transactions(
 	"""Get List of transactions like Invoices, Orders"""
 	from frappe.www.list import get_list
 
-	meta = frappe.get_meta(doctype)
 	data = []
 	or_filters = []
 
-	for d in get_list(
+	for d in frappe.get_list(
 		doctype,
 		txt,
 		filters=filters,
@@ -123,27 +123,6 @@ def get_list_SG_transactions(
 		order_by="creation desc",
 	):
 		data.append(d)
-
-	if txt:
-		if meta.get_field("items"):
-			if meta.get_field("items").options:
-				child_doctype = meta.get_field("items").options
-				for item in frappe.get_all(child_doctype, {"item_name": ["like", "%" + txt + "%"]}):
-					child = frappe.get_doc(child_doctype, item.name)
-					or_filters.append([doctype, "name", "=", child.parent])
-
-	if or_filters:
-		for r in frappe.get_list(
-			doctype,
-			fields=fields,
-			filters=filters,
-			or_filters=or_filters,
-			limit_start=limit_start,
-			limit_page_length=limit_page_length,
-			ignore_permissions=ignore_permissions,
-			order_by=order_by,
-		):
-			data.append(r)
 
 	return data
 
