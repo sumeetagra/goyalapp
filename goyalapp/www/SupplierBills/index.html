@@ -159,13 +159,10 @@ frappe.ready(function() {
                     frappe.msgprint({ title: title, message: message, clear: true });
                 },
                 200: function(r) {
-                    if (r.DataResponse) {
                         var Datalist = r.DataResponse,
                         console.log(Datalist);
                         console.log("SG Reported");
                         ReportDiv5.css("display", "block");
-                    }
-
 
                     return false;
 
