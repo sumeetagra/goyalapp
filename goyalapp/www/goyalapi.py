@@ -103,19 +103,6 @@ def get_list_SG_transactions(
 	order_by=None,
 ):
 
-
-	return {
-		"doctype": doctype,
-		"txt": txt,
-		"filters": filters,
-		"limit_start": limit_start,
-		"limit_page_length": limit_page_length,
-		"ignore_permissions": ignore_permissions,
-		"order_by": order_by,
-		"fields": fields,
-		"Message": "SG IS here Finally!"
-	}
-
 	data = []
 	or_filters = []
 
@@ -129,6 +116,11 @@ def get_list_SG_transactions(
 		ignore_permissions=ignore_permissions,
 		order_by="creation desc",
 	):
+		return {
+			"ArrayData": d,
+			"Message": "SG is here Finally!"
+		}
+
 		data.append(d)
 
 	return data
