@@ -76,6 +76,17 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 			ignore_permissions = False
 			filters = {}
 
+	transactions = get_list_for_transactions(
+		doctype,
+		txt,
+		filters,
+		limit_start,
+		limit_page_length,
+		fields="name",
+		ignore_permissions=ignore_permissions,
+		order_by="creation desc",
+	)
+
 	return {
 		"Start Date": StartDate,
 		"End Date": EndDate,
@@ -83,54 +94,58 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 		"user": user
 	}
 
-	"""Update password for the current user.
 
-	Args:
-	        new_password (str): New password.
-	        logout_all_sessions (int, optional): If set to 1, all other sessions will be logged out. Defaults to 0.
-	        key (str, optional): Password reset key. Defaults to None.
-	        old_password (str, optional): Old password. Defaults to None.
-	"""
+def get_list_for_transactions(
+	doctype,
+	txt,
+	filters,
+	limit_start,
+	limit_page_length=20,
+	ignore_permissions=False,
+	fields=None,
+	order_by=None,
+):
+	"""Get List of transactions like Invoices, Orders"""
+	from frappe.www.list import get_list
 
-	if len(new_password) > MAX_PASSWORD_SIZE:
-		frappe.throw(_("Password size exceeded the maximum allowed size."))
+	meta = frappe.get_meta(doctype)
+	data = []
+	or_filters = []
 
-	result = test_password_strength(new_password)
-	feedback = result.get("feedback", None)
+	for d in get_list(
+		doctype,
+		txt,
+		filters=filters,
+		fields="name",
+		limit_start=limit_start,
+		limit_page_length=limit_page_length,
+		ignore_permissions=ignore_permissions,
+		order_by="creation desc",
+	):
+		data.append(d)
 
-	if feedback and not feedback.get("password_policy_validation_passed", False):
-		handle_password_test_fail(feedback)
+	if txt:
+		if meta.get_field("items"):
+			if meta.get_field("items").options:
+				child_doctype = meta.get_field("items").options
+				for item in frappe.get_all(child_doctype, {"item_name": ["like", "%" + txt + "%"]}):
+					child = frappe.get_doc(child_doctype, item.name)
+					or_filters.append([doctype, "name", "=", child.parent])
 
-	res = _get_user_for_update_password(key, old_password)
-	if res.get("message"):
-		frappe.local.response.http_status_code = 410
-		return res["message"]
-	else:
-		user = res["user"]
+	if or_filters:
+		for r in frappe.get_list(
+			doctype,
+			fields=fields,
+			filters=filters,
+			or_filters=or_filters,
+			limit_start=limit_start,
+			limit_page_length=limit_page_length,
+			ignore_permissions=ignore_permissions,
+			order_by=order_by,
+		):
+			data.append(r)
 
-	logout_all_sessions = cint(logout_all_sessions) or frappe.db.get_single_value(
-		"System Settings", "logout_on_password_reset"
-	)
-	_update_password(user, new_password, logout_all_sessions=cint(logout_all_sessions))
-
-	user_doc, redirect_url = reset_user_data(user)
-
-	# get redirect url from cache
-	redirect_to = frappe.cache.hget("redirect_after_login", user)
-	if redirect_to:
-		redirect_url = redirect_to
-		frappe.cache.hdel("redirect_after_login", user)
-
-	frappe.local.login_manager.login_as(user)
-
-	frappe.db.set_value("User", user, "last_password_reset_date", today())
-	frappe.db.set_value("User", user, "reset_password_key", "")
-
-	if user_doc.user_type == "System User":
-		return "/app"
-	else:
-		return redirect_url or "/"
-
+	return data
 
 
 @frappe.whitelist(allow_guest=True)
