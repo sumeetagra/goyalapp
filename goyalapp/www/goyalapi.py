@@ -46,15 +46,14 @@ def GetSupplierBills(doctype, StartDate, EndDate):
 	"""Get List of transactions for custom doctypes"""
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, get_list_for_transactions, post_process
 
-	user_data = frappe.db.get_list("Purchase Invoice")
-
+	InvoiceData = frappe.get_all("Purchase Invoice", fields=["name", "supplier_name"], or_filters=or_filters, limit=20)
 
 	return {
 		"result": "SG is Here!",
 		"Start Date": StartDate,
 		"End Date": EndDate,
 		"filters": filters,
-		"Data": user_data,
+		"Data": InvoiceData,
 	}
 
 	"""Update password for the current user.
