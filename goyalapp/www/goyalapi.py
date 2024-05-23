@@ -49,7 +49,6 @@ def GetSupplierBills(doctype, StartDate, EndDate):
 	InvoiceData = frappe.get_all("Purchase Invoice", fields=["name", "supplier_name"], or_filters=or_filters, limit=20)
 
 	return {
-		"result": "SG is Here!",
 		"Start Date": StartDate,
 		"End Date": EndDate,
 		"filters": filters,
