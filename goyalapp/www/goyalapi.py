@@ -40,6 +40,10 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	if StartDate > EndDate:
 		frappe.throw(_("Start Date shall be before the End Date."))
 
+	if (StartDate != "" and EndDate != ""):
+		filters["posting_date"] = ["in", StartDate]
+
+
 
 	if not filters:
 		filters = {}
@@ -87,6 +91,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	)
 
 	return {
+		"Filters": filters,
 		"DataResponse": transactions
 	}
 
