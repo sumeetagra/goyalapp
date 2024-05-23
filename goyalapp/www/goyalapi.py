@@ -82,7 +82,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 		filters,
 		limit_start,
 		limit_page_length,
-		fields="name",
+		fields=["name", "posting_date"],
 		ignore_permissions=ignore_permissions,
 		order_by="creation desc",
 	)
