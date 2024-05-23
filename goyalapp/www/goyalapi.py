@@ -122,7 +122,7 @@ def get_list_SG_transactions(
 		order_by="creation desc",
 	)
 
-	for d in _get_list(**kwargs):
+	for d in get_list(**kwargs):
 		
 		data.append(d)
 
