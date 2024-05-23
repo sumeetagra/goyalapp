@@ -27,7 +27,66 @@ def get_context(context, **dict_params):
 
 
 @frappe.whitelist(allow_guest=True)
+def GetSupplierBills(doctype, StartDate, EndDate):
+	return {
+		"result": "SG is Here!",
+	}
+
+	"""Update password for the current user.
+
+	Args:
+	        new_password (str): New password.
+	        logout_all_sessions (int, optional): If set to 1, all other sessions will be logged out. Defaults to 0.
+	        key (str, optional): Password reset key. Defaults to None.
+	        old_password (str, optional): Old password. Defaults to None.
+	"""
+
+	if len(new_password) > MAX_PASSWORD_SIZE:
+		frappe.throw(_("Password size exceeded the maximum allowed size."))
+
+	result = test_password_strength(new_password)
+	feedback = result.get("feedback", None)
+
+	if feedback and not feedback.get("password_policy_validation_passed", False):
+		handle_password_test_fail(feedback)
+
+	res = _get_user_for_update_password(key, old_password)
+	if res.get("message"):
+		frappe.local.response.http_status_code = 410
+		return res["message"]
+	else:
+		user = res["user"]
+
+	logout_all_sessions = cint(logout_all_sessions) or frappe.db.get_single_value(
+		"System Settings", "logout_on_password_reset"
+	)
+	_update_password(user, new_password, logout_all_sessions=cint(logout_all_sessions))
+
+	user_doc, redirect_url = reset_user_data(user)
+
+	# get redirect url from cache
+	redirect_to = frappe.cache.hget("redirect_after_login", user)
+	if redirect_to:
+		redirect_url = redirect_to
+		frappe.cache.hdel("redirect_after_login", user)
+
+	frappe.local.login_manager.login_as(user)
+
+	frappe.db.set_value("User", user, "last_password_reset_date", today())
+	frappe.db.set_value("User", user, "reset_password_key", "")
+
+	if user_doc.user_type == "System User":
+		return "/app"
+	else:
+		return redirect_url or "/"
+
+
+
+@frappe.whitelist(allow_guest=True)
 def get(doctype, StartDate, EndDate, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs):
+	return {
+		"result": "SG is Here!",
+	}
 
 	"""Returns processed HTML page for a standard listing."""
 	limit_start = cint(limit_start)
