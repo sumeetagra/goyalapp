@@ -38,13 +38,22 @@ def GetSupplierBills(doctype, StartDate, EndDate):
 	if StartDate > EndDate:
 		frappe.throw(_("Start Date shall be before the End Date."))
 
+	if not filters:
+		filters = {}
 
-	InvoiceData = frappe.get_all("Purchase Invoice", fields=["name", "supplier_name"], or_filters=or_filters, limit=20)
+	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
+
+	"""Get List of transactions for custom doctypes"""
+	from erpnext.controllers.website_list_for_contact import get_customers_suppliers, get_list_for_transactions, post_process
+
+	InvoiceData = frappe.db.get_all("Purchase Invoice", fields=["name", "enabled"], or_filters=or_filters, limit=20)
+
 
 	return {
 		"Start Date": StartDate,
 		"End Date": EndDate,
-		"Data": InvoiceData,
+		"filters": filters,
+		"Data": user_data,
 	}
 
 	"""Update password for the current user.
