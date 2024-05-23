@@ -79,7 +79,8 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	return {
 		"Start Date": StartDate,
 		"End Date": EndDate,
-		"filters": filters
+		"filters": filters,
+		"user": user
 	}
 
 	"""Update password for the current user.
