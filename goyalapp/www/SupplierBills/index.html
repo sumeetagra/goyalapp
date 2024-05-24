@@ -155,12 +155,18 @@ frappe.ready(function() {
 
                     $("input").val("");
                     if(r.message) {
-                        var data = r.message.DataResponse;
-                        alert(data);
-                        console.log(data);
+                        const data = r.message.DataResponse;
                         const ReportDiv5 = $('#ctl00_ContentPlaceHolder1_tr_data');
 
                         ReportDiv5.css("display", "block");
+
+                        const newDiv = document.createElement("tbody");
+                        data.forEach((button_name) => {
+                        console.log(button_name);
+                            it(`Custom button works with name '${button_name}'`, () => {
+                            });
+                        });
+
                         return false;
 
                         frappe.msgprint({
