@@ -93,7 +93,6 @@
 
 frappe.ready(function() {
     // URL args
-    const key = frappe.utils.get_url_arg('key');
     // inputs, paragraphs and button elements
     const old_password = $('#start-date');
     const new_password = $('#stop-date');
@@ -109,9 +108,6 @@ frappe.ready(function() {
     const password_mismatch = "{{ _('Passwords do not match') }}";
     const password_strength_message_success = "{{ _('Success! You are good to go 👍') }}";
 
-    if(key) {
-        old_password.parent().toggle();
-    }
 
     $("#reset-password").on("submit", function() {
         return false;
@@ -256,12 +252,6 @@ frappe.ready(function() {
                 .removeClass("hidden text-muted").addClass("text-danger");
             password_strength_message.addClass("hidden");
         }
-        if ((key || (!key && old_password.val() )) && common_conditions ) {
-            update_button.prop("disabled", false).css("cursor", "pointer");
-        }
-        else {
-            update_button.prop("disabled", true).css("cursor", "not-allowed");
-        }
         },500)
     )
 
@@ -269,7 +259,6 @@ frappe.ready(function() {
         window.timout_password_strength = null;
 
         var args = {
-            key: key || "",
             old_password: old_password.val(),
             new_password: new_password.val()
         }
