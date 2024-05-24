@@ -314,7 +314,7 @@ def get_list_SG_transactions(
 		doctype,
 		txt,
 		filters=filters,
-		fields=fields,
+		fields="name",
 		limit_start=limit_start,
 		limit_page_length=limit_page_length,
 		ignore_permissions=ignore_permissions,
