@@ -157,10 +157,11 @@ frappe.ready(function() {
                     $("input").val("");
                     if(r.message) {
                         const data = r.message.DataResponse;
-                        const newDiv = document.createElement("tbody");
-                        const node = document.createElement("div");
+                        let timeslot_container = document.getElementById('slot-container');
+                        let dataTable = document.getElementById('ctl00_ContentPlaceHolder1_tr_data');
+                        dataTable.style.display = 'block';
+                        let timeslot_div = document.createElement('tbody');
 
-                        const timeslot_container = $('#slot-container');
                         data.forEach((staffDetail) => {
                             let timeslot_div = get_timeslot_div_layout(staffDetail);
                             node.appendChild(timeslot_container);
@@ -171,8 +172,6 @@ frappe.ready(function() {
                             console.log(sentence);
                         });
 
-                        const ReportDiv5 = $('#ctl00_ContentPlaceHolder1_tr_data');
-                        ReportDiv5.css("display", "block");
 
 
                         function get_timeslot_div_layout(timeslot) {
