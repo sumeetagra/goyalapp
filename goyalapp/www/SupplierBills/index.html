@@ -102,6 +102,8 @@ frappe.ready(function() {
 
     const confirm_password = $('#confirm_password');
     const update_button = $('#fetch-button');
+    const timeslot_container = $('#slot-container');
+
     const password_strength_indicator = $('.password-strength-indicator');
     const password_strength_message =$('.password-strength-message');
     const password_mismatch_message = $('.password-mismatch-message');
@@ -157,15 +159,27 @@ frappe.ready(function() {
                     if(r.message) {
                         const data = r.message.DataResponse;
                         data.forEach((staffDetail) => {
+                            let timeslot_div = get_timeslot_div_layout(staffDetail);
+                            timeslot_container.appendChild(timeslot_div);
+
                             let sentence = `I am ${staffDetail.name} a staff of Royal Suites.`;
                             console.log(sentence);
                         });
 
                         const ReportDiv5 = $('#ctl00_ContentPlaceHolder1_tr_data');
-
                         ReportDiv5.css("display", "block");
 
                         const newDiv = document.createElement("tbody");
+
+                        function get_timeslot_div_layout(timeslot) {
+                            let timeslot_div = document.createElement('tr');
+                            timeslot_div.classList.add('tab_content')
+                            timeslot_div.classList.add('odd')
+                            timeslot_div.innerHTML = get_slot_layout(timeslot);
+                            timeslot_div.id = timeslot.name;
+                            return timeslot_div
+                        }
+
 
                         return false;
 
