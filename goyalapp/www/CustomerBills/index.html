@@ -18,7 +18,7 @@
     <div class="row justify-content-center align-items-center text-uppercase">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <h5 class="text-primary my-2 font-weight-bold">
-                    <span id="ctl00_ContentPlaceHolder1_lbltitls">Supplier Invoice List for {{ current_user.full_name }}</span>
+                    <span id="ctl00_ContentPlaceHolder1_lbltitls">Customer Invoice List for {{ current_user.full_name }}</span>
                 </h5>
         </div>
     </div>
@@ -67,8 +67,7 @@
                                <thead>
                                 <tr class="tab1 bg-yellow-200" role="row">
                                     <th class="sorting sorting_asc" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Document # : activate to sort column descending" style="width: 51.7812px;">Document # </th>
-                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Vendor Code     : activate to sort column ascending" style="width: 35.1094px;">Vendor Code     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Vendor Name     : activate to sort column ascending" style="width: 35.1094px;">Vendor Name     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Customer Code     : activate to sort column ascending" style="width: 35.1094px;">Vendor Code     </th>
                                     <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Doc. No &amp;amp; Date : activate to sort column ascending" style="width: 82.75px;">Doc. No &amp; Date </th>
                                     <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Quantity (Uom): activate to sort column ascending" style="width: 24.8906px;">Quantity (Uom)</th>
                                     <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Delivery Term: activate to sort column ascending" style="width: 65.00px;">Delivery Term</th>
@@ -181,7 +180,6 @@ frappe.ready(function() {
                         function get_slot_layout(time) {
                             let DocName = time.name;
                             let SupplierCode = time.supplier;
-                            let SupplierNm = time.supplier_name;
                             let SupplierDoc = time.bill_no;
                             let SupplierDt = time.bill_date;
                             let TotalQty = time.total_qty;
@@ -193,7 +191,6 @@ frappe.ready(function() {
                             return `<tr class="tab_content odd">
                                 <td>${DocName}</td>
                                 <td>${SupplierCode}</td>
-                                <td>${SupplierNm}</td>
                                 <td>${SupplierDoc}
                                 <br>${SupplierDt}</td>
                                 <td>${TotalQty}</td>
