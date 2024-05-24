@@ -309,7 +309,7 @@ def get_list_SG_transactions(
 	if doctype == "Purchase Invoice":
 		fields = ["name", "posting_date", "supplier", "supplier_name", "total_qty", "total", "total_taxes_and_charges", "rounded_total", "outstanding_amount", "incoterm"]
 	elif doctype == "Sales Invoice":
-		fields = ["name", "posting_date", "supplier", "supplier_name", "total_qty", "total", "total_taxes_and_charges", "rounded_total", "outstanding_amount", "incoterm"]
+		fields = ["name", "posting_date", "customer", "customer_name", "total_qty", "total", "total_taxes_and_charges", "rounded_total", "outstanding_amount", "incoterm"]
 	else:
 		fields = ["name"]
 
