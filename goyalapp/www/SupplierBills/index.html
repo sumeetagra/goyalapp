@@ -102,7 +102,6 @@ frappe.ready(function() {
 
     const confirm_password = $('#confirm_password');
     const update_button = $('#fetch-button');
-    const timeslot_container = $('#slot-container');
 
     const password_strength_indicator = $('.password-strength-indicator');
     const password_strength_message =$('.password-strength-message');
@@ -158,9 +157,13 @@ frappe.ready(function() {
                     $("input").val("");
                     if(r.message) {
                         const data = r.message.DataResponse;
+                        const newDiv = document.createElement("tbody");
+                        const node = document.createElement("div");
+
+                        const timeslot_container = $('#slot-container');
                         data.forEach((staffDetail) => {
                             let timeslot_div = get_timeslot_div_layout(staffDetail);
-                            timeslot_container.appendChild(timeslot_div);
+                            node.appendChild(timeslot_div);
 
                             let sentence = `I am ${staffDetail.name} a staff of Royal Suites.`;
                             console.log(sentence);
@@ -169,7 +172,6 @@ frappe.ready(function() {
                         const ReportDiv5 = $('#ctl00_ContentPlaceHolder1_tr_data');
                         ReportDiv5.css("display", "block");
 
-                        const newDiv = document.createElement("tbody");
 
                         function get_timeslot_div_layout(timeslot) {
                             let timeslot_div = document.createElement('tr');
@@ -187,25 +189,25 @@ frappe.ready(function() {
                             let SupplierDoc = time.bill_no;
                             let SupplierDt = time.bill_date;
                             let TotalQty = time.total_qty;
-    let incoterm = time.incoterm;
-    let SupplierBs = time.base_total;
-    let SupplierTx = time.total_taxes_and_charges;
-    let SupplierTl = time.rounded_total;
-    let SupplierOs = time.outstanding_amount;    
-    return `<tr class="tab_content odd">
-    <td>${DocName}</td>
-    <td>${SupplierCode}</td>
-    <td>${SupplierNm}</td>
-    <td>${SupplierDoc}
-    <br>${SupplierDt}</td>
-    <td>${TotalQty}</td>
-    <td>${incoterm}</td>
-    <td>${SupplierBs}</td>
-    <td>${SupplierTx}</td>
-    <td>${SupplierTl}</td>
-    <td>${SupplierOs}</td>
-    </tr>`;
-}
+                            let incoterm = time.incoterm;
+                            let SupplierBs = time.base_total;
+                            let SupplierTx = time.total_taxes_and_charges;
+                            let SupplierTl = time.rounded_total;
+                            let SupplierOs = time.outstanding_amount;    
+                            return `<tr class="tab_content odd">
+                                <td>${DocName}</td>
+                                <td>${SupplierCode}</td>
+                                <td>${SupplierNm}</td>
+                                <td>${SupplierDoc}
+                                <br>${SupplierDt}</td>
+                                <td>${TotalQty}</td>
+                                <td>${incoterm}</td>    
+                                <td>${SupplierBs}</td>
+                                <td>${SupplierTx}</td>
+                                <td>${SupplierTl}</td>
+                                <td>${SupplierOs}</td>
+                            </tr>`;
+                        }
 
                         return false;
 
