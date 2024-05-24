@@ -1,0 +1,356 @@
+
+{% from "frappe/templates/includes/avatar_macro.html" import avatar %}
+{% extends "templates/portalweb.html" %}
+
+
+{% block title %}
+{{ _("Goyal Xchange | Supplier Invoice List") }}
+{% endblock %}
+
+{% block script %}
+<script src="assets/js/moment-bundle.min.js"></script>
+<script src="SupplierBills/index.js"></script>
+{% endblock %}
+
+{% block page_content %}
+     
+<div class="page-content fade-in-up">
+    <div class="row justify-content-center align-items-center text-uppercase">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <h5 class="text-primary my-2 font-weight-bold">
+                    <span id="ctl00_ContentPlaceHolder1_lbltitls">Supplier Invoice List for {{ current_user.full_name }}</span>
+                </h5>
+        </div>
+    </div>
+        <form id="reset-password">
+
+    <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 px-2 justify-content-center mx-auto">
+                <div class="form-inline justify-content-left font-weight-bold bg-light p-2">
+                    <label id="ctl00_ContentPlaceHolder1_lbldt" class="mr-2 mb-0">
+                        <span id="ctl00_ContentPlaceHolder1_lbl_date">Bill Posting Date</span>
+                    </label>
+
+                    <div id="ctl00_ContentPlaceHolder1_txtdatediv" class="input-group mr-2">
+
+                        <input type="date" oninput="on_start_date_select()" name="start-date"
+                        id="start-date" class="form-control mt-3 col-md m-3">
+
+                    </div>
+
+
+                    <span id="ctl00_ContentPlaceHolder1_Label4" class="mr-1">  To </span>
+                    <div id="ctl00_ContentPlaceHolder1_txtdate1div" class="input-group mr-2">
+                        <input type="date" oninput="on_end_date_select()" name="stop-date"
+                        id="stop-date" class="form-control mt-3 col-md m-3">
+
+                    </div>
+
+                    <span id="ctl00_ContentPlaceHolder1_RegularExpressionValidator2" class="errormsg" style="color:Red;display:none;">[dd/mm/yyyy]</span>
+                    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator8" class="errormsg" style="color:Red;display:none;">*</span>
+                    <span id="ctl00_ContentPlaceHolder1_RequiredFieldValidator1" class="errormsg" style="color:Red;display:none;">*</span>
+
+                <button type="submit" class="btn btn-primary form-control" style="cursor: not-allowed; margin: 0px 10px;" id="fetch-button">{{ _("Submit") }}</button>
+
+                    <a href="/dashboard" class="btn btn-danger btnprint">Main Menu</a>
+                </div>
+            </div>
+    </div>
+        </form>
+
+    <div class="row my-1">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 justify-content-center mx-auto">
+                <div style="display:none;" id="ctl00_ContentPlaceHolder1_tr_data" class="bg-white pt-1 reportstablediv">
+
+                    
+                            <div id="ListOthtable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="ListOthtable_length"><label>Show <select name="ListOthtable_length" aria-controls="ListOthtable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="ListOthtable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="ListOthtable"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered table-striped mb-0 dataTable no-footer" id="ListOthtable" role="grid" aria-describedby="ListOthtable_info">
+                               <thead>
+                                <tr class="tab1 bg-yellow-200" role="row">
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Document # : activate to sort column descending" style="width: 51.7812px;">Document # </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Vendor Code     : activate to sort column ascending" style="width: 35.1094px;">Vendor Code     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Vendor Name     : activate to sort column ascending" style="width: 35.1094px;">Vendor Name     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Doc. No &amp;amp; Date : activate to sort column ascending" style="width: 82.75px;">Doc. No &amp; Date </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Quantity (Uom): activate to sort column ascending" style="width: 24.8906px;">Quantity (Uom)</th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Delivery Term: activate to sort column ascending" style="width: 65.00px;">Delivery Term</th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Gross Amount : activate to sort column ascending" style="width: 65.00px;">Gross Amount </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Tax Amount : activate to sort column ascending" style="width: 65.00px;">Tax Amount </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Bill Amount : activate to sort column ascending" style="width: 65.00px;">Bill Amount </th>
+                                    <th class="sorting" tabindex="0" aria-controls="ListOthtable" rowspan="1" colspan="1" aria-label="Outstanding Amount: activate to sort column ascending" style="width: 65.00px;">Outstanding Amount</th>
+                                </tr>
+                              </thead>
+                                
+                            <tbody id="slot-container">
+                            </tbody>
+                        </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="ListOthtable_info" role="status" aria-live="polite">Showing 1 to 4 of 4 entries </div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="ListOthtable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="ListOthtable_previous"><a href="#" aria-controls="ListOthtable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="ListOthtable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item next disabled" id="ListOthtable_next"><a href="#" aria-controls="ListOthtable" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                        
+
+                </div>
+
+                
+
+                
+            </div>
+<script>
+
+frappe.ready(function() {
+    // URL args
+    const key = frappe.utils.get_url_arg('key');
+    // inputs, paragraphs and button elements
+    const old_password = $('#start-date');
+    const new_password = $('#stop-date');
+
+    const confirm_password = $('#confirm_password');
+    const update_button = $('#fetch-button');
+
+    const password_strength_indicator = $('.password-strength-indicator');
+    const password_strength_message =$('.password-strength-message');
+    const password_mismatch_message = $('.password-mismatch-message');
+    // Info text
+    const password_not_same_as_old_password = "{{ _('New password cannot be same as old password') }}";
+    const password_mismatch = "{{ _('Passwords do not match') }}";
+    const password_strength_message_success = "{{ _('Success! You are good to go 👍') }}";
+
+    if(key) {
+        old_password.parent().toggle();
+    }
+
+    $("#reset-password").on("submit", function() {
+        return false;
+    });
+
+    new_password.on("keypress", function(e) {
+        if(e.which===13) update_button.click();
+    })
+
+    update_button.click(function() {
+        var args = {
+            doctype: "Purchase Invoice",
+            StartDate: old_password.val(),
+            EndDate: new_password.val()
+        }
+                console.log(args);
+
+        frappe.call({
+            type: "POST",
+            method: "goyalapp.www.goyalapi.GetSupplierBills",
+            btn: update_button,
+            args: args,
+            statusCode: {
+                401: function() {
+                    $(".page-card-head .reset-password-heading").text("{{ _('Invalid Password') }}");
+                    frappe.msgprint({
+                        title: "{{ _('Invalid Password') }}",
+                        message: "{{ _('Your old password is incorrect.') }}",
+                        // clear any server message
+                        clear: true
+                    });
+                },
+                410: function({ responseJSON }) {
+                    const title = "{{ _('Invalid Link') }}";
+                    const message = responseJSON.message;
+                    $(".page-card-head .reset-password-heading").text(title);
+                    frappe.msgprint({ title: title, message: message, clear: true });
+                },
+                200: function(r) {
+
+                    $("input").val("");
+                    if(r.message) {
+                        const data = r.message.DataResponse;
+                        let timeslot_container = document.getElementById('slot-container');
+                        let dataTable = document.getElementById('ctl00_ContentPlaceHolder1_tr_data');
+                        dataTable.style.display = 'block';
+                        let timeslot_div = document.createElement('tbody');
+
+                        data.forEach((staffDetail) => {
+                            let timeslot_div = get_timeslot_div_layout(staffDetail);
+                            timeslot_container.appendChild(timeslot_div);
+                            console.log(sentence);
+                        });
+
+
+
+                        function get_timeslot_div_layout(timeslot) {
+                            let timeslot_div = document.createElement('tr');
+                            timeslot_div.classList.add('tab_content')
+                            timeslot_div.classList.add('odd')
+                            timeslot_div.innerHTML = get_slot_layout(timeslot);
+                            timeslot_div.id = timeslot.name;
+                            return timeslot_div
+                        }
+
+                        function get_slot_layout(time) {
+                            let DocName = time.name;
+                            let SupplierCode = time.supplier;
+                            let SupplierNm = time.supplier_name;
+                            let SupplierDoc = time.bill_no;
+                            let SupplierDt = time.bill_date;
+                            let TotalQty = time.total_qty;
+                            let incoterm = time.incoterm;
+                            let SupplierBs = time.base_total;
+                            let SupplierTx = time.total_taxes_and_charges;
+                            let SupplierTl = time.rounded_total;
+                            let SupplierOs = time.outstanding_amount;    
+                            return `<tr class="tab_content odd">
+                                <td>${DocName}</td>
+                                <td>${SupplierCode}</td>
+                                <td>${SupplierNm}</td>
+                                <td>${SupplierDoc}
+                                <br>${SupplierDt}</td>
+                                <td>${TotalQty}</td>
+                                <td>${incoterm}</td>    
+                                <td>${SupplierBs}</td>
+                                <td>${SupplierTx}</td>
+                                <td>${SupplierTl}</td>
+                                <td>${SupplierOs}</td>
+                            </tr>`;
+                        }
+
+                        return false;
+
+                        frappe.msgprint({
+                            title: "{{ _('Password set') }}",
+                            message: "{{ _('Your new password has been set successfully.') }}",
+                            // password is updated successfully
+                            // clear any server message
+                            clear: true
+                        });
+                        setTimeout(function() {
+                            window.location.href = r.message;
+                        }, 2000);
+                    }
+                }
+            }
+        });
+
+        return false;
+    });
+
+    window.strength_indicator = password_strength_indicator;
+    window.strength_message = password_strength_message;
+
+    new_password.on('keyup', function() {
+        window.clear_timeout();
+        window.timout_password_strength = setTimeout(window.test_password_strength, 200);
+    });
+
+    $("#old_password, #new_password, #confirm_password").on("keyup paste", frappe.utils.debounce(function () {
+        let common_conditions = new_password.val() && confirm_password.val() && new_password.val() === confirm_password.val()
+
+        if (new_password.val() && old_password.val() === new_password.val()) {
+            password_mismatch_message.text(password_not_same_as_old_password)
+                .removeClass("hidden text-muted").addClass("text-danger");
+
+            password_strength_message.addClass("hidden");
+        }
+        if ((new_password.val() || old_password.val) && old_password.val() !== new_password.val()) {
+            password_mismatch_message.addClass("hidden");
+            password_strength_message.removeClass("hidden");
+            password_mismatch_message.text('')
+        }
+
+        if (new_password.val() === confirm_password.val() && old_password.val() !== new_password.val() ) {
+            password_mismatch_message.addClass("hidden");
+            password_strength_message.removeClass("hidden");
+        }
+        if (confirm_password.val() &&  new_password.val() !== confirm_password.val()) {
+            password_mismatch_message.text(password_mismatch)
+                .removeClass("hidden text-muted").addClass("text-danger");
+            password_strength_message.addClass("hidden");
+        }
+        if ((key || (!key && old_password.val() )) && common_conditions ) {
+            update_button.prop("disabled", false).css("cursor", "pointer");
+        }
+        else {
+            update_button.prop("disabled", true).css("cursor", "not-allowed");
+        }
+        },500)
+    )
+
+    window.test_password_strength = function() {
+        window.timout_password_strength = null;
+
+        var args = {
+            key: key || "",
+            old_password: old_password.val(),
+            new_password: new_password.val()
+        }
+
+        if (!args.new_password) {
+            set_strength_indicator('grey', {'warning': "{{ _('Please enter the password') }}" });
+            return;
+        }
+
+        return frappe.call({
+            method: 'frappe.core.doctype.user.user.test_password_strength',
+            args: args,
+            callback: function(r) {
+                console.log(r.message);
+            },
+            statusCode: {
+                401: function() {
+                    $('.page-card-head .reset-password-heading')
+                        .text("{{ _('Invalid Password') }}");
+                },
+                200: function(r) {
+                    if (r.message) {
+                        var score = r.message.score,
+                            feedback = r.message.feedback;
+
+                        if (!feedback) {
+                            return;
+                        }
+
+                        feedback.score = score;
+
+                        if (feedback.password_policy_validation_passed) {
+                            set_strength_indicator('green', feedback);
+                        }else{
+                            set_strength_indicator('red', feedback);
+                        }
+                    }
+                }
+            }
+
+        });
+    };
+
+    window.set_strength_indicator = function(color, feedback) {
+        var message = [];
+        feedback.help_msg = "";
+        if(!feedback.password_policy_validation_passed){
+            feedback.help_msg = "<br>" + "{{ _('Hint: Include symbols, numbers and capital letters in the password') }}";
+        }
+        if (feedback) {
+            if(!feedback.password_policy_validation_passed){
+                if (feedback.suggestions && feedback.suggestions.length) {
+                    message = message.concat(feedback.suggestions);
+                } else if (feedback.warning) {
+                    message.push(feedback.warning);
+                }
+                message.push(feedback.help_msg);
+
+            } else {
+                message.push(password_strength_message_success);
+            }
+        }
+        password_mismatch_message.addClass('hidden');
+
+        strength_message.html(message.join(' ') || '').removeClass('hidden');
+    }
+
+    window.clear_timeout = function() {
+        if (window.timout_password_strength) {
+            clearTimeout(window.timout_password_strength);
+            window.timout_password_strength = null;
+        }
+    };
+});
+
+</script>
+
+
+    </div>
+<br><br><br>
+</div>
+
+{% endblock %}
