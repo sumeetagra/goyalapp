@@ -151,6 +151,8 @@ frappe.ready(function() {
                     frappe.msgprint({ title: title, message: message, clear: true });
                 },
                 200: function(r) {
+                console.log(r);
+                return false;
 
                     $("input").val("");
                     if(r.message) {
