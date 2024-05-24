@@ -148,7 +148,6 @@ frappe.ready(function() {
                 },
                 200: function(r) {
                 console.log(r);
-                return false;
 
                     $("input").val("");
                     if(r.message) {
@@ -164,8 +163,6 @@ frappe.ready(function() {
                             console.log(sentence);
                         });
 
-
-
                         function get_timeslot_div_layout(timeslot) {
                             let timeslot_div = document.createElement('tr');
                             timeslot_div.classList.add('tab_content')
@@ -177,12 +174,12 @@ frappe.ready(function() {
 
                         function get_slot_layout(time) {
                             let DocName = time.name;
-                            let SupplierCode = time.supplier;
+                            let SupplierCode = time.customer;
                             let SupplierDoc = time.bill_no;
                             let SupplierDt = time.bill_date;
                             let TotalQty = time.total_qty;
                             let incoterm = time.incoterm;
-                            let SupplierBs = time.base_total;
+                            let SupplierBs = time.total;
                             let SupplierTx = time.total_taxes_and_charges;
                             let SupplierTl = time.rounded_total;
                             let SupplierOs = time.outstanding_amount;    
