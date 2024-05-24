@@ -164,9 +164,6 @@ frappe.ready(function() {
                         data.forEach((staffDetail) => {
                             let timeslot_div = get_timeslot_div_layout(staffDetail);
                             timeslot_container.appendChild(timeslot_div);
-                            alert(timeslot_div);
-
-                            let sentence = `I am ${staffDetail.name} a staff of Royal Suites.`;
                             console.log(sentence);
                         });
 
