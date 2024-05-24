@@ -124,7 +124,7 @@ frappe.ready(function() {
 
     update_button.click(function() {
         var args = {
-            doctype: "Purchase Invoice",
+            doctype: "Sales Invoice",
             StartDate: old_password.val(),
             EndDate: new_password.val()
         }
@@ -132,7 +132,7 @@ frappe.ready(function() {
 
         frappe.call({
             type: "POST",
-            method: "goyalapp.www.goyalapi.GetSupplierBills",
+            method: "goyalapp.www.goyalapi.GetCustomerBills",
             btn: update_button,
             args: args,
             statusCode: {
