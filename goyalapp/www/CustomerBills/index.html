@@ -147,7 +147,7 @@ frappe.ready(function() {
                     frappe.msgprint({ title: title, message: message, clear: true });
                 },
                 200: function(r) {
-                console.log(r);
+                console.log(data);
 
                     $("input").val("");
                     if(r.message) {
@@ -160,7 +160,6 @@ frappe.ready(function() {
                         data.forEach((staffDetail) => {
                             let timeslot_div = get_timeslot_div_layout(staffDetail);
                             timeslot_container.appendChild(timeslot_div);
-                            console.log(sentence);
                         });
 
                         function get_timeslot_div_layout(timeslot) {
