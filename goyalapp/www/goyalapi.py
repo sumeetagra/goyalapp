@@ -111,6 +111,8 @@ def GetCustomerBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
+	filters["is_return"] = ["False"]
+
 	filters["posting_date"] = ["between", [StartDate, EndDate]]
 
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
