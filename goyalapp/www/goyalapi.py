@@ -111,7 +111,7 @@ def GetCustomerBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
 
-	filters["is_return"] = ["False"]
+	filters["is_return"] = 0
 
 	filters["posting_date"] = ["between", [StartDate, EndDate]]
 
