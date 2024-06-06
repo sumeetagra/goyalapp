@@ -93,6 +93,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 		"DataResponse": transactions
 	}
 
+
 @frappe.whitelist(allow_guest=True)
 def GetCustomerBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_start=0, limit_page_length=20, order_by="creation", custom=False):
 
