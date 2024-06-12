@@ -232,6 +232,7 @@ def GetCreditNotes(doctype, StartDate, EndDate, txt=None, filters=None, limit_st
 	}
 
 
+@frappe.whitelist(allow_guest=True)
 def GetDeliveryNotes(doctype, StartDate, EndDate, txt=None, filters=None, limit_start=0, limit_page_length=20, order_by="creation", custom=False):
 
 	user = frappe.session.user
