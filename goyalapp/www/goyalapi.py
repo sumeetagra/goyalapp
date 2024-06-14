@@ -308,11 +308,14 @@ def GetUserLoggedDetails(doctype, StartDate, EndDate, txt=None, filters=None, li
 	if not filters:
 		filters = {}
 
-	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
-
 	filters["posting_date"] = ["between", [StartDate, EndDate]]
 
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
+
+	return {
+		"DataResponse": is_website_user()
+	}
+
 
 	if (user != "Guest" and is_website_user()) or doctype == "Request for Quotation":
 		parties_doctype = "Request for Quotation Supplier" if doctype == "Request for Quotation" else doctype
