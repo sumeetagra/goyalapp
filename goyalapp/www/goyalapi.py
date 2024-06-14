@@ -441,9 +441,6 @@ def get_list_SG_transactions(
 	"""Get List of transactions like Invoices, Orders"""
 	from frappe.www.list import get_list
 
-
-doctype in ["Supplier Quotation", "Purchase Invoice"]
-
 	data = []
 	if doctype in ["Purchase Invoice", "Purchase Receipt"]:
 		fields = ["name", "posting_date", "supplier", "supplier_name", "total_qty", "total", "total_taxes_and_charges", "rounded_total", "outstanding_amount", "incoterm", "vehicle_no", "status"]
