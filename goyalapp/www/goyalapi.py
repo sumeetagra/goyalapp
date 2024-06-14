@@ -314,7 +314,6 @@ def GetUserLoggedDetails(doctype, User, txt=None, filters=None, limit_start=0, l
 
 	return {
 		"DataResponse": "SG Test",
-		"user": user,
 		"User": User,
 		"Doctype": doctype,
 		"customers": customers,
