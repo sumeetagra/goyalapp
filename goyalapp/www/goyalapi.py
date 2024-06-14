@@ -300,7 +300,7 @@ def GetDeliveryNotes(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 
 
 @frappe.whitelist(allow_guest=True)
-def GetUserLoggedDetails(doctype, StartDate, EndDate, txt=None, filters=None, limit_start=0, limit_page_length=20, order_by="creation", custom=False):
+def GetUserLoggedDetails(doctype, User, txt=None, filters=None, limit_start=0, limit_page_length=20, order_by="creation", custom=False):
 
 	user = frappe.session.user
 	ignore_permissions = False
@@ -308,12 +308,12 @@ def GetUserLoggedDetails(doctype, StartDate, EndDate, txt=None, filters=None, li
 	if not filters:
 		filters = {}
 
-	filters["posting_date"] = ["between", [StartDate, EndDate]]
-
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 
 	return {
-		"DataResponse": is_website_user()
+		"DataResponse": is_website_user(),
+		"user": user,
+		"User": User,
 	}
 
 
