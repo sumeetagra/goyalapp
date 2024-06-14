@@ -311,7 +311,7 @@ def GetUserLoggedDetails(doctype, User, txt=None, filters=None, limit_start=0, l
 	from erpnext.controllers.website_list_for_contact import get_customers_suppliers
 
 	return {
-		"DataResponse": is_website_user(),
+		"DataResponse": "SG Test",
 		"user": user,
 		"User": User,
 	}
