@@ -466,51 +466,6 @@ def get_list_SG_transactions(
 	return data
 
 
-@frappe.whitelist(allow_guest=True)
-def get(doctype, StartDate, EndDate, txt=None, limit_start=0, fields=None, cmd=None, limit=20, **kwargs):
-
-	"""Returns processed HTML page for a standard listing."""
-	limit_start = cint(limit_start)
-
-	if frappe.is_table(doctype):
-		frappe.throw(_("Child DocTypes are not allowed"), title=_("Invalid DocType"))
-
-	if not txt and frappe.form_dict.search:
-		txt = frappe.form_dict.search
-		del frappe.form_dict["search"]
-
-	controller = get_controller(doctype)
-	meta = frappe.get_meta(doctype)
-
-	filters = prepare_filters(doctype, controller, kwargs)
-
-	_get_list = get_transaction_list
-
-	kwargs = dict(
-		doctype=doctype,
-		txt=txt,
-		filters=filters,
-		limit_start=limit_start,
-		limit_page_length=limit,
-		order_by="name",
-	)
-
-	limit_start = cint(limit_start)
-	raw_result = _get_list(**kwargs)
-	show_more = len(raw_result) > limit
-	if show_more:
-		raw_result = raw_result[:-1]
-
-	if not raw_result:
-		return {"result": []}
-
-	from frappe.utils.response import json_handler
-
-	return {
-		"raw_result": json.dumps(raw_result, default=json_handler),
-		"result": raw_result,
-	}
-
 def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_length=20,order_by="name",custom=False,):
 	user = frappe.session.user
 	ignore_permissions = False
