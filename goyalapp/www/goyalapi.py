@@ -318,6 +318,7 @@ def GetUserLoggedDetails(doctype, User, txt=None, filters=None, limit_start=0, l
 		"Doctype": doctype,
 		"customers": customers,
 		"suppliers": suppliers,
+		"Website": is_website_user(),
 	}
 
 
