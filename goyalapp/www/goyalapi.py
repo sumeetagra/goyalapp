@@ -313,10 +313,11 @@ def GetUserLoggedDetails(txt=None, filters=None, limit_start=0, limit_page_lengt
 	doctype = "User"
 
 	customers, suppliers = get_customers_suppliers(doctype, user)
+		parties = customers or suppliers
 
 	return {
-		"User1": user,
-		"Doctype": doctype,
+		"User": user,
+		"Doctype": parties,
 		"customers": customers,
 		"suppliers": suppliers,
 		"Website": is_website_user(),
