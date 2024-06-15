@@ -315,7 +315,6 @@ def GetUserLoggedDetails(txt=None, filters=None, limit_start=0, limit_page_lengt
 	customers, suppliers = get_customers_suppliers(doctype, user)
 
 	return {
-		"DataResponse": "SG Test",
 		"User1": user,
 		"Doctype": doctype,
 		"customers": customers,
