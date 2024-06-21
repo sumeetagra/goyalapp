@@ -483,14 +483,3 @@ def get_transaction_list(doctype,txt=None,filters=None,limit_start=0,limit_page_
 		return transactions
 
 	return post_process(doctype, transactions)
-
-
-def prepare_filters(doctype, controller, kwargs):
-	for key in kwargs.keys():
-		try:
-			kwargs[key] = json.loads(kwargs[key])
-		except ValueError:
-			pass
-	filters = frappe._dict(kwargs)
-
-	return filters	
