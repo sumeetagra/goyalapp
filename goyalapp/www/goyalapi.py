@@ -43,7 +43,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	if not filters:
 		filters = {}
 
-	filters["status"] = ["in", ["Draft", "Cancelled"]]
+	filters["status"] = ["!=", ["Draft", "Cancelled"]]
 
 	filters["is_return"] = 0
 
