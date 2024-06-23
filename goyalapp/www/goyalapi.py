@@ -112,7 +112,7 @@ def GetCustomerBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	if not filters:
 		filters = {}
 
-	filters["status"] = ["not in", ["Draft", "Cancelled"]]
+	filters["status"] = ["!=", "Cancelled"]
 
 	filters["is_return"] = 0
 
@@ -181,7 +181,7 @@ def GetCreditNotes(doctype, StartDate, EndDate, txt=None, filters=None, limit_st
 	if not filters:
 		filters = {}
 
-	filters["docstatus"] = ["<", "2"] if doctype in ["Supplier Quotation", "Purchase Invoice"] else 1
+	filters["status"] = ["!=", "Cancelled"]
 
 	filters["is_return"] = 1
 
