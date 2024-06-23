@@ -101,6 +101,10 @@ def GetCustomerBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	ignore_permissions = False
 
 	if StartDate == '':
+		return [
+		"ErrorMessage": "Start Date Cannot be Blank!"
+		]
+
 		frappe.throw(_("Please Enter Start Date."))
 
 	if EndDate == '':
