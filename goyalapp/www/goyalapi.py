@@ -43,7 +43,7 @@ def GetSupplierBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	if not filters:
 		filters = {}
 
-	filters["status"] = ["not in", ["Draft", "Cancelled"]]
+	filters["status"] = ["in", ["Draft", "Cancelled"]]
 
 	filters["is_return"] = 0
 
@@ -101,9 +101,7 @@ def GetCustomerBills(doctype, StartDate, EndDate, txt=None, filters=None, limit_
 	ignore_permissions = False
 
 	if StartDate == '':
-		return [
-		"ErrorMessage": "Start Date Cannot be Blank!"
-		]
+		return []
 
 	if EndDate == '':
 		frappe.throw(_("Please Enter End Date."))
