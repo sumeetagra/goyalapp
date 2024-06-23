@@ -312,9 +312,6 @@ def GetUserLoggedDetails(doctype, StartDate, EndDate, txt=None, filters=None, li
 
 	doctype = "User"
 
-	customers, suppliers = get_customers_suppliers(doctype, user)
-		parties = customers or suppliers
-
 	return {
 		"User": user,
 		"Doctype": parties,
