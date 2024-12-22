@@ -92,6 +92,9 @@ textarea{resize:none;}
 .top_lists li a{ color: rgba(0, 0, 0, 0.8);font-size: 18px; font-weight:bold;}
 .top_lists li:hover,.top_lists li.selected,.top_lists li:hover a,.top_lists li.selected a{ color:#f2a602; }
 
+.top_sub_head{ margin-top:30px;}
+.top_sub_head h2{font-size:30px; font-weight:500; margin:0; padding:0; color:#fff;}
+
 .top_para{margin-top:5px;}
 .top_para p{ font-size:20px; font-weight:300; margin:0; padding:0; color:#fff; }
 .top_para p span{font-weight:500;}
