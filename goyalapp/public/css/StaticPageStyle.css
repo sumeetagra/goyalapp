@@ -92,6 +92,10 @@ textarea{resize:none;}
 .top_lists li a{ color: rgba(0, 0, 0, 0.8);font-size: 18px; font-weight:bold;}
 .top_lists li:hover,.top_lists li.selected,.top_lists li:hover a,.top_lists li.selected a{ color:#f2a602; }
 
+.top_para{margin-top:5px;}
+.top_para p{ font-size:20px; font-weight:300; margin:0; padding:0; color:#fff; }
+.top_para p span{font-weight:500;}
+
 .sb_link_2 {transition:text-indent .7s;position: relative;padding: 10px 0px 10px 15px;width: 100%;float: left;text-decoration: none;color: #000;display: flex;font-size: 13px;border-bottom: 1px solid #EBF8FD;align-items: center;}
 
 #mob-menu{display:none;}
