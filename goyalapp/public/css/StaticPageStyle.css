@@ -60,6 +60,27 @@ textarea{resize:none;}
 .top_head{margin-top:25px;}
 .top_head h1{ font-size:42px; font-weight:500; margin:0; padding:0; color:#fff;}
 .top_head h1 span{ color:#f2a602;}
+.services_crousel{margin-top:15px;}
+.serv_area{ background:#fff; border-radius:10px; padding:10px; text-align:left; min-height:68px; transition:ease all 0.5s; }
+.serv_area span{ background:#014c8e; border-radius:50%; padding:10px; float:left; width:48px; height:47px; text-align:center; margin-right:10px; transition:ease all 0.5s;}
+.serv_area span svg path{ color:#fff; transition:ease all 0.5s; }
+.serv_area a{ color:#000; font-size:13px; font-weight:500;}
+.serv_area a b{ color:#000; font-size:17px}
+.serv_area:hover{ background:#f2a602;}
+.serv_area:hover span{ background:#fff;}
+.serv_area:hover span svg path{ fill:#014c8e}
+.owl-nav{font-size:53px;}
+.owl-nav button{position: absolute; top:-12px; transition:0.5s;}
+.owl-nav button.owl-prev{left: -35px;}
+.owl-nav button.owl-next{right: -35px;}
+.owl-nav button.owl-next span{padding-left:3px;}
+.owl-nav button:focus{outline:none;}
+.owl-nav button span {width: 26px;height: 26px;border-radius: 50%;background: #014c8e;display: inline-block;font-size: 33px;line-height: 20px;transition: 0.5s;font-weight: 300;color: #fff;border: 1px solid #ffffff;}
+.owl-nav button span:hover{background:#f2a602; color:#fff;}
+.owl-theme .owl-dots{ text-align:center; padding: 15px 0;}
+.owl-theme .owl-dots .owl-dot {display: inline-block;zoom: 1;}
+.owl-theme .owl-dots .owl-dot span {background:rgba(255,255,255,0.2);width: 15px; height: 15px;margin: 5px 3px;display: block;-webkit-backface-visibility: visible;transition: opacity .2s ease;border-radius: 30px;}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {background: #f2a602;}
 .sb_link_2 {transition:text-indent .7s;position: relative;padding: 10px 0px 10px 15px;width: 100%;float: left;text-decoration: none;color: #000;display: flex;font-size: 13px;border-bottom: 1px solid #EBF8FD;align-items: center;}
 
 #mob-menu{display:none;}
