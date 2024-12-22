@@ -55,6 +55,11 @@ textarea{resize:none;}
     max-width: 11em;
 }
 .top_bg { background: #00346b url(/assets/goyalapp/img/topbg.jpg) no-repeat center top; border-top:0px solid #f2a602}
+.tborow { width: 100%; float: left; padding-left: 8px; padding-right: 8px; }
+.tborowinner {width:100%; float:left;}
+.top_head{margin-top:25px;}
+.top_head h1{ font-size:42px; font-weight:500; margin:0; padding:0; color:#fff;}
+.top_head h1 span{ color:#f2a602;}
 .sb_link_2 {transition:text-indent .7s;position: relative;padding: 10px 0px 10px 15px;width: 100%;float: left;text-decoration: none;color: #000;display: flex;font-size: 13px;border-bottom: 1px solid #EBF8FD;align-items: center;}
 
 #mob-menu{display:none;}
