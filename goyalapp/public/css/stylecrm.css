@@ -10,6 +10,7 @@
 .tboleft { text-align: left; }
 .tboright { text-align: right; }
 .tbocenter { text-align: center; }
+.top_bg { background: #00346b url(/assets/goyalapp/images/topbg.jpg) no-repeat center top; border-top:5px solid #f2a602}
 .tbocontainerfull {width: 100%; float: left; margin: 0 auto; background:#fff;}
 .tbocontainer { width: 98%; margin: 0 auto; max-width:1200px; }
 .tbofullwidth { width: 100%; float: left; }
