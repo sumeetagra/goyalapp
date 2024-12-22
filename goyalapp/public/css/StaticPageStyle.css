@@ -59,7 +59,7 @@ textarea{resize:none;}
 .tborow { width: 100%; float: left; padding-left: 8px; padding-right: 8px; }
 .tborowinner {width:100%; float:left;}
 .top_head{margin-top:25px;}
-.top_head h1{ font-size:42px; font-weight:500; margin:0; padding:0; color:#fff;}
+.top_head h1{ font-size:42px; font-weight:500; margin:0; padding:0; color:#fff;line-height: 1.4;}
 .top_head h1 span{ color:#f2a602;}
 .services_crousel{margin-top:15px;}
 .serv_area{ background:#fff; border-radius:10px; padding:10px; text-align:left; min-height:68px; transition:ease all 0.5s; }
