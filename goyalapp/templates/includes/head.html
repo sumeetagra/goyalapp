@@ -3,6 +3,12 @@
 {%- endif %}
 
 
+
+{%- if theme.name != 'Standard' -%}
+<link type="text/css" rel="stylesheet" href="{{ theme.theme_url }}">
+{%- else -%}
+{{ include_style('website.bundle.css') }}
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="shortcut icon" href="/assets/goyalapp/img/favicon.ico" type="image/x-icon">
 
@@ -17,3 +23,6 @@
     <meta name="keywords"
     content="Steam Coal, Indian Coal, Pig Iron, MS Scrap, End Cutting, Fish Cutting, Gotron, Foundry Solutions, Cental India, Nagpur, Mines, Turbines, Power Plant, Indian Coal, GCV, GAR, Indonesia, port" />
     <meta name="author" content="Goyal Group" />
+
+
+{%- endif -%}
