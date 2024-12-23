@@ -123,7 +123,7 @@ textarea{resize:none;}
 .cont_dtl .fa{font-size: 20px; margin-right:8px; background: #d1aa54; color: #fff; padding: 4px 7px; border-radius: 5px; vertical-align: middle; margin-top: -2px;}
 code, dfn, kbd, tt {font-style: normal; font-family: Arial, Sans-Serif;}
 .tbo_header, .tbo_container, .tbo_footer { width: 100%; float: left;}
-.tbo_nav{background: rgba(26,75,161,1); transition: background 0.5s linear; margin-top:10px;
+.tbo_nav{background: rgba(26,75,161,1); transition: background 0.5s linear; margin-top:10px;line-height: 1.4;
 background: -moz-linear-gradient(top, rgba(26,75,161,1) 0%, rgba(25,68,137,1) 100%);
 background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(26,75,161,1)), color-stop(100%, rgba(25,68,137,1)));
 background: -webkit-linear-gradient(top, rgba(26,75,161,1) 0%, rgba(25,68,137,1) 100%);
@@ -152,7 +152,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdc448', end
 .tbo_nav li.active a{font-weight:bold;}
 .tbo_nav li.mdropdown{position:relative;}
 .tbo_nav ul .dropdown_list{display: none;}
-.dropdown_list{position: absolute; display:none; left: 0; z-index: 9; background: #fff; color: #000; min-width: 130px; box-shadow: 0 0 6px #666; border: 1px solid #fff; top: 28px; animation: zoomIn 400ms; transition:0.5s;}
+.dropdown_list{position: absolute; display:none; left: 0; z-index: 9; background: #fff; color: #000; min-width: 130px; box-shadow: 0 0 6px #666; border: 1px solid #fff; top: 30px; animation: zoomIn 400ms; transition:0.5s;}
 .tbo_nav li:hover .dropdown_list{display:block; width:175px; text-align:left;}
 .dropdown_list li{display:block; border-right:0; text-align:left;}
 .dropdown_list li a{color:#000;}
