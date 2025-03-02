@@ -410,7 +410,7 @@ a:hover, .ab_cl{color: #1A396D;}
     transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-    background-image: linear-gradient(to bottom, #011d39, #093e7a);
+    background: #1e417c;
 }
 @media (max-width:950px) {
     .main-sidebar,
