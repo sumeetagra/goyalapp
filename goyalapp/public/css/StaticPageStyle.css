@@ -211,7 +211,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdc448', end
 .inner_pg .video_col_lft ul li .fa{font-size: 26px; position: absolute; left: 0; top:0px; transition:0.5s;}
 .inner_pg .video_col_lft ul li:hover .fa{color:#d1aa54;}
 .video_col_rht{margin-top:150px;}
-.tbo_footer {background: #1e417c; padding: 8px 0 0; margin-top: 5px;}
+.tbo_footer {
+    background: #1e417c;
+    padding: 8px 0 0;
+    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+
+}
 .inner_pg{padding-bottom:20px;}
 .ft_links { margin: 0px; padding: 0px; list-style: none; }
 .ft_links li { margin: 0px; padding:4px 1px; color: #fff; display: inline-block;  font-size: 13px; }
