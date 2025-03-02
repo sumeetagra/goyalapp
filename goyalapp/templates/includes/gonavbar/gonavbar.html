@@ -43,9 +43,34 @@
                             <li><a href="/business/FoundrySolutions">Gotron</a></li>
                         </ul>
                     </li>                    
+
+                    {% if frappe.session.user != 'Guest' %}
+                    <li class="mdropdown">
+                        <a href="javascript:void(0)"><i class="fa fa-bars"></i> Customers <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown_list">
+                            <li><a href="/business/PigIron">Delivery Notes</a></li>
+                            <li><a href="/business/Scrap">Customer Bills</a></li>
+                            <li><a href="/business/DomesticCoal">Credit Notes</a></li>
+                        </ul>
+                    </li>                    
+                    <li class="mdropdown">
+                        <a href="javascript:void(0)"><i class="fa fa-bars"></i> Vendors <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown_list">
+                            <li><a href="/business/PigIron">Good/Service Receipt Notes</a></li>
+                            <li><a href="/business/Scrap">Vendor Bills</a></li>
+                            <li><a href="/business/DomesticCoal">Debit Notes</a></li>
+                            <li><a href="/business/ImportedCoal">Vendor Bank Account</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                    
+                    {% if frappe.session.user == 'Guest' %}
+
                     <li><a href="/Media"><i class="fa fa-rss-square"></i> News & Media </a></li>
                     <li><a href="/Careers"><i class="fa fa-graduation-cap"></i> Careers</a></li>
                     <li><a href="./hoteliers.aspx"><i class="fa fa-shield"></i> Feedback</a></li>
+                    {% endif %}
+
                     {% if frappe.session.user != 'Guest' %}
                         <li class="{{'active' if pathname =='dashboard'}}"><a href="/dashboard"><i class="fa fa-tasks"></i> E-Tenders</a></li>
                     {% endif %}
