@@ -3,7 +3,6 @@ frappe.ready(async () => {
 });
 
 async function initialise_select_date() {
-	setup_date_picker();
 	hide_next_button();
 }
 
@@ -26,3 +25,8 @@ function show_next_button() {
 	next_button.disabled = false;
 	next_button.onclick = setup_details_page;
 }
+
+function setup_details_page() {
+	hide_next_button();
+}
+
