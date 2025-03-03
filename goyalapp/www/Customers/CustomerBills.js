@@ -9,6 +9,8 @@ async function initialise_select_date() {
 
 function setup_date_picker() {
 	let date_picker = document.getElementById("open-date");
+	let date_picker1 = document.getElementById("close-date");
+	date_picker1.disabled = true;
 	let today = new Date();
 	date_picker.min = today.toISOString().substr(0, 10);
 	today.setDate(today.getDate() + 5);
