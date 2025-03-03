@@ -3,10 +3,7 @@ frappe.ready(async () => {
 });
 
 async function initialise_select_date() {
-	navigate_to_page(1);
-	await get_global_variables();
 	setup_date_picker();
-	setup_timezone_selector();
 	hide_next_button();
 }
 

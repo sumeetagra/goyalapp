@@ -215,7 +215,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdc448', end
     background: #1e417c;
     padding: 8px 0 0;
     margin-top: 5px;
-    position: absolute;
+    position: sticky;
     bottom: 0;
 
 }
