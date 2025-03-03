@@ -2,6 +2,10 @@
 {% from "frappe/templates/includes/avatar_macro.html" import avatar %}
 {% extends "templates/portalweb.html" %}
 
+{% block script %}
+<script src="assets/js/moment-bundle.min.js"></script>
+<script src="Customers/index.js"></script>
+{% endblock %}
 
 {% block title %}
 {{ _("Goyal Xchange | Dashboard") }}
