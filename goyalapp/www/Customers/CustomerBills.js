@@ -30,6 +30,10 @@ function show_next_button() {
 }
 
 function setup_details_page() {
+	let date_picker = document.getElementById("open-date").value;
+	let date_picker1 = document.getElementById("close-date").value;
+	alert(date_picker);
+	alert(date_picker1);
 	alert("SG IS HERE");
 }
 
