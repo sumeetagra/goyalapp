@@ -30,6 +30,6 @@ function show_next_button() {
 }
 
 function setup_details_page() {
-	hide_next_button();
+	alert("SG IS HERE");
 }
 
