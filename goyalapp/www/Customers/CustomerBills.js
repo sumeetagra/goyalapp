@@ -8,15 +8,15 @@ async function initialise_select_date() {
 }
 
 function setup_date_picker() {
-	let date_picker = document.getElementById("appointment-date");
+	let date_picker = document.getElementById("open-date");
 	let today = new Date();
 	date_picker.min = today.toISOString().substr(0, 10);
-	today.setDate(today.getDate() + window.appointment_settings.advance_booking_days);
+	today.setDate(today.getDate() + 5);
 	date_picker.max = today.toISOString().substr(0, 10);
 }
 
 function hide_next_button() {
-	let next_button = document.getElementById("next-button");
+	let next_button = document.getElementById("details-button");
 	next_button.disabled = true;
 	next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
 }
