@@ -20,3 +20,9 @@ function hide_next_button() {
 	next_button.disabled = true;
 	next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
 }
+
+function show_next_button() {
+	let next_button = document.getElementById("details-button");
+	next_button.disabled = false;
+	next_button.onclick = setup_details_page;
+}
