@@ -1,6 +1,12 @@
-frappe.ready(function () {
+frappe.ready(async () => {
 	alert("SG IS HERE2");
+	initialise_select_date();
 });
+
+async function initialise_select_date() {
+	setup_date_picker();
+	hide_next_button();
+}
 
 function setup_date_picker() {
 	let date_picker = document.getElementById("open-date");
