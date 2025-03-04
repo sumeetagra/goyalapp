@@ -47,19 +47,17 @@ function show_next_button() {
 		next_button.disabled = true;
 		break;
 	}
-	let differencetime = (enddate-startdate);
-	alert(differencetime);
-
 	let next_button = document.getElementById("details-button");
 	next_button.disabled = false;
-	next_button.onclick = setup_details_page;
-	
+	next_button.onclick = setup_details_page;	
 }
-
 
 function setup_details_page() {
 	let date_picker = document.getElementById("open-date").value;
 	let date_picker1 = document.getElementById("close-date").value;
+
+	let differencetime = (date_picker1-date_picker);
+	alert(differencetime);
 	alert(date_picker);
 	alert(date_picker1);
 }
