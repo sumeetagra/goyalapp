@@ -65,7 +65,6 @@ function setup_details_page() {
 }
 
 function days_between(date1, date2) {
-
     // The number of milliseconds in one day
     const ONE_DAY = 1000 * 60 * 60 * 24;
 
@@ -74,6 +73,5 @@ function days_between(date1, date2) {
 
     // Convert back to days and return
     return Math.round(differenceMs / ONE_DAY);
-
 }
 
