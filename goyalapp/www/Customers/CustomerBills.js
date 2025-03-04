@@ -58,7 +58,7 @@ function setup_details_page() {
 	let date_picker = document.getElementById("open-date").value;
 	let date_picker1 = document.getElementById("close-date").value;
 
-	let differencetime = (date_picker1-date_picker);
+	let differencetime = date_diff(date_picker1, date_picker);
 	alert(differencetime);
 	alert(date_picker);
 	alert(date_picker1);
