@@ -57,8 +57,10 @@ function show_next_button() {
 function setup_details_page() {
 	let date_picker = document.getElementById("open-date").value;
 	let date_picker1 = document.getElementById("close-date").value;
+	let startdate = new Date(date_picker);
+	let enddate = new Date(date_picker1);
 
-	let differencetime = days_between(new Date(date_picker1), new Date(date_picker));
+	let differencetime = days_between(enddate.getTime(), startdate.getTime());
 	alert(differencetime);
 	alert(date_picker);
 	alert(date_picker1);
