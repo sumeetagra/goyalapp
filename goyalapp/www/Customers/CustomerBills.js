@@ -7,6 +7,12 @@ async function initialise_select_date() {
 	hide_next_button();
 }
 
+
+frappe.ready(function () {
+	setup_date_picker();
+	hide_next_button();
+});
+
 function setup_date_picker() {
 	alert("SG TEsting");
 	let date_picker = document.getElementById("open-date");
