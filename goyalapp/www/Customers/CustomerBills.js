@@ -1,6 +1,6 @@
-frappe.ready(async () {
+frappe.ready(function () {
 	alert("Working");
-	initialise_select_date();
+//	initialise_select_date();
 });
 
 async function initialise_select_date() {
