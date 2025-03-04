@@ -8,6 +8,7 @@ async function initialise_select_date() {
 }
 
 function setup_date_picker() {
+	alert("SG TEsting");
 	let date_picker = document.getElementById("open-date");
 	let date_picker1 = document.getElementById("close-date");
 	date_picker1.disabled = true;
