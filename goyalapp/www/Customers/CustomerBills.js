@@ -1,8 +1,6 @@
-$(document).ready(function() {
-	alert("SG TEsting");
-//	setup_date_picker();
-//	hide_next_button();
-}
+frappe.ready(function () {
+	alert("SG IS HERE2");
+});
 
 function setup_date_picker() {
 	let date_picker = document.getElementById("open-date");
