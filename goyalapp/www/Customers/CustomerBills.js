@@ -1,15 +1,10 @@
-frappe.ready(function () {
-	alert("Working");
-//	initialise_select_date();
-});
-
-async function initialise_select_date() {
-	setup_date_picker();
-	hide_next_button();
+$(document).ready(function() {
+	alert("SG TEsting");
+//	setup_date_picker();
+//	hide_next_button();
 }
 
 function setup_date_picker() {
-	alert("SG TEsting");
 	let date_picker = document.getElementById("open-date");
 	let date_picker1 = document.getElementById("close-date");
 	date_picker1.disabled = true;
