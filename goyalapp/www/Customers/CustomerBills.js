@@ -1,4 +1,5 @@
 frappe.ready(async () {
+	alert("Working");
 	initialise_select_date();
 });
 
