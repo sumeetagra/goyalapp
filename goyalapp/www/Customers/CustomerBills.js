@@ -44,7 +44,7 @@ function show_next_button() {
 		alert("Invalid Dates Selected");
 		enddate === "";
 		let next_button = document.getElementById("details-button");
-		next_button.disabled = false;
+		next_button.disabled = true;
 		break;
 	} else
 	{
