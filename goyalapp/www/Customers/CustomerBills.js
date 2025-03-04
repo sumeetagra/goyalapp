@@ -1,4 +1,4 @@
-frappe.ready(async () => {
+frappe.ready(async () {
 	initialise_select_date();
 });
 
@@ -6,12 +6,6 @@ async function initialise_select_date() {
 	setup_date_picker();
 	hide_next_button();
 }
-
-
-frappe.ready(function () {
-	setup_date_picker();
-	hide_next_button();
-});
 
 function setup_date_picker() {
 	alert("SG TEsting");
