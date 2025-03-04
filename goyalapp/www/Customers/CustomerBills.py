@@ -9,7 +9,6 @@ import frappe
 import frappe.www.list
 from frappe import _
 from frappe.utils.data import get_system_timezone
-from frappe.utils import date_diff
 
 no_cache = 1
 
