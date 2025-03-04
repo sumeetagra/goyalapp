@@ -41,7 +41,8 @@ function show_next_button() {
 	let startdate = document.getElementById("open-date").value;
 	let enddate = document.getElementById("close-date").value;
 	if (startdate > enddate) {
-		alert("Invalid Dates Selected")
+		alert("Invalid Dates Selected");
+		enddate === "";
 		return;
 	} else
 	{
@@ -49,7 +50,6 @@ function show_next_button() {
 		next_button.disabled = false;
 		next_button.onclick = setup_details_page;
 	}
-
 }
 
 
