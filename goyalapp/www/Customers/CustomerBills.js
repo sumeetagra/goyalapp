@@ -42,16 +42,18 @@ function show_next_button() {
 	let enddate = document.getElementById("close-date").value;
 	if (startdate > enddate) {
 		alert("Invalid Dates Selected");
-		enddate === "";
+		enddate == "";
 		let next_button = document.getElementById("details-button");
 		next_button.disabled = true;
-//		break;
-	} else
-	{
-		let next_button = document.getElementById("details-button");
-		next_button.disabled = false;
-		next_button.onclick = setup_details_page;
+		break;
 	}
+	let differencetime = (enddate-startdate);
+	alert(differencetime);
+
+	let next_button = document.getElementById("details-button");
+	next_button.disabled = false;
+	next_button.onclick = setup_details_page;
+	
 }
 
 
