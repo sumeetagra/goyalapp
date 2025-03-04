@@ -41,6 +41,7 @@ function show_next_button() {
 	let startdate = document.getElementById("open-date").value;
 	let enddate = document.getElementById("close-date").value;
 	if (startdate > enddate) {
+		frappe.show_alert(__("Invalid Dates Selected"));
 		alert("Invalid Dates Selected");
 		document.getElementById("close-date").value = "";
 		let next_button = document.getElementById("details-button");
