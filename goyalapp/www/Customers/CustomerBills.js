@@ -45,11 +45,13 @@ function show_next_button() {
 		enddate == "";
 		let next_button = document.getElementById("details-button");
 		next_button.disabled = true;
-		break;
+		return;
+	} else
+	{
+		let next_button = document.getElementById("details-button");
+		next_button.disabled = false;
+		next_button.onclick = setup_details_page;	
 	}
-	let next_button = document.getElementById("details-button");
-	next_button.disabled = false;
-	next_button.onclick = setup_details_page;	
 }
 
 function setup_details_page() {
