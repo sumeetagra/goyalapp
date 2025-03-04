@@ -79,6 +79,7 @@ function setup_details_page() {
 		},
 		callback: (response) => {
 			alert(response);
+			let jsonresponse = response;
 			if (response.message.status == "Unverified") {
 				frappe.show_alert(__("Please check your email to confirm the appointment"));
 			} else {
