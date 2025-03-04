@@ -12,9 +12,9 @@ function setup_date_picker() {
 	let date_picker = document.getElementById("open-date");
 	let date_picker1 = document.getElementById("close-date");
 	date_picker1.disabled = true;
-	let today = new Date();
+	let today = new Date("04/01/2024");
 	let today1 = new Date();
-	today.setDate(today.getDate() - 200);
+	today.setDate(today.getDate() + 1);
 	date_picker.min = today.toISOString().substr(0, 10);
 	today1.setDate(today1.getDate() + 0);
 	date_picker.max = today1.toISOString().substr(0, 10);
