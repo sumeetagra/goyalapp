@@ -34,7 +34,7 @@ function show_next_button() {
 
 function show_datepicker_2() {
 	let date_picker1 = document.getElementById("close-date");
-	let today = new Date(2024, 04 - 1, 01);
+	let today = new Date(2024, 04, 01);
 	let today1 = new Date();
 	alert(today);
 	today.setDate(today.getDate() + 0);
