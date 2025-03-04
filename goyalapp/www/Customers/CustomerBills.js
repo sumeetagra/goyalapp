@@ -42,7 +42,7 @@ function show_next_button() {
 	let enddate = document.getElementById("close-date").value;
 	if (startdate > enddate) {
 		alert("Invalid Dates Selected");
-		enddate = "";
+		document.getElementById("close-date").value = "";
 		let next_button = document.getElementById("details-button");
 		next_button.disabled = true;
 		return;
@@ -58,7 +58,7 @@ function setup_details_page() {
 	let date_picker = document.getElementById("open-date").value;
 	let date_picker1 = document.getElementById("close-date").value;
 
-	let differencetime = days_between(date_picker1, date_picker);
+	let differencetime = days_between(new Date(date_picker1), new Date(date_picker));
 	alert(differencetime);
 	alert(date_picker);
 	alert(date_picker1);
