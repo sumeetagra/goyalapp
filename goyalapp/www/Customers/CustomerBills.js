@@ -78,7 +78,7 @@ function setup_details_page() {
 			doctype: 'Sales Invoice',
 		},
 		callback: (response) => {
-			alert(response);
+			alert(JSON.stringify(response));
 			let jsonresponse = response;
 			if (response.message.status == "Unverified") {
 				frappe.show_alert(__("Please check your email to confirm the appointment"));
