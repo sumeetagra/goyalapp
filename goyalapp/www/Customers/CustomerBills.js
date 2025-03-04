@@ -43,7 +43,9 @@ function show_next_button() {
 	if (startdate > enddate) {
 		alert("Invalid Dates Selected");
 		enddate === "";
-		return;
+		let next_button = document.getElementById("details-button");
+		next_button.disabled = false;
+		break;
 	} else
 	{
 		let next_button = document.getElementById("details-button");
