@@ -1,5 +1,5 @@
 frappe.ready(async () => {
-	alert("SG IS HERE2");
+//	alert("SG IS HERE2");
 	initialise_select_date();
 });
 
@@ -13,10 +13,11 @@ function setup_date_picker() {
 	let date_picker1 = document.getElementById("close-date");
 	date_picker1.disabled = true;
 	let today = new Date();
+	let today1 = new Date();
 	today.setDate(today.getDate() - 10);
 	date_picker.min = today.toISOString().substr(0, 10);
-	today.setDate(today.getDate() + 0);
-	date_picker.max = today.toISOString().substr(0, 10);
+	today1.setDate(today1.getDate() + 0);
+	date_picker.max = today1.toISOString().substr(0, 10);
 }
 
 function hide_next_button() {
@@ -34,10 +35,11 @@ function show_next_button() {
 function show_datepicker_2() {
 	let date_picker1 = document.getElementById("close-date");
 	let today = new Date();
+	let today1 = new Date();
 	today.setDate(today.getDate() - 10);
 	date_picker1.min = today.toISOString().substr(0, 10);
-	today.setDate(today.getDate() + 0);
-	date_picker1.max = today.toISOString().substr(0, 10);
+	today1.setDate(today1.getDate() + 0);
+	date_picker1.max = today1.toISOString().substr(0, 10);
 	date_picker1.disabled = false;
 }
 
@@ -46,6 +48,5 @@ function setup_details_page() {
 	let date_picker1 = document.getElementById("close-date").value;
 	alert(date_picker);
 	alert(date_picker1);
-	alert("SG IS HERE");
 }
 
