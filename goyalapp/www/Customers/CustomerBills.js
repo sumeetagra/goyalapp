@@ -45,7 +45,7 @@ function show_next_button() {
 		enddate === "";
 		let next_button = document.getElementById("details-button");
 		next_button.disabled = true;
-		break;
+//		break;
 	} else
 	{
 		let next_button = document.getElementById("details-button");
