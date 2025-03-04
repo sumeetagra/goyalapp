@@ -36,6 +36,7 @@ function show_datepicker_2() {
 	let date_picker1 = document.getElementById("close-date");
 	let today = new Date();
 	let today1 = new Date();
+	alert(today1);
 	today.setDate(today.getDate() - 10);
 	date_picker1.min = today.toISOString().substr(0, 10);
 	today1.setDate(today1.getDate() + 0);
