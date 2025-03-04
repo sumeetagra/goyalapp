@@ -26,12 +26,6 @@ function hide_next_button() {
 	next_button.onclick = () => frappe.msgprint(__("Please select a date and time"));
 }
 
-function show_next_button() {
-	let next_button = document.getElementById("details-button");
-	next_button.disabled = false;
-	next_button.onclick = setup_details_page;
-}
-
 function show_datepicker_2() {
 	let date_picker1 = document.getElementById("close-date");
 	let today = new Date();
@@ -42,6 +36,22 @@ function show_datepicker_2() {
 	date_picker1.max = today1.toISOString().substr(0, 10);
 	date_picker1.disabled = false;
 }
+
+function show_next_button() {
+	let startdate = document.getElementById("open-date").value;
+	let enddate = document.getElementById("close-date").value;
+	if (startdate > enddate) {
+		alert("Invalid Dates Selected")
+		return;
+	} else
+	{
+		let next_button = document.getElementById("details-button");
+		next_button.disabled = false;
+		next_button.onclick = setup_details_page;
+	}
+
+}
+
 
 function setup_details_page() {
 	let date_picker = document.getElementById("open-date").value;
