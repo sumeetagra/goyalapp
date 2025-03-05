@@ -83,7 +83,7 @@ function setup_details_page() {
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message;
-					$("<p>test</p>").appendTo(".tbocontainer");
+					$("<p>test</p>").appendTo(".content-wrapper");
 
 					$(data).appendTo(result_wrapper);
 //					$.each(data.DataResponse, function(d) {
