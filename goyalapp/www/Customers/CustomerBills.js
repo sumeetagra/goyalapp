@@ -71,8 +71,8 @@ function setup_details_page() {
 	} else
 	{
 
-//		let result_wrapper = $(".website-list .result");
 		let result_wrapper = $(".result");
+		let result_content = $(".resultcontent");
 
 		let appointment = frappe.call({
 			method: "goyalapp.www.goyalapi.GetCustomerBills",
@@ -84,10 +84,11 @@ function setup_details_page() {
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message;
-				let content = "<p>test</p>";
+				let content = "<tr class='resultcontent'></tr>";
+				let content1 = "<p>fjk</p>";
 					$(content).appendTo(result_wrapper);
 
-					$(data).appendTo(result_wrapper);
+					$(content1).appendTo(result_content);
 //					$.each(data.DataResponse, function(d) {
 //					$(d).appendTo(result_wrapper);
 //				});
