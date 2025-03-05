@@ -69,22 +69,21 @@ function setup_details_page() {
 		return;
 	} else
 	{
-		alert(differencetime);
 
-	var result_wrapper = $(".website-list .result");
-	let appointment = frappe.call({
-		method: "goyalapp.www.goyalapi.GetCustomerBills",
-		args: {
-			StartDate: date_picker,
-			EndDate: date_picker1,
-			doctype: 'Sales Invoice',
-		},
-		callback: (response) => {
-			alert(JSON.stringify(response.message.DataResponse));
-			let data = response.message;
+		let result_wrapper = $(".website-list .result");
+		let appointment = frappe.call({
+			method: "goyalapp.www.goyalapi.GetCustomerBills",
+			args: {
+				StartDate: date_picker,
+				EndDate: date_picker1,
+				doctype: 'Sales Invoice',
+			},
+			callback: (response) => {
+				alert(JSON.stringify(response.message.DataResponse));
+				let data = response.message;
 					$.each(data.DataResponse, function(i, d) {
-						$(d).appendTo(result_wrapper);
-					});
+					$(d).appendTo(result_wrapper);
+				});
 
 			if (response.message.status == "Unverified") {
 				frappe.show_alert(__("Please check your email to confirm the appointment"));
