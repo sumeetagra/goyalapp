@@ -82,8 +82,8 @@ function setup_details_page() {
 			},
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
-				let data = response.message;
-					$(data.DataResponse).appendTo(".result");
+				let data = JSON.stringify(response.message.DataResponse);
+					$(data).appendTo(".result");
 
 					$(data).appendTo(result_wrapper);
 //					$.each(data.DataResponse, function(d) {
