@@ -80,18 +80,16 @@ function setup_details_page() {
 			},
 			callback: (response) => {
 				let data = response.message.DataResponse;
-				let content = "";
-				$.each(data, function(i, d) {
-					alert(JSON.stringify(d.name));
-					content += `<p>hgjhj</p>`
-					$(content).appendTo(result_wrapper);
+				if (data.length > 0) {
+					let content = "";
+					$.each(data, function(i, d) {
+						alert(JSON.stringify(d.name));
+						content += `<tr class='resultcontent'><td class='table-sr'>JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>`;
+						$(content).appendTo(result_wrapper);
 
-				});
-
-				if (response.message.status == "Unverified") {
-					frappe.show_alert(__("Please check your email to confirm the appointment"));
+					});
 				} else {
-					frappe.show_alert(__("Appointment Created Successfully"));
+					frappe.show_alert(__("No Data Found!"));
 				}
 				setTimeout(() => {
 					let redirect_url = "/";
