@@ -87,6 +87,7 @@ function setup_details_page() {
 					$.each(data, function(i, d) {
 //						alert(JSON.stringify(d));
 						content += `<tr class='resultcontent'>`;
+						content += `<td class='table-sr'>${i+1}</td>`;
 						content += `<td class='table-sr'>${d.posting_date}</td>`;
 						content += `<td class='table-sr'>${d.customer}</td>`;
 						content += `<td class='table-sr'>${d.customer_name}</td>`;
