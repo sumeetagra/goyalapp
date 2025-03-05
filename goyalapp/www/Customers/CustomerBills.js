@@ -80,7 +80,12 @@ function setup_details_page() {
 			},
 			callback: (response) => {
 				let data = response.message.DataResponse;
-					alert(JSON.stringify(data));
+				let content = "";
+				$.each(data, function(i, d) {
+					alert(JSON.stringify(d.name));
+
+				});
+
 				if (response.message.status == "Unverified") {
 					frappe.show_alert(__("Please check your email to confirm the appointment"));
 				} else {
