@@ -83,12 +83,14 @@ function setup_details_page() {
 				if (data.length > 0) {
 					let content = "";
 					$.each(data, function(i, d) {
-						alert(JSON.stringify(d));
+//						alert(JSON.stringify(d));
 						content += `<tr class='resultcontent'>`;
 						content += `<td class='table-sr'>${d.posting_date}</td>`;
 						content += `<td class='table-sr'>${d.customer}</td>`;
 						content += `<td class='table-sr'>${d.customer_name}</td>`;
+						content += `<td class='table-sr'>${d.vehicle_no}</td>`;
 						content += `<td class='table-sr'>${d.total_qty}</td>`;
+						content += `<td class='table-sr'>${d.incoterm}</td>`;
 						content += `<td class='table-sr'>${d.total}</td>`;
 						content += `<td class='table-sr'>${d.total_taxes_and_charges}</td>`;
 						content += `<td class='table-sr'>${d.rounded_total}</td>`;
