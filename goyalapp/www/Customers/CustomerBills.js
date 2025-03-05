@@ -101,9 +101,6 @@ function setup_details_page() {
 			button.disabled = false;
 		},
 		});
-
-
-
 	}
 }
 
