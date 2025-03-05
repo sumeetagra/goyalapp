@@ -84,6 +84,12 @@ function setup_details_page() {
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message.DataResponse;
+				$.each(data.DataResponse, function(d) {
+					alert(d);
+//					$(d).appendTo(result_wrapper);
+				});
+
+
 				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 
 //				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
