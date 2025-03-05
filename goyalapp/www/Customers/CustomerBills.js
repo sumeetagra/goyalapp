@@ -83,6 +83,8 @@ function setup_details_page() {
 				let content = "";
 				$.each(data, function(i, d) {
 					alert(JSON.stringify(d.name));
+					content += `<p>hgjhj</p>`
+					$(content).appendTo(result_wrapper);
 
 				});
 
