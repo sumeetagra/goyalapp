@@ -70,6 +70,7 @@ function setup_details_page() {
 		return;
 	} else
 	{
+		next_button.disabled = true;
 		let result_wrapper = $(".result");
 		let content = "";
 		$(content).appendTo(result_wrapper);
@@ -102,11 +103,13 @@ function setup_details_page() {
 					});
 				} else {
 					frappe.show_alert(__("No Data Found!"));
+					next_button.disabled = false;
 				}
 			},
 		error: (err) => {
 			frappe.show_alert(__("Something went wrong please try again"));
 			button.disabled = false;
+			next_button.disabled = false;
 		},
 		});
 	}
