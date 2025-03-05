@@ -83,11 +83,7 @@ function setup_details_page() {
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message;
-				let content = "<tr>
-                            <td class="table-sr">{{ _("Sr") }}</td>
-                            <td class="table-sr">{{ _("Sr") }}</td>
-                            <td class="table-sr">{{ _("Sr") }}</td>
-                        </tr>";
+				let content = "<td class="table-sr">{{ _("Sr") }}</td>";
 					$(content).appendTo(result_wrapper);
 
 					$(data).appendTo(result_wrapper);
