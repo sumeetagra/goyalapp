@@ -70,7 +70,9 @@ function setup_details_page() {
 	} else
 	{
 
-		let result_wrapper = $(".website-list .result");
+//		let result_wrapper = $(".website-list .result");
+		let result_wrapper = $(".tbocontainer");
+
 		let appointment = frappe.call({
 			method: "goyalapp.www.goyalapi.GetCustomerBills",
 			args: {
@@ -82,15 +84,9 @@ function setup_details_page() {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message;
 					$(data).appendTo(result_wrapper);
-					$.each(data.DataResponse, function(d) {
-					$(d).appendTo(result_wrapper);
-				});
-
-				if (response.message.status == "Unverified") {
-					frappe.show_alert(__("Please check your email to confirm the appointment"));
-				} else {
-					frappe.show_alert(__("Appointment Created Successfully"));
-				}
+//					$.each(data.DataResponse, function(d) {
+//					$(d).appendTo(result_wrapper);
+//				});
 				setTimeout(() => {
 					let redirect_url = "/";
 					window.location.href = redirect_url;

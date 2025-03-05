@@ -40,6 +40,10 @@
     <div class="website-list" data-doctype="{{ doctype }}">
 
         <div class="result">
+            {% for item in result %}
+                {{ item }}
+            {% endfor %}
+            
         </div>
         <div class="more-block py-6 {% if not show_more -%} d-none {%- endif %}">
             <button class="btn btn-light btn-more btn-sm">{{ _("More") }}</button>
