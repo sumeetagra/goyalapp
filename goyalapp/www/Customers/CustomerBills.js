@@ -72,7 +72,6 @@ function setup_details_page() {
 	{
 
 		let result_wrapper = $(".result");
-		let result_content = $(".resultcontent");
 
 		let appointment = frappe.call({
 			method: "goyalapp.www.goyalapi.GetCustomerBills",
@@ -85,16 +84,12 @@ function setup_details_page() {
 				let data = response.message.DataResponse;
 				let content = "";
 				$.each(data, function(i, d) {
-					alert(JSON.stringify(d));
-	  				console.log(`${i}: ${d}`);
+//					alert(JSON.stringify(d));
+//	  				console.log(`${i}: ${d}`);
 //					content = `<div class='text-muted'>{{ ${d} }}</div>`;
-					content = "<tr class='resultcontent'><td class='table-sr'>JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
+					content += "<tr class='resultcontent'><td class='table-sr'>JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 					$(content).appendTo(result_wrapper);
 				});
-
-//				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
-
-//				$(content).appendTo(result_wrapper);
 				setTimeout(() => {
 //					let redirect_url = "/";
 //					window.location.href = redirect_url;
