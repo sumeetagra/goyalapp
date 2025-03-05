@@ -72,6 +72,7 @@ function setup_details_page() {
 	{
 		let result_wrapper = $(".result");
 		let content = "";
+		$(content).appendTo(result_wrapper);
 		let appointment = frappe.call({
 			method: "goyalapp.www.goyalapi.GetCustomerBills",
 			args: {
