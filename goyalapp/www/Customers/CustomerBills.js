@@ -84,7 +84,16 @@ function setup_details_page() {
 					let content = "";
 					$.each(data, function(i, d) {
 						alert(JSON.stringify(d));
-						content += `<tr class='resultcontent'><td class='table-sr'>${d.name}</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>`;
+						content += `<tr class='resultcontent'>`;
+						content += `<td class='table-sr'>${d.posting_date}</td>`;
+						content += `<td class='table-sr'>${d.customer}</td>`;
+						content += `<td class='table-sr'>${d.customer_name}</td>`;
+						content += `<td class='table-sr'>${d.total_qty}</td>`;
+						content += `<td class='table-sr'>${d.total}</td>`;
+						content += `<td class='table-sr'>${d.total_taxes_and_charges}</td>`;
+						content += `<td class='table-sr'>${d.rounded_total}</td>`;
+						content += `<td class='table-sr'>${d.status}</td>`;
+						content += `</tr>`;
 						$(content).appendTo(result_wrapper);
 
 					});
