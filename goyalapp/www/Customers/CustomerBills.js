@@ -81,6 +81,7 @@ function setup_details_page() {
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message;
+					$(data).appendTo(result_wrapper);
 					$.each(data.DataResponse, function(d) {
 					$(d).appendTo(result_wrapper);
 				});
@@ -92,9 +93,6 @@ function setup_details_page() {
 				}
 				setTimeout(() => {
 					let redirect_url = "/";
-					if (window.appointment_settings.success_redirect_url) {
-						redirect_url += window.appointment_settings.success_redirect_url;
-					}
 					window.location.href = redirect_url;
 				}, 5000);
 			},
