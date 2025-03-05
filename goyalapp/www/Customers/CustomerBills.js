@@ -88,7 +88,6 @@ function setup_details_page() {
 				let content = "<tr class='resultcontent'></tr>";
 				let content1 = "<p>fjk</p>";
 					$(content).appendTo(result_wrapper);
-
 					$(content1).appendTo(result_content);
 //					$.each(data.DataResponse, function(d) {
 //					$(d).appendTo(result_wrapper);
