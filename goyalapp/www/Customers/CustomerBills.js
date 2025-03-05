@@ -73,34 +73,6 @@ function setup_details_page() {
 
 		let result_wrapper = $(".result");
 
-		let appointment = frappe.call({
-			method: "goyalapp.www.goyalapi.GetCustomerBills",
-			args: {
-				StartDate: date_picker,
-				EndDate: date_picker1,
-				doctype: 'Sales Invoice',
-			},
-			callback: (response) => {
-				let data = response.message.DataResponse;
-				let content = "";
-				$.each(data, function(i, d) {
-//					alert(JSON.stringify(d));
-//	  				console.log(`${i}: ${d}`);
-//					content = `<div class='text-muted'>{{ ${d} }}</div>`;
-					content += "<tr class='resultcontent'><td class='table-sr'>JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
-					$(content).appendTo(result_wrapper);
-				});
-				setTimeout(() => {
-//					let redirect_url = "/";
-//					window.location.href = redirect_url;
-				}, 5000);
-			},
-			error: (err) => {
-				frappe.show_alert(__("Something went wrong please try again"));
-				button.disabled = false;
-			},
-		});
-
 	}
 }
 
