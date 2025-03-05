@@ -82,7 +82,7 @@ function setup_details_page() {
 				doctype: 'Sales Invoice',
 			},
 			callback: (response) => {
-				alert(JSON.stringify(response.message.DataResponse[0]));
+//				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message.DataResponse;
 				$.each(data, function(d) {
 					alert(d);
