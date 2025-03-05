@@ -70,8 +70,37 @@ function setup_details_page() {
 		return;
 	} else
 	{
-
 		let result_wrapper = $(".result");
+		let appointment = frappe.call({
+			method: "goyalapp.www.goyalapi.GetCustomerBills",
+			args: {
+				StartDate: date_picker,
+				EndDate: date_picker1,
+				doctype: 'Sales Invoice',
+			},
+			callback: (response) => {
+				let data = response.message.DataResponse;
+					alert(JSON.stringify(data));
+				if (response.message.status == "Unverified") {
+					frappe.show_alert(__("Please check your email to confirm the appointment"));
+				} else {
+					frappe.show_alert(__("Appointment Created Successfully"));
+				}
+				setTimeout(() => {
+					let redirect_url = "/";
+					if (window.appointment_settings.success_redirect_url) {
+						redirect_url += window.appointment_settings.success_redirect_url;
+					}
+					window.location.href = redirect_url;
+				}, 5000);
+			},
+		error: (err) => {
+			frappe.show_alert(__("Something went wrong please try again"));
+			button.disabled = false;
+		},
+		});
+
+
 
 	}
 }
