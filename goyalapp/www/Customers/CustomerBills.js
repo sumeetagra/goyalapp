@@ -71,6 +71,7 @@ function setup_details_page() {
 	{
 		alert(differencetime);
 
+	var result_wrapper = $(".website-list .result");
 	let appointment = frappe.call({
 		method: "goyalapp.www.goyalapi.GetCustomerBills",
 		args: {
@@ -80,7 +81,11 @@ function setup_details_page() {
 		},
 		callback: (response) => {
 			alert(JSON.stringify(response.message.DataResponse));
-			let jsonresponse = response.message.DataResponse;
+			let data = response.message;
+					$.each(data.result, function(i, d) {
+						$(d).appendTo(result_wrapper);
+					});
+
 			if (response.message.status == "Unverified") {
 				frappe.show_alert(__("Please check your email to confirm the appointment"));
 			} else {
