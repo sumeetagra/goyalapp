@@ -87,17 +87,13 @@ function setup_details_page() {
 				let content = "";
 				$.each(data, function(i, d) {
 					alert(d);
-					content += "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
-//					$(d).appendTo(result_wrapper);
+					content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
+					$(content).appendTo(result_wrapper);
 				});
-
 
 //				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 
-					$(content).appendTo(result_wrapper);
-//					$.each(data.DataResponse, function(d) {
-//					$(d).appendTo(result_wrapper);
-//				});
+//					$(content).appendTo(result_wrapper);
 				setTimeout(() => {
 //					let redirect_url = "/";
 //					window.location.href = redirect_url;
