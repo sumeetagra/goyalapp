@@ -84,24 +84,11 @@ function setup_details_page() {
 			callback: (response) => {
 				let data = response.message.DataResponse;
 				if (data.length > 0) {
-					$.each(data, function(i, d) {
-//						alert(JSON.stringify(d));
-						content += `<tr class='resultcontent'>`;
-						content += `<td class='table-sr'>${i+1}</td>`;
-						content += `<td class='table-sr'>${d.posting_date}</td>`;
-						content += `<td class='table-sr'>${d.customer}</td>`;
-						content += `<td class='table-sr'>${d.customer_name}</td>`;
-						content += `<td class='table-sr'>${d.vehicle_no}</td>`;
-						content += `<td class='table-sr'>${d.total_qty}</td>`;
-						content += `<td class='table-sr'>${d.incoterm}</td>`;
-						content += `<td class='table-sr'>${d.total}</td>`;
-						content += `<td class='table-sr'>${d.total_taxes_and_charges}</td>`;
-						content += `<td class='table-sr'>${d.rounded_total}</td>`;
-						content += `<td class='table-sr'>${d.status}</td>`;
-						content += `</tr>`;
+					for (let i = 0; i < data.length; i++) {
+						const rowdata = data[i];
+						let content = `<tr class='resultcontent'><td class='table-sr'>${i+1}</td><td class='table-sr'>${rowdata.posting_date}</td>`;
 						$(content).appendTo(result_wrapper);
-
-					});
+					}
 				} else {
 					frappe.show_alert(__("No Data Found!"));
 					next_button.disabled = false;
