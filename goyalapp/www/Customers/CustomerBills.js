@@ -83,7 +83,8 @@ function setup_details_page() {
 				if (data.length > 0) {
 					let content = "";
 					$.each(data, function(i, d) {
-						alert(JSON.stringify(d.name));
+//						alert(JSON.stringify(d.name));
+		  				console.log(`${i}: ${d.name}`);
 						content += `<tr class='resultcontent'><td class='table-sr'>JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>`;
 						$(content).appendTo(result_wrapper);
 
