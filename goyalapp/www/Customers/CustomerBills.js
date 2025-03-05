@@ -85,7 +85,7 @@ function setup_details_page() {
 					$.each(data, function(i, d) {
 //						alert(JSON.stringify(d.name));
 		  				console.log(`${i}: ${d.name}`);
-						content += `<tr class='resultcontent'><td class='table-sr'>JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>`;
+						content += `<tr class='resultcontent'><td class='table-sr'>`${d.name}`JKK</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>`;
 						$(content).appendTo(result_wrapper);
 
 					});
