@@ -71,6 +71,7 @@ function setup_details_page() {
 	} else
 	{
 		let result_wrapper = $(".result");
+		let content = "";
 		let appointment = frappe.call({
 			method: "goyalapp.www.goyalapi.GetCustomerBills",
 			args: {
@@ -81,7 +82,6 @@ function setup_details_page() {
 			callback: (response) => {
 				let data = response.message.DataResponse;
 				if (data.length > 0) {
-					let content = "";
 					$.each(data, function(i, d) {
 //						alert(JSON.stringify(d));
 						content += `<tr class='resultcontent'>`;
