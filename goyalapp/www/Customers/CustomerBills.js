@@ -93,7 +93,7 @@ function setup_details_page() {
 
 //				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 
-//					$(content).appendTo(result_wrapper);
+//				$(content).appendTo(result_wrapper);
 				setTimeout(() => {
 //					let redirect_url = "/";
 //					window.location.href = redirect_url;
