@@ -61,11 +61,11 @@ function setup_details_page() {
 	let date_picker1 = document.getElementById("close-date").value;
 	let startdate = new Date(date_picker);
 	let enddate = new Date(date_picker1);
+	let next_button = document.getElementById("details-button");
 	let differencetime = days_between(enddate.getTime(), startdate.getTime());
 	if (differencetime > 3) {
 		alert("Difference Between Start Date and End Date cannot be greater than 3 Days");
 		document.getElementById("close-date").value = "";
-		let next_button = document.getElementById("details-button");
 		next_button.disabled = true;
 		return;
 	} else
