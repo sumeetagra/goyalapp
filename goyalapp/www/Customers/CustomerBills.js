@@ -27,8 +27,9 @@ function hide_next_button() {
 }
 
 function show_datepicker_2() {
+	let date_picker = document.getElementById("open-date").value;
 	let date_picker1 = document.getElementById("close-date");
-	let today = new Date("04/01/2024");
+	let today = new Date(date_picker);
 	let today1 = new Date();
 	today.setDate(today.getDate() + 0);
 	date_picker1.min = today.toISOString().substr(0, 10);
