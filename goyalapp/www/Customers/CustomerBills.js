@@ -84,11 +84,7 @@ function setup_details_page() {
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message.DataResponse;
-			    for (var i = 0; i < data.length; i++)  //loops through the array 
-    			{
-					let content += "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
-    			}
-
+				let content += "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 
 //				alert(data.length);
 //				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
