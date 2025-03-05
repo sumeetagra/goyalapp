@@ -102,10 +102,6 @@ function setup_details_page() {
 				} else {
 					frappe.show_alert(__("No Data Found!"));
 				}
-				setTimeout(() => {
-					let redirect_url = "/Customers/CustomerBills";
-					window.location.href = redirect_url;
-				}, 50000);
 			},
 		error: (err) => {
 			frappe.show_alert(__("Something went wrong please try again"));
