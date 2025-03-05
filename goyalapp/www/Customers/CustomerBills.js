@@ -94,8 +94,8 @@ function setup_details_page() {
 //					$(d).appendTo(result_wrapper);
 //				});
 				setTimeout(() => {
-					let redirect_url = "/";
-					window.location.href = redirect_url;
+//					let redirect_url = "/";
+//					window.location.href = redirect_url;
 				}, 5000);
 			},
 			error: (err) => {
