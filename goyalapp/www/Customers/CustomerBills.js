@@ -83,7 +83,8 @@ function setup_details_page() {
 			},
 			callback: (response) => {
 				alert(JSON.stringify(response.message.DataResponse[0]));
-				let data = response.message;
+				let data = response.message.DataResponse;
+				alert(data.length);
 				let content = "<tr class='resultcontent'></tr>";
 				let content1 = "<p>fjk</p>";
 					$(content).appendTo(result_wrapper);
