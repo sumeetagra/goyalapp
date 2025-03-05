@@ -83,8 +83,7 @@ function setup_details_page() {
 				if (data.length > 0) {
 					let content = "";
 					$.each(data, function(i, d) {
-//						alert(JSON.stringify(d.name));
-		  				console.log(`${i}: ${d.name}`);
+						alert(JSON.stringify(d));
 						content += `<tr class='resultcontent'><td class='table-sr'>${d.name}</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>`;
 						$(content).appendTo(result_wrapper);
 
@@ -93,10 +92,7 @@ function setup_details_page() {
 					frappe.show_alert(__("No Data Found!"));
 				}
 				setTimeout(() => {
-					let redirect_url = "/";
-					if (window.appointment_settings.success_redirect_url) {
-						redirect_url += window.appointment_settings.success_redirect_url;
-					}
+					let redirect_url = "/Customers/CustomerBills";
 					window.location.href = redirect_url;
 				}, 5000);
 			},
