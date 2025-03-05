@@ -82,12 +82,12 @@ function setup_details_page() {
 				doctype: 'Sales Invoice',
 			},
 			callback: (response) => {
-//				alert(JSON.stringify(response.message.DataResponse[0]));
+				alert(JSON.stringify(response.message.DataResponse[0]));
 				let data = response.message.DataResponse;
 				let content = "";
 				$.each(data, function(i, d) {
 //					alert(d);
-					content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
+					content = "<tr class='resultcontent'><td class='table-sr'>{{ ${d} }}</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 					$(content).appendTo(result_wrapper);
 				});
 
