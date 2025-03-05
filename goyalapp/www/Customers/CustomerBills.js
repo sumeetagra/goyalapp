@@ -87,7 +87,9 @@ function setup_details_page() {
 				let content = "";
 				$.each(data, function(i, d) {
 //					alert(d);
-					content = "<tr class='resultcontent'><td class='table-sr'>"+d[0]+"</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
+
+					content = `<div class='text-muted'>{{ ${d} }}</div>`;
+//					content = "<tr class='resultcontent'><td class='table-sr'>"+d[0]+"</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
 					$(content).appendTo(result_wrapper);
 				});
 
