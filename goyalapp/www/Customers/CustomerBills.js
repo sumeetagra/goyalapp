@@ -105,7 +105,7 @@ function setup_details_page() {
 				setTimeout(() => {
 					let redirect_url = "/Customers/CustomerBills";
 					window.location.href = redirect_url;
-				}, 5000);
+				}, 50000);
 			},
 		error: (err) => {
 			frappe.show_alert(__("Something went wrong please try again"));
