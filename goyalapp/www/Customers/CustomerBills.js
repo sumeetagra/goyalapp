@@ -92,9 +92,8 @@ function setup_details_page() {
 				});
 
 
-				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
-
 //				let content = "<tr class='resultcontent'><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td><td class='table-sr'>SHH</td></tr>";
+
 					$(content).appendTo(result_wrapper);
 //					$.each(data.DataResponse, function(d) {
 //					$(d).appendTo(result_wrapper);
