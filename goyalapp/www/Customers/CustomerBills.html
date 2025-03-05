@@ -36,39 +36,24 @@
         </div>
 
         <div class="col-lg-12">
-
-    <div class="website-list" data-doctype="{{ doctype }}">
-
-        <div class="result">
-            {% for item in result %}
-                {{ item }}
-            {% endfor %}
-
-        </div>
-        <div class="more-block py-6 {% if not show_more -%} d-none {%- endif %}">
-            <button class="btn btn-light btn-more btn-sm">{{ _("More") }}</button>
-        </div>
-    </div>
-
-
-    <div>
-        <table class="table table-bordered table-condensed">
-            <thead>
-                <tr>
-                    <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
-                    <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
-                    <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
-                </tr>
-            </thead>
-            <tbody class="result1">
-                <tr>
-                    <td class="table-sr">{{ _("Sr") }}</td>
-                    <td class="table-sr">{{ _("Sr") }}</td>
-                    <td class="table-sr">{{ _("Sr") }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <div>
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
+                            <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
+                            <th style="width: 40px" class="table-sr">{{ _("Sr") }}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="result">
+                        <tr>
+                            <td class="table-sr">{{ _("Sr") }}</td>
+                            <td class="table-sr">{{ _("Sr") }}</td>
+                            <td class="table-sr">{{ _("Sr") }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
