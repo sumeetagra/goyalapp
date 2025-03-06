@@ -79,7 +79,7 @@ function setup_details_page() {
 			args: {
 				StartDate: date_picker,
 				EndDate: date_picker1,
-				doctype: 'Delivery Note',
+				doctype: 'Purchase Invoice',
 			},
 			callback: (response) => {
 				let data = response.message.DataResponse;
