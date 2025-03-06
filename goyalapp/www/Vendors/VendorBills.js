@@ -75,7 +75,7 @@ function setup_details_page() {
 		let content = "";
 		$(content).appendTo(result_wrapper);
 		let appointment = frappe.call({
-			method: "goyalapp.www.goyalapi.GetCustomerBills",
+			method: "goyalapp.www.goyalapi.GetSupplierBills",
 			args: {
 				StartDate: date_picker,
 				EndDate: date_picker1,
