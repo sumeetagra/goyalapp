@@ -8,15 +8,58 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="page-content fade-in-up">
+<script src="CustomerBills.js"></script>
+
+<div class="page-content fade-in-up" style="min-height: 600px;">
     <div class="tborow" style="padding-top: 10px;">
-            <div class="col-lg-12">
-                <h4 class="my-1">{{ _("Welcome to Goyal Xchange!") }} </h4>                
+        <div class="col-lg-12">
+            <h4 class="my-1">{{ _("Delivery Notes") }} </h4>
+            <div class="cont_strip tbofullwidth"></div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-2">
+                    <p class="text-muted" style="margin: 12px;" id="lead-text">Select From Date:</p>
+                    <input type="date" oninput="show_datepicker_2()" name="open-date"
+                        id="open-date" class="form-control mt-3 col-md m-3">
+                </div>
+                <div class="col-md-2">
+                    <p class="text-muted" style="margin: 12px;" id="lead-text">Select To Date:</p>
+                    <input type="date" oninput="show_next_button()" name="close-date"
+                        id="close-date" class="form-control mt-3 col-md m-3">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary form-control" id="details-button" style="margin: 12px;margin-top: 44px;">{{ _("Get Details") }}</button>
+                </div>
             </div>
-            <div class="col-lg-9">
-            <p>Goyal Group, by virtue of its entrepreneurial skills, innovative strategies and seamless execution, is emerging as one of the fastest growing and leading private sector organisations in India. With a mere scrap trading activity since inception, We have turned out to be a versatile Global Company with presence in every core sector of the economy such as Steel, Coal, Foundry Solutions, Education etc, with reach and presence in every part of India.</p>
-            <p>Goyal Group is one of the leading integrated steel traders and one of the largest private sector trader of Pig Iron and Steam Coal in India. Ever since our inception, we have always looked at things differently. When the world saw possibilities, we saw opportunities. The companys strengths lie in its integrated process management, knowledge management and control systems. Its staff of highly skilled engineers, technicians and managers with specialised domain knowledge, ensure seamless supply chain management systems. As it rapidly forges ahead on all these fronts, GISNPL has successfully reinforced its position as market leader, while simultaneously making technological breakthroughs and setting even higher standards for itself.</p>
+        </div>
+
+        <div class="col-lg-12">
+            <div>
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th style="width: 4%" class="table-sr">{{ _("Sr #") }}</th>
+                            <th style="width: 11%" class="table-sr">{{ _("Date") }}</th>
+                            <th style="width: 6%" class="table-sr">{{ _("Invoice #") }}</th>
+                            <th style="width: 5%" class="table-sr">{{ _("Customer #") }}</th>
+                            <th style="width: 16%" class="table-sr">{{ _("Customer Name") }}</th>
+                            <th style="width: 10%" class="table-sr">{{ _("Vehicle #") }}</th>
+                            <th style="width: 4%" class="table-sr">{{ _("Quantity (UOM)") }}</th>
+                            <th style="width: 5%" class="table-sr">{{ _("Incoterm") }}</th>
+                            <th style="width: 10%" class="table-sr">{{ _("Gross Amount") }}</th>
+                            <th style="width: 10%" class="table-sr">{{ _("Tax Amount") }}</th>
+                            <th style="width: 10%" class="table-sr">{{ _("Net Amount") }}</th>
+                            <th style="width: 9%" class="table-sr">{{ _("Status") }}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result" class="result">
+                    </tbody>
+                </table>
             </div>
+
+        </div>
 
     </div>
 </div>
