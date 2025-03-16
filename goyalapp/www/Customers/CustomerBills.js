@@ -86,7 +86,7 @@ function setup_details_page() {
 				if (data.length > 0) {
 					for (let i = 0; i < data.length; i++) {
 						const rowdata = data[i];
-						let content = `<tr class='resultcontent'><td class='table-sr'>${i+1}</td><td class='table-sr'>${rowdata.posting_date}</td><td class='table-sr'>${rowdata.name}</td><td class='table-sr'>${rowdata.customer}</td><td class='table-sr'>${rowdata.customer_name}</td><td class='table-sr'>${rowdata.vehicle_no}</td><td class='table-sr'>${rowdata.total_qty}</td><td class='table-sr'>${rowdata.incoterm}</td><td class='table-sr'>${rowdata.total}</td><td class='table-sr'>${rowdata.total_taxes_and_charges}</td><td class='table-sr'>${rowdata.rounded_total}</td><td class='table-sr'>${rowdata.status}</td><td class='table-sr'><a href='/printview?doctype={{ doc.doctype}}&name={{ doc.name }}&format={{ print_format }}' target="_blank">View</a></td></tr>`;
+						let content = `<tr class='resultcontent'><td class='table-sr'>${i+1}</td><td class='table-sr'>${rowdata.posting_date}</td><td class='table-sr'>${rowdata.name}</td><td class='table-sr'>${rowdata.customer}</td><td class='table-sr'>${rowdata.customer_name}</td><td class='table-sr'>${rowdata.vehicle_no}</td><td class='table-sr'>${rowdata.total_qty}</td><td class='table-sr'>${rowdata.incoterm}</td><td class='table-sr'>${rowdata.total}</td><td class='table-sr'>${rowdata.total_taxes_and_charges}</td><td class='table-sr'>${rowdata.rounded_total}</td><td class='table-sr'>${rowdata.status}</td><td class='table-sr'><a href='/printview?doctype=Sales Invoice&name=${rowdata.name}&format={{ print_format }}' target="_blank">View</a></td></tr>`;
 						$(content).appendTo(result_wrapper);
 					}
 				} else {
