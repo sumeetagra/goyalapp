@@ -58,9 +58,8 @@
 
                 {% for d in data %}
                         <tr class='resultcontent'>
-                            <td class='table-sr'>${i+1}</td>
-                            <td class='table-sr'>${data.posting_date}</td>
-                            <td class='table-sr'>${data.name}</td>
+                            <td class='table-sr'>${d.posting_date}</td>
+                            <td class='table-sr'>${d.name}</td>
                         </tr>
                 {% endfor %}
 
