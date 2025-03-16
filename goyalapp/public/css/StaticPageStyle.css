@@ -57,6 +57,8 @@ textarea{resize:none;}
 }
 .top_bg { background: #00346b url(/assets/goyalapp/img/topbg.jpg) no-repeat center top; border-top:0px solid #f2a602}
 .tborow { width: 100%; float: left; padding-left: 8px; padding-right: 8px; }
+.table-sh { background-color: #d3e5f5; color: #000;}
+.table-sr { background-color: #fff; color: #000; }
 .tborowinner {width:100%; float:left;}
 .top_head{margin-top:25px;}
 .top_head h1{ font-size:42px; font-weight:500; margin:0; padding:0; color:#fff;line-height: 1.4;}
