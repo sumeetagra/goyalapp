@@ -20,38 +20,38 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-md-2">
-                    <p class="text-muted" style="margin: 12px;" id="lead-text">Select From Date:</p>
+                    <p style="margin: 12px;color: #000;" id="lead-text">Select From Date:</p>
                     <input type="date" oninput="show_datepicker_2()" name="open-date"
                         id="open-date" class="form-control mt-3 col-md m-3">
                 </div>
                 <div class="col-md-2">
-                    <p class="text-muted" style="margin: 12px;" id="lead-text">Select To Date:</p>
+                    <p style="margin: 12px;color: #000;" id="lead-text">Select To Date:</p>
                     <input type="date" oninput="show_next_button()" name="close-date"
                         id="close-date" class="form-control mt-3 col-md m-3">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <button class="btn btn-primary form-control" id="details-button" style="margin: 12px;margin-top: 44px;">{{ _("Get Details") }}</button>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-12">
-            <div>
-                <table class="table table-bordered table-condensed">
+            <div style="overflow-x:scroll;overflow-y: scroll;max-height: 450px;">
+                <table class="table table-bordered table-condensed" style="white-space: nowrap;">
                     <thead>
                         <tr>
-                            <th style="width: 4%" class="table-sr">{{ _("Sr #") }}</th>
-                            <th style="width: 11%" class="table-sr">{{ _("Date") }}</th>
-                            <th style="width: 6%" class="table-sr">{{ _("Invoice #") }}</th>
-                            <th style="width: 5%" class="table-sr">{{ _("Customer #") }}</th>
-                            <th style="width: 16%" class="table-sr">{{ _("Customer Name") }}</th>
-                            <th style="width: 10%" class="table-sr">{{ _("Vehicle #") }}</th>
-                            <th style="width: 4%" class="table-sr">{{ _("Quantity (UOM)") }}</th>
-                            <th style="width: 5%" class="table-sr">{{ _("Incoterm") }}</th>
-                            <th style="width: 10%" class="table-sr">{{ _("Gross Amount") }}</th>
-                            <th style="width: 10%" class="table-sr">{{ _("Tax Amount") }}</th>
-                            <th style="width: 10%" class="table-sr">{{ _("Net Amount") }}</th>
-                            <th style="width: 9%" class="table-sr">{{ _("Status") }}</th>
+                            <th class="table-sr">{{ _("Sr #") }}</th>
+                            <th class="table-sr">{{ _("Date") }}</th>
+                            <th class="table-sr">{{ _("Invoice #") }}</th>
+                            <th class="table-sr">{{ _("Customer #") }}</th>
+                            <th class="table-sr">{{ _("Customer Name") }}</th>
+                            <th class="table-sr">{{ _("Vehicle #") }}</th>
+                            <th class="table-sr">{{ _("Quantity (UOM)") }}</th>
+                            <th class="table-sr">{{ _("Incoterm") }}</th>
+                            <th class="table-sr">{{ _("Gross Amount") }}</th>
+                            <th class="table-sr">{{ _("Tax Amount") }}</th>
+                            <th class="table-sr">{{ _("Net Amount") }}</th>
+                            <th class="table-sr">{{ _("Status") }}</th>
                         </tr>
                     </thead>
                     <tbody id="result" class="result">
