@@ -55,6 +55,15 @@
                     </thead>
 
                     <tbody id="result" class="result">
+
+                {% for d in data %}
+                        <tr class='resultcontent'>
+                            <td class='table-sr'>${i+1}</td>
+                            <td class='table-sr'>${data.posting_date}</td>
+                            <td class='table-sr'>${data.name}</td>
+                        </tr>
+                {% endfor %}
+
                     </tbody>
                 </table>
             </div>
